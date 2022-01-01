@@ -1,4 +1,5 @@
 var signedupAlready=  localStorage.getItem('signedup');
+let myListings = document.getElementById('myListings');
 async function getUsers() {
       const response = await fetch('/getCoordinates');
       const users = await response.json();
@@ -80,7 +81,7 @@ return false;
       localStorage.setItem('userId',data.userId);
       localStorage.setItem('userBusiness',JSON.stringify(data.businesses));
       localStorage.setItem('signedup', 'true');
-     
+
 
 if (!window.location.search) {
     window.location.href = '/my-listings.html';

@@ -950,7 +950,7 @@ async function addressButtontoUpdate(){
   editInputAddress.style.display = 'block';
   editButtonAddress.style.display = 'none';
   saveButtonAddress.style.display = 'inline-block';
-   window.location.reload();
+
 }
 
 async function addressButtontoSave(){
@@ -978,6 +978,7 @@ async function addressButtontoSave(){
     editInputAddress.style.display = 'none';
     editButtonAddress.style.display = 'inline-block';
     saveButtonAddress.style.display = 'none';
+      window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);

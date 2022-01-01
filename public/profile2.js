@@ -57,7 +57,6 @@ function getUrlParameter2(name) {
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         };
 
-
 function getUrlParameter3(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -66,7 +65,6 @@ function getUrlParameter3(name) {
         };
 
     // var industryInputview = getUrlParameter3('industryInputview');
-
 
  function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -152,8 +150,6 @@ async function getUsers() {
       const users = await response.json();
       return users;
     }
-
-
 
 function getUserProfile(){
 fetch('/api/getSingleProfile', {
@@ -271,8 +267,6 @@ function initMap2(userData) {
 
     }
 
-
-
 function display(userData) {
     if (userData && userData.Images && userData.Images.length > 0) {
         const myImages = userData.Images;
@@ -287,10 +281,6 @@ function display(userData) {
 }
 
 // display()
-
-
-
-
 
   function toggleOptions() {
             var options = document.getElementById('options');

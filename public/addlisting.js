@@ -264,7 +264,7 @@ yesNo.style.display = 'none';
  // Display the response
 function previewImages(event) {
     var imgCont = document.getElementById('imagePreview');
-    
+
     for (let i = 0; i < event.target.files.length; i++) {
         var divElm = document.createElement('div');
         divElm.id = "rowdiv" + i;

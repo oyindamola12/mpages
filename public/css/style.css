@@ -278,7 +278,9 @@ cursor: pointer;
 
 background-color: #fff;
 }
-
+.businessNameSize{
+	font-size: 60px;
+}
 .select-options2 {
 	display: none;
 	position: absolute;
@@ -3545,6 +3547,9 @@ cursor: pointer;
 @media (max-width: 500px) {
 	.categories-item .categories-text {
 		padding: 30px 15px 30px 48px;
+	}
+	.businessNameSize{
+		font-size: 40px;
 	}
 	.filter-search {
 		padding: 60px;

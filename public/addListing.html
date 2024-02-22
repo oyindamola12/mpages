@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoga Studio Template">
+    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mPages</title>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu"> -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <!-- Google Font -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap" rel="stylesheet"> -->
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body >
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section listings">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            </div>
+            <nav class="main-menu mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a id="myListings" href="myListings.html">My Listings</a></li>
+                    <li><a id="" href="listings.html">Search</a></li>
+                    <!-- <li><a href="blog.html">News</a></li> -->
+                    <li class=""><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="user-access">
+                    <a href="register.html">Register/</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="addListing.html" class="primary-btn">Add Listing</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Map Section Begin -->
+    <!-- <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26440.72384129847!2d-118.24906619231132!3d34.06719475913053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c659f50c318d%3A0xe2ffb80a9d3820ae!2sChinatown%2C%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1570213740685!5m2!1sen!2sbd"
+            height="657" style="border:0;" allowfullscreen="">
+        </iframe>
+    </div> -->
+    <div id="map"></div>
+    <!-- Map Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+
+        <div class="container">
+            <h2 class="Ummah">Let the Ummah find your business!</h2>
+            <h2 class="Ummah2">Let the Ummah find<br> your business!</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-6">
+
+                    </div>
+                    <form  class="contact-form" id="contactForm" >
+                        <script src="https://js.paystack.co/v1/inline.js"></script>
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <input type="text" name="businessName" placeholder="Business Name" id="businessName">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" name="contactPerson" placeholder="Full Name (Contact Person)" id="contactPerson">
+                            </div>
+                            <div class="col-lg-6">
+
+
+    <div class="select-styled" id="industry" onclick="toggleOptions()"><span style="margin-left: 25px;">Choose Category</span></div>
+    <div class="select-options" id="options">
+        <div onclick="selectOption('Accountant')">Accountant</div>
+        <div onclick="selectOption('Actor')">Actor</div>
+        <div onclick="selectOption('Actuary')">Actuary</div>
+        <div onclick="selectOption('Author')">Author</div>
+        <div onclick="selectOption('Auto Repairer')">Auto Repairer</div>
+        <div onclick="selectOption('Baker')">Baker</div>
+        <div onclick="selectOption('Banker')">Banker</div>
+        <div onclick="selectOption('Bank')">Bank</div>
+        <div onclick="selectOption('Barber')">Barber</div>
+        <div onclick="selectOption('Beauty Salon')">Beauty Salon</div>
+        <div onclick="selectOption('Book Store')">Book Store</div>
+        <div onclick="selectOption('Bricklayer')">Bricklayer</div>
+        <div onclick="selectOption('Bridal Makeup')">Bridal Makeup</div>
+        <div onclick="selectOption('Calligrapher')">Calligrapher</div>
+        <div onclick="selectOption('Car Lot')">Car Lot</div>
+        <div onclick="selectOption('Carpentry')">Carpentry</div>
+        <div onclick="selectOption('Car Sales Man')">Car Sales Man</div>
+        <div onclick="selectOption('CCTV Camera Technician')">CCTV Camera Technician</div>
+        <div onclick="selectOption('Charity Organization')">Charity Organization</div>
+        <div onclick="selectOption('Cleaner')">Cleaner</div>
+        <div onclick="selectOption('Clothing Store')">Clothing Store</div>
+        <div onclick="selectOption('Computer Technician')">Computer Technician</div>
+        <div onclick="selectOption('Computer Repairer')">Computer Repairer</div>
+        <div onclick="selectOption('Construction Company')">Construction Company</div>
+        <div onclick="selectOption('Contractor')">Contractor</div>
+        <div onclick="selectOption('Cook')">Cook</div>
+        <div onclick="selectOption('Delivery Services')">Delivery Services</div>
+        <div onclick="selectOption('Dentist')">Dentist</div>
+        <div onclick="selectOption('Doctor')">Doctor</div>
+        <div onclick="selectOption('Dry Cleaner')">Dry Cleaner</div>
+        <div onclick="selectOption('DSTV Technician')">DSTV Technician</div>
+        <div onclick="selectOption('Electrician')">Electrician</div>
+        <div onclick="selectOption('Energy Expert')">Energy Expert</div>
+        <div onclick="selectOption('Event Planner')">Event Planner</div>
+        <div onclick="selectOption('Fashion Label')">Fashion Label</div>
+        <div onclick="selectOption('Fashion Designer')">Fashion Designer</div>
+        <div onclick="selectOption('Farmer')">Farmer</div>
+        <div onclick="selectOption('Financial Services')">Financial Services</div>
+        <div onclick="selectOption('Fumigation Services')">Fumigation Services</div>
+        <div onclick="selectOption('Generator Technician')">Generator Technician</div>
+        <div onclick="selectOption('Hajj Operator')">Hajj Operator</div>
+        <div onclick="selectOption('Healthcare Practitioner')">Healthcare Practitioner</div>
+        <div onclick="selectOption('Henna Expert')">Henna Expert</div>
+        <div onclick="selectOption('HMO')">HMO</div>
+        <div onclick="selectOption('Hospital')">Hospital</div>
+        <div onclick="selectOption('Hotel')">Hotel</div>
+        <div onclick="selectOption('HVAC Technician')">HVAC Technician</div>
+        <div onclick="selectOption('Interior Designer')">Interior Designer</div>
+        <div onclick="selectOption('Islamic Store')">Islamic Store</div>
+        <div onclick="selectOption('Lawyer')">Lawyer</div>
+        <div onclick="selectOption('Library')">Library</div>
+        <div onclick="selectOption('Manufacturer')">Manufacturer</div>
+        <div onclick="selectOption('Marketer')">Marketer</div>
+        <div onclick="selectOption('Mechanic')">Mechanic</div>
+        <div onclick="selectOption('Media')">Media</div>
+        <div onclick="selectOption('Mosque')">Mosque</div>
+        <div onclick="selectOption('Nasheed Artist')">Nasheed Artist</div>
+        <div onclick="selectOption('Nurse')">Nurse</div>
+        <div onclick="selectOption('Orphanage Home')">Orphanage Home</div>
+        <div onclick="selectOption('Painter')">Painter</div>
+        <div onclick="selectOption('Party Decorator')">Party Decorator</div>
+        <div onclick="selectOption('Party Planne')">Party Planne</div>
+        <div onclick="selectOption('Pharmacist')">Pharmacist</div>
+        <div onclick="selectOption('Plumber')">Plumber</div>
+        <div onclick="selectOption('Real Estate Agent')">Real Estate Agent</div>
+        <div onclick="selectOption('Restaurant')">Restaurant</div>
+        <div onclick="selectOption('Retailer')">Retailer</div>
+        <div onclick="selectOption('School')">School</div>
+        <div onclick="selectOption('Startup')">Startup</div>
+        <div onclick="selectOption('Shoe Store')">Shoe Store</div>
+        <div onclick="selectOption('Supplier ')">Supplier </div>
+        <div onclick="selectOption('Takaaful')">Takaaful</div>
+        <div onclick="selectOption('Teacher')">Teacher</div>
+        <div onclick="selectOption('Tiler')">Tiler</div>
+        <div onclick="selectOption('Transporter')">Transporter</div>
+        <div onclick="selectOption('Travel Agent')">Travel Agent</div>
+        <div onclick="selectOption('Writer')">Writer</div>
+        <div onclick="selectOption('Work Space')">Work Space</div>
+        <div onclick="selectOption('Voice Over Act')">Voice Over Act</div>
+
+        <!-- Add more options as needed -->
+    </div>
+
+                            </div>
+                            <div class="col-lg-6" id="hideYes" style="display: none;">
+
+
+                                <div class="select-styledyes" id="yesNo" onclick="toggleOptionsYes()">Do you want to accept donations?</div>
+                                <div class="select-options2" id="yes/no">
+                                    <div onclick="selectOptionyes('Yes')" >Yes</div>
+                                    <div onclick="selectOptionyes('No')"  >No</div>
+                                    <!-- Add more options as needed -->
+                                </div>
+                               </div>
+
+                            <div class="col-lg-6">
+                                <input type="text" name="businessAddress" placeholder="Business Address"id="businessAddress">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="Hours">
+                                    <h6 class="close2">Opening Hours:</h6>
+                                    <input   type="time" name="openingtime" placeholder="Operating Hours" id="openingtime" value="00:00" pattern="[0-9]{2}:[0-9]{2}">
+                            </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="Hours">
+                                    <h6 class="close2">Closing Hours:</h6>
+                                    <input type="time" name="closingtime" placeholder="Operating Hours" id="closingtime" value="00:00" pattern="[0-9]{2}:[0-9]{2}">
+                           </div>
+
+
+                        </div>
+                            <div class="col-lg-6">
+                                <input type="email" name="email" class="placeholdertext" id="email" placeholder="Email">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="tel" name="phoneNo" class="placeholdertext" id="phoneNo" placeholder="Phone No">
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="password" placeholder="Password" class="placeholdertext" name="password" id="password">
+                            </div>
+
+
+                            <div class="col-lg-12 text-center">
+
+                                <textarea placeholder="About (Doesn't have to be exhaustive now, you can complete later. )" name="about" id="about"></textarea>
+
+                                <!-- <button type="submit" id="submit" >Add Listing</button> -->
+                                <!-- <button id="submit" onclick="sendBusinessInfo()" type="button">Proceed</button> -->
+
+
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="image-preview" id="imagePreview"></div>
+
+                                <input type="file"
+                                 name="fileImage"
+
+                                id="fileImage"
+                                accept="image/*"
+                                multiple
+                                onchange="previewImages(event)"
+                                multiple
+                                >
+                                <div style="display: flex; justify-content: space-between;">
+                                <button class="upload-button" onclick="document.getElementById('fileImage').click()" type="button" id="upload-button">Upload Images</button>
+                                <button type="button" onclick="payWithPaystack()" id="proceed"> Proceed </button>
+                            </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- <div class="row">
+                <div class="col-lg-6">
+                    <div class="cs-info">
+                        <h2>Contact Info</h2>
+                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida mattis magna, non varius lorem sodales nec. In libero orci, ornare non nisl a, auctor euismod purus. Morbi pretium interdum vestibulum. </p>
+                        <span>Main Road , No 25/11</span>
+                        <ul>
+                            <li>+34 556788 3221</li>
+                            <li>contact@pizzaplace.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-add">
+                        <img src="img/contact-add.png" alt="">
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="#" class="newslatter-form">
+                        <input type="text" placeholder="Your email address">
+                        <button type="submit">Subscribe to our Newsletter</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Usefull Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li> <a id="myListings"  href="myListings.html">My Listings</a></li>
+                            <li><a href="listings.html">Search</a></li>
+
+                            <!-- <a href="#">News</a> -->
+
+                            <li>  <a href="contact.html">Contact</a></li>
+                            <li><a href="register.html">Register</a>/<a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li>Hotels</li>
+                            <li>Restaurant</li>
+                            <li>Spa & resorts</li>
+                            <li>Concert & Events</li>
+                            <li>Bars & Pubs</li>
+                        </ul>
+                    </div>
+                </div> -->
+                <!-- <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Usefull Links</h4>
+                        <ul>
+                            <li>About us</li>
+                            <li>Testimonials</li>
+                            <li>How it works</li>
+                            <li>Create an account</li>
+                            <li>Our Services</li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>From the Blog</h4>
+                        <div class="single-blog">
+                            <div class="blog-pic">
+                                <img src="img/f-blog-1.jpg" alt="">
+                            </div>
+                            <div class="blog-text">
+                                <h6>10 Best clubs in town</h6>
+                                <span>March 27, 2019</span>
+                            </div>
+                        </div>
+                        <div class="single-blog">
+                            <div class="blog-pic">
+                                <img src="img/f-blog-2.jpg" alt="">
+                            </div>
+                            <div class="blog-text">
+                                <h6>10 Best clubs in town</h6>
+                                <span>March 27, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-lg-12 order-2 order-lg-1">
+                    <div class="copyright"><p class="text-white">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <span style="margin-right: 10px;">  All rights reserved</span>   |<span style="margin-left: 10px; color: #ffc946;"> M.Pages is an HBN Resource Partner Company.</span> </a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p></div>
+                </div>
+                <!-- <div class="col-lg-7 text-center text-lg-right order-1 order-lg-2">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a id="myListings">My Listings</a>
+                        <a href="listings.html">Search</a>
+                        <a href="#">News</a>
+                        <a href="contact.html">Contact</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+
+
+
+    <script  src="./getBusiness.js"></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOGikfQraj0VsJPnpJMqgm5IORGCRIcTo&libraries=places&loading=async&callback=initMap">
+</script>
+ <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

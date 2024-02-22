@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoga Studio Template">
+    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mPages</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section listings">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            </div>
+            <nav class="main-menu mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a id="myListings" href="myListings.html">My Listings</a></li>
+                    <li><a href="listings.html">Search</a></li>
+                    <!-- <li><a href="blog.html">News</a></li> -->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="user-access">
+                    <a href="register.html">Register/</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="addListing.html" class="primary-btn">Add Listing</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Hero Section Begin -->
+    <div class="hero-listing set-bg"  id="myElements">
+    </div>
+    <!-- Hero Section End -->
+
+    <!-- About Secton Begin -->
+    <section class="about-section">
+        <div class="intro-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="about-intro">
+
+
+                            <div class="intro-text" id="intro-text">
+                                <div class="edith2">
+                                    <h1 id="businessNameh2MyListings" style="font-size: 60px;"></h1>
+                                    <!-- <h1 style="font-size: 60px;">HBN Resource Partners Limited</h1> -->
+                                    <textarea type="text" id="editInput" style="display: none; width: 600px; font-size: 40px; height: 100px; padding-left: 20px;" ></textarea>
+                                <button class="edit" id="editButtonh2"> <i class="fa fa-pencil" ></i></button>
+
+                                <button id="saveButton" style="display: none;padding: 7px 20px;
+                                background: #000;
+                                font-size: 14px;
+                                color: #ffc946;
+                                letter-spacing: 0.2px;
+                                border-radius: 5px;
+                                border: none;
+                                margin-left: 20px;">
+                                Save</button>
+                                </div>
+
+
+<!--
+                                <p id="taglinePtag">Explore some of the best places in the world</p> -->
+                            <div style="display: flex; flex-direction: row;margin-top: 20px;">
+                                <div class="edith2" style="margin-right: 10px;">
+                                <div class="open" id="timeToOpenMyListings"></div>
+                                <input type="time" id="editInputopen" style="display: none;
+                                border-left:none;
+                                border-right:none;
+                                border-top: none;
+                                border-bottom:1px solid #000;
+                                margin-top: 7px;
+
+                                ">
+                                <button class="edit" id="editButtonopen" style="margin-left: -3px;"> <i class="fa fa-pencil" ></i></button>
+                                <button id="saveButtonopen"  style="display: none;padding: 7px 20px;
+                                background: #000;
+                                font-size: 14px;
+                                color: #ffc946;
+                                letter-spacing: 0.2px;
+                                border-radius: 5px;
+                                border: none;
+                                margin-left: 20px;
+                                ">Save</button>
+                            </div>
+                                <div class="edith2">
+                                <div class="closed" id="timeToCloseMyListings"></div>
+                                <input type="time" id="editInputclose"
+                                style="display: none;
+                                border-left:none;
+                                border-right:none;
+                                border-top: none;
+                                border-bottom:1px solid #000;
+                                 margin-top: 7px;">
+                                <button class="edit" id="editButtonclose"> <i class="fa fa-pencil" ></i></button>
+                               <button id="saveButtonclose"
+                              style="display: none;padding: 7px 20px;
+                               background: #000;
+                               font-size: 14px;
+                               color: #ffc946;
+                               letter-spacing: 0.2px;
+                               border-radius: 5px;
+                               border: none;
+                               margin-left: 20px;
+                              "
+                              >Save</button>
+                            </div>
+                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    <div class="col-lg-4 offset-lg-1">
+                        <div class="intro-share">
+                            <!-- <div class="share-btn">
+                                <a class="share" onclick="">Share</a>
+                                <a class="popup"  onclick="on()">Submit a Review</a>
+                            </div> -->
+    <div class="share-icon">
+
+      <a   href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/single-listing.html" target="blank" title="facebook"><i class="fa fa-facebook resizeIcon"></i></a>
+
+      <a   href="https://twitter.com/intent/tweet?text=YOUR_TITLE&url=http://localhost:8000/single-listing.html" target="blank" title="twitter"><i class="fa fa-twitter resizeIcon"></i></a>
+
+      <!-- linkedin -->
+      <a   href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:8000/single-listing.htmlL&title=YOUR_TITLE" target="blank" title="linkedin"><i class="fa fa-linkedin resizeIcon"></i></a>
+
+      <!-- reddit -->
+      <a  href="https://www.reddit.com/submit?url=http://localhost:8000/single-listing.html&title=YOUR_TITLE" target="blank" title="reddit"><i class="fa fa-reddit resizeIcon"></i></a>
+
+      <!-- tumblr -->
+      <a href="https://www.tumblr.com/share/link?url=http://localhost:8000/single-listing.html&name=YOUR_TITLE&description=YOUR_DESC" target="blank" title="tumblr"><i class="fa fa-tumblr resizeIcon"></i></a>
+
+      <!-- pinterest -->
+      <a href="https://pinterest.com/pin/create/button/?url=http://localhost:8000/single-listing.html&media=IMAGE_URL&description=YOUR_TITLE" target="blank" title="pinterest"><i class="fa fa-pinterest-p resizeIcon"></i></a>
+
+       </div>
+
+   </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="overlay">
+            <span class="close" onclick="off()">&times;</span>
+            <div class="popupReview">
+
+                <div >
+                    <form class="displayFlex">
+                <textarea placeholder="Enter Review"  name="review" id="EnterReview" class="EnterReview"></textarea>
+               <input type="text" placeholder="Your Name" id="inputNameMyListings" class="inputName" name="yourName">
+                <button class="offAndSubmit" onclick="off1()">Submit</button>
+            </form>
+            </div>
+            </div>
+    </div>
+        <div class="about-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="about-left">
+                            <div class="about-desc">
+                                <div class="edith2">
+                                <h4>About</h4>
+                                <button class="edit"  id="editButtonAbout" > <i class="fa fa-pencil" ></i></button>
+                            </div>
+                                <p id="aboutTextMyListings" style="width: 90%; " ></p>
+
+                               <textarea type="text" id="editInputAbout" style="display: none; width: 90%; height: 400px;padding-right: 20px; padding-left: 20px; padding-top: 20px; border-radius: 5px;"></textarea>
+
+                              <button id="saveButtonAbout" style="display: none;padding: 7px 20px;
+                              background: #000;
+                              font-size: 14px;
+                              color: #ffc946;
+                              letter-spacing: 0.2px;
+                              border-radius: 5px;
+                              border: none;
+
+                              margin-top: 15px;
+                             ">Save</button>
+                            </div>
+
+                            <div class="about-video">
+                                <!-- <img id="image" alt="" class="IMAGEURL"> -->
+                                </div>
+
+                                <div class="client-reviews">
+                                    <h3 id="review">Reviews</h3>
+                                    <div class="reviews-item">
+                                        <p id="reviewText"> </p>
+                                        <div class="client-text">
+                                            <h5 id="reviewerName"></h5>
+                                            <span id="reviewTime"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="about-right">
+                            <div class="contact-info">
+                               
+                                <div id="map2">
+
+                                </div>
+
+                                <div class="contact-text">
+                                    <h4>Contact Info</h4>
+
+                                    <div style="display: flex;">
+
+                                    <span id="contactInfoAddressMyListings" style="color: black; font-size: 17px;"></span>
+                                    <input type="text" id="editInputAddress"
+                                    style="
+                                    display: none;
+                                    border-left:none;
+                                    border-right:none;
+                                    border-top: none;
+                                    border-bottom:1px solid #000
+                                    ;
+
+                                  ">
+                                    <button class="edit" id="editButtonAddress"> <i class="fa fa-pencil" ></i></button>
+
+                                    <button id="saveButtonAddress"
+                                    style="
+                                    display: none;
+                                    padding: 7px 20px;
+                                    background: #000;
+                                    font-size: 14px;
+                                    color: #ffc946;
+                                    letter-spacing: 0.2px;
+                                    border-radius: 5px;
+                                    border: none;
+                                    margin-left: 20px;
+                                    margin-top: 7px;
+                                   ">Save</button>
+                                </div>
+                                    <ul>
+                                        <div class="edith2" >
+
+                                        <li id="contactInfoNumberMyListings"  style="font-size:17px;"></li>
+                                        <input type="text" id="editInputNumber"  style="display: none;
+                                        border-left:none;
+                                        border-right:none;
+                                        border-top: none;
+                                        border-bottom:1px solid #000;    margin-top: 7px;
+                                         padding-bottom: 5px;"
+
+                                        >
+                                        <button class="edit" id="editButtonNumber"> <i class="fa fa-pencil" ></i></button>
+
+                                        <button id="saveButtonNumber" style="display: none;padding: 7px 20px;
+                                        background: #000;
+                                        font-size: 14px;
+                                        color: #ffc946;
+                                        letter-spacing: 0.2px;
+                                        border-radius: 5px;
+                                        border: none;
+                                        margin-left: 20px;
+
+                                       ">Save</button>
+                                    </div>
+                                    <div class="edith2">
+                                        <li id="contactInfoemailMyListings" style="font-size:17px;"></li>
+                                        <input type="text" id="editInputemail" style="display: none;
+                                        border-left:none;
+                                        border-right:none;
+                                        border-top: none;
+                                        border-bottom:1px solid #000;
+                                        padding-bottom: 5px;
+                                           margin-top: 7px;">
+                                        <button class="edit" id="editButtonemail"> <i class="fa fa-pencil" ></i></button>
+
+                                        <button id="saveButtonemail" style="display: none;padding: 7px 20px;
+                                        background: #000;
+                                        font-size: 14px;
+                                        color: #ffc946;
+                                        letter-spacing: 0.2px;
+                                        border-radius: 5px;
+                                        border: none;
+                                        margin-left: 20px;
+
+                                       "style="display: none;">Save</button>
+                                    </div>
+                                    </ul>
+                                    <h6 style="margin-top: 50px; margin-bottom: 30px;">Let the Ummah find you,<br> list your business below;</h6
+                                        >
+                                    <a class="share" href="addListing.html" style="color: #ffc946;" >Add Listing</a>
+                                </div>
+                            </div>
+                            <!-- <div class="working-hours">
+                                <h4>Working Hours</h4>
+                                <ul>
+                                    <li>Monday<span>08:00 - 22:00</span></li>
+                                    <li>Tuesday<span>08:00 - 22:00</span></li>
+                                    <li>Wednesday<span>08:00 - 22:00</span></li>
+                                    <li>Thursday<span>08:00 - 22:00</span></li>
+                                    <li>Friday <span>08:00 - 22:00</span></li>
+                                    <li>Saturday<span>08:00 - 22:00</span></li>
+                                    <li>Sunday<span>Closed</span></li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Secton End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="#" class="newslatter-form">
+                        <input type="text" placeholder="Your email address">
+                        <button type="submit">Subscribe to our Newsletter</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Usefull Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li> <a id="myListings"  href="myListings.html">My Listings</a></li>
+                            <li><a href="listings.html">Search</a></li>
+
+                            <!-- <a href="#">News</a> -->
+
+                            <li>  <a href="contact.html">Contact</a></li>
+                            <li><a href="register.html">Register</a>/<a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li>Hotels</li>
+                            <li>Restaurant</li>
+                            <li>Spa & resorts</li>
+                            <li>Concert & Events</li>
+                            <li>Bars & Pubs</li>
+                        </ul>
+                    </div>
+                </div> -->
+                <!-- <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Usefull Links</h4>
+                        <ul>
+                            <li>About us</li>
+                            <li>Testimonials</li>
+                            <li>How it works</li>
+                            <li>Create an account</li>
+                            <li>Our Services</li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>From the Blog</h4>
+                        <div class="single-blog">
+                            <div class="blog-pic">
+                                <img src="img/f-blog-1.jpg" alt="">
+                            </div>
+                            <div class="blog-text">
+                                <h6>10 Best clubs in town</h6>
+                                <span>March 27, 2019</span>
+                            </div>
+                        </div>
+                        <div class="single-blog">
+                            <div class="blog-pic">
+                                <img src="img/f-blog-2.jpg" alt="">
+                            </div>
+                            <div class="blog-text">
+                                <h6>10 Best clubs in town</h6>
+                                <span>March 27, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-lg-12 order-2 order-lg-1">
+                    <div class="copyright"><p class="text-white">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <span style="margin-right: 10px;">  All rights reserved</span>   |<span style="margin-left: 10px; color: #ffc946;"> M.Pages is an HBN Resource Partner Company.</span> </a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p></div>
+                </div>
+                <!-- <div class="col-lg-7 text-center text-lg-right order-1 order-lg-2">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a id="myListings">My Listings</a>
+                        <a href="listings.html">Search</a>
+                        <a href="#">News</a>
+                        <a href="contact.html">Contact</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script  src="profile.js"></script>
+
+
+
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOGikfQraj0VsJPnpJMqgm5IORGCRIcTo&libraries=places&loading=async&callback=initMap2">
+    </script>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

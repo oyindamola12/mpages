@@ -174,6 +174,8 @@ img {
 	margin-bottom: 15px;
 
 }
+
+
 .select-styledyes{
 
 	padding: 16px 34px;
@@ -1520,14 +1522,32 @@ a:link, a:visited {
 
 }
 
-.app-section .app-text p {
+/* .app-section .app-text p {
 	color: #000;
-	font-size: 16px;
-	line-height: 28px;
+	font-size: 21px;
+	line-height: 27px;
 	letter-spacing: 0.2px;
 	margin-bottom: 45px;
+	margin-top: 40px;
+} */
+.letUmmah{
+	color: #000;
+	font-size: 21px;
+	line-height: 27px;
+	letter-spacing: 0.2px;
+	margin-bottom: 45px;
+	margin-top: 40px;
+	display: block;
 }
-
+.letUmmah2{
+	color: #000;
+	font-size: 21px;
+	line-height: 27px;
+	letter-spacing: 0.2px;
+	margin-bottom: 45px;
+	margin-top: 40px;
+	display: none;
+}
 .app-section .app-text ul {
 	margin-bottom: 38px;
 }
@@ -2887,6 +2907,8 @@ a:link, a:visited {
 /* Medium Device : 992px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+
 	.header-section .logo {
 		margin-right: 60px;
 	}
@@ -2998,6 +3020,7 @@ a:link, a:visited {
 	.map img {
 		left: 280px;
 	}
+
 	.filter-search button {
 		padding: 13px 30px;
 	}
@@ -3063,6 +3086,24 @@ a:link, a:visited {
 		margin-right: 0;
 	}
 	.header-section .main-menu {
+		display: none;
+	}
+	.letUmmah2{
+		color: #000;
+		font-size: 21px;
+		line-height: 27px;
+		letter-spacing: 0.2px;
+		margin-bottom: 45px;
+		margin-top: 40px;
+		display: block;
+	}
+	.letUmmah{
+		color: #000;
+		font-size: 21px;
+		line-height: 27px;
+		letter-spacing: 0.2px;
+		margin-bottom: 45px;
+		margin-top: 40px;
 		display: none;
 	}
 	.header-section .header-right {
@@ -3453,6 +3494,7 @@ a:link, a:visited {
 	margin-top: -20%;
 
 	}
+
 	.app-text {
 		text-align: center;
 		}
@@ -3463,4 +3505,13 @@ a:link, a:visited {
 			margin-top: 15px;
 		margin-left: -80px;
 		}
+		.app-section .app-text p {
+			color: #000;
+			font-size: 17px;
+			line-height: 20px;
+			letter-spacing: 0.2px;
+			margin-bottom: 45px;
+			margin-top: 40px;
+		}
+
 }

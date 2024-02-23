@@ -35,7 +35,7 @@ console.log(userUid)
 
 
 //       const arrangeitems= document.createElement('a');
-//       arrangeitems.href='businessProfile.html'
+//       arrangeitems.href='business-profile.html'
 //       arrangeitems.classList.add('arrange-items');
 
 //       const arrangepic= document.createElement('div');
@@ -115,8 +115,8 @@ console.log(userUid)
 
 const images = JSON.stringify(business.data.Images);
       const arrangeitems= document.createElement('a');
-      arrangeitems.href='businessProfile.html'
-      arrangeitems.href=`businessProfile.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+      arrangeitems.href='business-profile.html'
+      arrangeitems.href=`business-profile.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
       arrangeitems.classList.add('arrange-items');
 
       const arrangepic= document.createElement('div');
@@ -185,7 +185,7 @@ const images = JSON.stringify(business.data.Images);
 
 function navigateToUserProfile2(businessId) {
         // Redirect to the user profile page with the user ID as a query parameter
-        window.location.href = `/businessProfile.html?id=${businessId}`;
+        window.location.href = `/business-profile.html?id=${businessId}`;
 
 }
 //  getMyListing()
@@ -282,7 +282,7 @@ window.initMap = initMap;
    var userUid =localStorage.getItem('userId');
     if (userUid) {
 
-myListings.href = "myListings.html"
+myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"
     }
@@ -298,7 +298,7 @@ myListings.href = "no-listings.html"
 
 // // const myJSON = JSON.stringify(business)
 //       const arrangeitems= document.createElement('a');
-//       arrangeitems.href=`businessProfile.html`
+//       arrangeitems.href=`business-profile.html`
 //       arrangeitems.classList.add('arrange-items');
 
 //       const arrangepic= document.createElement('div');
@@ -352,7 +352,7 @@ myListings.href = "no-listings.html"
 //         localStorage.setItem('selectedUserId', business.id);
 //         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
 //         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-//        window.location.href = `businessProfile.html`;
+//        window.location.href = `business-profile.html`;
 //  });
 
 //   }

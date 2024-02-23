@@ -182,7 +182,7 @@ function deleteItems() {
 
 if (signedupAlready) {
 
-myListings.href = "myListings.html"
+myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"
     }
@@ -220,7 +220,7 @@ myListings.href = "no-listings.html"
                 title:storedUserData.businessAddress
             });
    } else {
-        alert('User ID or user data not found in localStorage or URL parameters.');
+
     }
 
   var params2 = new URLSearchParams(window.location.search);
@@ -768,7 +768,7 @@ return false;
  var handler = PaystackPop.setup({
       key: 'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
       email:email,
-      amount: 2500 * 100,
+      amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
       metadata: {
          custom_fields: [
@@ -824,7 +824,7 @@ userids:userids,
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
             localStorage.setItem('addedListings', 'true');
-             window.location.href ='myListings.html';
+             window.location.href ='my-listings.html';
 
 
 
@@ -925,7 +925,7 @@ return false;
       var handler = PaystackPop.setup({
       key: 'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
       email:email,
-      amount: 2500 * 100,
+      amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
       metadata: {
          custom_fields: [
@@ -983,7 +983,7 @@ userids: postid
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
             localStorage.setItem('addedListings', 'true');
-            window.location.href ='myListings.html';
+            window.location.href ='my-listings.html';
         })
         .catch(error => {
             console.error('Error sending data to server:', error);

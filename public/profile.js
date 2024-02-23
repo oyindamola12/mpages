@@ -60,7 +60,7 @@ let listingId=selectedBusinessData.listingId
 
 
 //       const arrangeitems= document.createElement('a');
-//       arrangeitems.href='businessProfile.html'
+//       arrangeitems.href='business-profile.html'
 //       arrangeitems.classList.add('arrange-items');
 
 //       const arrangepic= document.createElement('div');

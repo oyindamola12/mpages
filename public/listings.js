@@ -554,7 +554,7 @@ async function getUsers() {
  initMap();
 if (signedupAlready) {
 
-myListings.href = "myListings.html"
+myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"
     }

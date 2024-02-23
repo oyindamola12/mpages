@@ -100,7 +100,7 @@ img {
 
 }
 #map {
-	height: 80%;
+	height: 60%;
 	width: 100%;
 	margin: auto;
 	/* background-color: #000; */
@@ -390,7 +390,7 @@ font-family: 'Ubuntu';
 }
 .Ummah2{
 	margin-bottom:70px ;
-display: none;
+   display: none;
 	text-align: center;
 
 }
@@ -2819,7 +2819,7 @@ a:link, a:visited {
 }
 
 .contact-section {
-	padding-top: 120px;
+	padding-top: 70px;
 	padding-bottom: 72px;
 }
 
@@ -3192,6 +3192,7 @@ a:link, a:visited {
 	.Ummah2{
 		display: block;
 		font-family: 'Ubuntu';
+		font-size: 30px;
 	}
 
 	.categories-left,

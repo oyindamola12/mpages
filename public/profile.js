@@ -43,7 +43,7 @@ const saveButtonAbout= document.getElementById('saveButtonAbout');
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
 
-//  fetch('http://localhost:8000/getMyListings', {
+//  fetch('https://www.mpageshub.com/getMyListings', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ function reviews(){
   var  reviewTime = document.getElementById('reviewTime');
 
 
- fetch('http://localhost:8000/getReviews', {
+ fetch('https://www.mpageshub.com/getReviews', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -442,7 +442,7 @@ function toggleEditclosetime() {
  async function updateData(newValue) {
 
             try {
-                const response = await fetch('http://localhost:8000/updateData', {
+                const response = await fetch('https://www.mpageshub.com/updateData', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -480,7 +480,7 @@ saveButton.addEventListener('click', () => {
  editButton.style.display = 'inline-block';
  saveButton.style.display = 'none';
   // Update Firestore with the new value
-  fetch('http://localhost:8000/updateh2',{
+  fetch('https://www.mpageshub.com/updateh2',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -519,7 +519,7 @@ timeToOpenMyListings.style.display = 'block';
     saveButtonopen.style.display = 'none';
   // Update Firestore with the new value
 
-  fetch('http://localhost:8000/updateopen', {
+  fetch('https://www.mpageshub.com/updateopen', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -559,7 +559,7 @@ saveButtonclose.addEventListener('click', () => {
     editButtonclose.style.display = 'inline-block';
     saveButtonclose.style.display = 'none';
   // Update Firestore with the new value
-  fetch('http://localhost:8000/updateclose', {
+  fetch('https://www.mpageshub.com/updateclose', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -597,7 +597,7 @@ saveButtonAddress.addEventListener('click', () => {
     editButtonAddress.style.display = 'inline-block';
     saveButtonAddress.style.display = 'none';
   // Update Firestore with the new value
-  fetch('http://localhost:8000/updateAddress', {
+  fetch('https://www.mpageshub.com/updateAddress', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -635,7 +635,7 @@ contactInfoNumberMyListings.style.display = 'block';
     editButtonNumber.style.display = 'inline-block';
     saveButtonNumber.style.display = 'none';
   // Update Firestore with the new value
-  fetch('http://localhost:8000/updateNumber', {
+  fetch('https://www.mpageshub.com/updateNumber', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -672,7 +672,7 @@ saveButtonemail.addEventListener('click', () => {
     editButtonemail.style.display = 'inline-block';
     saveButtonemail.style.display = 'none';
   // Update Firestore with the new value
-  fetch('http://localhost:8000/updateEmail', {
+  fetch('https://www.mpageshub.com/updateEmail', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -709,7 +709,7 @@ saveButtonAbout.addEventListener('click', () => {
     editButtonAbout.style.display = 'inline-block';
     saveButtonAbout.style.display = 'none';
   // Update Firestore with the new value
-  fetch('http://localhost:8000/updateAbout', {
+  fetch('https://www.mpageshub.com/updateAbout', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -29,7 +29,7 @@ console.log(userUid)
 
  function toggleData(){
   if (getBusinessesData === true && searchwithin ===false){
- fetch('http://localhost:8000/getBusinesses')
+ fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
 
@@ -119,7 +119,7 @@ const images = JSON.stringify(business.data.Images);
   }
 
 if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude&&longitude  ){
- fetch('http://localhost:8000/businessSearch', {
+ fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -212,7 +212,7 @@ if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude
 
 
 if (getBusinessesData === false&&searchwithin ===false &&industryInputview ){
- fetch('http://localhost:8000/businessSearch2', {
+ fetch('https://www.mpageshub.com/businessSearch2', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -377,7 +377,7 @@ const myImages  = JSON.parse(images );
         //     initAutocomplete();
         // };
  function fetchCoordinates() {
-        fetch('http://localhost:8000/getBusinesses')
+        fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -578,7 +578,7 @@ var geocoder = new google.maps.Geocoder();
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
- fetch('http://localhost:8000/businessSearch', {
+ fetch('hhttps://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -666,7 +666,7 @@ var geocoder = new google.maps.Geocoder();
   .catch(error => {
     console.error('Error updating value:', error);
   });
-  fetch('http://localhost:8000/businessSearch', {
+  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -755,7 +755,7 @@ var geocoder = new google.maps.Geocoder();
     console.error('Error updating value:', error);
   });
 
-   fetch('http://localhost:8000/MostSearched', {
+   fetch('https://www.mpageshub.com/MostSearched', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -823,7 +823,7 @@ return false;
         },
         callback: function (response) {
            if (response.status){
-fetch('http://localhost:8000/addDonations2', {
+fetch('https://www.mpageshub.com/addDonations2', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -885,7 +885,7 @@ return false;
         callback: function (response) {
            if (response.status){
 
-fetch('http://localhost:8000/addDonations', {
+fetch('https://www.mpageshub.com/addDonations', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -937,7 +937,7 @@ const x = document.getElementById("demo");
 
 const sendPost = async (data) => {
     const body = JSON.stringify(data);
-    return fetch('http://localhost:8000/review', {
+    return fetch('https://www.mpageshub.com/review', {
         method: 'POST', // GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, same-origin
         cache: 'no-cache', // default, no-cache, reload, force-cache, only-if-cached
@@ -1098,7 +1098,7 @@ display()
 
     function fetchPage(page) {
 
-     fetch(`http://localhost:8000/getBusinesses2?page=${page}`)
+     fetch(`https://www.mpageshub.com/getBusinesses2?page=${page}`)
     .then(response => response.json())
     .then(items=> {
 
@@ -1197,7 +1197,7 @@ var  reviewH2 = document.getElementById('review');
   var  reviewTime = document.getElementById('reviewTime');
 
 
- fetch('http://localhost:8000/getReviews', {
+ fetch('https://www.mpageshub.com/getReviews', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

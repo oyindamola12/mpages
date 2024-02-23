@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const bodyparser = require('body-parser');
 const admin = require('firebase-admin');
 const path =require('path')
@@ -9,7 +9,9 @@ const { Storage } = require('@google-cloud/storage');
 const fs = require('fs');
 const multer =require('multer');
 const uuid = require('uuid-v4');
+
 const publicPath=path.join(__dirname,'public')
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(publicPath))
 const storage = new Storage({
@@ -61,10 +63,16 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 const cors = require('cors');
+const allowedOrigins = ['https://www.mpageshub.com', 'https://www.mpageshub.com'];
 const corsOptions = {
-  origin: 'http://localhost:5000',
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 };
-
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(cors(corsOptions));

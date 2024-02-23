@@ -18,7 +18,7 @@ var userUid =localStorage.getItem('userId');
 console.log(userUid)
 // async function  getMyListing(){
 // if(userUid){
-//  fetch('http://localhost:8000/getMyListings', {
+//  fetch('https://www.mpageshub.com/getMyListings', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ console.log(userUid)
 
 // }
 
-  fetch(`http://localhost:8000/getMyListings?userUid=${userUid}`)
+  fetch(`https://www.mpageshub.com/getMyListings?userUid=${userUid}`)
     .then(response => response.json())
     .then(items=> {
    loading.style.display = 'none';
@@ -289,7 +289,7 @@ myListings.href = "no-listings.html"
 
 //     function fetchPage(page) {
 
-//      fetch(`http://localhost:8000/getMyListings2?page=${page}&userUid=${userUid}`)
+//      fetch(`https://www.mpageshub.com/getMyListings2?page=${page}&userUid=${userUid}`)
 //     .then(response => response.json())
 //     .then(items=> {
 //    loading.style.display = 'none';

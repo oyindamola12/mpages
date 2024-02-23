@@ -21,7 +21,7 @@ function initMap() {
     }
 
 function fetchCoordinates() {
-        fetch('http://localhost:8000/getBusinesses')
+        fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -63,7 +63,7 @@ function getFile(e){
 
 // function getBusiness(){
 
-// fetch('http://localhost:8000/getBusinesses')
+// fetch('https://www.mpageshub.com/getBusinesses')
 //     .then(response => response.json())
 //     .then(items=> {
 //       // Populate the list in the HTML with specified tags
@@ -236,7 +236,7 @@ const x = document.getElementById("demo");
 
 // // const sendPost = async (data) => {
 // //     const body = JSON.stringify(data);
-// //     return fetch('http://localhost:8000/review', {
+// //     return fetch('https://www.mpageshub.com/review', {
 // //         method: 'POST', // GET, POST, PUT, DELETE, etc.
 // //         mode: 'cors', // no-cors, cors, same-origin
 // //         cache: 'no-cache', // default, no-cache, reload, force-cache, only-if-cached

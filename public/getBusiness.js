@@ -61,7 +61,7 @@ const itemsPerPage = 12;
 // console.log("Most recurring item(s):", result.mostRecurringItems);
 // console.log("Recurring item count:", result.recurringItemCount);
 
-  fetch('http://localhost:8000/mostFrequentIndustries')
+  fetch('https://www.mpageshub.com/mostFrequentIndustries')
     .then(response => response.json())
     .then(items=> {
 
@@ -83,7 +83,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
       console.log('Error fetching items:', error);
     });
 
-     fetch('http://localhost:8000/secondFrequentIndustry')
+     fetch('https://www.mpageshub.com/secondFrequentIndustry')
     .then(response => response.json())
     .then(items=> {
 
@@ -105,7 +105,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
     });
 
 
-  fetch('http://localhost:8000/thirdFrequentIndustry')
+  fetch('https://www.mpageshub.com/thirdFrequentIndustry')
     .then(response => response.json())
     .then(items=> {
 
@@ -126,7 +126,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
       console.log('Error fetching items:', error);
     });
 
-      fetch('http://localhost:8000/fourthFrequentIndustry')
+      fetch('https://www.mpageshub.com/fourthFrequentIndustry')
     .then(response => response.json())
     .then(items=> {
 console.log(items)
@@ -147,7 +147,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
       console.log('Error fetching items:', error);
     });
 
-      fetch('http://localhost:8000/fifthFrequentIndustry')
+      fetch('https://www.mpageshub.com/fifthFrequentIndustry')
     .then(response => response.json())
     .then(items=> {
 
@@ -272,7 +272,7 @@ myListings.href = "no-listings.html"
 
      if(storedUserIdlogin){
 
-// fetch('http://localhost:8000/login')
+// fetch('https://www.mpageshub.com/login')
 //     .then(response => response.json())
 //     .then(items=> {
 //       // Populate the list in the HTML with specified tags
@@ -421,7 +421,7 @@ function initMap2() {
     initMap2();
 
     function fetchCoordinates() {
-        fetch('http://localhost:8000/getBusinesses')
+        fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -478,7 +478,7 @@ function navigateToUserProfile(businessId) {
 //                 if (status == google.maps.GeocoderStatus.OK) {
 //                   const latitude = results[0].geometry.location.lat();
 //                     const longitude = results[0].geometry.location.lng();
-//  fetch('http://localhost:8000/addBusiness', {
+//  fetch('https://www.mpageshub.com/addBusiness', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -610,7 +610,7 @@ if(email === ''|| password  === ''){
 return false;
  }
 
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch('https://www.mpageshub.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -645,7 +645,7 @@ if(email === ''|| password  === ''){
 return false;
  }
 
-      const response = await fetch('http://localhost:8000/register', {
+      const response = await fetch('https://www.mpageshub.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -790,7 +790,7 @@ var geocoder = new google.maps.Geocoder();
                   const latitude = results[0].geometry.location.lat();
                     const longitude = results[0].geometry.location.lng();
 
-        fetch('http://localhost:8000/addBusiness', {
+        fetch('https://www.mpageshub.com/addBusiness', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -948,7 +948,7 @@ var geocoder = new google.maps.Geocoder();
                     const longitude = results[0].geometry.location.lng();
 
 
-  fetch('http://localhost:8000/addBusiness2', {
+  fetch('https://www.mpageshub.com/addBusiness2', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

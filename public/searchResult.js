@@ -20,7 +20,7 @@ const itemsPerPage = 12;
 
 
 
-//  fetch('http://localhost:8000/businessSearch', {
+//  fetch('https://www.mpageshub.com/businessSearch', {
 //     method: 'POST',
 //     headers: {
 //       'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ const itemsPerPage = 12;
 //   .catch(error => {
 //     console.error('Error updating value:', error);
 //   });
-//   fetch(`http://localhost:8000/businessData?storedUserId=${storedUserId}`)
+//   fetch(`https://www.mpageshub.com/businessData?storedUserId=${storedUserId}`)
 //     .then(response => response.json())
 //     .then(items=> {
 
@@ -154,7 +154,7 @@ const itemsPerPage = 12;
 //       console.log('Error fetching items:', error);
 //     });
 
-fetch('http://localhost:8000/getMostSearched')
+fetch('https://www.mpageshub.com/getMostSearched')
     .then(response => response.json())
     .then(items=> {
      // Populate the list in the HTML with specified tags
@@ -275,7 +275,7 @@ function initMap() {
         };
 
  function fetchCoordinates() {
-        fetch('http://localhost:8000/getBusinesses')
+        fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -376,7 +376,7 @@ const x = document.getElementById("demo");
 
 const sendPost = async (data) => {
     const body = JSON.stringify(data);
-    return fetch('http://localhost:8000/review', {
+    return fetch('https://www.mpageshub.com/review', {
         method: 'POST', // GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, same-origin
         cache: 'no-cache', // default, no-cache, reload, force-cache, only-if-cached
@@ -551,7 +551,7 @@ getProfile()
 
     function fetchPage(page) {
 
-     fetch(`http://localhost:8000/getBusinesses2?page=${page}`)
+     fetch(`https://www.mpageshub.com/getBusinesses2?page=${page}`)
     .then(response => response.json())
     .then(items=> {
 

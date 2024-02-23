@@ -905,9 +905,13 @@ a:link, a:visited {
 	float: left;
 	margin-right: 115px;
 	/* height: 100px; */
-	width: 100px;
-}
+	width: 200px;
+	margin-top: -20px;
 
+}
+.logoH{
+
+}
 .header-section .logo a {
 	display: inline-block;
 }

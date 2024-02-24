@@ -287,8 +287,14 @@ myListings.href = "no-listings.html"
      }
 
 // console.log(storedUserIdlogin)
+// function disableImage(){
+// var imgfile =document.getElementById('fileImage').file
+// if(imgfile.length ===5){
+//   document.getElementById("fileImage").disabled = true;
 
-
+// }
+// }
+// disableImage()
 
 
 // function initMap() {
@@ -678,18 +684,42 @@ return false;
     imagePreview.innerHTML = '';
 
 
-    for (let i = 0; i < files.length; i++) {
+    // for (let i = 0; i < files.length; i++) {
+    //     const file = files[i];
+    //     const reader = new FileReader();
+
+    //     reader.onload = function(e) {
+    //         const img = document.createElement('img');
+    //         img.src = e.target.result;
+    //         imagePreview.appendChild(img);
+    //     }
+
+    //     reader.readAsDataURL(file);
+    // }
+
+      // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
+      // selectedImagesContainer.innerHTML = '';
+
+      for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const reader = new FileReader();
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
 
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            imagePreview.appendChild(img);
-        }
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'x';
+          deleteBtn.type = 'button';
+        deleteBtn.onclick = function() {
+             event.preventDefault();
+          files.splice(i, 1);
+          previewImages(files);
 
-        reader.readAsDataURL(file);
-    }
+        };
+
+        const div = document.createElement('div');
+        div.appendChild(img);
+        div.appendChild(deleteBtn);
+       imagePreview.appendChild(div);
+      }
 }
 
 function uuidv4(){
@@ -727,6 +757,12 @@ return false;
 
   if ( fileInputed.length < 3 ) {
         alert("Please select a minimum of 3 images.");
+        return;
+
+    }
+
+     if ( fileInputed.length >5  ) {
+        alert("You can only select a maxium of 5 images.");
         return;
 
     }
@@ -895,6 +931,11 @@ return false;
 
     }
 
+     if ( fileInputed.length >5  ) {
+        alert("You can only select a maxium of 5 images.");
+        return;
+
+    }
   if (!fileInput) {
     console.error('File input element not found');
     return;
@@ -1016,6 +1057,22 @@ userids: postid
       }
     });
     handler.openIframe();
+  }
+
+  async function uploadImg(){
+     const fileInputs = document.getElementById('fileInputs');
+      const newInput = document.createElement('input');
+      newInput.type = 'file';
+      newInput.name = 'images';
+      newInput.multiple = true;
+      fileInputs.appendChild(newInput);
+
+      const files = document.querySelectorAll('input[type="file"]');
+      files.forEach(fileInput => {
+        const selectedFiles = fileInput.files;
+        // Handle file upload logic here
+        console.log(selectedFiles);
+          });
   }
 
 //  console.log(storedUserData)

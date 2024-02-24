@@ -368,7 +368,7 @@ window.initMap = initMap;
 
 if (userUid) {
 
-myListings.href = "myListings.html"
+myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"
     }

@@ -995,7 +995,7 @@ const about = document.getElementById('aboutText');
 
        const image = document.getElementById('image');
 
-        const donateBtn = document.getElementById('share2');
+
         const element = document.getElementById('myElement');
      const imageUrl = myImages[0];
         element.setAttribute('data-setbg', imageUrl);
@@ -1229,3 +1229,24 @@ reviewerName.textContent=business.data.reviewer
 }
 
 reviews()
+
+
+ const queryParams = new URLSearchParams(window.location.search);
+        const donateBtn = document.getElementById('share2');
+        const divider= document.getElementById('divider');
+        // Check if the 'param' parameter exists and has a value
+        if (queryParams.has('donate')) {
+            const paramValue = queryParams.get('donate');
+            if (paramValue !== 'No'|| paramValue !== '') {
+                console.log('Parameter "param" has value:', paramValue);
+            } else {
+                console.log('Parameter "param" exists but has no value.');
+                divider.style.display==="block"
+                donateBtn.style.display === 'block'
+            }
+        } else {
+            // console.log('Parameter "param" does not exist in the URL.');
+            //  console.log('Parameter "param" exists but has no value.');
+                divider.style.display==="block"
+                donateBtn.style.display === 'block'
+        }

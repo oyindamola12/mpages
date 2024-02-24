@@ -2330,7 +2330,7 @@ a:link, a:visited {
 	margin-left: 20px;
 
 	border: none;
-	/* display: none; */
+	display: none;
 
 }
 #proceed{

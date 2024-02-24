@@ -697,10 +697,10 @@ return false;
         reader.readAsDataURL(file);
 
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'x';
-          deleteBtn.type = 'button';
-  deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
     }
 
       // const selectedImagesContainer = document.getElementById('selectedImagesContainer');

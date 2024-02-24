@@ -681,47 +681,56 @@ return false;
 
 
     const imagePreview = document.getElementById('imagePreview');
-    imagePreview.innerHTML = '';
 
 
-    // for (let i = 0; i < files.length; i++) {
-    //     const file = files[i];
-    //     const reader = new FileReader();
 
-    //     reader.onload = function(e) {
-    //         const img = document.createElement('img');
-    //         img.src = e.target.result;
-    //         imagePreview.appendChild(img);
-    //     }
-
-    //     reader.readAsDataURL(file);
-    // }
-
-      // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
-      // selectedImagesContainer.innerHTML = '';
-
-      for (let i = 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            imagePreview.appendChild(img);
+        }
+
+        reader.readAsDataURL(file);
+
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'x';
           deleteBtn.type = 'button';
-        deleteBtn.onclick = function() {
-             event.preventDefault();
-          files.splice(i, 1);
-          previewImages(files);
+  deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+    }
 
-        };
+      // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
+      // selectedImagesContainer.innerHTML = '';
 
-        const div = document.createElement('div');
-        div.appendChild(img);
-        div.appendChild(deleteBtn);
-       imagePreview.appendChild(div);
-      }
+  //     for (let i = 0; i < files.length; i++) {
+  //       const file = files[i];
+  //       const img = document.createElement('img');
+  //       img.src = URL.createObjectURL(file);
+
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+
+  //       const div = document.createElement('div');
+  //       div.appendChild(img);
+  //       div.appendChild(deleteBtn);
+  //      imagePreview.appendChild(div);
+  //     }
 }
 
+
+ function createDeleteHandler(index, files, callback) {
+      return function(event) {
+        event.preventDefault();
+        files.splice(index, 1);
+        callback(files);
+      };
+    }
 function uuidv4(){
 return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11 ).replace(/[018]/g,(c)=>
 

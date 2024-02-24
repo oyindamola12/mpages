@@ -527,29 +527,29 @@ async function getUsers() {
     }
 
    async function initMap() {
-      // const users = await getUsers();
+      const users = await getUsers();
 
-      // // Create a LatLngBounds object to store the bounds of all markers
-      // const bounds = new google.maps.LatLngBounds();
+      // Create a LatLngBounds object to store the bounds of all markers
+      const bounds = new google.maps.LatLngBounds();
 
-      // const map = new google.maps.Map(document.getElementById('map'), {
-      //   zoom: 2,
-      //   center: { lat: 0, lng: 0 } // Center of the map
-      // });
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 2,
+        center: { lat: 0, lng: 0 } // Center of the map
+      });
 
-      // users.forEach(user => {
-      //   const position = { lat: user.latitude, lng: user.longitude };
-      //   // Extend the bounds to include the marker's position
-      //   bounds.extend(position);
-      //   const marker = new google.maps.Marker({
-      //     position: position,
-      //     map: map,
-      //     title: user.name
-      //   });
-      // });
+      users.forEach(user => {
+        const position = { lat: user.latitude, lng: user.longitude };
+        // Extend the bounds to include the marker's position
+        bounds.extend(position);
+        const marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: user.name
+        });
+      });
 
-      // // Fit the map to the bounds
-      // map.fitBounds(bounds);
+      // Fit the map to the bounds
+      map.fitBounds(bounds);
     }
  initMap();
 if (signedupAlready) {

@@ -41,16 +41,16 @@
     /*----------------------
         Testimonial Slider
     -----------------------*/
-    $(".testimonial-item").owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: true,
-        items: 1,
-        dots: false,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        smartSpeed: 1200,
-        autoplay: false,
-    });
+    // $(".testimonial-item").owlCarousel({
+    //     loop: true,
+    //     margin: 0,
+    //     nav: true,
+    //     items: 1,
+    //     dots: false,
+    //     navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+    //     smartSpeed: 1200,
+    //     autoplay: false,
+    // });
 
     /*------------------
         Magnific Popup

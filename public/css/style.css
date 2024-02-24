@@ -2206,6 +2206,17 @@ a:link, a:visited {
 	margin-left: 1%;
 	margin-right: 1.5%;
 }
+
+#loading{
+	font-size: 20px ;
+	 display: block;
+	 margin-left: 10px;
+	 margin-bottom: 0;
+}
+.reg{
+	font-size:20px;
+	color: #fff;
+}
 /*---------------------
   Hero Listing
 -----------------------*/
@@ -3289,12 +3300,19 @@ a:link, a:visited {
 
 	#rowId{
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
+		/* justify-content: space-between; */
+		align-items: flex-start;
 		width: 100%;
 		margin-left: 9%;
 		margin-right: 9.5%;
+	}
+
+	#loading{
+		font-size: 20px ;
+		 display: block;
+		 margin-left: 10px;
+		 margin-bottom: 50px;
 	}
 	.search-filter .filter-search .category-search {
 		width: 100%;

@@ -27,298 +27,298 @@ var getBusinessesData = true;
 var searchwithin=false
 console.log(userUid)
 
- function toggleData(){
-  if (getBusinessesData === true && searchwithin ===false){
- fetch('https://www.mpageshub.com/getBusinesses')
-    .then(response => response.json())
-    .then(items=> {
-
-  loading.style.display = 'none';
-
-      // Populate the list in the HTML with specified tags
-//    var industry = document.querySelector('.select-styled2').textContent;
-    for (let i = 0; i < items.length; i++) {
-
-      const business = items[i];
-// console.log( business.data.Images[1])
-// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
-// console.log( filteredArray)
-const images = JSON.stringify(business.data.Images);
-
-// Construct the URL with the serialized array as a query parameter
-
-   const arrangeitems= document.createElement('a');
-
- if (business.hasOwnProperty('donation')) {
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
-
-      arrangeitems.classList.add('arrange-items');
-
-      const arrangepic= document.createElement('div');
-      arrangepic.classList.add('arrange-pic');
-
-        const arrangetext= document.createElement('div');
-       arrangetext.classList.add('arrange-text');
-
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
-
-       const tictext= document.createElement('div');
-       tictext.textContent = business.data.industry;
-        arrangepic.appendChild(tictext);
-        tictext.classList.add('tic-text');
-
-        const imgTag = document.createElement('img');
-        imgTag.src = business.data.Images[0]// Assuming you have an 'imageUrl' property in your data
-        imgTag.alt = 'Image'; // Provide alternative text for accessibility
-        arrangepic.appendChild(imgTag);
-        imgTag.classList.add('imgs');
-
-
-        // Create and append h5 tag for the title
-        const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
-        arrangetext.appendChild(titleTag);
-
-        // Create and append span tag for the address v
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
-
-        // Create and append p tag for the subtitle
-        const subtitleTag = document.createElement('p');
-        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-        arrangetext.appendChild(subtitleTag);
-
-        // Create and append button tag for the opening time
-        const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-        openingTimeTag.classList.add('open');
-        arrangetext.appendChild(openingTimeTag);
-        arrangeitems.appendChild(arrangepic)
-        arrangeitems.appendChild(arrangetext)
-        appendDiv.append
- if (business.hasOwnProperty('donation')) {
-  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
-window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
-    Child(arrangeitems)
-
-        arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        localStorage.setItem('selectedUserId', business.id);
-        window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-
-        navigateToUserProfile(business.id);
-
-      });
-
-  }
-    })
-    .catch(error => {
-      console.log('Error fetching items:', error);
-    });
-
-  }
-
-if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude&&longitude  ){
- fetch('https://www.mpageshub.com/businessSearch', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ industry:inputindustry,lat:latitude ,lng:longitude})
-  })
-  .then(response => response.json())
-  .then(items => {
+//  function toggleData(){
+//   if (getBusinessesData === true && searchwithin ===false){
+//  fetch('https://www.mpageshub.com/getBusinesses')
+//     .then(response => response.json())
+//     .then(items=> {
+
+//   loading.style.display = 'none';
+
+//       // Populate the list in the HTML with specified tags
+// //    var industry = document.querySelector('.select-styled2').textContent;
+//     for (let i = 0; i < items.length; i++) {
+
+//       const business = items[i];
+// // console.log( business.data.Images[1])
+// // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+// // console.log( filteredArray)
+// const images = JSON.stringify(business.data.Images);
+
+// // Construct the URL with the serialized array as a query parameter
+
+//    const arrangeitems= document.createElement('a');
+
+//  if (business.hasOwnProperty('donation')) {
+//  arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+//     } else {
+// arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//     }
+
+//       arrangeitems.classList.add('arrange-items');
+
+//       const arrangepic= document.createElement('div');
+//       arrangepic.classList.add('arrange-pic');
+
+//         const arrangetext= document.createElement('div');
+//        arrangetext.classList.add('arrange-text');
+
+//       //  const rating= document.createElement('div');
+//       //  rating.textContent = business.data.rating;
+//       //   arrangepic.appendChild(rating);
+//       //   rating.classList.add('rating');
+
+//        const tictext= document.createElement('div');
+//        tictext.textContent = business.data.industry;
+//         arrangepic.appendChild(tictext);
+//         tictext.classList.add('tic-text');
+
+//         const imgTag = document.createElement('img');
+//         imgTag.src = business.data.Images[0]// Assuming you have an 'imageUrl' property in your data
+//         imgTag.alt = 'Image'; // Provide alternative text for accessibility
+//         arrangepic.appendChild(imgTag);
+//         imgTag.classList.add('imgs');
+
+
+//         // Create and append h5 tag for the title
+//         const titleTag = document.createElement('h5');
+//         titleTag.textContent = business.data.businessName;
+//         arrangetext.appendChild(titleTag);
+
+//         // Create and append span tag for the address v
+//         const addressTag = document.createElement('span');
+//         addressTag.textContent = business.data.businessAddress;
+//        arrangetext.appendChild(addressTag);
+
+//         // Create and append p tag for the subtitle
+//         const subtitleTag = document.createElement('p');
+//         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+//         arrangetext.appendChild(subtitleTag);
+
+//         // Create and append button tag for the opening time
+//         const openingTimeTag = document.createElement('div');
+//         openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+//         openingTimeTag.classList.add('open');
+//         arrangetext.appendChild(openingTimeTag);
+//         arrangeitems.appendChild(arrangepic)
+//         arrangeitems.appendChild(arrangetext)
+//         appendDiv.append
+//  if (business.hasOwnProperty('donation')) {
+//   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+//     } else {
+// window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//     }
+//     Child(arrangeitems)
+
+//         arrangeitems.addEventListener('click', () => {
+//         localStorage.removeItem('selectedUserId')
+//         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+//         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+//         localStorage.setItem('selectedUserId', business.id);
+//         window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+
+//         navigateToUserProfile(business.id);
+
+//       });
+
+//   }
+//     })
+//     .catch(error => {
+//       console.log('Error fetching items:', error);
+//     });
+
+//   }
+
+// if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude&&longitude  ){
+//  fetch('https://www.mpageshub.com/businessSearch', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ industry:inputindustry,lat:latitude ,lng:longitude})
+//   })
+//   .then(response => response.json())
+//   .then(items => {
 
-     loading.style.display = 'none';
+//      loading.style.display = 'none';
 
 
-   for (let i = 0; i < items.length; i++) {
+//    for (let i = 0; i < items.length; i++) {
 
-      const business = items[i];
+//       const business = items[i];
 
-// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
-// console.log( filteredArray)
+// // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+// // console.log( filteredArray)
 
-   const arrangeitems= document.createElement('a');
-    arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//    const arrangeitems= document.createElement('a');
+//     arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
 
-      arrangeitems.classList.add('arrange-items');
+//       arrangeitems.classList.add('arrange-items');
 
-      const arrangepic= document.createElement('div');
-      arrangepic.classList.add('arrange-pic');
+//       const arrangepic= document.createElement('div');
+//       arrangepic.classList.add('arrange-pic');
 
-        const arrangetext= document.createElement('div');
-       arrangetext.classList.add('arrange-text');
+//         const arrangetext= document.createElement('div');
+//        arrangetext.classList.add('arrange-text');
 
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
+//       //  const rating= document.createElement('div');
+//       //  rating.textContent = business.data.rating;
+//       //   arrangepic.appendChild(rating);
+//       //   rating.classList.add('rating');
 
-       const tictext= document.createElement('div');
-       tictext.textContent = business.data.industry;
-        arrangepic.appendChild(tictext);
-        tictext.classList.add('tic-text');
+//        const tictext= document.createElement('div');
+//        tictext.textContent = business.data.industry;
+//         arrangepic.appendChild(tictext);
+//         tictext.classList.add('tic-text');
 
-        const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
-        imgTag.alt = 'Image'; // Provide alternative text for accessibility
-        arrangepic.appendChild(imgTag);
-        imgTag.classList.add('imgs');
+//         const imgTag = document.createElement('img');
+//         imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+//         imgTag.alt = 'Image'; // Provide alternative text for accessibility
+//         arrangepic.appendChild(imgTag);
+//         imgTag.classList.add('imgs');
 
 
-        // Create and append h5 tag for the title
-        const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
-        arrangetext.appendChild(titleTag);
+//         // Create and append h5 tag for the title
+//         const titleTag = document.createElement('h5');
+//         titleTag.textContent = business.data.businessName;
+//         arrangetext.appendChild(titleTag);
 
-        // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+//         // Create and append span tag for the address
+//         const addressTag = document.createElement('span');
+//         addressTag.textContent = business.data.businessAddress;
+//        arrangetext.appendChild(addressTag);
 
-        // Create and append p tag for the subtitle
-        const subtitleTag = document.createElement('p');
-        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-        arrangetext.appendChild(subtitleTag);
+//         // Create and append p tag for the subtitle
+//         const subtitleTag = document.createElement('p');
+//         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+//         arrangetext.appendChild(subtitleTag);
 
-        // Create and append button tag for the opening time
-        const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-        openingTimeTag.classList.add('open');
-        arrangetext.appendChild(openingTimeTag);
-        arrangeitems.appendChild(arrangepic)
-        arrangeitems.appendChild(arrangetext)
-        appendDiv.appendChild(arrangeitems)
-
-        arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        localStorage.setItem('selectedUserId', business.id);
- window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-        navigateToUserProfile(business.id);
+//         // Create and append button tag for the opening time
+//         const openingTimeTag = document.createElement('div');
+//         openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+//         openingTimeTag.classList.add('open');
+//         arrangetext.appendChild(openingTimeTag);
+//         arrangeitems.appendChild(arrangepic)
+//         arrangeitems.appendChild(arrangetext)
+//         appendDiv.appendChild(arrangeitems)
+
+//         arrangeitems.addEventListener('click', () => {
+//         localStorage.removeItem('selectedUserId')
+//         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+//         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+//         localStorage.setItem('selectedUserId', business.id);
+//  window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//         navigateToUserProfile(business.id);
 
-      });
+//       });
 
-
-  }
+
+//   }
 
-  })
-  .catch(error => {
-    console.error('Error updating value:', error);
-  });
-  }
+//   })
+//   .catch(error => {
+//     console.error('Error updating value:', error);
+//   });
+//   }
 
 
-if (getBusinessesData === false&&searchwithin ===false &&industryInputview ){
- fetch('https://www.mpageshub.com/businessSearch2', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ industry:industryInputview })
-  })
-  .then(response => response.json())
-  .then(items => {
+// if (getBusinessesData === false&&searchwithin ===false &&industryInputview ){
+//  fetch('https://www.mpageshub.com/businessSearch2', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ industry:industryInputview })
+//   })
+//   .then(response => response.json())
+//   .then(items => {
 
-     loading.style.display = 'none';
+//      loading.style.display = 'none';
 
 
-   for (let i = 0; i < items.length; i++) {
+//    for (let i = 0; i < items.length; i++) {
 
-      const business = items[i];
+//       const business = items[i];
 
-// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
-// console.log( filteredArray)
+// // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+// // console.log( filteredArray)
 
-   const arrangeitems= document.createElement('a');
-           arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//    const arrangeitems= document.createElement('a');
+//            arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
 
-      arrangeitems.classList.add('arrange-items');
+//       arrangeitems.classList.add('arrange-items');
 
-      const arrangepic= document.createElement('div');
-      arrangepic.classList.add('arrange-pic');
+//       const arrangepic= document.createElement('div');
+//       arrangepic.classList.add('arrange-pic');
 
-        const arrangetext= document.createElement('div');
-       arrangetext.classList.add('arrange-text');
+//         const arrangetext= document.createElement('div');
+//        arrangetext.classList.add('arrange-text');
 
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
+//       //  const rating= document.createElement('div');
+//       //  rating.textContent = business.data.rating;
+//       //   arrangepic.appendChild(rating);
+//       //   rating.classList.add('rating');
 
-       const tictext= document.createElement('div');
-       tictext.textContent = business.data.industry;
-        arrangepic.appendChild(tictext);
-        tictext.classList.add('tic-text');
+//        const tictext= document.createElement('div');
+//        tictext.textContent = business.data.industry;
+//         arrangepic.appendChild(tictext);
+//         tictext.classList.add('tic-text');
 
-        const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
-        imgTag.alt = 'Image'; // Provide alternative text for accessibility
-        arrangepic.appendChild(imgTag);
-        imgTag.classList.add('imgs');
+//         const imgTag = document.createElement('img');
+//         imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+//         imgTag.alt = 'Image'; // Provide alternative text for accessibility
+//         arrangepic.appendChild(imgTag);
+//         imgTag.classList.add('imgs');
 
 
-        // Create and append h5 tag for the title
-        const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
-        arrangetext.appendChild(titleTag);
+//         // Create and append h5 tag for the title
+//         const titleTag = document.createElement('h5');
+//         titleTag.textContent = business.data.businessName;
+//         arrangetext.appendChild(titleTag);
 
-        // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+//         // Create and append span tag for the address
+//         const addressTag = document.createElement('span');
+//         addressTag.textContent = business.data.businessAddress;
+//        arrangetext.appendChild(addressTag);
 
-        // Create and append p tag for the subtitle
-        const subtitleTag = document.createElement('p');
-        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-        arrangetext.appendChild(subtitleTag);
+//         // Create and append p tag for the subtitle
+//         const subtitleTag = document.createElement('p');
+//         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+//         arrangetext.appendChild(subtitleTag);
 
-        // Create and append button tag for the opening time
-        const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-        openingTimeTag.classList.add('open');
-        arrangetext.appendChild(openingTimeTag);
-        arrangeitems.appendChild(arrangepic)
-        arrangeitems.appendChild(arrangetext)
-        appendDiv.appendChild(arrangeitems)
+//         // Create and append button tag for the opening time
+//         const openingTimeTag = document.createElement('div');
+//         openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+//         openingTimeTag.classList.add('open');
+//         arrangetext.appendChild(openingTimeTag);
+//         arrangeitems.appendChild(arrangepic)
+//         arrangeitems.appendChild(arrangetext)
+//         appendDiv.appendChild(arrangeitems)
 
-        arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        localStorage.setItem('selectedUserId', business.id);
-        window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-        navigateToUserProfile(business.id);
+//         arrangeitems.addEventListener('click', () => {
+//         localStorage.removeItem('selectedUserId')
+//         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+//         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+//         localStorage.setItem('selectedUserId', business.id);
+//         window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//         navigateToUserProfile(business.id);
 
-      });
+//       });
 
-  }
+//   }
 
-  })
-  .catch(error => {
-    console.error('Error updating value:', error);
-  });
-  }
+//   })
+//   .catch(error => {
+//     console.error('Error updating value:', error);
+//   });
+//   }
 
 
 
 
- }
+//  }
 
-toggleData();
+// toggleData();
 
 
 

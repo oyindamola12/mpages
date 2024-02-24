@@ -101,7 +101,8 @@ app.post('/addBusiness',async (req, res, )=> {
     const lat =req.body.latitude;
     const lng =req.body.longitude;
     const signupStatus=req.body.signupStatus;
-    const userids=req.body.userids
+    const userids=req.body.userids;
+    const donation=req.body.wantDonation
 
     const user={
     email:req.body.email,
@@ -176,6 +177,7 @@ await  userListings.set({
   latitude:lat,
  longitude:lng,
  listingId:userids,
+ donation:donation
 
 });
 
@@ -196,6 +198,7 @@ await businessDb.set({
   latitude:lat,
   longitude:lng,
   listingId:userids,
+  donation:donation
 
 });
  return res.status(200).json({ userId:userids,userResponse});
@@ -269,7 +272,8 @@ app.post('/addBusiness2',async (req, res)=> {
     const userids = req.body.userids;
     const lat = req.body.latitude;
     const lng = req.body.longitude
-    const donate= req.body.wantDonation
+
+     const donation=req.body.wantDonation
     // const files = req.files
 // const userId=req.body.userId
 
@@ -293,7 +297,7 @@ timestamp: admin.firestore.FieldValue.serverTimestamp(),
 latitude:lat,
 longitude:lng,
  listingId:uniqueId,
- donations:donate
+donation:donation
 });
 
 const userListings =  db.collection('Users').doc(userId).collection('BusinessLists').doc(uniqueId );
@@ -312,7 +316,7 @@ await  userListings.set({
 timestamp: admin.firestore.FieldValue.serverTimestamp(),
   latitude:lat,
  longitude:lng,
- donations:donate,
+donation:donation,
   listingId:uniqueId,
 });
 

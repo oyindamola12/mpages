@@ -48,7 +48,12 @@ const images = JSON.stringify(business.data.Images);
 // Construct the URL with the serialized array as a query parameter
 
    const arrangeitems= document.createElement('a');
-   arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+
+ if (business.hasOwnProperty('donation')) {
+ arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+    } else {
+arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+    }
 
       arrangeitems.classList.add('arrange-items');
 
@@ -97,7 +102,13 @@ const images = JSON.stringify(business.data.Images);
         arrangetext.appendChild(openingTimeTag);
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
-        appendDiv.appendChild(arrangeitems)
+        appendDiv.append
+ if (business.hasOwnProperty('donation')) {
+  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+    } else {
+window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+    }
+    Child(arrangeitems)
 
         arrangeitems.addEventListener('click', () => {
         localStorage.removeItem('selectedUserId')
@@ -1235,8 +1246,8 @@ reviews()
         const donateBtn = document.getElementById('share2');
         const divider= document.getElementById('divider');
         // Check if the 'param' parameter exists and has a value
-        if (queryParams.has('donate')) {
-            const paramValue = queryParams.get('donate');
+        if (queryParams.has('donation')) {
+            const paramValue = queryParams.get('donation');
             if (paramValue !== 'No'|| paramValue !== '') {
                 console.log('Parameter "param" has value:', paramValue);
             } else {

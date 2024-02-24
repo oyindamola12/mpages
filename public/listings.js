@@ -332,43 +332,43 @@ function getUrlParameter3(name) {
 
 
 
- function getUrlParameter(name) {
-            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
+//  function getUrlParameter(name) {
+//             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+//             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+//             var results = regex.exec(location.search);
+//             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+//         };
 
-        // Get the business data from the URL query parameter
+//         // Get the business data from the URL query parameter
 
-    // Display business information
-// Handle error (e.g., display an error message)
-const images = getUrlParameter('images');
+//     // Display business information
+// // Handle error (e.g., display an error message)
+// const images = getUrlParameter('images');
 
-// Deserialize the serialized array back into an array
-const myImages  = JSON.parse(images );
+// // Deserialize the serialized array back into an array
+// const myImages  = JSON.parse(images );
 
- var businessName = getUrlParameter('businessName');
+//  var businessName = getUrlParameter('businessName');
 
-  var longitude =JSON.parse( getUrlParameter('longitude'));
+//   var longitude =JSON.parse( getUrlParameter('longitude'));
 
-  var latitude =JSON.parse( getUrlParameter('latitude'));
+//   var latitude =JSON.parse( getUrlParameter('latitude'));
 
 
-  var aboutData= getUrlParameter('about');
+//   var aboutData= getUrlParameter('about');
 
-  var phoneNo = getUrlParameter('phoneNo');
+//   var phoneNo = getUrlParameter('phoneNo');
 
-  var emailData = getUrlParameter('email');
+//   var emailData = getUrlParameter('email');
 
-  var openingtime = getUrlParameter('openingtime');
-  var closingtime = getUrlParameter('closingtime');
+//   var openingtime = getUrlParameter('openingtime');
+//   var closingtime = getUrlParameter('closingtime');
 
- var listingsId = getUrlParameter('listingId');
- var businessOwnerIds= getUrlParameter('userid');
-  var industrys = getUrlParameter('industry');
+//  var listingsId = getUrlParameter('listingId');
+//  var businessOwnerIds= getUrlParameter('userid');
+//   var industrys = getUrlParameter('industry');
 
-  var businessAddress = getUrlParameter('businessAddress');
+//   var businessAddress = getUrlParameter('businessAddress');
 
 
 
@@ -552,6 +552,7 @@ async function getUsers() {
       map.fitBounds(bounds);
     }
  initMap();
+
 if (signedupAlready) {
 
 myListings.href = "my-listings.html"
@@ -979,52 +980,52 @@ document.getElementById("overlay").style.display = "none";
 }
 
 
-function getProfile(){
+// function getProfile(){
 
 
-const about = document.getElementById('aboutText');
-       const address = document.getElementById('contactInfoAddress');
-        const email= document.getElementById('contactInfoemail');
-        //  const container= document.getElementById('about-video');
-//         const rating2 = document.getElementById('rating2');
-        const businessNameh2= document.getElementById('businessNameh2');
-     const no = document.getElementById('contactInfoNumber');
-       const timeToOpen  = document.getElementById('timeToOpen');
-       const timeToClose = document.getElementById('timeToClose');
-//         const image = document.getElementById('vidImage');
+// const about = document.getElementById('aboutText');
+//        const address = document.getElementById('contactInfoAddress');
+//         const email= document.getElementById('contactInfoemail');
+//         //  const container= document.getElementById('about-video');
+// //         const rating2 = document.getElementById('rating2');
+//         const businessNameh2= document.getElementById('businessNameh2');
+//      const no = document.getElementById('contactInfoNumber');
+//        const timeToOpen  = document.getElementById('timeToOpen');
+//        const timeToClose = document.getElementById('timeToClose');
+// //         const image = document.getElementById('vidImage');
 
-       const image = document.getElementById('image');
+//        const image = document.getElementById('image');
 
-        const donateBtn = document.getElementById('share2');
-        const element = document.getElementById('myElement');
-     const imageUrl = myImages[0];
-        element.setAttribute('data-setbg', imageUrl);
-// console.log( myImages[0])
-// Set the background image using inline CSS
-element.style.backgroundImage = `url(${imageUrl})`;
+//         const donateBtn = document.getElementById('share2');
+//         const element = document.getElementById('myElement');
+//      const imageUrl = myImages[0];
+//         element.setAttribute('data-setbg', imageUrl);
+// // console.log( myImages[0])
+// // Set the background image using inline CSS
+// element.style.backgroundImage = `url(${imageUrl})`;
 
-    //  element.setAttribute('data-setbg', imageUrl);
+//     //  element.setAttribute('data-setbg', imageUrl);
 
-// if(donate && donate==='Yes'){
-//   donateBtn.style.display = 'none';
-// }else{
-//    donateBtn.style.display = 'block';
+// // if(donate && donate==='Yes'){
+// //   donateBtn.style.display = 'none';
+// // }else{
+// //    donateBtn.style.display = 'block';
+// // }
+
+
+
+//      businessNameh2.textContent =  businessName;
+//        timeToOpen.textContent =  openingtime;
+//         timeToClose.textContent = closingtime;
+//         email.textContent = emailData ;
+//        no.textContent = phoneNo;
+//        address.textContent = businessAddress;
+//          about.textContent =  aboutData;
+
+
 // }
 
-
-
-     businessNameh2.textContent =  businessName;
-       timeToOpen.textContent =  openingtime;
-        timeToClose.textContent = closingtime;
-        email.textContent = emailData ;
-       no.textContent = phoneNo;
-       address.textContent = businessAddress;
-         about.textContent =  aboutData;
-
-
-}
-
-getProfile()
+// getProfile()
 
 function initMap2() {
   var coordinates = {
@@ -1048,18 +1049,18 @@ function initMap2() {
     }
 initMap2()
 
-function display(){
+// function display(){
 
 
-        for (let i = 0; i < myImages.length; i++) {
-            const img = document.createElement('img');
-            img.src = myImages[i];
-            img.classList.add('IMAGEURL')
-           document.querySelector(".about-video").appendChild(img)
-        }
-}
+//         for (let i = 0; i < myImages.length; i++) {
+//             const img = document.createElement('img');
+//             img.src = myImages[i];
+//             img.classList.add('IMAGEURL')
+//            document.querySelector(".about-video").appendChild(img)
+//         }
+// }
 
-display()
+// display()
   function toggleOptions() {
             var options = document.getElementById('options');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';

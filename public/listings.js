@@ -343,7 +343,7 @@ function getUrlParameter3(name) {
 
     // Display business information
 // Handle error (e.g., display an error message)
-const images = getUrlParameter('images');
+// const images = getUrlParameter('images');
 
 // Deserialize the serialized array back into an array
 const myImages  = JSON.parse(images );

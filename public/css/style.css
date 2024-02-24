@@ -219,7 +219,7 @@ top: 24%;
 	overflow-y: auto;
 
 }
-.select-options2 {
+/* .select-options2 {
 	display: none;
 	position: absolute;
 	background-color: #fff;
@@ -234,7 +234,7 @@ cursor: pointer;
 	height: 150px;
 	overflow-y: auto;
 
-}
+} */
 .select-styled2 {
 
 	padding: 16px 20px;
@@ -247,23 +247,30 @@ cursor: pointer;
 background-color: #fff;
 }
 
-/* .select-options2 {
+.select-options2 {
 	display: none;
 	position: absolute;
 	background-color: #fff;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	z-index: 1;
-	width: 100%;
+	/* width: 95%; */
 	border-radius: 5px;
 	border: #000 1px solid;
-	 margin-top: 10px;
+	margin-top: 10px;
 cursor: pointer;
+/* padding: 16px 20px; */
 
-	max-height: 250px;
+	cursor: pointer;
+	width: 95%;
+
+	border-radius: 5px;
+
+background-color: #fff;
+	max-height: 150px;
 	max-width: 34.5%;
 	overflow-y: auto;
 
-} */
+}
 
 
 .select-styled3 {
@@ -3374,6 +3381,30 @@ a:link, a:visited {
 	.contact-section .contact-add {
 		margin-top: 22px;
 	}
+	.select-options2 {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+		/* width: 95%; */
+		border-radius: 5px;
+		border: #000 1px solid;
+		margin-top: 10px;
+	cursor: pointer;
+	/* padding: 16px 20px; */
+
+		cursor: pointer;
+		/* width: 75%; */
+
+		border-radius: 5px;
+
+	background-color: #fff;
+		max-height: 150px;
+		max-width: 76%;
+		overflow-y: auto;
+
+	}
 }
 
 /* Small Mobile : 320px */
@@ -3513,20 +3544,33 @@ a:link, a:visited {
 			margin-bottom: 45px;
 			margin-top: 40px;
 		}
-		.select-options2 {
-			display: none;
-			position: absolute;
-			background-color: #fff;
-			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-			z-index: 1;
-			width: 66%;
-			border-radius: 5px;
-			border: #000 1px solid;
-			margin-top: 10px;
+
+}
+@media (max-width: 440px) {
+
+	.select-options2 {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+		/* width: 95%; */
+		border-radius: 5px;
+		border: #000 1px solid;
+		margin-top: 10px;
+	cursor: pointer;
+	/* padding: 16px 20px; */
+
 		cursor: pointer;
+		/* width: 75%; */
 
-			height: 150px;
-			overflow-y: auto;
+		border-radius: 5px;
 
-		}
+	background-color: #fff;
+		max-height: 150px;
+		max-width: 74%;
+		overflow-y: auto;
+
+	}
+
 }

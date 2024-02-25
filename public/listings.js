@@ -1075,27 +1075,27 @@ document.getElementById("overlay").style.display = "none";
 
 // getProfile()
 
-function initMap2() {
-  var coordinates = {
-    lat: latitude,
-    lng:longitude
-  };
-  geocoder = new google.maps.Geocoder();
- map2 = new google.maps.Map(document.getElementById('map2'), {
-    zoom: 17,
-    center: coordinates,
-    scrollwheel: false
-  });
-   const location = new google.maps.LatLng( latitude,  longitude);
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map2,
-                title:businessName
-            });
-            marker.setMap(map2)
+// function initMap2() {
+//   var coordinates = {
+//     lat: latitude,
+//     lng:longitude
+//   };
+//   geocoder = new google.maps.Geocoder();
+//  map2 = new google.maps.Map(document.getElementById('map2'), {
+//     zoom: 17,
+//     center: coordinates,
+//     scrollwheel: false
+//   });
+//    const location = new google.maps.LatLng( latitude,  longitude);
+//             const marker = new google.maps.Marker({
+//                 position: location,
+//                 map: map2,
+//                 title:businessName
+//             });
+//             marker.setMap(map2)
 
-    }
-initMap2()
+//     }
+// initMap2()
 
 // function display(){
 

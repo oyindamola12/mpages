@@ -278,9 +278,9 @@ function initMap() {
 window.initMap = initMap;
 
         // Load the Places Autocomplete service when the window is loaded
-        window.onload = function() {
-            initAutocomplete();
-        };
+        // window.onload = function() {
+        //     initAutocomplete();
+        // };
 
 
   var params = new URLSearchParams(window.location.search);

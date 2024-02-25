@@ -811,7 +811,7 @@ return false;
 
                 formData.append('userids', userids);
  var handler = PaystackPop.setup({
-      key: 'pk_live_b3635cadaea0a7a02518aed3dd9e8ac3d64a83cc',
+      key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
       email:email,
       amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
@@ -974,7 +974,7 @@ return false;
  formData.append('userUid',userUid);
 
       var handler = PaystackPop.setup({
-      key: 'pk_live_b3635cadaea0a7a02518aed3dd9e8ac3d64a83cc',
+      key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
       email:email,
       amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you

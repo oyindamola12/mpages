@@ -820,7 +820,7 @@ return false;
 }
 
     var handler = PaystackPop.setup({
-        key: 'pk_test_733942352847369db55d32dc2b83d44db6b47fb1', //put your public key here
+        key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772', //put your public key here
         email:  email, //put your customer's email here
         amount:options*100, //amount the customer is supposed to pay
         metadata: {
@@ -881,7 +881,7 @@ return false;
 }
 
     var handler = PaystackPop.setup({
-        key: 'pk_test_733942352847369db55d32dc2b83d44db6b47fb1', //put your public key here
+        key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772', //put your public key here
         email:  email, //put your customer's email here
         amount:OtherAmount*100, //amount the customer is supposed to pay
         metadata: {

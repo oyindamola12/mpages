@@ -121,7 +121,6 @@ img {
 	flex-direction: row;
 	padding: 20px;
 	width: 100vw; */
-
 }
 
   .engage{
@@ -150,12 +149,14 @@ img {
 
 .select-styled {
 	display:inline-block;
-    border: 1px solid #000;
+    /* border: 1px solid #fff; */
+    border-bottom: 1px solid #000;
+
 	cursor: pointer;
 	width: 100%;
 	color: #000;
 	font-weight: 400;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	margin-bottom: 25px;
 	font-size: 16px;
 	/* padding-left: 34px; */
@@ -338,16 +339,12 @@ cursor: pointer;
 
 
 }
-
 .select-options2 div:hover {
 	background-color: #000;
 	color: #ffc946;
 	width: 100%;
 
 }
-
-
-
 
 .select-options3 div:hover {
 	background-color: #000;
@@ -2762,17 +2759,19 @@ a:link, a:visited {
 .contact-form input  {
 	width: 100%;
 	height: 58px;
-	border: 1px solid #000;
+	border: 1px solid #fff;
+	border-bottom:  1px solid #000;
+
 	margin-bottom: 28px;
 	font-size: 16px;
 	color: #000;
 	font-weight: 400;
 
-	padding-left: 34px;
+	padding-left: 4px;
 	padding-right: 34px;
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 	color: #000;

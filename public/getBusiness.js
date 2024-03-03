@@ -286,6 +286,117 @@ myListings.href = "no-listings.html"
 
      }
 
+// console.log(storedUserIdlogin)
+// function disableImage(){
+// var imgfile =document.getElementById('fileImage').file
+// if(imgfile.length ===5){
+//   document.getElementById("fileImage").disabled = true;
+
+// }
+// }
+// disableImage()
+
+
+// function initMap() {
+//   var coordinates = {
+//     lat: 6.5227,
+//     lng:3.6218
+//   };
+//   geocoder = new google.maps.Geocoder();
+//  map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 5,
+//     center: coordinates,
+//     scrollwheel: false
+//   });
+
+
+//     }
+
+// function initMap() {
+//   const map = new google.maps.Map(document.getElementById("map"), {
+//     center: {
+//       lat:  6.5227,
+//     lng:3.6218
+//     },
+//     zoom: 13,
+//     mapTypeControl: false,
+//   });
+//   // map.fitBounds({ // bounds of NSW
+//   //     "south": -37.5052801,
+//   //     "west": 140.9992793,
+//   //     "north": -28.15702,
+//   //     "east": 159.1054441
+//   //   });
+//   const input = document.getElementById('inputSuburb');
+//   const options = {
+//     fields: ["address_components", "geometry", "types", "name"],
+//     strictBounds: true,
+//     // bounds : { // bounds of NSW
+//     //   "south": -37.5052801,
+//     //   "west": 140.9992793,
+//     //   "north": -28.15702,
+//     //   "east": 159.1054441
+//     // },
+//     // componentRestrictions: {
+//     //   country: 'ng'
+//     // },
+//     // types: ['locality', 'postal_code']
+//   };
+
+//   autocomplete = new google.maps.places.Autocomplete(input, options);
+
+//   autocomplete.addListener('place_changed', function() {
+//     const place = autocomplete.getPlace();
+//     console.log(place);
+//   });
+
+//   const infowindow = new google.maps.InfoWindow();
+//   const infowindowContent = document.getElementById("infowindow-content");
+
+//   infowindow.setContent(infowindowContent);
+
+//   const marker = new google.maps.Marker({
+//     map,
+//     anchorPoint: new google.maps.Point(0, -29),
+//   });
+
+//   autocomplete.addListener("place_changed", () => {
+//     infowindow.close();
+//     marker.setVisible(false);
+
+//     const place = autocomplete.getPlace();
+
+//     if (!place.geometry || !place.geometry.location) {
+//       // User entered the name of a Place that was not suggested and
+//       // pressed the Enter key, or the Place Details request failed.
+//       window.alert("No details available for input: '" + place.name + "'");
+//       return;
+//     }
+
+//     // If the place has a geometry, then present it on a map.
+//     if (place.geometry.viewport) {
+//       map.fitBounds(place.geometry.viewport);
+//     } else {
+//       map.setCenter(place.geometry.location);
+//       map.setZoom(17);
+//     }
+
+//     marker.setPosition(place.geometry.location);
+//     marker.setVisible(true);
+//     infowindowContent.children["place-name"].textContent = place.name;
+//     infowindowContent.children["place-address"].textContent =
+//       place.formatted_address;
+//     infowindow.open(map, marker);
+//   });
+// }
+
+// window.initMap = initMap;
+
+//         // Load the Places Autocomplete service when the window is loaded
+//         window.onload = function() {
+//             initAutocomplete();
+//         };
+
 
 async function getUsers() {
       const response = await fetch('/getCoordinates');
@@ -293,7 +404,9 @@ async function getUsers() {
       return users;
     }
 
- var mlwStyles =[
+   async function initMap() {
+
+     var mlwStyles =[
                 {
                     featureType: "poi",
                     elementType: "labels",
@@ -302,8 +415,6 @@ async function getUsers() {
                     ]
                 }
             ];
-            
-   async function initMap() {
       const users = await getUsers();
 
       // Create a LatLngBounds object to store the bounds of all markers
@@ -330,7 +441,6 @@ async function getUsers() {
       map.fitBounds(bounds);
     }
  initMap();
-
 function initMap2() {
   var coordinates = {
     lat: 6.5227,
@@ -358,6 +468,7 @@ function initMap2() {
     }
 
 
+    initMap();
     initMap2();
 
     function fetchCoordinates() {
@@ -376,7 +487,12 @@ function initMap2() {
             });
     }
 
+//get businesses Data
 
+// function saveUserDataToLocalstorage(businessId, businessData) {
+//         localStorage.setItem('selectedUserId', businessId);
+//         localStorage.setItem('selectedUserData', JSON.stringify(businessData));
+//     }
 
 function navigateToUserProfile(businessId) {
         // Redirect to the user profile page with the user ID as a query parameter
@@ -384,6 +500,70 @@ function navigateToUserProfile(businessId) {
 }
 
 
+//  function addMarkers2(coordinates) {
+//         coordinates.forEach(coord => {
+
+//         });
+//     }
+
+
+// function sendBusinessInfo() {
+// const businessName = document.getElementById('businessName').value;
+// const contactPerson = document.getElementById('contactPerson').value;
+// const industry =  document.querySelector('.select-styled').textContent;
+// const businessAddress = document.getElementById('businessAddress').value;
+// const openingtime= document.getElementById('openingtime').value;
+// const closingtime = document.getElementById('closingtime').value;
+// const email = document.getElementById('email').value;
+// const phoneNo = document.getElementById('phoneNo').value;
+// const about = document.getElementById('about').value;
+
+
+//   if(businessName === ''|| contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+//  alert("Please fill in all mandatory fields");
+// return false;
+//  }
+
+//   var geocoder = new google.maps.Geocoder();
+//  geocoder.geocode({ 'address':businessAddress }, function (results, status) {
+//                 if (status == google.maps.GeocoderStatus.OK) {
+//                   const latitude = results[0].geometry.location.lat();
+//                     const longitude = results[0].geometry.location.lng();
+//  fetch('https://www.mpageshub.com/addBusiness', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//  body: JSON.stringify({
+//   businessName: businessName,
+//  contactPerson:contactPerson,
+//  businessAddress: businessAddress,
+//  industry:industry,
+//  openingtime: openingtime,
+//  closingtime:closingtime,
+//  phoneNo:phoneNo,
+//  about: about,
+//  email: email,
+// // fileItem:fileItem,
+// //  fileName:fileName,
+// latitude:latitude,
+// longitude:longitude
+// })
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('Server response:', data);
+//             // You can handle the server response as needed
+//         })
+//         .catch(error => {
+//             console.error('Error sending data to server:', error);
+//         });
+
+//                 } else {
+//                     alert("Request failed.")
+//                 }
+//  });   // Make an HTTP POST request to the Node.js backend
+// }
 
   function toggleOptions() {
             var options = document.getElementById('options');

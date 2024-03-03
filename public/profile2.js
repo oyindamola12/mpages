@@ -536,8 +536,15 @@ async function getUsers() {
       const users = await response.json();
       return users;
     }
-
-    
+ var mlwStyles =[
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                          { visibility: "off" }
+                    ]
+                }
+            ];
    async function initMap() {
       const users = await getUsers();
 
@@ -546,7 +553,8 @@ async function getUsers() {
 
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 2,
-        center: { lat: 0, lng: 0 } // Center of the map
+        center: { lat: 0, lng: 0 } ,// Center of the map
+        styles: mlwStyles
       });
 
       users.forEach(user => {

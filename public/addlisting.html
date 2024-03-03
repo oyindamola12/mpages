@@ -94,12 +94,14 @@
                                 <input type="text" name="businessName" placeholder="Business Name" id="businessName">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="contactPerson" placeholder="Full Name (Contact Person)" id="contactPerson">
+                                <input type="text" name="contactPerson" placeholder="Full Name ( Contact Person )" id="contactPerson">
                             </div>
                             <div class="col-lg-6">
+                                <div style="display: flex; flex-direction: row;">
 
-
-    <div class="select-styled" id="industry" onclick="toggleOptions()"><span style="margin-left: -4px;">Choose Category</span></div>
+    <div class="select-styled" id="industry" onclick="toggleOptions()"><span style="margin-left: -10px;">Choose Category</span></div>
+    <i class="fa fa-angle-down" style="font-size:20px; margin-top: 15px;margin-left: -10px; cursor: pointer;" onclick="toggleOptions()"></i>
+</div>
     <div class="select-options" id="options">
         <div onclick="selectOption('Accountant')">Accountant</div>
         <div onclick="selectOption('Actor')">Actor</div>
@@ -186,10 +188,12 @@
     </div>
 
                             </div>
-                            <div class="col-lg-6" id="hideYes" style="display: none;">
-
-
-                                <div class="select-styledyes" id="yesNo" onclick="toggleOptionsYes()">Do you want to accept donations?</div>
+                            <div class="col-lg-6" id="hideYes" >
+                                <!-- style="display: none;" -->
+                                <div style="display: flex; flex-direction: row;">
+                            <div class="select-styledyes" id="yesNo" onclick="toggleOptionsYes()">Do you want to accept donations? </div>
+                            <i class="fa fa-angle-down" style="font-size:20px; margin-top: 15px;margin-left: -10px; cursor: pointer;" onclick="toggleOptionsYes()"></i>
+                        </div>
                                 <div class="select-options2" id="yes/no">
                                     <div onclick="selectOptionyes('Yes')" >Yes</div>
                                     <div onclick="selectOptionyes('No')"  >No</div>
@@ -227,7 +231,7 @@
 
                             <div class="col-lg-12 text-center">
 
-                                <textarea placeholder="About (Doesn't have to be exhaustive now, you can complete later. )" name="about" id="about"></textarea>
+                                <textarea placeholder="About ( Doesn't have to be exhaustive now, you can complete later. )" name="about" id="about"></textarea>
 
                                 <!-- <button type="submit" id="submit" >Add Listing</button> -->
                                 <!-- <button id="submit" onclick="sendBusinessInfo()" type="button">Proceed</button> -->

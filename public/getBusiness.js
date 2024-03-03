@@ -311,86 +311,38 @@ myListings.href = "no-listings.html"
 
 
 //     }
+async function getUsers() {
+      const response = await fetch('/getCoordinates');
+      const users = await response.json();
+      return users;
+    }
+ async function initMap() {
+      const users = await getUsers();
 
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: {
-      lat:  6.5227,
-    lng:3.6218
-    },
-    zoom: 13,
-    mapTypeControl: false,
-  });
-  // map.fitBounds({ // bounds of NSW
-  //     "south": -37.5052801,
-  //     "west": 140.9992793,
-  //     "north": -28.15702,
-  //     "east": 159.1054441
-  //   });
-  const input = document.getElementById('inputSuburb');
-  const options = {
-    fields: ["address_components", "geometry", "types", "name"],
-    strictBounds: true,
-    // bounds : { // bounds of NSW
-    //   "south": -37.5052801,
-    //   "west": 140.9992793,
-    //   "north": -28.15702,
-    //   "east": 159.1054441
-    // },
-    // componentRestrictions: {
-    //   country: 'ng'
-    // },
-    // types: ['locality', 'postal_code']
-  };
+      // Create a LatLngBounds object to store the bounds of all markers
+      const bounds = new google.maps.LatLngBounds();
 
-  autocomplete = new google.maps.places.Autocomplete(input, options);
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 2,
+        center: { lat: 0, lng: 0 } // Center of the map
+      });
 
-  autocomplete.addListener('place_changed', function() {
-    const place = autocomplete.getPlace();
-    console.log(place);
-  });
+      users.forEach(user => {
+        const position = { lat: user.latitude, lng: user.longitude };
+        // Extend the bounds to include the marker's position
+        bounds.extend(position);
+        const marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: user.name
+        });
+      });
 
-  const infowindow = new google.maps.InfoWindow();
-  const infowindowContent = document.getElementById("infowindow-content");
-
-  infowindow.setContent(infowindowContent);
-
-  const marker = new google.maps.Marker({
-    map,
-    anchorPoint: new google.maps.Point(0, -29),
-  });
-
-  autocomplete.addListener("place_changed", () => {
-    infowindow.close();
-    marker.setVisible(false);
-
-    const place = autocomplete.getPlace();
-
-    if (!place.geometry || !place.geometry.location) {
-      // User entered the name of a Place that was not suggested and
-      // pressed the Enter key, or the Place Details request failed.
-      window.alert("No details available for input: '" + place.name + "'");
-      return;
+      // Fit the map to the bounds
+      map.fitBounds(bounds);
     }
 
-    // If the place has a geometry, then present it on a map.
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(17);
-    }
-
-    marker.setPosition(place.geometry.location);
-    marker.setVisible(true);
-    infowindowContent.children["place-name"].textContent = place.name;
-    infowindowContent.children["place-address"].textContent =
-      place.formatted_address;
-    infowindow.open(map, marker);
-  });
-}
-
-window.initMap = initMap;
+ initMap();
 
         // Load the Places Autocomplete service when the window is loaded
         window.onload = function() {
@@ -423,7 +375,6 @@ function initMap2() {
     }
 
 
-    initMap();
     initMap2();
 
     function fetchCoordinates() {

@@ -128,7 +128,7 @@ window.location.href =`single-listing.html?businessName=${business.data.business
   }
 
 if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude&&longitude  ){
-  
+
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
@@ -554,8 +554,7 @@ async function getUsers() {
       const users = await response.json();
       return users;
     }
-
-   async function initMap() {
+ async function initMap() {
       const users = await getUsers();
 
       // Create a LatLngBounds object to store the bounds of all markers
@@ -580,6 +579,7 @@ async function getUsers() {
       // Fit the map to the bounds
       map.fitBounds(bounds);
     }
+
  initMap();
 
 if (signedupAlready) {

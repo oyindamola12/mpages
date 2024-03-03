@@ -6,19 +6,37 @@ let address = document.getElementById('businessAddress');
 let map;
 let geocoder;
 
-function initMap() {
-  var coordinates = {
-    lat: 6.5227,
-    lng:3.6218
-  };
-  geocoder = new google.maps.Geocoder();
- map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: coordinates,
-    scrollwheel: false
-  });
- fetchCoordinates();
+async function getUsers() {
+      const response = await fetch('/getCoordinates');
+      const users = await response.json();
+      return users;
     }
+ async function initMap() {
+      const users = await getUsers();
+
+      // Create a LatLngBounds object to store the bounds of all markers
+      const bounds = new google.maps.LatLngBounds();
+
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 2,
+        center: { lat: 0, lng: 0 } // Center of the map
+      });
+
+      users.forEach(user => {
+        const position = { lat: user.latitude, lng: user.longitude };
+        // Extend the bounds to include the marker's position
+        bounds.extend(position);
+        const marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: user.name
+        });
+      });
+
+      // Fit the map to the bounds
+      map.fitBounds(bounds);
+    }
+
 
 function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')

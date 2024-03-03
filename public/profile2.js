@@ -537,6 +537,7 @@ async function getUsers() {
       return users;
     }
 
+    
    async function initMap() {
       const users = await getUsers();
 

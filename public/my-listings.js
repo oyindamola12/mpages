@@ -200,7 +200,16 @@ async function getUsers() {
       const users = await response.json();
       return users;
     }
- async function initMap() {
+ var mlwStyles =[
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                          { visibility: "off" }
+                    ]
+                }
+            ];
+   async function initMap() {
       const users = await getUsers();
 
       // Create a LatLngBounds object to store the bounds of all markers
@@ -208,7 +217,8 @@ async function getUsers() {
 
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 2,
-        center: { lat: 0, lng: 0 } // Center of the map
+        center: { lat: 0, lng: 0 } ,// Center of the map
+        styles: mlwStyles
       });
 
       users.forEach(user => {
@@ -225,14 +235,7 @@ async function getUsers() {
       // Fit the map to the bounds
       map.fitBounds(bounds);
     }
-
  initMap();
-
-        // Load the Places Autocomplete service when the window is loaded
-        // window.onload = function() {
-        //     initAutocomplete();
-        // };
-
 
   var params = new URLSearchParams(window.location.search);
    var userUid =localStorage.getItem('userId');

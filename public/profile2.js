@@ -1282,7 +1282,7 @@ reviews()
       const url = encodeURIComponent(window.location.href);
       window.open(`    https://pinterest.com/pin/create/button/?url=${url}&description=YOUR_TITLE`, '_blank');
     }
-    https://pinterest.com/pin/create/button/?url=http://localhost:8000/single-listing.html&media=IMAGE_URL&description=YOUR_TITLE
+
 
  const queryParams = new URLSearchParams(window.location.search);
         const donateBtn = document.getElementById('share2');

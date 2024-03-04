@@ -1263,6 +1263,26 @@ reviews()
       const url = encodeURIComponent(window.location.href);
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     }
+  function shareOnTwitter() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`href="https://twitter.com/intent/tweet?text=YOUR_TITLE&url=${url} `, '_blank');
+    }
+
+     function shareOnLinkedin() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
+    }
+
+       function shareOnLinkedin() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
+    }
+
+        function sharePinterest() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`    https://pinterest.com/pin/create/button/?url=${url}&description=YOUR_TITLE`, '_blank');
+    }
+    https://pinterest.com/pin/create/button/?url=http://localhost:8000/single-listing.html&media=IMAGE_URL&description=YOUR_TITLE
 
  const queryParams = new URLSearchParams(window.location.search);
         const donateBtn = document.getElementById('share2');

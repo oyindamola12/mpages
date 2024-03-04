@@ -751,11 +751,11 @@ a:link, a:visited {
 
 /* buttons */
 
-.primary-btn {
+ .primary-btn {
 	display: inline-block;
-	font-size: 20px;
+	font-size: 15px;
 	font-weight: 400;
-	padding: 11px 44px 15px;
+	padding: 10px 19px;
 	color: #fff;
 	background: #000;
 	line-height: 23px;
@@ -961,6 +961,7 @@ a:link, a:visited {
 
 .header-section .header-right {
 	float: right;
+	margin-right: 20px;
 }
 
 .header-section .header-right .user-access {
@@ -2951,7 +2952,8 @@ a:link, a:visited {
 		font-size: 18px;
 	}
 	.header-right .primary-btn {
-		padding: 11px 20px 15px;
+		padding: 10px 19px;
+		font-size: 15px;
 	}
 	.header-section .main-menu ul li:last-child {
 		margin-right: 0;

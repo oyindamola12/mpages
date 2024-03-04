@@ -4,6 +4,11 @@ let appendDiv = document.getElementById('col-lg-4');
 let appendDiv3 = document.getElementById('col-lg-5');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
+let facebook = document.getElementById('facebook');
+let twitter = document.getElementById('twitter');
+let linkedin = document.getElementById('linkedin');
+let reddit = document.getElementById('reddit');
+let pinterest = document.getElementById('pinterest');
 let inputIndustry =localStorage.getItem('industry');
 let lat = JSON.parse(localStorage.getItem('lat'));
 let lng = JSON.parse(localStorage.getItem('lng'));
@@ -403,6 +408,11 @@ const myImages  = JSON.parse(images );
             });
     }
 
+// function shareToOnline() {
+
+//   facebook.href=`https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/single-listing.htmlsingle-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+//     }
+// shareToOnline()
  function addMarkers(coordinates) {
         coordinates.forEach(coord => {
             const location = new google.maps.LatLng(coord.data.latitude, coord.data.longitude);
@@ -1249,7 +1259,10 @@ reviewerName.textContent=business.data.reviewer
 }
 
 reviews()
-
+ function shareOnFacebook() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
 
  const queryParams = new URLSearchParams(window.location.search);
         const donateBtn = document.getElementById('share2');

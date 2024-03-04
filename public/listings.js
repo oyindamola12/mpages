@@ -109,6 +109,8 @@ const images = JSON.stringify(business.data.Images);
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
 
  if (business.hasOwnProperty('donation')) {
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
@@ -153,7 +155,7 @@ if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude
  if (business.hasOwnProperty('donation')) {
   arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     } else {
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+  arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
     }
       arrangeitems.classList.add('arrange-items');
 
@@ -209,6 +211,8 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
 
  if (business.hasOwnProperty('donation')) {
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
@@ -227,7 +231,6 @@ window.location.href =`single-listing.html?businessName=${business.data.business
     console.error('Error updating value:', error);
   });
   }
-
 
 if (getBusinessesData === false&&searchwithin ===false &&industryInputview ){
  fetch('https://www.mpageshub.com/businessSearch2', {
@@ -312,7 +315,8 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
-
+   localStorage.setItem('listingId', business.data.listingId);
+           localStorage.setItem('owner', business.data.userid);
  if (business.hasOwnProperty('donation')) {
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     } else {
@@ -329,15 +333,9 @@ window.location.href =`single-listing.html?businessName=${business.data.business
     console.error('Error updating value:', error);
   });
   }
-
-
-
-
- }
+}
 
 toggleData();
-
-
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -345,8 +343,6 @@ function getUrlParameter2(name) {
             var results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         };
-
-
 
 
 function getUrlParameter3(name) {
@@ -431,7 +427,6 @@ function getUrlParameter3(name) {
             });
         });
     }
-
 
 //     function initMap(coordinates) {
 //   // const map = new google.maps.Map(document.getElementById("map"), {
@@ -546,7 +541,6 @@ function getUrlParameter3(name) {
 //     //   })(marker, i));
 //     // }
 // }
-
 
 async function getUsers() {
       const response = await fetch('/getCoordinates');
@@ -698,6 +692,8 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
 
  if (business.hasOwnProperty('donation')) {
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
@@ -714,6 +710,7 @@ window.location.href =`single-listing.html?businessName=${business.data.business
   .catch(error => {
     console.error('Error updating value:', error);
   });
+
   fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
@@ -796,6 +793,8 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
 
  if (business.hasOwnProperty('donation')) {
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
@@ -1224,6 +1223,8 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('selectedUserId', business.id);
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
 
  if (business.hasOwnProperty('donation')) {
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`

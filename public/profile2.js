@@ -1079,14 +1079,19 @@ function initMap2() {
 initMap2()
 
 function display(){
+myImages.forEach(image => {
+  const img = document.createElement('img');
+  img.src = image;
+  img.classList.add('IMAGEURL');
+  document.querySelector(".about-video").appendChild(img);
+});
 
-
-        for (let i = 0; i < myImages.length; i++) {
-            const img = document.createElement('img');
-            img.src = myImages[i];
-            img.classList.add('IMAGEURL')
-           document.querySelector(".about-video").appendChild(img)
-        }
+        // for (let i = 0; i < myImages.length; i++) {
+        //     const img = document.createElement('img');
+        //     img.src = myImages[i];
+        //     img.classList.add('IMAGEURL')
+        //    document.querySelector(".about-video").appendChild(img)
+        // }
 }
 
 display()

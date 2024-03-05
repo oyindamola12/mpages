@@ -1273,10 +1273,10 @@ reviews()
       window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
     }
 
-       function shareOnLinkedin() {
-      const url = encodeURIComponent(window.location.href);
-      window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
-    }
+    //    function shareOnLinkedin() {
+    //   const url = encodeURIComponent(window.location.href);
+    //   window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
+    // }
 
         function sharePinterest() {
       const url = encodeURIComponent(window.location.href);

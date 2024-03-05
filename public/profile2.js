@@ -1083,7 +1083,7 @@ function display(){
 
         for (let i = 0; i < myImages.length; i++) {
             const img = document.createElement('img');
-            img.src = myImages[i];
+            img.src = myImages[1];
             img.classList.add('IMAGEURL')
            document.querySelector(".about-video").appendChild(img)
         }
@@ -1280,7 +1280,7 @@ reviews()
 
         function sharePinterest() {
       const url = encodeURIComponent(window.location.href);
-      window.open(`    https://pinterest.com/pin/create/button/?url=${url}&description=YOUR_TITLE`, '_blank');
+      window.open(` https://pinterest.com/pin/create/button/?url=${url}&description=YOUR_TITLE`, '_blank');
     }
 
   function shareOnWhatsApp() {

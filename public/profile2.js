@@ -1083,7 +1083,7 @@ function display(){
 
         for (let i = 0; i < myImages.length; i++) {
             const img = document.createElement('img');
-            img.src = myImages[1];
+            img.src = myImages[i];
             img.classList.add('IMAGEURL')
            document.querySelector(".about-video").appendChild(img)
         }

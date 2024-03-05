@@ -1283,7 +1283,10 @@ reviews()
       window.open(`    https://pinterest.com/pin/create/button/?url=${url}&description=YOUR_TITLE`, '_blank');
     }
 
-
+  function shareOnWhatsApp() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20user%20details:%20${url}`, '_blank');
+    }
  const queryParams = new URLSearchParams(window.location.search);
         const donateBtn = document.getElementById('share2');
         const divider= document.getElementById('divider');

@@ -1268,10 +1268,11 @@ reviews()
       const url = encodeURIComponent(window.location.href);
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     }
-  function shareOnTwitter() {
-      const url = encodeURIComponent(window.location.href);
-      window.open(`href="https://twitter.com/intent/tweet?text=YOUR_TITLE&url=${url} `, '_blank');
-    }
+function shareOnTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('YOUR_TEXT'); // Replace 'YOUR_TEXT' with the text you want to share on Twitter
+    window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
+}
 
      function shareOnLinkedin() {
       const url = encodeURIComponent(window.location.href);

@@ -1278,15 +1278,14 @@ reviews()
       window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
     }
 
-    //    function shareOnLinkedin() {
-    //   const url = encodeURIComponent(window.location.href);
-    //   window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
-    // }
+//&description=${description}
 
-        function sharePinterest() {
-      const url = encodeURIComponent(window.location.href);
-      window.open(` https://pinterest.com/pin/create/button/?url=${url}&description=YOUR_TITLE`, '_blank');
-    }
+     function shareOnPinterest() {
+    const url = encodeURIComponent(window.location.href);
+    const media = encodeURIComponent('IMAGE_URL'); // Replace 'IMAGE_URL' with the URL of the image you want to share
+    const description = encodeURIComponent('DESCRIPTION'); // Replace 'DESCRIPTION' with a description of the image
+    window.open(`https://www.pinterest.com/pin/create/button/?url=${url}`, '_blank');
+}
 
   function shareOnWhatsApp() {
       const url = encodeURIComponent(window.location.href);

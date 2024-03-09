@@ -1181,10 +1181,20 @@ document.getElementById("overlay").style.display = "none";
 const myJSON = JSON.stringify(business)
       const arrangeitems= document.createElement('a');
 
- if (business.hasOwnProperty('donation')) {
+ if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
  arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
+    }
+
+ if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
 arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+    }
+ if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
+ arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+    }
+   
+
+    if(business.hasOwnProperty('Images')){
+
     }
       arrangeitems.classList.add('arrange-items');
 

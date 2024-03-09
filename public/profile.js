@@ -179,13 +179,18 @@ const about = document.getElementById('aboutTextMyListings');
 console.log( myImages[0])
         const donateBtn = document.getElementById('share2');
         const element = document.getElementById('myElements');
-     const imageUrl = myImages[0];
 
+
+   if(myImages){
+  const imageUrl = myImages[0];
+     element.setAttribute('data-setbg', imageUrl);
+     element.style.backgroundImage = `url(${imageUrl})`;
+     }else{
+       element.setAttribute('data-setbg', '');
+     }
 
 // //Set the background image using inline CSS
- element.style.backgroundImage = `url(${imageUrl})`;
 
-     element.setAttribute('data-setbg', imageUrl);
 // if(donate && donate==='Yes'){
 //   donateBtn.style.display = 'none';
 // }else{

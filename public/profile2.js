@@ -335,8 +335,6 @@ function getUrlParameter2(name) {
         };
 
 
-
-
 function getUrlParameter3(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -345,7 +343,6 @@ function getUrlParameter3(name) {
         };
 
     // var industryInputview = getUrlParameter3('industryInputview');
-
 
 
  function getUrlParameter(name) {
@@ -369,7 +366,6 @@ const myImages  = JSON.parse(images );
   var longitude =JSON.parse( getUrlParameter('longitude'));
 
   var latitude =JSON.parse( getUrlParameter('latitude'));
-
 
   var aboutData= getUrlParameter('about');
 
@@ -1027,11 +1023,18 @@ const about = document.getElementById('aboutText');
 
 
         const element = document.getElementById('myElement');
-     const imageUrl = myImages[0];
-        element.setAttribute('data-setbg', imageUrl);
+
+     if(myImages){
+  const imageUrl = myImages[0];
+     element.setAttribute('data-setbg', imageUrl);
+     element.style.backgroundImage = `url(${imageUrl})`;
+     }else{
+       element.setAttribute('data-setbg', '');
+     }
+
 // console.log( myImages[0])
 // Set the background image using inline CSS
-element.style.backgroundImage = `url(${imageUrl})`;
+
 
     //  element.setAttribute('data-setbg', imageUrl);
 

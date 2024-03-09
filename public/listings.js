@@ -75,6 +75,11 @@ const images = JSON.stringify(business.data.Images);
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
+        if( (business.hasOwnProperty('Images'))){
+          imgTag.src = business.data.Images[0]
+        }else{
+          imgTag.src =''
+        }
         imgTag.src = business.data.Images[0]// Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);

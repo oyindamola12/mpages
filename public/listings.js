@@ -43,6 +43,7 @@ console.log(userUid)
 // console.log( business.data.Images[1])
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)
+
 const images = JSON.stringify(business.data.Images);
 
 // Construct the URL with the serialized array as a query parameter

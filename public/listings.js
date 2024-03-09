@@ -181,8 +181,13 @@ if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
 
-        const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+
+       const imgTag = document.createElement('img');
+        if( (business.hasOwnProperty('Images'))){
+          imgTag.src = business.data.Images[0]
+        }else{
+          imgTag.src =''
+        } // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -286,7 +291,12 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+
+        if( (business.hasOwnProperty('Images'))){
+          imgTag.src = business.data.Images[0]
+        }else{
+          imgTag.src =''
+        } // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -1194,8 +1204,14 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
 
-        const imgTag = document.createElement('img');
-        imgTag.src =  business.data.Images[0]; // Assuming you have an 'imageUrl' property in your data
+
+         const imgTag = document.createElement('img');
+        if( (business.hasOwnProperty('Images'))){
+          imgTag.src = business.data.Images[0]
+        }else{
+          imgTag.src =''
+        }
+        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');

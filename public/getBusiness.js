@@ -803,37 +803,37 @@ const password =document.getElementById('password').value
 const signupStatus= true;
 var userids =uuidv4()
 
-if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''||fileInputed.length === 0 ){
+if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
  }
 
-  if ( fileInputed.length < 3 ) {
-        alert("Please select a minimum of 3 images.");
-        return;
+  // if ( fileInputed.length < 3 ) {
+  //       alert("Please select a minimum of 3 images.");
+  //       return;
 
-    }
+  //   }
 
-     if ( fileInputed.length >5  ) {
-        alert("You can only select a maxium of 5 images.");
-        return;
+  //    if ( fileInputed.length >5  ) {
+  //       alert("You can only select a maxium of 5 images.");
+  //       return;
 
-    }
-      if (!fileInput) {
-    console.error('File input element not found');
-    return;
-  }
+  //   }
+  //     if (!fileInput) {
+  //   console.error('File input element not found');
+  //   return;
+  // }
 
 
   // Check if files are undefined or null
 
    const files = fileInput.files;
 
-            if (files.length === 0) {
-                console.error('No files selected');
-                return;
-            }
+            // if (files.length === 0) {
+            //     console.error('No files selected');
+            //     return;
+            // }
 
             const formData = new FormData();
 
@@ -856,8 +856,8 @@ return false;
 
                 formData.append('userids', userids);
  var handler = PaystackPop.setup({
-      key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-      // key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+      // key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+    key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
       email:email,
       amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
@@ -974,27 +974,27 @@ const fileInput = document.getElementById('fileImage');
 const fileInputed = document.getElementById('fileImage').files;
 
 let postid =uuidv4()
-  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''||fileInputed.length === 0 ){
+  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
     }
 
-  if ( fileInputed.length < 3 ) {
-        alert("Please select a minimum of 3 images.");
-        return;
+  // if ( fileInputed.length < 3 ) {
+  //       alert("Please select a minimum of 3 images.");
+  //       return;
 
-    }
+  //   }
 
-     if ( fileInputed.length >5  ) {
-        alert("You can only select a maxium of 5 images.");
-        return;
+    //  if ( fileInputed.length >5  ) {
+    //     alert("You can only select a maxium of 5 images.");
+    //     return;
 
-    }
-  if (!fileInput) {
-    console.error('File input element not found');
-    return;
-    }
+    // }
+  // if (!fileInput) {
+  //   console.error('File input element not found');
+  //   return;
+  //   }
 
 
 
@@ -1020,8 +1020,8 @@ return false;
  formData.append('userUid',userUid);
 
       var handler = PaystackPop.setup({
-      key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-      // key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+      // key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+    key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
       email:email,
       amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you

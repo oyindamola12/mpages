@@ -187,7 +187,7 @@ arrangeitems.href =`business-profile.html?businessName=${business.data.businessN
         localStorage.setItem('selectedListingId', business.id);
         localStorage.setItem('selectedListingData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        navigateToUserProfile2(business.id);
+        // navigateToUserProfile2(business.id);
 
       });
 
@@ -200,11 +200,11 @@ arrangeitems.href =`business-profile.html?businessName=${business.data.businessN
 
 
 
-function navigateToUserProfile2(businessId) {
-        // Redirect to the user profile page with the user ID as a query parameter
-        window.location.href = `/business-profile.html?id=${businessId}`;
+// function navigateToUserProfile2(businessId) {
+//         // Redirect to the user profile page with the user ID as a query parameter
+//         window.location.href = `/business-profile.html?id=${businessId}`;
 
-}
+// }
 //  getMyListing()
 
 async function getUsers() {

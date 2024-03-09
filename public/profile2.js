@@ -682,7 +682,7 @@ var geocoder = new google.maps.Geocoder();
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
         window.location.href = `single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}`
-        navigateToUserProfile(business.id);
+        // navigateToUserProfile(business.id);
 
       });
 
@@ -770,7 +770,7 @@ var geocoder = new google.maps.Geocoder();
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}`
-        navigateToUserProfile(business.id);
+        // navigateToUserProfile(business.id);
 
       });
 
@@ -1165,7 +1165,7 @@ const myJSON = JSON.stringify(business)
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-    
+
         if( (business.hasOwnProperty('Images'))){
           imgTag.src = business.data.Images[0]
         }else{

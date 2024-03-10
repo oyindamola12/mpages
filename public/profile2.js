@@ -240,7 +240,7 @@ function off2() {
 }
 
 
-getProfile()
+
 
 function initMap2(latitude,longitude) {
   var coordinates = {
@@ -462,3 +462,5 @@ function shareOnTwitter() {
                 divider.style.display==="block"
                 donateBtn.style.display === 'block'
         }
+
+        getProfile()

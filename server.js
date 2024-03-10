@@ -742,11 +742,11 @@ try {
 app.post('/api/getSingleProfile', async (req, res) => {
   const { listingId, businessOwnerId } = req.body;
 
-
   try {
-    // Fetch user data from Firestore using user ID
+    // Fetch user data from Firestore using listingId and businessOwnerId
+    const userDoc = await db.collection('Users').doc(businessOwnerId)
+                         .collection('BusinessLists').doc(listingId).get();
 
-        const userDoc = await  db.collection('Users').doc( businessOwnerId).collection('BusinessLists').doc(listingId).get();
     if (!userDoc.exists) {
       console.log('User not found');
       return res.status(404).json({ error: 'User not found' });
@@ -754,8 +754,6 @@ app.post('/api/getSingleProfile', async (req, res) => {
 
     const userData = userDoc.data();
     console.log('User Data:', userData);
-
-    // Optionally, you can filter user data based on the listing ID
 
     // Send user data to the frontend
     res.json(userData);

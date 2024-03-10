@@ -184,37 +184,21 @@ async function getUsers() {
 
 
 
-fetch('/api/user-data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ listingId:listingsId})
-  })
-  .then(response => response.json())
-  .then(items => {
-
-//     for (let i = 0; i < items.length; i++){
-//  const business = items[i];
-//   const imageUrl = business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
-//      element.setAttribute('data-setbg', imageUrl);
-//      element.style.backgroundImage = `url(${imageUrl})`;
-
-//      businessNameh2.textContent = business.data.businessName;
-//        timeToOpen.textContent =  business.data.openingtime;
-//         timeToClose.textContent = business.data.closingtime;
-//         email.textContent = business.data.email ;
-//        no.textContent = business.data.phoneNo;
-//        address.textContent = business.data.businessAddress;
-//          about.textContent =  business.data.about;
-//         //   initMap2(business.data.latitude, business.data.longitude)
-//         //  display( business.data.Images)
-//     }
-console.log(items)
-  })
-  .catch(error => {
-    console.error('Error updating value:', error);
-  });
+ffetch('/api/getSingleProfile', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ listingId: listingsId, businessOwnerId: businessOwnerId })
+})
+.then(response => response.json())
+.then(userData => {
+  // Handle the user data received from the backend
+  console.log('User Data:', userData);
+})
+.catch(error => {
+  console.error('Error fetching user data:', error);
+});
 
 
 

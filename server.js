@@ -571,9 +571,9 @@ app.get('/getBusinesses', async (req, res) => {
 
       businesses.push({
       id: doc.id,
-      data:  data ,
+      data: doc.data() ,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-      imageUrl:data.Images && data.Images.length > 0?  imageUrl = userData.images[0]:imageUrl
+      imageUrl:doc.data().Images && doc.data().Images.length > 0?  imageUrl =doc.data().images[0]:imageUrl
 });;
    console.log( data )
     })
@@ -608,9 +608,9 @@ app.get('/getBusinesses2', async (req, res) => {
       // }
       businesses.push({
       id: doc.id,
-      data:data,
+      data:doc.data(),
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-      imageUrl:data.Images && data.Images.length > 0?  imageUrl = userData.images[0]:imageUrl
+      imageUrl:doc.data().Images && doc.data().Images.length > 0?  imageUrl = doc.data().images[0]:imageUrl
 });;
     })
 

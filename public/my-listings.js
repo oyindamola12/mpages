@@ -200,11 +200,11 @@ arrangeitems.href =`business-profile.html?businessName=${business.data.businessN
 
 
 
-// function navigateToUserProfile2(businessId) {
-//         // Redirect to the user profile page with the user ID as a query parameter
-//         window.location.href = `/business-profile.html?id=${businessId}`;
+function navigateToUserProfile2(businessId) {
+        // Redirect to the user profile page with the user ID as a query parameter
+        window.location.href = `/business-profile.html?id=${businessId}`;
 
-// }
+}
 //  getMyListing()
 
 async function getUsers() {

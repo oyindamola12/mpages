@@ -27,6 +27,13 @@ var getBusinessesData = true;
 var searchwithin=false
 console.log(userUid)
 
+
+function navigateToUserProfile(businessId) {
+        // Redirect to the user profile page with the user ID as a query parameter
+        window.location.href = `/single-listing.html?id=${businessId}`;
+
+}
+
  function toggleData(){
   if (getBusinessesData === true && searchwithin ===false){
  fetch('https://www.mpageshub.com/getBusinesses')

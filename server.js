@@ -562,7 +562,7 @@ app.get('/getBusinesses', async (req, res) => {
      const businesses = [];
     snapshot.forEach(doc => {
        const userData = doc.data();
-      let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+      let imageUrl = '';
 
       if (userData.Images && userData.Images.length > 0) {
         imageUrl = userData.images[0];
@@ -597,7 +597,7 @@ app.get('/getBusinesses2', async (req, res) => {
       const businesses = [];
       snapshot.forEach(doc => {
       const userData = doc.data();
-      let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+      let imageUrl = '';
 
       if (userData.Images && userData.Images.length > 0) {
         imageUrl = userData.images[0];

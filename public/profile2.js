@@ -354,33 +354,33 @@ function getUrlParameter3(name) {
 
         // Get the business data from the URL query parameter
 
-    // Display business information
-// Handle error (e.g., display an error message)
-const images = getUrlParameter('images');
+//     // Display business information
+// // Handle error (e.g., display an error message)
+// const images = getUrlParameter('images');
 
-// Deserialize the serialized array back into an array
-const myImages  = JSON.parse(images );
+// // Deserialize the serialized array back into an array
+// const myImages  = JSON.parse(images );
 
- var businessName = getUrlParameter('businessName');
+//  var businessName = getUrlParameter('businessName');
 
-  var longitude =JSON.parse( getUrlParameter('longitude'));
+//   var longitude =JSON.parse( getUrlParameter('longitude'));
 
-  var latitude =JSON.parse( getUrlParameter('latitude'));
+//   var latitude =JSON.parse( getUrlParameter('latitude'));
 
-  var aboutData= getUrlParameter('about');
+//   var aboutData= getUrlParameter('about');
 
-  var phoneNo = getUrlParameter('phoneNo');
+//   var phoneNo = getUrlParameter('phoneNo');
 
-  var emailData = getUrlParameter('email');
+//   var emailData = getUrlParameter('email');
 
-  var openingtime = getUrlParameter('openingtime');
-  var closingtime = getUrlParameter('closingtime');
+//   var openingtime = getUrlParameter('openingtime');
+//   var closingtime = getUrlParameter('closingtime');
 
- var listingsId = getUrlParameter('listingId');
- var businessOwnerIds= getUrlParameter('userid');
-  var industrys = getUrlParameter('industry');
+//  var listingsId = getUrlParameter('listingId');
+//  var businessOwnerIds= getUrlParameter('userid');
+//   var industrys = getUrlParameter('industry');
 
-  var businessAddress = getUrlParameter('businessAddress');
+//   var businessAddress = getUrlParameter('businessAddress');
 
 
 
@@ -1011,12 +1011,12 @@ function getProfile(){
 const about = document.getElementById('aboutText');
        const address = document.getElementById('contactInfoAddress');
         const email= document.getElementById('contactInfoemail');
-        //  const container= document.getElementById('about-video');
-//         const rating2 = document.getElementById('rating2');
+      //const container= document.getElementById('about-video');
+//      const rating2 = document.getElementById('rating2');
         const businessNameh2= document.getElementById('businessNameh2');
-     const no = document.getElementById('contactInfoNumber');
-       const timeToOpen  = document.getElementById('timeToOpen');
-       const timeToClose = document.getElementById('timeToClose');
+        const no = document.getElementById('contactInfoNumber');
+        const timeToOpen  = document.getElementById('timeToOpen');
+        const timeToClose = document.getElementById('timeToClose');
 //         const image = document.getElementById('vidImage');
 
        const image = document.getElementById('image');

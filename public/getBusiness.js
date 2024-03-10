@@ -957,7 +957,6 @@ else{
 
 
 }
-
  async function pay2(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;

@@ -142,7 +142,7 @@ window.location.href=`single-listing.html?businessName=${business.data.businessN
 
   }
 
-if (getBusinessesData === false&&searchwithin ===false &&inputindustry&&latitude&&longitude  ){
+if (getBusinessesData === false&&searchwithin ===false &&inputIndustry&&latitude&&longitude  ){
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {

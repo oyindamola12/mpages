@@ -15,6 +15,18 @@ let lng = JSON.parse(localStorage.getItem('lng'));
 let industry = document.getElementById('industry');
 var storedUserId =localStorage.getItem('selectedUserId');
  var signedupAlready=  localStorage.getItem('signedup');
+ var about = document.getElementById('aboutText');
+ var address = document.getElementById('contactInfoAddress');
+ var email= document.getElementById('contactInfoemail');
+      //const container= document.getElementById('about-video');
+//      const rating2 = document.getElementById('rating2');
+ var businessNameh2= document.getElementById('businessNameh2');
+ var no = document.getElementById('contactInfoNumber');
+ var timeToOpen  = document.getElementById('timeToOpen');
+ var timeToClose = document.getElementById('timeToClose');
+//      const image = document.getElementById('vidImage');
+ var image = document.getElementById('image');
+ var element = document.getElementById('myElement');
 // var imagesId=JSON.parse(localStorage.getItem('imagesId'));
 // var  inputName = document.getElementById('inputNameMyListings').value;
 //  var  EnterReview = document.getElementById('EnterReview').value;
@@ -170,21 +182,10 @@ async function getUsers() {
 
 
  async function getProfile() {
-const about = document.getElementById('aboutText');
-       const address = document.getElementById('contactInfoAddress');
-        const email= document.getElementById('contactInfoemail');
-      //const container= document.getElementById('about-video');
-//      const rating2 = document.getElementById('rating2');
-        const businessNameh2= document.getElementById('businessNameh2');
-        const no = document.getElementById('contactInfoNumber');
-        const timeToOpen  = document.getElementById('timeToOpen');
-        const timeToClose = document.getElementById('timeToClose');
-//      const image = document.getElementById('vidImage');
-        const image = document.getElementById('image');
-       const element = document.getElementById('myElement');
 
 
-fetch('https://www.mpageshub.com/getSingleProfile', {
+
+fetch('/api/user-data', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

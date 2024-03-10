@@ -184,7 +184,7 @@ const about = document.getElementById('aboutText');
        const element = document.getElementById('myElement');
 
 
-fetch('https://www.mpageshub.com/getSingleList', {
+fetch('https://www.mpageshub.com/getSingleProfile', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -52,7 +52,7 @@ function getUrlParameter3(name) {
 
 var listingsId = getUrlParameter('listingid');
 var businessOwnerIds = getUrlParameter('id');
-console.log(listingsId)
+
         // Get the business data from the URL query parameter
 
 //     // Display business information

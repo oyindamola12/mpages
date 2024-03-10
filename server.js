@@ -536,7 +536,7 @@ try {
       businesses.push({
       id: doc.id,
       data: doc.data(),
-      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+      coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
 
 });;
     })
@@ -716,7 +716,7 @@ app.get('/getSingleProfile', async (req, res) => {
    const businessOwnerId = req.body.ownerId;
 try {
     // Get businesses from Firestore where industry is equal to "restaurant"
-    const snapshot = await  db.collection('BusinessLists').doc(businessId).get();
+    const snapshot = await  db.collection('Users').doc( businessOwnerId).collection('BusinessLists').doc(businessId).get();
 
     // Extract data from the snapshot
     const businesses = [];

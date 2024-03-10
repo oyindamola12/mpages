@@ -184,7 +184,7 @@ async function getUsers() {
 
 
 
-ffetch('/api/getSingleProfile', {
+fetch('/api/getSingleProfile', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'

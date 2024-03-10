@@ -51,6 +51,7 @@ function getUrlParameter3(name) {
         };
 
 var listingsId = getUrlParameter('listingid');
+var businessOwnerIds = getUrlParameter('id');
 
         // Get the business data from the URL query parameter
 
@@ -181,9 +182,9 @@ const about = document.getElementById('aboutText');
 //      const image = document.getElementById('vidImage');
         const image = document.getElementById('image');
        const element = document.getElementById('myElement');
- appendDiv.style.display = 'none'
-  loading.style.display = 'block';
-fetch('hhttps://www.mpageshub.com/businessSearch', {
+
+
+fetch('hhttps://www.mpageshub.com/getSingleList', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -197,19 +198,20 @@ fetch('hhttps://www.mpageshub.com/businessSearch', {
   loading.style.display = 'none';
 
     for (let i = 0; i < items.length; i++){
-
-  const imageUrl = myImages[0];
+ const business = items[i];
+  const imageUrl = business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
      element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
-    
 
-     businessNameh2.textContent =  businessName;
-       timeToOpen.textContent =  openingtime;
-        timeToClose.textContent = closingtime;
-        email.textContent = emailData ;
-       no.textContent = phoneNo;
-       address.textContent = businessAddress;
-         about.textContent =  aboutData;
+     businessNameh2.textContent = business.data.businessName;
+       timeToOpen.textContent =  business.data.openingtime;
+        timeToClose.textContent = business.data.closingtime;
+        email.textContent = business.data.email ;
+       no.textContent = business.data.phoneNo;
+       address.textContent = business.data.businessAddress;
+         about.textContent =  business.data.about;
+
+         display( business.data.Images)
     }
 
   })
@@ -238,11 +240,6 @@ function off2() {
 }
 
 
-
-
-
-
-
 getProfile()
 
 function initMap2() {
@@ -267,7 +264,7 @@ function initMap2() {
     }
 initMap2()
 
-function display(){
+function display(myImages){
 myImages.forEach(image => {
   const img = document.createElement('img');
   img.src = image;
@@ -320,82 +317,47 @@ display()
             toggleOptions3();
  }
 
-    function fetchPage(page) {
 
-     fetch(`https://www.mpageshub.com/getBusinesses2?page=${page}`)
-    .then(response => response.json())
-    .then(items=> {
-
-    for (let i = 0; i < items.length; i++) {
-      const business = items[i];
-
-const myJSON = JSON.stringify(business)
-      const arrangeitems= document.createElement('a');
-   arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}`
-      arrangeitems.classList.add('arrange-items');
-
-      const arrangepic= document.createElement('div');
-      arrangepic.classList.add('arrange-pic');
-
-        const arrangetext= document.createElement('div');
-       arrangetext.classList.add('arrange-text');
-
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
-
-       const tictext= document.createElement('div');
-       tictext.textContent = business.data.industry;
-        arrangepic.appendChild(tictext);
-        tictext.classList.add('tic-text');
-
-        const imgTag = document.createElement('img');
-       imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
-        // Assuming you have an 'imageUrl' property in your data
-        imgTag.alt = 'Image'; // Provide alternative text for accessibility
-        arrangepic.appendChild(imgTag);
-        imgTag.classList.add('imgs');
-
-
-        // Create and append h5 tag for the title
-        const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
-        arrangetext.appendChild(titleTag);
-
-        // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
-
-        // Create and append p tag for the subtitle
-        const subtitleTag = document.createElement('p');
-        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-        arrangetext.appendChild(subtitleTag);
-
-        // Create and append button tag for the opening time
-        const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-        openingTimeTag.classList.add('open');
-        arrangetext.appendChild(openingTimeTag);
-        arrangeitems.appendChild(arrangepic)
-        arrangeitems.appendChild(arrangetext)
-        appendDiv.appendChild(arrangeitems)
-
-        arrangeitems.addEventListener('click', () => {
-        localStorage.setItem('selectedUserId', business.id);
-        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-       window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}`
- });
- console.log(items)
-  }
+const sendPost = async (data) => {
+    const body = JSON.stringify(data);
+    return fetch('https://www.mpageshub.com/review', {
+        method: 'POST', // GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, cors, same-origin
+        cache: 'no-cache', // default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow', // manual, follow, error
+        referrer: 'no-referrer', // no-referrer, client
+        body
     })
-    .catch(error => {
-      console.log('Error fetching items:', error);
-    });
+        .then(response => response.json()) // parses JSON response into native JavaScript objects
+}
 
+function off1() {
+const inputName = document.getElementById('inputName').value.trim();
+const EnterReview = document.getElementById('EnterReview').value.trim();
 
+if(EnterReview=== "" ){
+ alert('Please enter review.');
+}
+if (inputName === "") {
+alert('Please enter your name.');
+} else {
+sendPost({data:{
+reviewerName:inputName,
+review:EnterReview,
+// destinationId:reviewId,
+ownerId:businessOwnerIds ,
+listingId:listingsId
+}})
+.then(json => {
+        console.log(json);
+    })
+.catch(e => console.log(e));
+}
+document.getElementById("overlay").style.display = "none";
 
 }
 
@@ -411,7 +373,6 @@ const myJSON = JSON.stringify(business)
 
     // Initial fetch when the page loads
 
-fetchPage(currentPage);
 
 function reviews(){
 

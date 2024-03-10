@@ -577,6 +577,7 @@ app.get('/getBusinesses', async (req, res) => {
   }
 });
 
+
 app.get('/getBusinesses2', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Get page number from query parameter, default to 1
@@ -664,6 +665,7 @@ console.log(businesses )
 
 
 });
+
 app.get('/getCoordinates', async (req, res) => {
   try {
     const usersSnapshot = await db.collection('BusinessLists').get();
@@ -677,6 +679,7 @@ app.get('/getCoordinates', async (req, res) => {
     res.status(500).json({ error: 'Unable to fetch users' });
   }
 });
+
 app.get('/getMyReviews', async (req, res) => {
     // const userUid =req.query.userUid;
  const businessId = req.body.listingId;
@@ -684,6 +687,36 @@ app.get('/getMyReviews', async (req, res) => {
 try {
     // Get businesses from Firestore where industry is equal to "restaurant"
     const snapshot = await  db.collection('Users').doc( businessOwnerId).collection('BusinessLists').doc(businessId).collection('Reviews').get();
+
+    // Extract data from the snapshot
+    const businesses = [];
+    snapshot.forEach(doc => {
+      businesses.push({
+      id: doc.id,
+      data: doc.data()
+});;
+
+    });
+
+    // Send JSON response to the HTML frontend
+
+    res.json(businesses );
+
+
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/getSingleList', async (req, res) => {
+    // const userUid =req.query.userUid;
+ const businessId = req.body.listingId;
+   const businessOwnerId = req.body.ownerId;
+try {
+    // Get businesses from Firestore where industry is equal to "restaurant"
+    const snapshot = await  db.collection('BusinessLists').doc(businessId).get();
 
     // Extract data from the snapshot
     const businesses = [];

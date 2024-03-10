@@ -762,6 +762,7 @@ app.post('/api/getSingleProfile', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 app.post('/updateh2', async (req, res) => {
  const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;

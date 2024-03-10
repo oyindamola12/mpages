@@ -189,7 +189,7 @@ fetch('/api/getSingleProfile', {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ listingId: listingsId, businessOwnerId: businessOwnerId })
+  body: JSON.stringify({ listingId: listingsId, businessOwnerId: businessOwnerIds})
 })
 .then(response => response.json())
 .then(userData => {

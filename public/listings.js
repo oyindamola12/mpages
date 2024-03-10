@@ -78,6 +78,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
        tictext.textContent = business.data.industry;
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
+          const imgTag = document.createElement('img');
 if (business.hasOwnProperty('Images')){
   imgTag.src = business.data.Images[0]
 }else{

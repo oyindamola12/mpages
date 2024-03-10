@@ -1211,6 +1211,7 @@ document.getElementById("overlay").style.display = "none";
      fetch(`https://www.mpageshub.com/getBusinesses2?page=${page}`)
     .then(response => response.json())
     .then(items=> {
+  loading.style.display = 'none';
 
     for (let i = 0; i < items.length; i++) {
       const business = items[i];

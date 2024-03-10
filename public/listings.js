@@ -135,10 +135,10 @@ window.location.href =`single-listing.html?businessName=${business.data.business
 window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
 
-        // navigateToUserProfile(business.id);
+        navigateToUserProfile(business.id);
 
       });
-
+ console.log(items)
   }
     })
     .catch(error => {
@@ -254,7 +254,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
  window.location.href  =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
-        // navigateToUserProfile(business.id);
+        navigateToUserProfile(business.id);
 
       });
 
@@ -373,7 +373,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
-        // navigateToUserProfile(business.id);
+        navigateToUserProfile(business.id);
 
       });
 
@@ -1318,7 +1318,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
  });
- console.log(items)
+
   }
     })
     .catch(error => {

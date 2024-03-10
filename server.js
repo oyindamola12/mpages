@@ -558,10 +558,8 @@ app.get('/getBusinesses', async (req, res) => {
 
     try {
     const snapshot = await db.collection('BusinessLists').limit(12).get();
-
-     const businesses = [];
+    const businesses = [];
     snapshot.forEach(doc => {
-
 
       businesses.push({
       id: doc.id,
@@ -569,7 +567,7 @@ app.get('/getBusinesses', async (req, res) => {
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
 
 });;
-   
+
     })
 
     res.json( businesses );

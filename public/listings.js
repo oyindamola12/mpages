@@ -79,12 +79,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
 
-        const imgTag = document.createElement('img');
-        if( (business.hasOwnProperty('Images'))){
-          imgTag.src = business.data.Images[0]
-        }else{
-          imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-        }
+        imgTag.src = business.imageUrl
        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
@@ -114,7 +109,6 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
         appendDiv.appendChild(arrangeitems)
-
         arrangeitems.addEventListener('click', () => {
         localStorage.removeItem('selectedUserId')
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
@@ -202,11 +196,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
 
 
        const imgTag = document.createElement('img');
-        if( (business.hasOwnProperty('Images'))){
-          imgTag.src = business.data.Images[0]
-        }else{
-                imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-        } // Assuming you have an 'imageUrl' property in your data
+        imgTag.src = business.imageUrl // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -320,12 +310,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-
-        if( (business.hasOwnProperty('Images'))){
-          imgTag.src = business.data.Images[0]
-        }else{
-                imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-        } // Assuming you have an 'imageUrl' property in your data
+        imgTag.src = imageUrl// Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -715,11 +700,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
 
         const imgTag = document.createElement('img');
 
-        if( (business.hasOwnProperty('Images'))){
-          imgTag.src = business.data.Images[0]
-        }else{
-                imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-        }
+         imgTag.src = business.imageUrl
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -825,7 +806,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+        imgTag.src =  business.imageUrl; // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -1267,11 +1248,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
 
 
          const imgTag = document.createElement('img');
-        if( (business.hasOwnProperty('Images'))){
-          imgTag.src = business.data.Images[0]
-        }else{
-          imgTag.src =''
-        }
+          imgTag.src = business.imageUrl
         // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);

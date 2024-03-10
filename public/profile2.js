@@ -646,7 +646,7 @@ var geocoder = new google.maps.Geocoder();
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+        imgTag.src =  business.imageUrl; // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -734,7 +734,7 @@ var geocoder = new google.maps.Geocoder();
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+        imgTag.src =  business.imageUrl; // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -1165,12 +1165,8 @@ const myJSON = JSON.stringify(business)
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-
-        if( (business.hasOwnProperty('Images'))){
-          imgTag.src = business.data.Images[0]
-        }else{
-          imgTag.src =''
-        } // Assuming you have an 'imageUrl' property in your data
+  imgTag.src = business.imageUrl
+        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');

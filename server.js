@@ -1171,7 +1171,11 @@ try {
     // Iterate through query snapshot
     querySnapshot.forEach((doc) => {
       const data = doc.data();
+      let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
 
+      if ( data.images &&  data.images.length > 0) {
+        imageUrl =  data.images[0];
+      }
       // Filter data based on location (latitude and longitude)
       // Calculate distance between location and selected coordinates
       const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
@@ -1184,7 +1188,8 @@ try {
        businesses.push({
       id: doc.id,
       data: doc.data(),
-      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude,}
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+      imageUrl:imageUrl
 });
       }
     });
@@ -1230,9 +1235,17 @@ app.post('/businessSearch2', async (req, res) => {
     // Iterate through query snapshot
 
   querySnapshot.forEach(doc => {
+      const userData = doc.data();
+      let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+
+      if (userData.images && userData.images.length > 0) {
+        imageUrl = userData.images[0];
+      }
+
       businesses.push({
       id: doc.id,
-      data: doc.data()
+      data: doc.data(),
+      imageUrl :imageUrl
 });
 
  })

@@ -239,7 +239,7 @@ function off2() {
 
 getProfile()
 
-// function initMap2(latitude,longitude) {
+function initMap2(latitude,longitude) {
 //   var coordinates = {
 //     lat: latitude,
 //     lng:longitude
@@ -258,9 +258,9 @@ getProfile()
 //             });
 //             marker.setMap(map2)
 
-//     }
+    }
 
-// initMap2()
+initMap2()
 
 // function display(myImages){
 // myImages.forEach(image => {

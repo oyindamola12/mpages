@@ -202,7 +202,7 @@ myListings.href = "no-listings.html"
 
         // profileImage.src = storedUserData.photoURL || 'placeholder-image.jpg';
 
-       rating2.textContent = storedUserData.rating;
+      //  rating2.textContent = storedUserData.rating;
         businessNameh2.textContent = storedUserData.businessName;
         timeToOpen.textContent = storedUserData.openingtime;
          timeToClose.textContent = storedUserData.closingtime;

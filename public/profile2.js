@@ -194,9 +194,6 @@ fetch('https://www.mpageshub.com/getSingleList', {
   .then(response => response.json())
   .then(items => {
 
-
-  loading.style.display = 'none';
-
     for (let i = 0; i < items.length; i++){
  const business = items[i];
   const imageUrl = business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
@@ -262,6 +259,7 @@ function initMap2(latitude,longitude) {
             marker.setMap(map2)
 
     }
+
 initMap2()
 
 function display(myImages){

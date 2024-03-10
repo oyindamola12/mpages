@@ -680,7 +680,7 @@ app.get('/getCoordinates', async (req, res) => {
   }
 });
 
-app.get('/getMyReviews', async (req, res) => {
+app.post('/getMyReviews', async (req, res) => {
     // const userUid =req.query.userUid;
  const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;

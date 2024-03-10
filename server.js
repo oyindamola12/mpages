@@ -713,7 +713,7 @@ try {
 app.get('/getSingleList', async (req, res) => {
     // const userUid =req.query.userUid;
  const businessId = req.body.listingId;
-   const businessOwnerId = req.body.ownerId;
+
 try {
     // Get businesses from Firestore where industry is equal to "restaurant"
     const snapshot = await  db.collection('BusinessLists').doc(businessId).get();

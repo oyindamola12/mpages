@@ -189,7 +189,7 @@ fetch('https://www.mpageshub.com/getSingleList', {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ listingsId:listingsId})
+    body: JSON.stringify({ listingId:listingsId})
   })
   .then(response => response.json())
   .then(items => {

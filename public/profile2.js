@@ -210,7 +210,7 @@ fetch('hhttps://www.mpageshub.com/getSingleList', {
        no.textContent = business.data.phoneNo;
        address.textContent = business.data.businessAddress;
          about.textContent =  business.data.about;
-
+          initMap2(business.data.latitude, business.data.longitude)
          display( business.data.Images)
     }
 
@@ -242,7 +242,7 @@ function off2() {
 
 getProfile()
 
-function initMap2() {
+function initMap2(latitude,longitude) {
   var coordinates = {
     lat: latitude,
     lng:longitude
@@ -257,7 +257,7 @@ function initMap2() {
             const marker = new google.maps.Marker({
                 position: location,
                 map: map2,
-                title:businessName
+                // title:
             });
             marker.setMap(map2)
 

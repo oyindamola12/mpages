@@ -210,8 +210,8 @@ fetch('hhttps://www.mpageshub.com/getSingleList', {
        no.textContent = business.data.phoneNo;
        address.textContent = business.data.businessAddress;
          about.textContent =  business.data.about;
-          initMap2(business.data.latitude, business.data.longitude)
-         display( business.data.Images)
+        //   initMap2(business.data.latitude, business.data.longitude)
+        //  display( business.data.Images)
     }
 
   })
@@ -240,47 +240,47 @@ function off2() {
 }
 
 
+getProfile()
 
+// function initMap2(latitude,longitude) {
+//   var coordinates = {
+//     lat: latitude,
+//     lng:longitude
+//   };
+//   geocoder = new google.maps.Geocoder();
+//  map2 = new google.maps.Map(document.getElementById('map2'), {
+//     zoom: 17,
+//     center: coordinates,
+//     scrollwheel: false
+//   });
+//    const location = new google.maps.LatLng( latitude,  longitude);
+//             const marker = new google.maps.Marker({
+//                 position: location,
+//                 map: map2,
+//                 // title:
+//             });
+//             marker.setMap(map2)
 
-function initMap2(latitude,longitude) {
-  var coordinates = {
-    lat: latitude,
-    lng:longitude
-  };
-  geocoder = new google.maps.Geocoder();
- map2 = new google.maps.Map(document.getElementById('map2'), {
-    zoom: 17,
-    center: coordinates,
-    scrollwheel: false
-  });
-   const location = new google.maps.LatLng( latitude,  longitude);
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map2,
-                // title:
-            });
-            marker.setMap(map2)
+//     }
+// initMap2()
 
-    }
-initMap2()
+// function display(myImages){
+// myImages.forEach(image => {
+//   const img = document.createElement('img');
+//   img.src = image;
+//   img.classList.add('IMAGEURL');
+//   document.querySelector(".about-video").appendChild(img);
+// });
 
-function display(myImages){
-myImages.forEach(image => {
-  const img = document.createElement('img');
-  img.src = image;
-  img.classList.add('IMAGEURL');
-  document.querySelector(".about-video").appendChild(img);
-});
+//         // for (let i = 0; i < myImages.length; i++) {
+//         //     const img = document.createElement('img');
+//         //     img.src = myImages[i];
+//         //     img.classList.add('IMAGEURL')
+//         //    document.querySelector(".about-video").appendChild(img)
+//         // }
+// }
 
-        // for (let i = 0; i < myImages.length; i++) {
-        //     const img = document.createElement('img');
-        //     img.src = myImages[i];
-        //     img.classList.add('IMAGEURL')
-        //    document.querySelector(".about-video").appendChild(img)
-        // }
-}
-
-display()
+// display()
   function toggleOptions() {
             var options = document.getElementById('options');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
@@ -462,5 +462,3 @@ function shareOnTwitter() {
                 divider.style.display==="block"
                 donateBtn.style.display === 'block'
         }
-
-        getProfile()

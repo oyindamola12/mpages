@@ -86,13 +86,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
           const imgTag = document.createElement('img');
-// if (business.hasOwnProperty('Images')){
-//   imgTag.src = business.data.Images[0]
-// }else{
-//       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
-//  imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-// }
-      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+
  imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
@@ -210,12 +204,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
 
 
        const imgTag = document.createElement('img');
-      if (business.hasOwnProperty('Images')){
-  imgTag.src = business.data.Images[0]
-}else{
-      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
- imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-} // Assuming you have an 'imageUrl' property in your data
+      imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png' // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -329,12 +318,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-      if (business.hasOwnProperty('Images')){
-  imgTag.src = business.data.Images[0]
-}else{
-      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
- imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
-}// Assuming you have an 'imageUrl' property in your data
+     imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'// Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -830,7 +814,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src =  business.imageUrl; // Assuming you have an 'imageUrl' property in your data
+        imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png' // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');

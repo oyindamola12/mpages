@@ -176,7 +176,7 @@ const about = document.getElementById('aboutTextMyListings');
 //         const image = document.getElementById('vidImage');
 
        const image = document.getElementById('image');
-console.log( myImages[0])
+
         const donateBtn = document.getElementById('share2');
         const element = document.getElementById('myElements');
 

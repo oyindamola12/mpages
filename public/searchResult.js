@@ -60,7 +60,7 @@ const itemsPerPage = 12;
 //         tictext.classList.add('tic-text');
 
 //         const imgTag = document.createElement('img');
-//         imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+       // imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png' // Assuming you have an 'imageUrl' property in your data
 //         imgTag.alt = 'Image'; // Provide alternative text for accessibility
 //         arrangepic.appendChild(imgTag);
 //         imgTag.classList.add('imgs');
@@ -580,7 +580,7 @@ const myJSON = JSON.stringify(business)
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-          imgTag.src = business.data.Images[0]
+         imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
          // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);

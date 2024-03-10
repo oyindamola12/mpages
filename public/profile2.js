@@ -194,23 +194,23 @@ fetch('https://www.mpageshub.com/getSingleList', {
   .then(response => response.json())
   .then(items => {
 
-    for (let i = 0; i < items.length; i++){
- const business = items[i];
-  const imageUrl = business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
-     element.setAttribute('data-setbg', imageUrl);
-     element.style.backgroundImage = `url(${imageUrl})`;
+//     for (let i = 0; i < items.length; i++){
+//  const business = items[i];
+//   const imageUrl = business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
+//      element.setAttribute('data-setbg', imageUrl);
+//      element.style.backgroundImage = `url(${imageUrl})`;
 
-     businessNameh2.textContent = business.data.businessName;
-       timeToOpen.textContent =  business.data.openingtime;
-        timeToClose.textContent = business.data.closingtime;
-        email.textContent = business.data.email ;
-       no.textContent = business.data.phoneNo;
-       address.textContent = business.data.businessAddress;
-         about.textContent =  business.data.about;
-        //   initMap2(business.data.latitude, business.data.longitude)
-        //  display( business.data.Images)
-    }
-
+//      businessNameh2.textContent = business.data.businessName;
+//        timeToOpen.textContent =  business.data.openingtime;
+//         timeToClose.textContent = business.data.closingtime;
+//         email.textContent = business.data.email ;
+//        no.textContent = business.data.phoneNo;
+//        address.textContent = business.data.businessAddress;
+//          about.textContent =  business.data.about;
+//         //   initMap2(business.data.latitude, business.data.longitude)
+//         //  display( business.data.Images)
+//     }
+console.log(items)
   })
   .catch(error => {
     console.error('Error updating value:', error);

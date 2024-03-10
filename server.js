@@ -573,7 +573,7 @@ app.get('/getBusinesses', async (req, res) => {
       id: doc.id,
       data:  data ,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-       imageUrl: imageUrl
+      imageUrl: imageUrl
 });;
    console.log( data )
     })
@@ -610,7 +610,7 @@ app.get('/getBusinesses2', async (req, res) => {
       id: doc.id,
       data:data,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-      // imageUrl: imageUrl
+      imageUrl: imageUrl
 });;
     })
 

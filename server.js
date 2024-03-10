@@ -561,7 +561,7 @@ app.get('/getBusinesses', async (req, res) => {
 
      const businesses = [];
     snapshot.forEach(doc => {
-       const userData = doc.data();
+       const data = doc.data();
       let imageUrl = '';
 
       // if (userData.Images && userData.Images.length > 0) {
@@ -571,11 +571,11 @@ app.get('/getBusinesses', async (req, res) => {
 
       businesses.push({
       id: doc.id,
-      data: doc.data(),
+      data:  data ,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
       // imageUrl: imageUrl
 });;
-   console.log(userData)
+   console.log( data )
     })
 
     res.json( businesses );

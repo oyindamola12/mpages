@@ -676,14 +676,15 @@ return false;
       localStorage.setItem('userId',data.userId);
       localStorage.setItem('userBusiness',JSON.stringify(data.businesses));
       localStorage.setItem('signedup', 'true');
-      // console.log(data.userId,data.businesses)
-      // console.log(data.businesses)
+      window.location.href = '/my-listings.html';
+
 
 
  } else {
         alert(`Login failed. ${data.error}`);
       }
 }
+
 
 async function register() {
       const email = document.getElementById('email').value;
@@ -711,8 +712,7 @@ return false;
       localStorage.setItem('userId',data.userId);
       localStorage.setItem('userBusiness',JSON.stringify(data.businesses));
       localStorage.setItem('signedup', 'true');
-      // console.log(data.userId,data.businesses)
-      // console.log(data.businesses)
+      window.location.href = '/no-listings.html';
 
 
  } else {

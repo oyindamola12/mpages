@@ -227,39 +227,7 @@ myListings.href = "no-listings.html"
    // var storedUserId2 =localStorage.getItem('selectedUserId');
     var storedUserData2 = JSON.parse(localStorage.getItem('selectedUserData'));
     console.log(storedUserData2)
-    if (storedUserId) {
-        // Use the stored user data to populate the profile page
-        const about = document.getElementById('aboutText');
-        const address = document.getElementById('contactInfoAddress');
-        const email = document.getElementById('contactInfoemail');
-        const rating2 = document.getElementById('rating2');
-        const businessNameh2= document.getElementById('businessNameh2');
-        const no = document.getElementById('contactInfoNumber');
-        const timeToOpen  = document.getElementById('timeToOpen');
-        const timeToClose = document.getElementById('timeToClose');
-
-        // profileImage.src = storedUserData.photoURL || 'placeholder-image.jpg';
-
-       rating2.textContent = storedUserData.rating;
-        businessNameh2.textContent = storedUserData.businessName;
-        timeToOpen.textContent = storedUserData.openingtime;
-         timeToClose.textContent = storedUserData.closingtime;
-         email.textContent = storedUserData.email;
-         no.textContent = storedUserData.phoneNo;
-         address.textContent = storedUserData.businessAddress;
-         about.textContent = storedUserData.about;
-        //  let latitude=storedUserData.latitude
-        //  let longitude=storedUserData.longitude
-
-          const location = new google.maps.LatLng(storedUserData.latitude, storedUserData.longitude);
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map2,
-                title:storedUserData.businessAddress
-            });
-            } else {
-        console.error('User ID or user data not found in localStorage or URL parameters.');
-            }
+   
   // console.log(inputIndustry)
 
  let inputed=JSON.parse(localStorage.getItem('searchData'));

@@ -227,11 +227,11 @@ myListings.href = "no-listings.html"
    // var storedUserId2 =localStorage.getItem('selectedUserId');
     var storedUserData2 = JSON.parse(localStorage.getItem('selectedUserData'));
     console.log(storedUserData2)
-   
+
   // console.log(inputIndustry)
 
  let inputed=JSON.parse(localStorage.getItem('searchData'));
- console.log(inputed.businessAddress)
+
 
 
    var params = new URLSearchParams(window.location.search);

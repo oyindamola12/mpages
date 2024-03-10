@@ -563,18 +563,13 @@ app.get('/getBusinesses', async (req, res) => {
     snapshot.forEach(doc => {
 
 
-      // if (data.Images && data.Images.length > 0) {
-      //   imageUrl = userData.images[0];
-      // }
-
-
       businesses.push({
       id: doc.id,
       data: doc.data() ,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
 
 });;
-   console.log( data )
+   
     })
 
     res.json( businesses );

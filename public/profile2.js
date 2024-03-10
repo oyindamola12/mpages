@@ -18,7 +18,7 @@ var storedUserId =localStorage.getItem('selectedUserId');
  var about = document.getElementById('aboutText');
  var address = document.getElementById('contactInfoAddress');
  var email= document.getElementById('contactInfoemail');
-      //const container= document.getElementById('about-video');
+  //const container= document.getElementById('about-video');
 //      const rating2 = document.getElementById('rating2');
  var businessNameh2= document.getElementById('businessNameh2');
  var no = document.getElementById('contactInfoNumber');
@@ -181,7 +181,6 @@ async function getUsers() {
 
 
 
- async function getProfile() {
 
 
 
@@ -216,7 +215,7 @@ console.log(items)
   .catch(error => {
     console.error('Error updating value:', error);
   });
-}
+
 
 
 
@@ -238,7 +237,7 @@ function off2() {
 }
 
 
-getProfile()
+// getProfile()
 
 function initMap2(latitude,longitude) {
 //   var coordinates = {

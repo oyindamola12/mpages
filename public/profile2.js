@@ -193,6 +193,35 @@ fetch('/api/getSingleProfile', {
 })
 .then(response => response.json())
 .then(userData => {
+
+
+  const imageUrl =userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPages Designs.png'
+     element.setAttribute('data-setbg', imageUrl);
+     element.style.backgroundImage = `url(${imageUrl})`;
+
+
+// //Set the background image using inline CSS
+
+// if(donate && donate==='Yes'){
+//   donateBtn.style.display = 'none';
+// }else{
+//    donateBtn.style.display = 'block';
+//}
+
+     businessNameh2.textContent =  userData.businessName;
+       timeToOpen.textContent =  userData.openingtime;
+        timeToClose.textContent = userData.closingtime;
+        email.textContent = userData.email ;
+       no.textContent = userData.phoneNo;
+       address.textContent = userData.businessAddress;
+         about.textContent =  userData.about;
+
+    //  const location = new google.maps.LatLng( latitude,  longitude);
+    //         const marker = new google.maps.Marker({
+    //             position: location,
+    //             map: map2,
+    //             title:businessAddress
+    //         });
   // Handle the user data received from the backend
   console.log('User Data:', userData);
 })

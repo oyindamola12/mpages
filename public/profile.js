@@ -181,13 +181,11 @@ const about = document.getElementById('aboutTextMyListings');
         const element = document.getElementById('myElements');
 
 
-   if(myImages){
+
   const imageUrl = myImages[0];
      element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
-     }else{
-       element.setAttribute('data-setbg', '');
-     }
+    
 
 // //Set the background image using inline CSS
 

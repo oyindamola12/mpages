@@ -79,7 +79,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
 
-        // imgTag.src = business.imageUrl
+        imgTag.src = business.imageUrl
        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);

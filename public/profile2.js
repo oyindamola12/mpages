@@ -217,7 +217,7 @@ console.log(items)
   });
 }
 
-
+getProfile()
 
 function on() {
   document.getElementById("overlay").style.display = "block";
@@ -237,7 +237,7 @@ function off2() {
 }
 
 
-getProfile()
+
 
 function initMap2(latitude,longitude) {
 //   var coordinates = {

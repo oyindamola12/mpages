@@ -525,14 +525,21 @@ try {
     const snapshot = await  db.collection('Users').doc(userUid).collection('BusinessLists').get();
 
     // Extract data from the snapshot
-    const businesses = [];
+     const businesses = [];
     snapshot.forEach(doc => {
+       const userData = doc.data();
+      let imageUrl = 'placeholder_icon_url';
+
+      if (userData.Images && userData.Images.length > 0) {
+        imageUrl = userData.images[0];
+      }
       businesses.push({
       id: doc.id,
-      data: doc.data()
+      data: doc.data(),
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+      imageUrl: imageUrl
 });;
-
-    });
+    })
 
     // Send JSON response to the HTML frontend
 
@@ -554,10 +561,17 @@ app.get('/getBusinesses', async (req, res) => {
 
      const businesses = [];
     snapshot.forEach(doc => {
+       const userData = doc.data();
+      let imageUrl = 'placeholder_icon_url';
+
+      if (userData.Images && userData.Images.length > 0) {
+        imageUrl = userData.images[0];
+      }
       businesses.push({
       id: doc.id,
       data: doc.data(),
-      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude,}
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+      imageUrl: imageUrl
 });;
     })
     res.json( businesses );
@@ -581,11 +595,18 @@ app.get('/getBusinesses2', async (req, res) => {
       .get();
 
       const businesses = [];
-    snapshot.forEach(doc => {
+      snapshot.forEach(doc => {
+      const userData = doc.data();
+      let imageUrl = 'placeholder_icon_url';
+
+      if (userData.Images && userData.Images.length > 0) {
+        imageUrl = userData.images[0];
+      }
       businesses.push({
       id: doc.id,
       data: doc.data(),
-      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude,}
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+      imageUrl: imageUrl
 });;
     })
 

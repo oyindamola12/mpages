@@ -83,7 +83,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         if( (business.hasOwnProperty('Images'))){
           imgTag.src = business.data.Images[0]
         }else{
-          imgTag.src =''
+          imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
         }
        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
@@ -205,7 +205,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         if( (business.hasOwnProperty('Images'))){
           imgTag.src = business.data.Images[0]
         }else{
-          imgTag.src =''
+                imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
         } // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
@@ -324,7 +324,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         if( (business.hasOwnProperty('Images'))){
           imgTag.src = business.data.Images[0]
         }else{
-          imgTag.src =''
+                imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
         } // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
@@ -683,10 +683,16 @@ var geocoder = new google.maps.Geocoder();
 
    const arrangeitems= document.createElement('a');
 
- if (business.hasOwnProperty('donation')) {
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
+
+ if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
+ arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+    }
+
+ if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
 arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+    }
+ if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
+ arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
 
       arrangeitems.classList.add('arrange-items');
@@ -708,7 +714,12 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src =  business.data.image1; // Assuming you have an 'imageUrl' property in your data
+
+        if( (business.hasOwnProperty('Images'))){
+          imgTag.src = business.data.Images[0]
+        }else{
+                imgTag.src ='https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE'
+        }
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
@@ -746,10 +757,15 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('listingId', business.data.listingId);
         localStorage.setItem('owner', business.data.userid);
 
- if (business.hasOwnProperty('donation')) {
+     if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
-window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+    }
+
+ if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
+  window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+    }
+ if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
+  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
         // navigateToUserProfile(business.id);
 

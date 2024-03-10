@@ -562,18 +562,18 @@ app.get('/getBusinesses', async (req, res) => {
      const businesses = [];
     snapshot.forEach(doc => {
        const data = doc.data();
-          let imageUrl = '';
+        var imageUrl = '';
 
-      if (data.Images && data.Images.length > 0) {
-        imageUrl = userData.images[0];
-      }
+      // if (data.Images && data.Images.length > 0) {
+      //   imageUrl = userData.images[0];
+      // }
 
 
       businesses.push({
       id: doc.id,
       data:  data ,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-      imageUrl: imageUrl
+      imageUrl:data.Images && data.Images.length > 0?  imageUrl = userData.images[0]:imageUrl
 });;
    console.log( data )
     })
@@ -601,16 +601,16 @@ app.get('/getBusinesses2', async (req, res) => {
       const businesses = [];
       snapshot.forEach(doc => {
         const data = doc.data();
-        let imageUrl = '';
+       var imageUrl = '';
 
-      if (data.Images && data.Images.length > 0) {
-        imageUrl = userData.images[0];
-      }
+      // if (data.Images && data.Images.length > 0) {
+      //   imageUrl = userData.images[0];
+      // }
       businesses.push({
       id: doc.id,
       data:data,
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-      imageUrl: imageUrl
+      imageUrl:data.Images && data.Images.length > 0?  imageUrl = userData.images[0]:imageUrl
 });;
     })
 

@@ -28,11 +28,11 @@ var searchwithin=false
 console.log(userUid)
 
 
-// function navigateToUserProfile(businessId) {
-//         // Redirect to the user profile page with the user ID as a query parameter
-//         window.location.href = `/single-listing.html?id=${businessId}`;
+function navigateToUserProfile(businessId, businesslistingId) {
+        // Redirect to the user profile page with the user ID as a query parameter
+        window.location.href = `/single-listing.html?id=${businessId}`;
 
-// }
+}
 
  function toggleData(){
   if (getBusinessesData === true && searchwithin ===false){
@@ -144,7 +144,7 @@ window.location.href =`single-listing.html?businessName=${business.data.business
 window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
 
-        // navigateToUserProfile(business.id);
+        navigateToUserProfile(business.id,business.data.listingId);
 
       });
  console.log(items)
@@ -162,7 +162,7 @@ if (getBusinessesData === false&&searchwithin ===false &&inputIndustry&&latitude
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:inputindustry,lat:latitude ,lng:longitude})
+    body: JSON.stringify({ industry:inputIndustry,lat:latitude ,lng:longitude})
   })
   .then(response => response.json())
   .then(items => {

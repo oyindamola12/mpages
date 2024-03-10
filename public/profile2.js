@@ -195,19 +195,9 @@ fetch('/api/getSingleProfile', {
 .then(userData => {
 
 
-  const imageUrl =userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPages Designs.png'
+  const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPages Designs.png'
      element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
-
-
-// //Set the background image using inline CSS
-
-// if(donate && donate==='Yes'){
-//   donateBtn.style.display = 'none';
-// }else{
-//    donateBtn.style.display = 'block';
-//}
-
      businessNameh2.textContent =  userData.businessName;
        timeToOpen.textContent =  userData.openingtime;
         timeToClose.textContent = userData.closingtime;

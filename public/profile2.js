@@ -243,7 +243,15 @@ function off2() {
 
 
 // getProfile()
-
+var mlwStyles =[
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                          { visibility: "off" }
+                    ]
+                }
+            ];
 function initMap2(userData) {
   var coordinates = {
     lat: userData.latitude,
@@ -253,7 +261,8 @@ function initMap2(userData) {
  map2 = new google.maps.Map(document.getElementById('map2'), {
     zoom: 17,
     center: coordinates,
-    scrollwheel: false
+    scrollwheel: false,
+     styles: mlwStyles
   });
    const location = new google.maps.LatLng( userData.latitude,  userData.longitude);
             const marker = new google.maps.Marker({

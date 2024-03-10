@@ -561,19 +561,23 @@ app.get('/getBusinesses', async (req, res) => {
 
      const businesses = [];
     snapshot.forEach(doc => {
-      //  const userData = doc.data();
-      // let imageUrl = '';
+       const userData = doc.data();
+      let imageUrl = '';
 
       // if (userData.Images && userData.Images.length > 0) {
       //   imageUrl = userData.images[0];
       // }
+
+
       businesses.push({
       id: doc.id,
       data: doc.data(),
       coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
       // imageUrl: imageUrl
 });;
+   console.log(userData)
     })
+
     res.json( businesses );
   } catch (error) {
     console.error('Error fetching data:', error);

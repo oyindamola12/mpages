@@ -34,8 +34,8 @@ var storedUserId =localStorage.getItem('selectedUserId');
 var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 var userUid =localStorage.getItem('userId');
-var donateBtn = document.getElementById('share2');
-var divider= document.getElementById('divider');
+// var donateBtn = document.getElementById('share2');
+// var divider= document.getElementById('divider');
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -244,6 +244,9 @@ function off2() {
 
 
 function showDonateButton(userData){
+var donateBtn = document.getElementById('share2');
+var divider= document.getElementById('divider');
+
   if( userData.donation ==="Yes" ){
      divider.style.display==="block"
 donateBtn.style.display === 'block'

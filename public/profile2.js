@@ -247,7 +247,7 @@ function showDonateButton(userData){
 var donateBtn = document.getElementById('share2');
 var divider= document.getElementById('divider');
 
-  if( userData.donation === "Yes" ){
+  if( userData.donation === "Yes"  ){
      divider.style.display = "block"
 donateBtn.style.display = 'block'
 
@@ -573,7 +573,7 @@ fetch('https://www.mpageshub.com/addDonations', {
  email:email,
  amount: OtherAmount,
 ownerId:businessOwnerIds,
-documentId:listingsId 
+documentId:listingsId
 
 
 })

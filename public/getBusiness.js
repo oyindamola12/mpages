@@ -424,8 +424,8 @@ async function getUsers() {
     }
 
 
-    initMap();
-   
+ 
+
 
     function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
@@ -585,8 +585,7 @@ yesNo.style.display = 'none';
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
- console.log(industry)
- console.log(location)
+
  var nav =document.getElementById('navigateSearch');
 
 var geocoder = new google.maps.Geocoder();

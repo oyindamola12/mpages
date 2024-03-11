@@ -21,12 +21,13 @@ var params = new URLSearchParams(window.location.search);
 var inputIndustry = localStorage.getItem('industry');
  var userUid =localStorage.getItem('userId');
  var paramslogin = new URLSearchParams(window.location.search);
-var hidepass=   document.getElementById('password')
+var hidepass =   document.getElementById('password')
  let currentPage = 1;
 const itemsPerPage = 12;
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
-
+var storedUserIdlogin =localStorage.getItem('userId');
+var signedupAlready=  localStorage.getItem('signedup');
 // function findMostRecurringItem(arr) {
 //     // Create an object to store the count of each item
 //     const countMap = {};
@@ -169,19 +170,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
     });
 
 
-  var storedUserIdlogin =localStorage.getItem('userId');
-    var signedupAlready=  localStorage.getItem('signedup');
 
-   function hidepassword(){
- if(signedupAlready==='true'){
-hidepass.style.display='none';
-}
-   }
-
-hidepassword()
-function deleteItems() {
-  localStorage.clear();
-}
 
 if (signedupAlready) {
 
@@ -1126,3 +1115,12 @@ placeholder :placeholder
   function payWithPaystack() {
 signedupAlready==='true' ? pay2() : pay();
 }
+
+
+   function hidepassword(){
+ if(signedupAlready==='true'){
+hidepass.style.display='none';
+}
+   }
+
+hidepassword()

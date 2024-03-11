@@ -658,9 +658,9 @@ async function register() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('passwordRegister').value;
       const firstName = document.getElementById('firstName').value;
-      const phoneNo = document.getElementById('lphoneNo').value;
+      const phoneNo = document.getElementById('phoneNo').value;
 
-if(email === ''|| password  === ''){
+if(email === ''|| password  === '' ||phoneNo === ''|| firstName ===''){
  alert("Please fill in all mandatory fields");
 return false;
  }

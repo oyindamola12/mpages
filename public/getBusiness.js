@@ -401,7 +401,7 @@ async function getUsers() {
         const marker = new google.maps.Marker({
           position: position,
           map: map,
-          title: user.name
+          title: user.businessName
         });
       });
 
@@ -424,7 +424,7 @@ async function getUsers() {
     }
 
 
- 
+
 
 
     function fetchCoordinates() {

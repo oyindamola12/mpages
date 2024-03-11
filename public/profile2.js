@@ -242,19 +242,17 @@ function off2() {
 
 }
 
+function showDonateButton(userData) {
+    var donateBtn = document.getElementById('share2');
+    var divider = document.getElementById('divider');
 
-function showDonateButton(userData){
-var donateBtn = document.getElementById('share2');
-var divider= document.getElementById('divider');
-
-  if( userData.donation === "Yes"  ){
-     divider.style.display = "block"
-donateBtn.style.display = 'block'
-
-  }else{
-divider.style.display="none"
-donateBtn.style.display = 'none'
-  }
+    if (userData && userData.donation === "Yes") {
+        divider.style.display = "block";
+        donateBtn.style.display = 'block';
+    } else {
+        divider.style.display = "none";
+        donateBtn.style.display = 'none';
+    }
 }
 
 showDonateButton()

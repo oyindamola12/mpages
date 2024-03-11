@@ -171,11 +171,7 @@ fetch('/api/getSingleProfile2', {
          about.textContent =  userData.about;
 initMap2(userData)
 display(userData)
-shareOnFacebook(userData)
-shareOnLinkedin(userData)
-shareOnPinterest(userData)
-shareOnTwitter(userData)
-shareOnWhatsApp(userData)
+
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
@@ -228,33 +224,33 @@ function initMap2(userData) {
 
 initMap2()
 
- function shareOnFacebook(userData) {
-      const url = `single-listing.html?id=${userData.userid}&listingid=${userData.listingId}`;
+ function shareOnFacebook() {
+      const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     }
 
-function shareOnTwitter(userData) {
-    const url = `single-listing.html?id=${userData.userid}&listingid=${userData.listingId}`;
+function shareOnTwitter() {
+      const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
     const text = encodeURIComponent('YOUR_TEXT'); // Replace 'YOUR_TEXT' with the text you want to share on Twitter
     window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
 }
 
-     function shareOnLinkedin(userData) {
-      const url = `single-listing.html?id=${userData.userid}&listingid=${userData.listingId}`;
+     function shareOnLinkedin() {
+      const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
     }
 
 //&description=${description}
 
-     function shareOnPinterest(userData) {
-    const url = `single-listing.html?id=${userData.userid}&listingid=${userData.listingId}`;
+     function shareOnPinterest() {
+      const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
     const media = encodeURIComponent('IMAGE_URL'); // Replace 'IMAGE_URL' with the URL of the image you want to share
     const description = encodeURIComponent('DESCRIPTION'); // Replace 'DESCRIPTION' with a description of the image
     window.open(`https://www.pinterest.com/pin/create/button/?url=${url}`, '_blank');
 }
 
-  function shareOnWhatsApp(userData) {
-      const url = `single-listing.html?id=${userData.userid}&listingid=${ userData.listingId}`;
+  function shareOnWhatsApp() {
+      const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20user%20details:%20${url}`, '_blank');
     }
 function display(userData) {

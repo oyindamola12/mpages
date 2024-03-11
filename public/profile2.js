@@ -292,21 +292,17 @@ function initMap2(userData) {
 
 initMap2()
 
-function display(userData){
-  let myImages= userData.Images
-myImages.forEach(image => {
-  const img = document.createElement('img');
-  img.src = image;
-  img.classList.add('IMAGEURL');
-  document.querySelector(".about-video").appendChild(img);
-});
+function display(userData) {
+    if (userData && userData.Images && userData.Images.length > 0) {
+        const myImages = userData.Images;
 
-        // for (let i = 0; i < myImages.length; i++) {
-        //     const img = document.createElement('img');
-        //     img.src = myImages[i];
-        //     img.classList.add('IMAGEURL')
-        //    document.querySelector(".about-video").appendChild(img)
-        // }
+        myImages.forEach(image => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.classList.add('IMAGEURL');
+            document.querySelector(".about-video").appendChild(img);
+        });
+    }
 }
 
 display()

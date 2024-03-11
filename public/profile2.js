@@ -268,24 +268,24 @@ var mlwStyles =[
                 }
             ];
 function initMap2(userData) {
-//   var coordinates = {
-//     lat: userData.latitude,
-//     lng:userData.longitude
-//   };
-//   geocoder = new google.maps.Geocoder();
-//  map2 = new google.maps.Map(document.getElementById('map2'), {
-//     zoom: 17,
-//     center: coordinates,
-//     scrollwheel: false,
-//      styles: mlwStyles
-//   });
-//    const location = new google.maps.LatLng( userData.latitude,  userData.longitude);
-//             const marker = new google.maps.Marker({
-//                 position: location,
-//                 map: map2,
-//                 // title:
-//             });
-//             marker.setMap(map2)
+  var coordinates = {
+    lat: userData.latitude,
+    lng:userData.longitude
+  };
+  geocoder = new google.maps.Geocoder();
+ map2 = new google.maps.Map(document.getElementById('map2'), {
+    zoom: 17,
+    center: coordinates,
+    scrollwheel: false,
+     styles: mlwStyles
+  });
+   const location = new google.maps.LatLng( userData.latitude,  userData.longitude);
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map2,
+                // title:
+            });
+            marker.setMap(map2)
 
     }
 

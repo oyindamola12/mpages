@@ -610,7 +610,8 @@ var geocoder = new google.maps.Geocoder();
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-                   window.location.href =`listings.html?lat=${latitude}&lng=${ longitude}&industryInput=${industry}`;
+                   
+                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
                 }
               })
 

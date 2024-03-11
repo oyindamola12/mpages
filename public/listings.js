@@ -25,6 +25,8 @@ const itemsPerPage = 12;
 //  loading.style.display = 'block';
 var getBusinessesData = true;
 var searchwithin=false
+
+var nextbtn= document.getElementById('next-btn');
 console.log(userUid)
 
 
@@ -39,7 +41,9 @@ function navigateToUserProfile(businessId, businesslistingId) {
  fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
-
+if(items&&items.length <=12){
+nextbtn.style.display = 'none';
+}
   loading.style.display = 'none';
 
       // Populate the list in the HTML with specified tags
@@ -160,7 +164,10 @@ if (getBusinessesData === false&&searchwithin ===false &&inputIndustry&&latitude
   })
   .then(response => response.json())
   .then(items => {
-
+    
+if(items&&items.length <=12){
+nextbtn.style.display = 'none';
+}
      loading.style.display = 'none';
 
 
@@ -277,6 +284,9 @@ if (getBusinessesData === false&&searchwithin ===false &&industryInputview ){
   .then(response => response.json())
   .then(items => {
 
+if(items&&items.length <=12){
+nextbtn.style.display = 'none';
+}
      loading.style.display = 'none';
 
 

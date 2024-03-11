@@ -409,19 +409,7 @@ async function getUsers() {
       map.fitBounds(bounds);
     }
  initMap();
-function initMap2() {
-  var coordinates = {
-    lat: 6.5227,
-    lng:3.6218
-  };
-  geocoder = new google.maps.Geocoder();
- map2 = new google.maps.Map(document.getElementById('map2'), {
-    zoom: 14,
-    center: coordinates,
-    scrollwheel: false
-  });
 
-    }
 
  function addMarkers(coordinates) {
         coordinates.forEach(coord => {
@@ -437,7 +425,7 @@ function initMap2() {
 
 
     initMap();
-    initMap2();
+   
 
     function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')

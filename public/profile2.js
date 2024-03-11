@@ -194,8 +194,8 @@ fetch('/api/getSingleProfile', {
 .then(userData => {
 
 
-let imageUrl = userData.Images && userData.Images.length > 0 ? userData.Images[0] : 'https://ibb.co/pxRnrcY';
-    element.setAttribute('data-setbg',imageUrl);
+  const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPages Designs.png'
+     element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
      businessNameh2.textContent =  userData.businessName;
        timeToOpen.textContent =  userData.openingtime;
@@ -223,6 +223,41 @@ showDonateButton(userData)
 }
 
 getUserProfile()
+
+
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+   document.getElementById("overlay").style.display = "none";
+}
+
+function on2() {
+  document.getElementById("overlay2").style.display = "block";
+}
+
+function off2() {
+ document.getElementById("overlay2").style.display = "none";
+
+}
+
+
+function showDonateButton(userData) {
+    var donateBtn = document.getElementById('share2');
+    var divider = document.getElementById('divider');
+
+    if (userData && userData.donation === "Yes") {
+        divider.style.display = "block";
+        donateBtn.style.display = 'block';
+    } else {
+        divider.style.display = "none";
+        donateBtn.style.display = 'none';
+    }
+}
+
+showDonateButton()
+// getProfile()
 var mlwStyles =[
                 {
                     featureType: "poi",
@@ -255,40 +290,6 @@ function initMap2(userData) {
     }
 
 initMap2()
-
-function on() {
-  document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-   document.getElementById("overlay").style.display = "none";
-}
-
-function on2() {
-  document.getElementById("overlay2").style.display = "block";
-}
-
-function off2() {
- document.getElementById("overlay2").style.display = "none";
-
-}
-
-function showDonateButton(userData) {
-    var donateBtn = document.getElementById('share2');
-    var divider = document.getElementById('divider');
-
-    if (userData && userData.donation === "Yes") {
-        divider.style.display = "block";
-        donateBtn.style.display = 'block';
-    } else {
-        divider.style.display = "none";
-        donateBtn.style.display = 'none';
-    }
-}
-
-showDonateButton()
-// getProfile()
-
 
 function display(userData) {
     if (userData && userData.Images && userData.Images.length > 0) {

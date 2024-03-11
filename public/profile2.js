@@ -510,8 +510,8 @@ fetch('https://www.mpageshub.com/addDonations2', {
  body: JSON.stringify({
  email:email,
  OtherAmount:options,
-ownerId:storedUserData.userid,
-documentId:storedUserData.listingId
+ownerId:businessOwnerIds,
+documentId:listingsId
 
 })
         })
@@ -572,8 +572,8 @@ fetch('https://www.mpageshub.com/addDonations', {
  body: JSON.stringify({
  email:email,
  amount: OtherAmount,
-ownerId:storedUserData.userid,
-documentId:storedUserData.listingId
+ownerId:businessOwnerIds,
+documentId:listingsId 
 
 
 })

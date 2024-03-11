@@ -18,7 +18,7 @@ var storedUserId =localStorage.getItem('selectedUserId');
  var about = document.getElementById('aboutText');
  var address = document.getElementById('contactInfoAddress');
  var email= document.getElementById('contactInfoemail');
- var contactText= document.getElementById('contact-text');
+ var contactText= document.getElementById('hidecontact');
 //const rating2 = document.getElementById('rating2');
  var businessNameh2= document.getElementById('businessNameh2');
  var no = document.getElementById('contactInfoNumber');
@@ -271,7 +271,7 @@ display()
 
    function  hideContact(){
  if(signedupAlready==='true'){
-contactText.style.display='none';
+contactText.style.display='block';
 }
    }
 

@@ -194,7 +194,7 @@ fetch('/api/getSingleProfile', {
 .then(userData => {
 
 
-  const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'https://ibb.co/pxRnrcY'
+  const imageUrl =  userData.Images.length > 0 ?userData.Images[0]:'https://ibb.co/pxRnrcY'
      element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
      businessNameh2.textContent =  userData.businessName;

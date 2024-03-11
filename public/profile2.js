@@ -573,3 +573,4 @@ function payWithPaystack(){
   }
   }
         // Check if the 'param' parameter exists and has a value
+console.log(signedupAlready)

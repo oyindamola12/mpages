@@ -206,7 +206,7 @@ const imageUrl = userData.Images && userData.Images.length > 0 ? userData.Images
          about.textContent =  userData.about;
 initMap2(userData)
 display(userData)
-// showDonateButton(userData)
+showDonateButton(userData)
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
     //             position: location,
@@ -243,21 +243,21 @@ function off2() {
 }
 
 
-// function showDonateButton(userData){
-// var donateBtn = document.getElementById('share2');
-// var divider= document.getElementById('divider');
+function showDonateButton(userData){
+var donateBtn = document.getElementById('share2');
+var divider= document.getElementById('divider');
 
-//   if( userData.donation === "Yes"  ){
-//      divider.style.display = "block"
-// donateBtn.style.display = 'block'
+  if( userData.donation === "Yes"  ){
+     divider.style.display = "block"
+donateBtn.style.display = 'block'
 
-//   }else{
-// divider.style.display="none"
-// donateBtn.style.display = 'none'
-//   }
-// }
+  }else{
+divider.style.display="none"
+donateBtn.style.display = 'none'
+  }
+}
 
-// showDonateButton()
+showDonateButton()
 // getProfile()
 var mlwStyles =[
                 {

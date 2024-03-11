@@ -176,7 +176,13 @@ img {
 
 }
 
-
+#divider{
+background-color: #000;
+ height: 33px;
+ width: 1px;
+ margin-left: 10px;
+  display: none;
+}
 .select-styledyes{
 
 	/* padding: 16px 34px; */

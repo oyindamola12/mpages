@@ -243,6 +243,18 @@ function off2() {
 }
 
 
+function showDonateButton(userData){
+  if( userData.donation ==="Yes" ){
+     divider.style.display==="block"
+donateBtn.style.display === 'block'
+
+  }else{
+divider.style.display==="none"
+donateBtn.style.display === 'none'
+  }
+}
+
+showDonateButton()
 // getProfile()
 var mlwStyles =[
                 {
@@ -297,17 +309,6 @@ myImages.forEach(image => {
 display()
 
 
-function showDonateButton(userData){
-  if( userData.donation ==="Do you want to accept donations?" || userData.donation ==="No"){
-divider.style.display==="none"
-donateBtn.style.display === 'none'
-  }else{
- divider.style.display==="block"
-donateBtn.style.display === 'block'
-  }
-}
-
-showDonateButton()
 
   function toggleOptions() {
             var options = document.getElementById('options');

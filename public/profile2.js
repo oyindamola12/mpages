@@ -223,7 +223,38 @@ showDonateButton(userData)
 }
 
 getUserProfile()
+var mlwStyles =[
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                          { visibility: "off" }
+                    ]
+                }
+            ];
+function initMap2(userData) {
+  var coordinates = {
+    lat: userData.latitude,
+    lng:userData.longitude
+  };
+  geocoder = new google.maps.Geocoder();
+ map2 = new google.maps.Map(document.getElementById('map2'), {
+    zoom: 17,
+    center: coordinates,
+    scrollwheel: false,
+     styles: mlwStyles
+  });
+   const location = new google.maps.LatLng( userData.latitude,  userData.longitude);
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map2,
+                // title:
+            });
+            marker.setMap(map2)
 
+    }
+
+initMap2()
 
 function on() {
   document.getElementById("overlay").style.display = "block";
@@ -257,38 +288,7 @@ function showDonateButton(userData) {
 
 showDonateButton()
 // getProfile()
-var mlwStyles =[
-                {
-                    featureType: "poi",
-                    elementType: "labels",
-                    stylers: [
-                          { visibility: "off" }
-                    ]
-                }
-            ];
-function initMap2(userData) {
-  var coordinates = {
-    lat: userData.latitude,
-    lng:userData.longitude
-  };
-  geocoder = new google.maps.Geocoder();
- map2 = new google.maps.Map(document.getElementById('map2'), {
-    zoom: 17,
-    center: coordinates,
-    scrollwheel: false,
-     styles: mlwStyles
-  });
-   const location = new google.maps.LatLng( userData.latitude,  userData.longitude);
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map2,
-                // title:
-            });
-            marker.setMap(map2)
 
-    }
-
-initMap2()
 
 function display(userData) {
     if (userData && userData.Images && userData.Images.length > 0) {

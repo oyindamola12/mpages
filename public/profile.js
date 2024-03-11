@@ -149,7 +149,7 @@ var listingsId = getUrlParameter('listingid');
 var businessOwnerIds = getUrlParameter('id');
 
 function getUserProfile(){
-fetch('/api/getSingleProfile', {
+fetch('/api/getSingleProfile2', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'

@@ -761,6 +761,29 @@ app.post('/api/getSingleProfile', async (req, res) => {
   }
 });
 
+app.post('/api/getSingleProfile2', async (req, res) => {
+  const { listingId, businessOwnerId } = req.body;
+
+  try {
+    // Fetch user data from Firestore using listingId and businessOwnerId
+    const userDoc = await db.collection('Users').doc(businessOwnerId)
+                         .collection('BusinessLists').doc(listingId).get();
+
+    if (!userDoc.exists) {
+      console.log('User not found');
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const userData = userDoc.data();
+    console.log('User Data:', userData);
+
+    // Send user data to the frontend
+    res.json(userData);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 app.post('/updateh2', async (req, res) => {
  const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;

@@ -471,7 +471,13 @@ app.post('/register2', async (req, res) => {
 app.post('/login', async (req, res) => {
     const email = req.body.email;
     const password=req.body.password;
-
+// Authenticate a user with Firebase Authentication
+// admin.auth().signInWithEmailAndPassword(email, password)
+//   .then(userCredential => {
+//     // User is authenticated
+//     const user = userCredential.user;
+//     console.log(`User ${user.email} is authenticated`);
+//   })
   try {
     const userSnapshot = await
      db.collection('Users') // Replace 'users' with your collection name
@@ -499,13 +505,15 @@ const snapshot = await  db.collection('Users').doc(userId).collection('BusinessL
 
 
    });
-console.log(userId, businesses)
+   console.log(userId, businesses)
     return res.status(200).json({ userId,businesses});
 
   } catch (error) {
     console.error('Error:', error.message);
     return res.status(500).json({ error: 'Internal server error' });
   }
+
+
 });
 
 app.get('/getMyListings', async (req, res) => {

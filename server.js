@@ -37,8 +37,6 @@ function generateUniqueId() {
     return uuidv4();
 }
 
-
-
 // Example usage:
 const uniqueId = generateUniqueId();
 
@@ -553,7 +551,6 @@ try {
   }
 });
 
-
 app.get('/getBusinesses', async (req, res) => {
 
     try {
@@ -576,7 +573,6 @@ app.get('/getBusinesses', async (req, res) => {
     res.status(500).send('Error fetching data');
   }
 });
-
 
 app.get('/getBusinesses2', async (req, res) => {
   try {
@@ -739,6 +735,7 @@ try {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 })
+
 app.post('/api/getSingleProfile', async (req, res) => {
   const { listingId, businessOwnerId } = req.body;
 

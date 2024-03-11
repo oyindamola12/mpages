@@ -967,19 +967,16 @@ return false;
 
   // Check if files are undefined or null
 
-   const files = fileInput.files;
+  const files = fileInput.files;
 
             if (files.length === 0) {
                 console.error('No files selected');
                 return;
             }
 
+  const formData = new FormData();
 
-
-
-            const formData = new FormData();
-
- for (let i = 0; i < files.length; i++) {
+  for (let i = 0; i < files.length; i++) {
    formData.append('images', files[i]);
             }
    formData.append(' postid',  postid);
@@ -1040,9 +1037,6 @@ userids: postid
         .then( async data => {
             console.log('Server response:', data);
 
-
-
-
             // You can handle the server response as needed
             localStorage.setItem('userId',data.userId);
             localStorage.setItem('userData', JSON.stringify(data.businesses));
@@ -1072,9 +1066,7 @@ userids: postid
             });
 
 }
-
-
-      },
+   },
       onClose: function(){
           alert('window closed');
       }

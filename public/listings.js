@@ -252,7 +252,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
  window.location.href  =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
-        navigateToUserProfile(business.id);
+           navigateToUserProfile(business.id,business.data.listingId);
 
       });
 
@@ -366,7 +366,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
-        navigateToUserProfile(business.id);
+            navigateToUserProfile(business.id,business.data.listingId);
 
       });
 
@@ -756,7 +756,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
-        // navigateToUserProfile(business.id);
+           navigateToUserProfile(business.id,business.data.listingId);
 
       });
 
@@ -857,7 +857,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
     } else {
 window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
     }
-        // navigateToUserProfile(business.id);
+         navigateToUserProfile(business.id,business.data.listingId);
 
       });
 
@@ -1258,7 +1258,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
 
          const imgTag = document.createElement('img');
 
- imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
+        imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
         // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
@@ -1306,6 +1306,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
     }
+          navigateToUserProfile(business.id,business.data.listingId);
  });
 
   }
@@ -1331,4 +1332,3 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
     // Initial fetch when the page loads
 
 // fetchPage(currentPage);
-

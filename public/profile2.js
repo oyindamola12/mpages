@@ -33,9 +33,9 @@ var storedUserId =localStorage.getItem('selectedUserId');
  var  reviewId = storedUserId
 var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
-
 var userUid =localStorage.getItem('userId');
-
+var donateBtn = document.getElementById('share2');
+var divider= document.getElementById('divider');
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -182,8 +182,7 @@ async function getUsers() {
 
 
 
-
-
+function getUserProfile(){
 fetch('/api/getSingleProfile', {
   method: 'POST',
   headers: {
@@ -207,6 +206,7 @@ fetch('/api/getSingleProfile', {
          about.textContent =  userData.about;
 initMap2(userData)
 display(userData)
+showDonateButton(userData)
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
     //             position: location,
@@ -220,8 +220,9 @@ display(userData)
 .catch(error => {
   console.error('Error fetching user data:', error);
 });
+}
 
-
+getUserProfile()
 
 
 function on() {
@@ -294,6 +295,20 @@ myImages.forEach(image => {
 }
 
 display()
+
+
+function showDonateButton(userData){
+  if( userData.donation ==="Do you want to accept donations?" || userData.donation ==="No"){
+divider.style.display==="none"
+donateBtn.style.display === 'none'
+  }else{
+ divider.style.display==="block"
+donateBtn.style.display === 'block'
+  }
+}
+
+showDonateButton()
+
   function toggleOptions() {
             var options = document.getElementById('options');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
@@ -456,22 +471,6 @@ function shareOnTwitter() {
       const url = encodeURIComponent(window.location.href);
       window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20user%20details:%20${url}`, '_blank');
     }
- const queryParams = new URLSearchParams(window.location.search);
-        const donateBtn = document.getElementById('share2');
-        const divider= document.getElementById('divider');
+
+
         // Check if the 'param' parameter exists and has a value
-        if (queryParams.has('donation')) {
-            const paramValue = queryParams.get('donation');
-            if (paramValue !== 'No'|| paramValue !== '') {
-                console.log('Parameter "param" has value:', paramValue);
-            } else {
-                console.log('Parameter "param" exists but has no value.');
-                divider.style.display==="block"
-                donateBtn.style.display === 'block'
-            }
-        } else {
-            // console.log('Parameter "param" does not exist in the URL.');
-            //  console.log('Parameter "param" exists but has no value.');
-                divider.style.display==="block"
-                donateBtn.style.display === 'block'
-        }

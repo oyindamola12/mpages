@@ -24,6 +24,8 @@ var inputIndustry = localStorage.getItem('industry');
  var industry = document.querySelector('.select-styled2').textContent;
  var location =document.querySelector('.select-styled3').textContent;
  var nav =document.getElementById('navigateSearch');
+  var storedUserIdlogin =localStorage.getItem('userId');
+  var signedupAlready=  localStorage.getItem('signedup');
  let currentPage = 1;
 const itemsPerPage = 12;
 //console.log(inputIndustry)
@@ -171,8 +173,6 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
     });
 
 
-  var storedUserIdlogin =localStorage.getItem('userId');
-  var signedupAlready=  localStorage.getItem('signedup');
 
  function hidePassword(){
  if(signedupAlready==='true'){

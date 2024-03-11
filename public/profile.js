@@ -228,21 +228,24 @@ function initMap2(userData) {
 
 initMap2()
 
-function display(userData){
-  let myImages= userData.Images
-myImages.forEach(image => {
-  const img = document.createElement('img');
-  img.src = image;
-  img.classList.add('IMAGEURL');
-  document.querySelector(".about-video").appendChild(img);
-});
 
-        // for (let i = 0; i < myImages.length; i++) {
-        //     const img = document.createElement('img');
-        //     img.src = myImages[i];
-        //     img.classList.add('IMAGEURL')
-        //    document.querySelector(".about-video").appendChild(img)
-        // }
+function display(userData) {
+    let myImages = userData.Images;
+
+    myImages.forEach(image => {
+        const img = document.createElement('img');
+        img.src = image;
+        img.classList.add('IMAGEURL');
+        document.querySelector(".about-video").appendChild(img);
+    });
+
+    // Alternative implementation using a for loop
+    // for (let i = 0; i < myImages.length; i++) {
+    //     const img = document.createElement('img');
+    //     img.src = myImages[i];
+    //     img.classList.add('IMAGEURL');
+    //     document.querySelector(".about-video").appendChild(img);
+    // }
 }
 
 display()

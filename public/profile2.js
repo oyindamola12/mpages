@@ -276,6 +276,7 @@ contactText.style.display='block';
    }
 
    hideContact()
+   
   function toggleOptions() {
             var options = document.getElementById('options');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';

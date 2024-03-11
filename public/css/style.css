@@ -183,6 +183,10 @@ background-color: #000;
  margin-left: 10px;
   display: none;
 }
+
+#hidecontact{
+	display: none;
+}
 .select-styledyes{
 
 	/* padding: 16px 34px; */
@@ -2535,7 +2539,7 @@ a:link, a:visited {
 	border-left: 1px solid #CACDD6;
 	border-right: 1px solid #CACDD6;
 	border-bottom: 1px solid #CACDD6;
-	
+
 }
 
 .about-right .contact-info .contact-text h4 {

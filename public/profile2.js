@@ -270,7 +270,7 @@ display()
 
 
    function  hideContact(){
- if(signedupAlready==='true'){
+ if(signedupAlready&&signedupAlready==='true'){
 contactText.style.display='block';
 }
    }

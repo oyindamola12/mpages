@@ -21,7 +21,7 @@ var params = new URLSearchParams(window.location.search);
 var inputIndustry = localStorage.getItem('industry');
  var userUid =localStorage.getItem('userId');
  var paramslogin = new URLSearchParams(window.location.search);
-
+var hidepass=   document.getElementById('password')
  let currentPage = 1;
 const itemsPerPage = 12;
 //console.log(inputIndustry)
@@ -170,12 +170,15 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
 
 
   var storedUserIdlogin =localStorage.getItem('userId');
-  var signedupAlready=  localStorage.getItem('signedup');
- 
- if(signedupAlready==='true'){
-   document.getElementById('password').style.display='none';
-}
+    var signedupAlready=  localStorage.getItem('signedup');
 
+   function hidepassword(){
+ if(signedupAlready==='true'){
+hidepass.style.display='none';
+}
+   }
+
+hidepassword()
 function deleteItems() {
   localStorage.clear();
 }
@@ -401,7 +404,7 @@ async function getUsers() {
         const marker = new google.maps.Marker({
           position: position,
           map: map,
-          title: user.businessName
+          title: user.name
         });
       });
 
@@ -409,7 +412,19 @@ async function getUsers() {
       map.fitBounds(bounds);
     }
  initMap();
+function initMap2() {
+  var coordinates = {
+    lat: 6.5227,
+    lng:3.6218
+  };
+  geocoder = new google.maps.Geocoder();
+ map2 = new google.maps.Map(document.getElementById('map2'), {
+    zoom: 14,
+    center: coordinates,
+    scrollwheel: false
+  });
 
+    }
 
  function addMarkers(coordinates) {
         coordinates.forEach(coord => {
@@ -424,8 +439,8 @@ async function getUsers() {
     }
 
 
-
-
+    initMap();
+    initMap2();
 
     function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
@@ -450,10 +465,10 @@ async function getUsers() {
 //         localStorage.setItem('selectedUserData', JSON.stringify(businessData));
 //     }
 
-// function navigateToUserProfile(businessId) {
-//         // Redirect to the user profile page with the user ID as a query parameter
-//         window.location.href = `/single-listing.html?id=${businessId}`;
-// }
+function navigateToUserProfile(businessId) {
+        // Redirect to the user profile page with the user ID as a query parameter
+        window.location.href = `/single-listing.html?id=${businessId}`;
+}
 
 
 //  function addMarkers2(coordinates) {
@@ -585,7 +600,8 @@ yesNo.style.display = 'none';
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
-
+ console.log(industry)
+ console.log(location)
  var nav =document.getElementById('navigateSearch');
 
 var geocoder = new google.maps.Geocoder();
@@ -597,7 +613,6 @@ var geocoder = new google.maps.Geocoder();
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-
                    window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
                 }
               })
@@ -914,7 +929,6 @@ else{
 
 
 }
-
  async function pay2(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;

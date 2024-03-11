@@ -18,13 +18,13 @@ var storedUserId =localStorage.getItem('selectedUserId');
  var about = document.getElementById('aboutText');
  var address = document.getElementById('contactInfoAddress');
  var email= document.getElementById('contactInfoemail');
-  //const container= document.getElementById('about-video');
-//      const rating2 = document.getElementById('rating2');
+ var contactText= document.getElementById('contact-text');
+//const rating2 = document.getElementById('rating2');
  var businessNameh2= document.getElementById('businessNameh2');
  var no = document.getElementById('contactInfoNumber');
  var timeToOpen  = document.getElementById('timeToOpen');
  var timeToClose = document.getElementById('timeToClose');
-//      const image = document.getElementById('vidImage');
+//const image = document.getElementById('vidImage');
  var image = document.getElementById('image');
  var element = document.getElementById('myElement');
 // var imagesId=JSON.parse(localStorage.getItem('imagesId'));
@@ -34,6 +34,7 @@ var storedUserId =localStorage.getItem('selectedUserId');
 var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 var userUid =localStorage.getItem('userId');
+var signedupAlready=  localStorage.getItem('signedup');
 // var donateBtn = document.getElementById('share2');
 // var divider= document.getElementById('divider');
 
@@ -139,46 +140,6 @@ async function getUsers() {
       const users = await response.json();
       return users;
     }
-
- var mlwStyles =[
-                {
-                    featureType: "poi",
-                    elementType: "labels",
-                    stylers: [
-                          { visibility: "off" }
-                    ]
-                }
-            ];
-
-   async function initMap() {
-      const users = await getUsers();
-
-      // Create a LatLngBounds object to store the bounds of all markers
-      const bounds = new google.maps.LatLngBounds();
-
-      const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2,
-        center: { lat: 0, lng: 0 } ,// Center of the map
-        styles: mlwStyles
-      });
-
-      users.forEach(user => {
-        const position = { lat: user.latitude, lng: user.longitude };
-        // Extend the bounds to include the marker's position
-        bounds.extend(position);
-        const marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          title: user.name
-        });
-      });
-
-      // Fit the map to the bounds
-      map.fitBounds(bounds);
-    }
-
- initMap();
-
 
 
 
@@ -308,6 +269,13 @@ display()
 
 
 
+   function  hideContact(){
+ if(signedupAlready==='true'){
+contactText.style.display='none';
+}
+   }
+
+   hideContact()
   function toggleOptions() {
             var options = document.getElementById('options');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';

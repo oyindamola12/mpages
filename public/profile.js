@@ -127,7 +127,7 @@ let listingId=selectedBusinessData.listingId
 //         localStorage.setItem('selectedListingId', business.id);
 //         localStorage.setItem('selectedListingData', JSON.stringify(business.data));
 //         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-//         navigateToUserProfile2(business.id);
+//           navigateToUserProfile(business.data.userid,business.data.listingId);
 
 //       });
 

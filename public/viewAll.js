@@ -90,7 +90,7 @@ fetch('https://www.mpageshub.com/getBusinesses')
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
         localStorage.setItem('selectedUserId', business.id);
  window.location.href = `single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}`;
-        navigateToUserProfile(business.id);
+          navigateToUserProfile(business.data.userid,business.data.listingId);
 
       });
       // console.log(items)
@@ -152,7 +152,7 @@ fetch('https://www.mpageshub.com/getBusinesses')
     //     localStorage.setItem('selectedUserData', JSON.stringify(business.data));
     //      localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
     //      localStorage.setItem('imagesId',JSON.stringify(business.data.userid))
-    //     navigateToUserProfile(business);
+    //        navigateToUserProfile(business.data.userid,business.data.listingId);
 
     //   });
 

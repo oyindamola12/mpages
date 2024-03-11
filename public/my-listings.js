@@ -183,7 +183,7 @@ arrangeitems.href =`business-profile.html?businessName=${business.data.businessN
         localStorage.setItem('selectedListingId', business.id);
         localStorage.setItem('selectedListingData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        navigateToUserProfile2(business.id,business.data.listingId);
+        navigateToUserProfile2(business.data.userid,business.data.listingId);
 
       });
 

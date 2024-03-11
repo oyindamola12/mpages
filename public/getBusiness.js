@@ -171,6 +171,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
 
   var storedUserIdlogin =localStorage.getItem('userId');
   var signedupAlready=  localStorage.getItem('signedup');
+
  function hidePassword(){
  if(signedupAlready==='true'){
    document.getElementById('password').style.display='none';

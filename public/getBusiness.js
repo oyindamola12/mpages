@@ -170,7 +170,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
 
 
   var storedUserIdlogin =localStorage.getItem('userId');
-    var signedupAlready=  localStorage.getItem('signedup');
+  var signedupAlready=  localStorage.getItem('signedup');
 
  if(signedupAlready==='true'){
    document.getElementById('password').style.display='none';
@@ -462,10 +462,10 @@ function initMap2() {
 //         localStorage.setItem('selectedUserData', JSON.stringify(businessData));
 //     }
 
-function navigateToUserProfile(businessId) {
-        // Redirect to the user profile page with the user ID as a query parameter
-        window.location.href = `/single-listing.html?id=${businessId}`;
-}
+// function navigateToUserProfile(businessId) {
+//         // Redirect to the user profile page with the user ID as a query parameter
+//         window.location.href = `/single-listing.html?id=${businessId}`;
+// }
 
 
 //  function addMarkers2(coordinates) {
@@ -610,7 +610,7 @@ var geocoder = new google.maps.Geocoder();
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-                   
+
                    window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
                 }
               })
@@ -927,6 +927,7 @@ else{
 
 
 }
+
  async function pay2(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;

@@ -34,7 +34,7 @@ var storedUserId =localStorage.getItem('selectedUserId');
 var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 var userUid =localStorage.getItem('userId');
-var signedupAlready=  localStorage.getItem('signedup');
+
 // var donateBtn = document.getElementById('share2');
 // var divider= document.getElementById('divider');
 

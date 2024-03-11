@@ -28,6 +28,7 @@ var inputIndustry = localStorage.getItem('industry');
   var signedupAlready=  localStorage.getItem('signedup');
  let currentPage = 1;
 const itemsPerPage = 12;
+var hidePass=document.getElementById('password')
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
 
@@ -176,7 +177,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
 
  function hidePassword(){
  if(signedupAlready==='true'){
-   document.getElementById('password').style.display='none';
+   hidePass.style.display='none';
 }
 
  }

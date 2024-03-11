@@ -12,16 +12,18 @@ let  geocoder;
 let appendDiv = document.getElementById('col-lg-4');
 let appendDiv3 = document.getElementById('col-lg-5');
 let myListings = document.getElementById('myListings');
-const selectedBusinessId = localStorage.getItem('selectedBusinessId');
-const selectedBusinessData = JSON.parse(localStorage.getItem('selectedBusinessData'));
+var selectedBusinessId = localStorage.getItem('selectedBusinessId');
+var selectedBusinessData = JSON.parse(localStorage.getItem('selectedBusinessData'));
 var params = new URLSearchParams(window.location.search);
-    var storedUserId =localStorage.getItem('selectedUserId');
-    var userDataId =localStorage.getItem('userDataId');
-    var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
+var storedUserId =localStorage.getItem('selectedUserId');
+var userDataId =localStorage.getItem('userDataId');
+var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 var inputIndustry = localStorage.getItem('industry');
  var userUid =localStorage.getItem('userId');
  var paramslogin = new URLSearchParams(window.location.search);
-
+ var industry = document.querySelector('.select-styled2').textContent;
+ var location =document.querySelector('.select-styled3').textContent;
+ var nav =document.getElementById('navigateSearch');
  let currentPage = 1;
 const itemsPerPage = 12;
 //console.log(inputIndustry)
@@ -579,9 +581,7 @@ yesNo.style.display = 'none';
             toggleOptions3();
  }
 
- var industry = document.querySelector('.select-styled2').textContent;
- var location =document.querySelector('.select-styled3').textContent;
- var nav =document.getElementById('navigateSearch');
+
 
  async function fetchData( ) {
  var industry= document.getElementById('searchIndustryInput').textContent;

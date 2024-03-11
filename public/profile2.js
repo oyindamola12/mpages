@@ -476,5 +476,137 @@ function shareOnTwitter() {
       window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20user%20details:%20${url}`, '_blank');
     }
 
+function payWithPaystack1() {
 
+
+  var options = document.getElementById('industry').textContent;
+  var email = document.getElementById('inputmail').value;
+
+ if(email === ''|| options==="Choose Amount"  ){
+ alert("Please fill in all mandatory fields");
+return false;
+}
+
+    var handler = PaystackPop.setup({
+        key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772', //put your public key here
+        email:  email, //put your customer's email here
+        amount:options*100, //amount the customer is supposed to pay
+        metadata: {
+            custom_fields: [
+                {
+                    display_name: "Mobile Number",
+                    variable_name: "mobile_number",
+
+                }
+            ]
+        },
+        callback: function (response) {
+           if (response.status){
+fetch('https://www.mpageshub.com/addDonations2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+ body: JSON.stringify({
+ email:email,
+ OtherAmount:options,
+ownerId:storedUserData.userid,
+documentId:storedUserData.listingId
+
+})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Server response:', data);
+            // You can handle the server response as needed
+        })
+        .catch(error => {
+            console.error('Error sending data to server:', error);
+        });
+       document.getElementById("overlay2").style.display = "none";
+           }
+
+
+
+
+        },
+        onClose: function () {
+            //when the user close the payment modal
+            alert('Transaction cancelled');
+        }
+    });
+    handler.openIframe(); //open the paystack's payment modal
+}
+
+function payWithPaystack2() {
+
+var OtherAmount = document.getElementById('OtherAmount').value;
+  var email = document.getElementById('inputmail').value;
+
+ if(email === '' ){
+ alert("Please fill in all mandatory fields");
+return false;
+}
+
+    var handler = PaystackPop.setup({
+        key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772', //put your public key here
+        email:  email, //put your customer's email here
+        amount:OtherAmount*100, //amount the customer is supposed to pay
+        metadata: {
+            custom_fields: [
+                {
+                    display_name: "Mobile Number",
+                    variable_name: "mobile_number",
+
+                }
+            ]
+        },
+        callback: function (response) {
+           if (response.status){
+
+fetch('https://www.mpageshub.com/addDonations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+ body: JSON.stringify({
+ email:email,
+ amount: OtherAmount,
+ownerId:storedUserData.userid,
+documentId:storedUserData.listingId
+
+
+})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Server response:', data);
+            // You can handle the server response as needed
+        })
+        .catch(error => {
+            console.error('Error sending data to server:', error);
+        });
+       document.getElementById("overlay2").style.display = "none";
+           }
+
+
+
+
+        },
+        onClose: function () {
+            //when the user close the payment modal
+            alert('Transaction cancelled');
+        }
+    });
+    handler.openIframe(); //open the paystack's payment modal
+}
+
+function payWithPaystack(){
+    var OtherAmount = document.getElementById('OtherAmount').value;
+ if(OtherAmount === ''){
+   payWithPaystack1()
+} else{
+   payWithPaystack2()
+  }
+  }
         // Check if the 'param' parameter exists and has a value

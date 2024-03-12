@@ -242,14 +242,14 @@ var mlwStyles =[
                 }
             ];
 function initMap2(userData) {
-  var coordinates = {
-    lat: userData.latitude,
-    lng:userData.longitude
-  };
+ 
   geocoder = new google.maps.Geocoder();
  map2 = new google.maps.Map(document.getElementById('map2'), {
     zoom: 17,
-    center: coordinates,
+    center: {
+    lat: userData.latitude,
+    lng:userData.longitude
+  },
     scrollwheel: false,
      styles: mlwStyles
   });

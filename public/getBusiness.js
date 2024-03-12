@@ -171,7 +171,9 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
 
 
 
-
+ if(signedupAlready==='true'){
+hidepass.style.display='none';
+}
 if (signedupAlready) {
 
 myListings.href = "my-listings.html"
@@ -446,13 +448,7 @@ function initMap2() {
                 console.error('Error fetching coordinates:', error);
             });
     }
-   function hidepassword(){
- if(signedupAlready==='true'){
-hidepass.style.display='none';
-}
-   }
 
-hidepassword()
 //get businesses Data
 
 // function saveUserDataToLocalstorage(businessId, businessData) {

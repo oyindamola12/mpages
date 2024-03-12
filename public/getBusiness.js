@@ -681,96 +681,51 @@ return false;
         alert(`Registration failed. ${data.error}`);
       }
 }
-// Array to store selected images
-let selectedImages = [];
 
-// Function to preview selected images
-function previewImages(event) {
+
+  function previewImages(event) {
     const files = event.target.files;
-    const imagePreview = document.getElementById('imagePreview');
+const imagePreview = document.getElementById('imagePreview');
 
-    if (selectedImages.length + files.length > 5) {
-        alert("Not more than 5 images allowed");
-        return;
-    }
 
-    // Loop through each selected file
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const reader = new FileReader();
 
-        // Function to handle file reading
         reader.onload = function(e) {
-            // Create an image element
             const img = document.createElement('img');
             img.src = e.target.result;
-            img.classList.add('selected-image');
-
-            // Append the image to the preview container
             imagePreview.appendChild(img);
+        }
 
-            // Add the image to the selectedImages array
-            selectedImages.push(file);
-        };
-
-        // Read the file as data URL
         reader.readAsDataURL(file);
+
+
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
     }
+
+      // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
+      // selectedImagesContainer.innerHTML = '';
+
+  //     for (let i = 0; i < files.length; i++) {
+  //       const file = files[i];
+  //       const img = document.createElement('img');
+  //       img.src = URL.createObjectURL(file);
+
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+
+  //       const div = document.createElement('div');
+  //       div.appendChild(img);
+  //       div.appendChild(deleteBtn);
+  //      imagePreview.appendChild(div);
+  //     }
 }
-
-// Function to remove selected image
-function removeImage(index) {
-    // Remove the image from the DOM
-    const imageToRemove = document.querySelector('.selected-image:nth-of-type(' + (index + 1) + ')');
-    imageToRemove.remove();
-
-    // Remove the image from the selectedImages array
-    selectedImages.splice(index, 1);
-}
-
-
-//   function previewImages(event) {
-//     const files = event.target.files;
-// const imagePreview = document.getElementById('imagePreview');
-
-//     for (let i = 0; i < files.length; i++) {
-//         const file = files[i];
-//         const reader = new FileReader();
-
-//         reader.onload = function(e) {
-//             const img = document.createElement('img');
-//             img.src = e.target.result;
-//             imagePreview.appendChild(img);
-//         }
-
-//         reader.readAsDataURL(file);
-
-
-//   //       const deleteBtn = document.createElement('button');
-//   //       deleteBtn.textContent = 'x';
-//   //         deleteBtn.type = 'button';
-//   // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
-//     }
-
-//       // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
-//       // selectedImagesContainer.innerHTML = '';
-
-//   //     for (let i = 0; i < files.length; i++) {
-//   //       const file = files[i];
-//   //       const img = document.createElement('img');
-//   //       img.src = URL.createObjectURL(file);
-
-//   //       const deleteBtn = document.createElement('button');
-//   //       deleteBtn.textContent = 'x';
-//   //         deleteBtn.type = 'button';
-//   // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
-
-//   //       const div = document.createElement('div');
-//   //       div.appendChild(img);
-//   //       div.appendChild(deleteBtn);
-//   //      imagePreview.appendChild(div);
-//   //     }
-// }
 
 
 //  function createDeleteHandler(index, files, callback) {

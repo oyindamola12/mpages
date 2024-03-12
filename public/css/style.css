@@ -2239,7 +2239,7 @@ a:link, a:visited {
 
 .hero-listing {
 	height: 656px;
-	
+
 }
 
 /*---------------------
@@ -2315,7 +2315,15 @@ a:link, a:visited {
 	border-radius: 5px;
 
 }
-
+.selected-image {
+    display: block; /* Ensures images are displayed as blocks */
+    max-width: 100%; /* Ensures images don't exceed the width of their container */
+    height: auto; /* Maintains the aspect ratio of the images */
+    margin-bottom: 10px; /* Adds some space between images */
+    border: 2px solid #ccc; /* Adds a border around the images */
+    border-radius: 5px; /* Rounds the corners of the border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow effect */
+}
 .intro-share {
 	text-align: right;
 	margin-top: 8px;

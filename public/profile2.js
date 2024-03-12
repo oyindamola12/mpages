@@ -37,7 +37,16 @@ var userUid =localStorage.getItem('userId');
 console.log(signedupAlready)
 // var donateBtn = document.getElementById('share2');
 // var divider= document.getElementById('divider');
+function hideContact() {
+    var contactText = document.getElementById('hidecontact');
+    if (signedupAlready && signedupAlready === 'true') {
+        contactText.style.display = 'block';
+    } else {
+        contactText.style.display = 'none';
+    }
+}
 
+   hideContact()
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -269,16 +278,7 @@ display()
 
 
 
-function hideContact() {
-    var contactText = document.getElementById('hidecontact');
-    if (signedupAlready && signedupAlready === 'true') {
-        contactText.style.display = 'block';
-    } else {
-        contactText.style.display = 'none';
-    }
-}
 
-   hideContact()
 
   function toggleOptions() {
             var options = document.getElementById('options');

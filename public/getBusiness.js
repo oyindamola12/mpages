@@ -446,7 +446,13 @@ function initMap2() {
                 console.error('Error fetching coordinates:', error);
             });
     }
+   function hidepassword(){
+ if(signedupAlready==='true'){
+hidepass.style.display='none';
+}
+   }
 
+hidepassword()
 //get businesses Data
 
 // function saveUserDataToLocalstorage(businessId, businessData) {
@@ -1115,12 +1121,3 @@ placeholder :placeholder
   function payWithPaystack() {
 signedupAlready==='true' ? pay2() : pay();
 }
-
-
-   function hidepassword(){
- if(signedupAlready==='true'){
-hidepass.style.display='none';
-}
-   }
-
-hidepassword()

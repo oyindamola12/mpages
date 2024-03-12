@@ -165,7 +165,7 @@ fetch('/api/getSingleProfile', {
 
 
   //const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:userData.placeholder
-  const imageUrl =userData.placeholder
+  const imageUrl ='img/mPages Designs.png'
      element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
      businessNameh2.textContent =  userData.businessName;

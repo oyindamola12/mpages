@@ -269,14 +269,14 @@ display()
 
 
 
- function  hideContact(){
-var contactText= document.getElementById('hidecontact');
- if(signedupAlready&&signedupAlready ==='true'){
-contactText.style.display='block';
-}else{
- contactText.style.display='none';
+function hideContact() {
+    var contactText = document.getElementById('hidecontact');
+    if (signedupAlready && signedupAlready === 'true') {
+        contactText.style.display = 'block';
+    } else {
+        contactText.style.display = 'none';
+    }
 }
-   }
 
    hideContact()
 

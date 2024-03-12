@@ -167,9 +167,9 @@ fetch('/api/getSingleProfile', {
  const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:userData.placeholder
 
 
-    element.setAttribute('data-setbg', imageUrl);
-     element.style.backgroundImage = `url(${imageUrl})`;
- 
+    // element.setAttribute('data-setbg', imageUrl);
+    //  element.style.backgroundImage = `url(${imageUrl})`;
+
 
      businessNameh2.textContent =  userData.businessName;
        timeToOpen.textContent =  userData.openingtime;

@@ -269,14 +269,16 @@ display()
 
 
 
-   function  hideContact(){
- if(signedupAlready&&signedupAlready==='true'){
+ function  hideContact(){
+ if(signedupAlready&&signedupAlready ==='true'){
 contactText.style.display='block';
+}else{
+ contactText.style.display='none';
 }
    }
 
    hideContact()
-   
+
   function toggleOptions() {
             var options = document.getElementById('options');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';

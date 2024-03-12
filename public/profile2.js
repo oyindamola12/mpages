@@ -164,7 +164,7 @@ fetch('/api/getSingleProfile', {
 .then(userData => {
 
 
- const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPages Designs.png'
+ const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPagesDesigns.png'
 
 
     element.setAttribute('data-setbg', imageUrl);

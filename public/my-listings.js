@@ -147,7 +147,7 @@ arrangeitems.href =`business-profile.html?businessName=${business.data.businessN
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
         const imgTag = document.createElement('img');
-        imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPages Designs.png'
+        imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png'
 
        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility

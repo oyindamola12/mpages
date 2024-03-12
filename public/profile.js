@@ -468,7 +468,35 @@ function toggleEditclosetime() {
                 updateData(newValue);
             }
       }
+  function previewImages(event) {
+    const files = event.target.files;
 
+
+    const imagePreview = document.getElementById('imagePreview');
+
+
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            imagePreview.appendChild(img);
+        }
+
+        reader.readAsDataURL(file);
+
+
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+    }
+
+    
+}
  async function updateData(newValue) {
 
             try {

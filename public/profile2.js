@@ -166,13 +166,10 @@ fetch('/api/getSingleProfile', {
 
   //const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:userData.placeholder
   const imageUrl = userData.Images[0]
-    const imageUrl2 ="img/mPages Designs.png"
+  
   if(userData.Images && userData.Images.length > 0){
      element.setAttribute('data-setbg', imageUrl);
      element.style.backgroundImage = `url(${imageUrl})`;
-  }else{
-      element.setAttribute('data-setbg', imageUrl2);
-     element.style.backgroundImage = `url(${imageUrl2})`;
   }
 
      businessNameh2.textContent =  userData.businessName;

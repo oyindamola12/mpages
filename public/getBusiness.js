@@ -553,7 +553,7 @@ function toggleOptionsYes() {
 
 const yesNo=  document.getElementById('hideYes');
 
-if(value === 'Mosque' || value === 'Charity Organization'|| value === 'Orphanage Home' || value === 'School' || value ==="Islamic Organization"){
+if(value === 'Mosque' || value === 'Charity Organization'|| value === 'Orphanage Home' || value === 'School' || value ==="Islamic Organization"|| value ==="Imam"){
 yesNo.style.display = 'inline-block';
 }else{
 yesNo.style.display = 'none';

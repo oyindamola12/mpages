@@ -164,7 +164,7 @@ fetch('/api/getSingleProfile', {
 .then(userData => {
 
 
- const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/logo.png'
+ const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPages Designs.png'
 
 
     element.setAttribute('data-setbg', imageUrl);
@@ -242,7 +242,7 @@ var mlwStyles =[
                 }
             ];
 function initMap2(userData) {
- 
+
   geocoder = new google.maps.Geocoder();
  map2 = new google.maps.Map(document.getElementById('map2'), {
     zoom: 17,

@@ -1176,7 +1176,7 @@ a:link, a:visited {
 }
 
 .trend-item.nightlife .trend-text .open {
-	background: #FF5581;
+	background: #ffc946;
 }
 
 .trend-item.hotels .tic-text {
@@ -1188,7 +1188,7 @@ a:link, a:visited {
 }
 
 .trend-item.events .trend-text .open {
-	background: #FF5581;
+	background: #ffc946;
 }
 
 .trend-item .trend-pic {
@@ -1210,7 +1210,7 @@ a:link, a:visited {
 	top: 0;
 	height: 55px;
 	width: 55px;
-	background: #FF5581;
+	background: #ffc946;
 	color: #fff;
 	font-size: 16px;
 	font-weight: 900;
@@ -1233,7 +1233,7 @@ a:link, a:visited {
 }
 
 .trend-item .trend-text span {
-	color: #FF5581;
+	color: #ffc946;
 	font-size: 16px;
 	font-weight: 700;
 	display: inline-block;
@@ -2694,7 +2694,7 @@ a:link, a:visited {
 
 .blog-item .blog-pic .blog-absolute {
 	display: inline-block;
-	background: #FF5581;
+	background: #ffc946;
 	text-align: center;
 	padding-left: 20px;
 	padding-top: 16px;
@@ -2788,7 +2788,7 @@ a:link, a:visited {
 .blog-pagination a:hover,
 .blog-pagination a.active {
 	color: #fff;
-	background: #FF5581;
+	background: #ffc946;
 }
 
 /*---------------------

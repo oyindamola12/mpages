@@ -402,7 +402,7 @@ async function getUsers() {
       // Fit the map to the bounds
       map.fitBounds(bounds);
     }
- initMap();
+
 function initMap2() {
   var coordinates = {
     lat: 6.5227,
@@ -430,8 +430,7 @@ function initMap2() {
     }
 
 
-    initMap();
-    initMap2();
+
 
     function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')

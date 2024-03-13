@@ -263,7 +263,7 @@ function initMap2(userData) {
 
     }
 
-initMap2()
+
 
 function display(userData) {
     if (userData && userData.Images && userData.Images.length > 0) {

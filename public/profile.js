@@ -222,7 +222,7 @@ function initMap2(userData) {
 
     }
 
-initMap2()
+
 
  function shareOnFacebook() {
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
@@ -799,4 +799,3 @@ async function aboutButtontoSave(){
   });
 
 }
-

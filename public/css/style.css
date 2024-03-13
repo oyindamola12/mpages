@@ -842,6 +842,20 @@ a:link, a:visited {
     margin-right: 10px;
     margin-bottom: 50px;
 }
+.image-preview2{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Style the image preview */
+.image-preview2 img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    margin-bottom: 50px;
+}
 @keyframes loader {
 	0% {
 		-webkit-transform: rotate(0deg);

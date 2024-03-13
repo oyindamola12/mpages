@@ -468,11 +468,12 @@ function toggleEditclosetime() {
                 updateData(newValue);
             }
       }
+
   function previewImages(event) {
     const files = event.target.files;
 
 
-    const imagePreview = document.getElementById('imagePreview');
+    const imagePreview = document.getElementById('imagePreview2');
 
 
 
@@ -522,17 +523,16 @@ function toggleEditclosetime() {
             }
       }
 
-editButton.addEventListener('click', () => {
+async function editButtontoUpdate(){
   editInputh2.value = businessNameh2MyListings.textContent;
-businessNameh2MyListings.style.display = 'none';
+  businessNameh2MyListings.style.display = 'none';
   editInputh2.style.display = 'block';
   editButton.style.display = 'none';
   saveButton.style.display = 'inline-block';
+}
 
-});
-
-saveButton.addEventListener('click', () => {
-  const newValue = editInputh2.value;
+async function editButtontoSave(){
+ const newValue = editInputh2.value;
  businessNameh2MyListings.style.display = 'block';
  editInputh2.style.display = 'none';
  editButton.style.display = 'inline-block';
@@ -558,17 +558,17 @@ saveButton.addEventListener('click', () => {
   .catch(error => {
     console.error('Error updating value:', error);
   });
-});
+}
 
-editButtonopen.addEventListener('click', () => {
-  editInputopen.value = timeToOpenMyListings.textContent;
+async function openButtontoUpdate(){
+    editInputopen.value = timeToOpenMyListings.textContent;
   timeToOpenMyListings.style.display = 'none';
   editInputopen.style.display = 'block';
   editButtonopen.style.display = 'none';
   saveButtonopen.style.display = 'inline-block';
-});
+}
+async function openButtontoSave(){
 
-saveButtonopen.addEventListener('click', () => {
   const newValue = editInputopen.value;
  timeToOpenMyListings.textContent = newValue;
 timeToOpenMyListings.style.display = 'block';
@@ -599,17 +599,20 @@ timeToOpenMyListings.style.display = 'block';
   .catch(error => {
     console.error('Error updating value:', error);
   });
-});
 
-  editButtonclose.addEventListener('click', () => {
+}
+
+
+async function closeButtontoUpdate(){
   editInputclose.value = timeToCloseMyListings.textContent;
   timeToCloseMyListings.style.display = 'none';
   editInputclose.style.display = 'block';
   editButtonclose.style.display = 'none';
   saveButtonclose.style.display = 'inline-block';
-});
+}
 
-saveButtonclose.addEventListener('click', () => {
+async function closeButtontoSave(){
+
   const newValue = editInputclose.value;
 
     timeToCloseMyListings.style.display = 'block';
@@ -637,17 +640,19 @@ saveButtonclose.addEventListener('click', () => {
   .catch(error => {
     console.error('Error updating value:', error);
   });
-});
 
-  editButtonAddress.addEventListener('click', () => {
-  editInputAddress.value = contactInfoAddressMyListings.textContent;
+}
+
+async function addressButtontoUpdate(){
+   editInputAddress.value = contactInfoAddressMyListings.textContent;
   contactInfoAddressMyListings.style.display = 'none';
   editInputAddress.style.display = 'block';
   editButtonAddress.style.display = 'none';
   saveButtonAddress.style.display = 'inline-block';
-});
+}
 
-saveButtonAddress.addEventListener('click', () => {
+async function addressButtontoSave(){
+
   const newValue = editInputAddress.value;
 
     contactInfoAddressMyListings.style.display = 'block';
@@ -676,17 +681,19 @@ saveButtonAddress.addEventListener('click', () => {
     console.error('Error updating value:', error);
   });
 
-});
 
-editButtonNumber.addEventListener('click', () => {
+}
+
+
+async function numberButtontoUpdate(){
   editInputNumber.value = contactInfoNumberMyListings.textContent;
  contactInfoNumberMyListings.style.display = 'none';
   editInputNumber.style.display = 'block';
   editButtonNumber.style.display = 'none';
   saveButtonNumber.style.display = 'inline-block';
-});
+}
+async function numberButtontoSave(){
 
-saveButtonNumber.addEventListener('click', () => {
   const newValue = editInputNumber.value;
 contactInfoNumberMyListings.style.display = 'block';
     editInputNumber.style.display = 'none';
@@ -713,17 +720,18 @@ contactInfoNumberMyListings.style.display = 'block';
   .catch(error => {
     console.error('Error updating value:', error);
   });
-});
 
-editButtonemail.addEventListener('click', () => {
+}
+
+async function emailButtontoUpdate(){
   editInputemail.value = contactInfoemailMyListings.textContent;
  contactInfoemailMyListings.style.display = 'none';
   editInputemail.style.display = 'block';
   editButtonemail.style.display = 'none';
   saveButtonemail.style.display = 'inline-block';
-});
+}
+async function emailButtontoSave(){
 
-saveButtonemail.addEventListener('click', () => {
   const newValue = editInputemail.value;
    contactInfoemailMyListings.style.display = 'block';
     editInputemail.style.display = 'none';
@@ -750,17 +758,19 @@ contactInfoemailMyListings.style.display = 'block';
   .catch(error => {
     console.error('Error updating value:', error);
   });
-});
 
-editButtonAbout.addEventListener('click', () => {
-  editInputAbout.value = aboutTextMyListings.textContent;
+}
+async function aboutButtontoUpdate(){
+ editInputAbout.value = aboutTextMyListings.textContent;
   aboutTextMyListings.style.display = 'none';
   editInputAbout.style.display = 'block';
   editButtonAbout.style.display = 'none';
   saveButtonAbout.style.display = 'inline-block';
-});
+}
 
-saveButtonAbout.addEventListener('click', () => {
+
+async function aboutButtontoSave(){
+
   const newValue = editInputAbout.value;
   aboutTextMyListings.style.display = 'block';
     editInputAbout.style.display = 'none';
@@ -787,4 +797,6 @@ saveButtonAbout.addEventListener('click', () => {
   .catch(error => {
     console.error('Error updating value:', error);
   });
-});
+
+}
+

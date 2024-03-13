@@ -76,9 +76,9 @@
                                     <h1 id="businessNameh2MyListings" style="font-size: 60px;"></h1>
                                     <!-- <h1 style="font-size: 60px;">HBN Resource Partners Limited</h1> -->
                                     <textarea type="text" id="editInput" style="display: none; width: 600px; font-size: 40px; height: 100px; padding-left: 20px;" ></textarea>
-                                <button class="edit" id="editButtonh2"> <i class="fa fa-pencil" ></i></button>
+                                <button class="edit" id="editButtonh2" onclick="editButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
 
-                                <button id="saveButton" style="display: none;padding: 7px 20px;
+                                <button id="saveButton"  onclick="editButtontoSave()" style="display: none;padding: 7px 20px;
                                 background: #000;
                                 font-size: 14px;
                                 color: #ffc946;
@@ -103,7 +103,7 @@
                                 margin-top: 7px;
 
                                 ">
-                                <button class="edit" id="editButtonopen" style="margin-left: -3px;"> <i class="fa fa-pencil" ></i></button>
+                                <button class="edit" id="editButtonopen" style="margin-left: -3px;" onclick="openButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
                                 <button id="saveButtonopen"  style="display: none;padding: 7px 20px;
                                 background: #000;
                                 font-size: 14px;
@@ -112,7 +112,7 @@
                                 border-radius: 5px;
                                 border: none;
                                 margin-left: 20px;
-                                ">Save</button>
+                                "onclick="openButtontoSave()">Save</button>
                             </div>
                                 <div class="edith2">
                                 <div class="closed" id="timeToCloseMyListings"></div>
@@ -123,7 +123,7 @@
                                 border-top: none;
                                 border-bottom:1px solid #000;
                                  margin-top: 7px;">
-                                <button class="edit" id="editButtonclose"> <i class="fa fa-pencil" ></i></button>
+                                <button class="edit" id="editButtonclose" onclick="closeButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
                                <button id="saveButtonclose"
                               style="display: none;padding: 7px 20px;
                                background: #000;
@@ -134,7 +134,7 @@
                                border: none;
                                margin-left: 20px;
                               "
-                              >Save</button>
+                              onclick="closeButtontoSave()">Save</button>
                             </div>
                         </div>
                                 </div>
@@ -154,7 +154,7 @@
                        multiple
                        >
                         <div class="intro-share">
-                            <div class="image-preview" id="imagePreview"></div>
+                            <div class="image-preview2" id="imagePreview2"></div>
                             <div class="share-btn">
                                 <a class="popup"  onclick="document.getElementById('fileImage').click()"   id="upload-button">Upload Images</a>
                                 <a class="share"  onclick="">Proceed</a>
@@ -201,7 +201,7 @@
                             <div class="about-desc">
                                 <div class="edith2">
                                 <h4>About</h4>
-                                <button class="edit"  id="editButtonAbout" > <i class="fa fa-pencil" ></i></button>
+                                <button class="edit"  id="editButtonAbout" onclick="aboutButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
                             </div>
                                 <p id="aboutTextMyListings" style="width: 90%; " ></p>
 
@@ -216,7 +216,7 @@
                               border: none;
 
                               margin-top: 15px;
-                             ">Save</button>
+                             "onclick="aboutButtontoSave()">Save</button>
                             </div>
 
                             <div class="about-video">
@@ -252,8 +252,7 @@
 
                                     <span id="contactInfoAddressMyListings" style="color: black; font-size: 17px;"></span>
                                     <input type="text" id="editInputAddress"
-                                    style="
-                                    display: none;
+                                    style="display: none;
                                     border-left:none;
                                     border-right:none;
                                     border-top: none;
@@ -261,7 +260,7 @@
                                     ;
 
                                   ">
-                                    <button class="edit" id="editButtonAddress"> <i class="fa fa-pencil" ></i></button>
+                                    <button class="edit" id="editButtonAddress" onclick="addressButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
 
                                     <button id="saveButtonAddress"
                                     style="
@@ -275,7 +274,8 @@
                                     border: none;
                                     margin-left: 20px;
                                     margin-top: 7px;
-                                   ">Save</button>
+                                   "
+                                   onclick="addressButtontoSave()">Save</button>
                                 </div>
                                     <ul>
                                         <div class="edith2" >
@@ -289,7 +289,7 @@
                                          padding-bottom: 5px;"
 
                                         >
-                                        <button class="edit" id="editButtonNumber"> <i class="fa fa-pencil" ></i></button>
+                                        <button class="edit" id="editButtonNumber"onclick="numberButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
 
                                         <button id="saveButtonNumber" style="display: none;padding: 7px 20px;
                                         background: #000;
@@ -300,7 +300,8 @@
                                         border: none;
                                         margin-left: 20px;
 
-                                       ">Save</button>
+                                       "
+                                       onclick="numberButtontoSave()">Save</button>
                                     </div>
                                     <div class="edith2">
                                         <li id="contactInfoemailMyListings" style="font-size:17px;"></li>
@@ -311,7 +312,7 @@
                                         border-bottom:1px solid #000;
                                         padding-bottom: 5px;
                                            margin-top: 7px;">
-                                        <button class="edit" id="editButtonemail"> <i class="fa fa-pencil" ></i></button>
+                                        <button class="edit" id="editButtonemail"onclick="emailButtontoUpdate()"> <i class="fa fa-pencil" ></i></button>
 
                                         <button id="saveButtonemail" style="display: none;padding: 7px 20px;
                                         background: #000;
@@ -321,8 +322,8 @@
                                         border-radius: 5px;
                                         border: none;
                                         margin-left: 20px;
-
-                                       "style="display: none;">Save</button>
+                                       "style="display: none;"
+                                       onclick="emailButtontoSave()">Save</button>
                                     </div>
                                     </ul>
                                     <h6 style="margin-top: 50px; margin-bottom: 30px;">The Ummah can find you too,<br> list your business below;</h6

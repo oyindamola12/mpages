@@ -4,8 +4,6 @@ function uuidv4() {
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(5)
   );
 }
-
-console.log(uuidv4());
 let map;
 let map2;
 let  geocoder;
@@ -226,8 +224,6 @@ myListings.href = "no-listings.html"
 
  let inputed=JSON.parse(localStorage.getItem('searchData'));
 
-
-
    var params = new URLSearchParams(window.location.search);
 
   //  var userBusiness = JSON.parse(localStorage.getItem('userBusiness'));
@@ -429,9 +425,6 @@ function initMap2() {
         });
     }
 
-
-
-
     function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
@@ -459,7 +452,6 @@ function navigateToUserProfile(businessId) {
         // Redirect to the user profile page with the user ID as a query parameter
         window.location.href = `/single-listing.html?id=${businessId}`;
 }
-
 
 //  function addMarkers2(coordinates) {
 //         coordinates.forEach(coord => {
@@ -681,7 +673,6 @@ return false;
       }
 }
 
-
   function previewImages(event) {
     const files = event.target.files;
 const imagePreview = document.getElementById('imagePreview');
@@ -725,7 +716,6 @@ const imagePreview = document.getElementById('imagePreview');
   //      imagePreview.appendChild(div);
   //     }
 }
-
 
 //  function createDeleteHandler(index, files, callback) {
 //       return function(event) {

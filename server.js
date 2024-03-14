@@ -711,6 +711,36 @@ try {
   }
 });
 
+app.post('/getMyDonations', async (req, res) => {
+    // const userUid =req.query.userUid;
+ const businessId = req.body.listingId;
+   const businessOwnerId = req.body.ownerId;
+try {
+    // Get businesses from Firestore where industry is equal to "restaurant"
+    const snapshot = await  db.collection('Users').doc( businessOwnerId).collection('BusinessLists').doc(businessId).collection('Donations').get();
+
+    // Extract data from the snapshot
+    const businesses = [];
+    snapshot.forEach(doc => {
+      businesses.push({
+      id: doc.id,
+      data: doc.data()
+});;
+
+    });
+
+    // Send JSON response to the HTML frontend
+
+    res.json(businesses );
+
+
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.post('/getSingleProfile', async (req, res) => {
     // const userUid =req.query.userUid;
  const businessId = req.body.listingId;
@@ -1337,15 +1367,15 @@ const email = req.body.email;
      const ownerId = req.body.ownerId;
 const documentId = req.body.documentId;
 
-const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId );
-await businessDb.set({
+const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('Donations');
+await businessDb.add({
 amount:amount,
 email:email,
 timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
 
-const businessDb2 =  db.collection('BusinessLists').doc(documentId );
-await businessDb2.set({
+const businessDb2 =  db.collection('BusinessLists').doc(documentId ).collection('Donations');
+await businessDb2.add({
 amount:amount,
 email:email,
 timestamp: admin.firestore.FieldValue.serverTimestamp()
@@ -1358,15 +1388,15 @@ const email = req.body.email;
      const ownerId = req.body.ownerId;
 const documentId = req.body.documentId;
 
-const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId );
-await businessDb.set({
+const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('Donations');
+await businessDb.add({
 amount:amount,
 email:email,
 timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
 
-const businessDb2 =  db.collection('BusinessLists').doc(documentId );
-await businessDb2.set({
+const businessDb2 =  db.collection('BusinessLists').doc(documentId ).collection('Donations');
+await businessDb2.add({
 amount:amount,
 email:email,
 timestamp: admin.firestore.FieldValue.serverTimestamp()

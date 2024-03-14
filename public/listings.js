@@ -101,8 +101,6 @@ loading.style.display = 'none';
 
    const arrangeitems= document.createElement('a');
 
-
-
       arrangeitems.classList.add('arrange-items');
 
       const arrangepic= document.createElement('div');

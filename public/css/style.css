@@ -3482,6 +3482,10 @@ a:link, a:visited {
 		justify-content: center;
 		align-items: center;
 		}
+
+		#myElement{
+			height: 300px;
+		}
 }
 
 /* Small Mobile : 320px */

@@ -282,7 +282,7 @@ nextbtn.style.display = 'none';
 if(items.length === 0){
 noloading.style.display = 'block';
 }
-  loading.style.display = 'none';
+loading.style.display = 'none';
 
  // Populate the list in the HTML with specified tags
 //    var industry = document.querySelector('.select-styled2').textContent;

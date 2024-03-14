@@ -128,7 +128,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
       fetch('https://www.mpageshub.com/fourthFrequentIndustry')
     .then(response => response.json())
     .then(items=> {
-console.log(items)
+
 let forthhigestListing= document.getElementById('forthhigestListing');
 let forthhigestListingLength = document.getElementById('forthhigestListingLength');
 let viewAll =document.getElementById('viewAll4');

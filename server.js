@@ -1359,6 +1359,54 @@ app.post('/businessSearch2', async (req, res) => {
   }
 });
 
+ app.post('/api/businessSearch3', async (req, res) => {
+  try {
+
+    const selectedIndustry = req.body.industry;
+    const latitude = parseFloat(req.body.lat); // Convert latitude to float
+    const longitude = parseFloat(req.body.lng); // Convert longitude to float
+
+    // Query Firestore collection based on selected industry
+    const querySnapshot = await db.collection('BusinessLists')
+      .where('industry', '==', selectedIndustry)
+      .get();
+
+    // Initialize an array to store filtered data
+    const businesses = [];
+
+    // Iterate through query snapshot
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+
+      // if ( data.images &&  data.images.length > 0) {
+      //   imageUrl =  data.images[0];
+      // }
+      // // Filter data based on location (latitude and longitude)
+      // Calculate distance between location and selected coordinates
+      const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
+
+      // You can define your own distance threshold for filtering
+      const maxDistance = 10; // Example: 10 kilometers
+
+      // If distance is within the threshold, include the data
+      if (distance <= maxDistance) {
+       businesses.push({
+      id: doc.id,
+      data: doc.data(),
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+
+});
+      }
+    });
+
+    // Send filtered data as response
+    res.json(businesses);
+  } catch (error) {
+    console.error('Error searching:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 app.post('/addDonations',async (req, res)=> {
 
 

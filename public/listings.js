@@ -275,9 +275,6 @@ loading.style.display = 'none';
   }
 
 
-
-
-
 function noparams(){
 
 appendDiv4.style.display='none'
@@ -386,6 +383,7 @@ if (!window.location.search) {
     // Parameters found in the URL
   toggleData();
 }
+
  function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
@@ -561,7 +559,6 @@ myListings.href = "no-listings.html"
 
 
 const baseUrl = window.location.href.split('?')[0];
-
 // Replace the current URL with the updated one
 window.history.replaceState(null, null, baseUrl);
 
@@ -574,6 +571,138 @@ appendDiv2.style.display='none'
 }
 
 
+ async function fetchDatas( ) {
+ var industry= document.getElementById('searchIndustryInput').textContent;
+ var location = document.getElementById('inputSuburb').value;
+
+if( industry === "Choose Industry" || location === null){
+alert('Choose Industry a category and enter a location')
+}else{
+  var geocoder = new google.maps.Geocoder();
+ geocoder.geocode({ 'address':location }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                 const latitude = results[0].geometry.location.lat();
+                   const longitude = results[0].geometry.location.lng();
+                   localStorage.setItem('lat', JSON.stringify(latitude));
+                   localStorage.setItem('lng', JSON.stringify(longitude));
+                   localStorage.setItem('industry', industry);
+getFiltered(latitude,longitude,industry)
+
+     appendDiv4.style.display='block'
+    appendDiv.style.display='none'
+
+appendDiv3.style.display='none'
+appendDiv2.style.display='none'
+                }
+})
+}
+
+
+}
+
+
+function getFiltered(latitude,longitude,industry){
+
+   fetch('/api/businessSearch3', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ industry:industry,lat:latitude ,lng:longitude})
+  })
+  .then(response => response.json())
+  .then(items => {
+if(items&&items.length <=12){
+nextbtn.style.display = 'none';
+}
+if(items.length === 0){
+noloading.style.display = 'block';
+}
+loading.style.display = 'none';
+
+
+   for (let i = 0; i < items.length; i++) {
+
+      const business = items[i];
+
+// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+// console.log( filteredArray)
+
+   const arrangeitems= document.createElement('a');
+
+      arrangeitems.classList.add('arrange-items');
+
+      const arrangepic= document.createElement('div');
+      arrangepic.classList.add('arrange-pic');
+
+        const arrangetext= document.createElement('div');
+       arrangetext.classList.add('arrange-text');
+
+      //  const rating= document.createElement('div');
+      //  rating.textContent = business.data.rating;
+      //   arrangepic.appendChild(rating);
+      //   rating.classList.add('rating');
+
+       const tictext= document.createElement('div');
+       tictext.textContent = business.data.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
+
+
+       const imgTag = document.createElement('img');
+      imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png' // Assuming you have an 'imageUrl' property in your data
+        imgTag.alt = 'Image'; // Provide alternative text for accessibility
+        arrangepic.appendChild(imgTag);
+        imgTag.classList.add('imgs');
+
+
+        // Create and append h5 tag for the title
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.data.businessName;
+        arrangetext.appendChild(titleTag);
+
+        // Create and append span tag for the address
+        const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+
+        // Create and append p tag for the subtitle
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+        arrangetext.appendChild(subtitleTag);
+
+        // Create and append button tag for the opening time
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
+        arrangeitems.appendChild(arrangepic)
+        arrangeitems.appendChild(arrangetext)
+        appendDiv4.appendChild(arrangeitems)
+
+        arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+        localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
+
+
+   navigateToUserProfile(business.data.userid,business.data.listingId);
+
+
+      });
+
+
+  }
+
+  })
+  .catch(error => {
+    console.error('Error updating value:', error);
+  });
+
+}
 
 function on() {
   document.getElementById("overlay").style.display = "block";

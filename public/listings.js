@@ -1,6 +1,6 @@
 let map;
 let map2;
-let appendDiv = document.querySelector('.col-lg-3');
+let appendDiv = document.getElementById('col-lg-4');
 let appendDiv2 = document.querySelector('.col-lg-4');
 let appendDiv3 = document.querySelector('.col-lg-5');
 let appendDiv4 = document.querySelector('.col-lg-6');

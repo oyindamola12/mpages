@@ -775,10 +775,10 @@ const baseUrl = window.location.href.split('?')[0];
 
 // Replace the current URL with the updated one
 window.history.replaceState(null, null, baseUrl);
-if(items.length === 0){
-noloading.style.display = 'block';
-}
-loading.style.display = 'none';
+// if(items.length === 0){
+// noloading.style.display = 'block';
+// }
+// loading.style.display = 'none';
 
 appendDiv.innerHTML = ''
 appendDiv3.innerHTML=''

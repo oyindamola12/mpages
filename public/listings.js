@@ -361,7 +361,7 @@ const images = JSON.stringify(business.data.Images);
         navigateToUserProfile(business.data.userid,business.data.listingId);
 
       });
- console.log(items)
+
   }
     })
     .catch(error => {

@@ -69,10 +69,11 @@ function navigateToUserProfile(businessId, businesslistingId) {
  function toggleData(){
 
 if (industrySearch&& latSearch&&lngSearch  ){
-  appendDiv4.innerHTML=''
-appendDiv3.innerHTML=''
+appendDiv4.style.display='none'
+appendDiv3.style.display='none'
+appendDiv2.style.display='block'
+appendDiv.style.display='none'
 
-appendDiv.innerHTML=''
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
@@ -82,7 +83,6 @@ appendDiv.innerHTML=''
   })
   .then(response => response.json())
   .then(items => {
-
 if(items&&items.length <=12){
 nextbtn.style.display = 'none';
 }
@@ -178,10 +178,10 @@ loading.style.display = 'none';
 
 if ( industryInputview ){
 
-appendDiv.innerHTML=''
-appendDiv4.innerHTML=''
-
-appendDiv2.innerHTML=''
+appendDiv4.style.display='none'
+appendDiv3.style.display='block'
+appendDiv2.style.display='none'
+appendDiv.style.display='none'
  fetch('https://www.mpageshub.com/businessSearch2', {
     method: 'POST',
     headers: {
@@ -280,7 +280,10 @@ loading.style.display = 'none';
 
 function noparams(){
 
-
+appendDiv4.style.display='none'
+appendDiv3.style.display='none'
+appendDiv2.style.display='none'
+appendDiv.style.display='block'
     fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
@@ -780,9 +783,10 @@ window.history.replaceState(null, null, baseUrl);
 // }
 // loading.style.display = 'none';
 
-appendDiv.innerHTML = ''
-appendDiv3.innerHTML=''
-appendDiv2.innerHTML=''
+appendDiv4.style.display='none'
+appendDiv3.style.display='none'
+appendDiv2.style.display='none'
+appendDiv.style.display='block'
 }
 
 

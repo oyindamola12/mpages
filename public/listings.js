@@ -69,6 +69,10 @@ function navigateToUserProfile(businessId, businesslistingId) {
  function toggleData(){
 
 if (industrySearch&& latSearch&&lngSearch  ){
+  appendDiv4.innerHTML=''
+appendDiv3.innerHTML=''
+
+appendDiv.innerHTML=''
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
@@ -86,10 +90,7 @@ if(items.length === 0){
 noloading.style.display = 'block';
 }
 loading.style.display = 'none';
-appendDiv4.innerHTML=''
-appendDiv3.innerHTML=''
 
-appendDiv.innerHTML=''
 
    for (let i = 0; i < items.length; i++) {
 
@@ -176,6 +177,11 @@ appendDiv.innerHTML=''
   }
 
 if ( industryInputview ){
+
+appendDiv.innerHTML=''
+appendDiv4.innerHTML=''
+
+appendDiv2.innerHTML=''
  fetch('https://www.mpageshub.com/businessSearch2', {
     method: 'POST',
     headers: {
@@ -193,10 +199,6 @@ noloading.style.display = 'block';
 }
 loading.style.display = 'none';
 
-appendDiv.innerHTML=''
-appendDiv4.innerHTML=''
-
-appendDiv2.innerHTML=''
 
    for (let i = 0; i < items.length; i++) {
 

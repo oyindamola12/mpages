@@ -252,7 +252,7 @@ fetch('https://www.mpageshub.com/getMostSearched')
 //  }
 
 
-function initMap() {
+async function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: {
       lat:  6.5227,

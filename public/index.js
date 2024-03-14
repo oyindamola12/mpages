@@ -6,7 +6,7 @@ var signedupAlready=  localStorage.getItem('signedup');
 let map;
 let geocoder;
 
-function initMap() {
+async function initMap() {
   var coordinates = {
     lat: 6.5227,
     lng:3.6218

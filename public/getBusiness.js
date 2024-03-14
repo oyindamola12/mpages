@@ -207,7 +207,7 @@ myListings.href = "no-listings.html"
      }
 
 
-function initMap() {
+async function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: {
       lat: 0,

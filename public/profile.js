@@ -478,7 +478,7 @@ function toggleEditclosetime() {
   function previewImages(event) {
     const files = event.target.files;
 
-
+console.log(files)
     const imagePreview = document.getElementById('imagePreview2');
 
 

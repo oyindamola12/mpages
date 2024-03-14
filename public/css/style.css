@@ -3299,9 +3299,7 @@ a:link, a:visited {
 		font-family: 'Ubuntu';
 		font-size: 30px;
 	}
-	.mobile-menu{
-		margin-left: -100px;
-	}
+
 	.categories-left,
 	.categories-right {
 		width: 100%;
@@ -3412,7 +3410,7 @@ a:link, a:visited {
 	}
 	.filter-search:after {
 		position: absolute;
-		margin-left:20px;
+		margin-left: 30px;
 		top: 0;
 		width: 90%;
 		height: 90%;
@@ -3471,7 +3469,6 @@ a:link, a:visited {
 		overflow-y: auto;
 
 	}
-
 	#container{
 		display: flex;
 		flex-direction: column;

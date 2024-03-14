@@ -17,7 +17,7 @@ const itemsPerPage = 12;
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
 //  loading.style.display = 'block';
-
+var signedupAlready=  localStorage.getItem('signedup');
 fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {

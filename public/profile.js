@@ -137,7 +137,7 @@ let listingId=selectedBusinessData.listingId
 //     .catch(error => {
 //       console.log('Error fetching items:', error);
 //     });
-
+var signedupAlready=  localStorage.getItem('signedup');
  function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -222,6 +222,12 @@ function initMap2(userData) {
 
     }
 
+if (signedupAlready) {
+
+myListings.href = "my-listings.html"
+   } else {
+myListings.href = "no-listings.html"
+    }
 
 
  function shareOnFacebook() {
@@ -490,10 +496,6 @@ function toggleEditclosetime() {
         reader.readAsDataURL(file);
 
 
-  //       const deleteBtn = document.createElement('button');
-  //       deleteBtn.textContent = 'x';
-  //         deleteBtn.type = 'button';
-  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
     }
 
 

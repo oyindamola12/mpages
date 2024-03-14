@@ -2,7 +2,7 @@
 //  let businessName = document.getElementById('businessName');
 let searchBtn = document.getElementById('searchListing')
 let address = document.getElementById('businessAddress');
-
+var signedupAlready=  localStorage.getItem('signedup');
 let map;
 let geocoder;
 
@@ -57,85 +57,12 @@ function getFile(e){
   fileName=fileItem.name;
 
 }
+if (signedupAlready) {
 
-//Get values
-
-
-// function getBusiness(){
-
-// fetch('https://www.mpageshub.com/getBusinesses')
-//     .then(response => response.json())
-//     .then(items=> {
-//       // Populate the list in the HTML with specified tags
-//       items.forEach( business => {
-//       const arrangeitems= document.createElement('a');
-//       arrangeitems.href='single-listing.html'
-//       arrangeitems.classList.add('arrange-items');
-
-//        const arrangepic= document.createElement('div');
-//        arrangepic.classList.add('arrange-pic');
-
-//         const arrangetext= document.createElement('div');
-//        arrangetext.classList.add('arrange-text');
-
-//        const rating= document.createElement('div');
-//        rating.textContent = business.data.rating;
-//         arrangepic.appendChild(rating);
-//         rating.classList.add('rating');
-
-//        const tictext= document.createElement('div');
-//        tictext.textContent = business.data.industry;
-//         arrangepic.appendChild(tictext);
-//         tictext.classList.add('tic-text');
-
-//         const imgTag = document.createElement('img');
-//         imgTag.src =  business.data.fileImage; // Assuming you have an 'imageUrl' property in your data
-//         imgTag.alt = 'Image'; // Provide alternative text for accessibility
-//          arrangepic.appendChild(imgTag);
-//           rating.classList.add('rating');
-
-
-//         // Create and append h5 tag for the title
-//         const titleTag = document.createElement('h5');
-//         titleTag.textContent = business.data.businessName;
-//         arrangetext.appendChild(titleTag);
-
-//         // Create and append span tag for the address
-//         const addressTag = document.createElement('span');
-//         addressTag.textContent = business.data.businessAddress;
-//        arrangetext.appendChild(addressTag);
-
-//         // Create and append p tag for the subtitle
-//         const subtitleTag = document.createElement('p');
-//         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-//         arrangetext.appendChild(subtitleTag);
-
-//         // Create and append button tag for the opening time
-//         const openingTimeTag = document.createElement('div');
-//         openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-//         openingTimeTag.classList.add('open');
-//         arrangetext.appendChild(openingTimeTag);
-//        arrangeitems.appendChild(arrangepic)
-//          arrangeitems.appendChild(arrangetext)
-//          appendDiv.appendChild(arrangeitems)
-//          arrangeitems.addEventListener('click', () => {
-//         localStorage.setItem('selectedUserId', business.id);
-//         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-//         navigateToUserProfile(business);
-//         });
-//       });
-//       console.log(items)
-//     })
-//     .catch(error => {
-//       console.log('Error fetching items:', error);
-//     });
-// }
-// getBusiness()
-
-
-
-//
-
+myListings.href = "my-listings.html"
+   } else {
+myListings.href = "no-listings.html"
+    }
 
  function getCoordinates() {
         const addressInput = document.getElementById('businessAddress');

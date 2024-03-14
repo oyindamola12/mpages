@@ -17,142 +17,9 @@ const itemsPerPage = 12;
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
 //  loading.style.display = 'block';
+var signedupAlready=  localStorage.getItem('signedup');
 
 
-
-//  fetch('https://www.mpageshub.com/businessSearch', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ industry:inputIndustry,lat:lat ,lng:lng})
-//   })
-//   .then(response => response.json())
-//   .then(items => {
-//      loading.style.display = 'none';
-
-//    for (let i = 0; i < items.length; i++) {
-
-//       const business = items[i];
-
-// // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
-// // console.log( filteredArray)
-
-//    const arrangeitems= document.createElement('a');
-//    arrangeitems.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&image1=${business.data.image1}&image2=${business.data.image2}&image3=${business.data.image3}&image4=${business.data.image4}&image5=${business.data.image5}&image6=${business.data.image6}&image7=${business.data.image7}&image8=${business.data.image8}&image9=${business.data.image9}&image10=${business.data.image10}`
-
-//       arrangeitems.classList.add('arrange-items');
-
-//       const arrangepic= document.createElement('div');
-//       arrangepic.classList.add('arrange-pic');
-
-//         const arrangetext= document.createElement('div');
-//        arrangetext.classList.add('arrange-text');
-
-//       //  const rating= document.createElement('div');
-//       //  rating.textContent = business.data.rating;
-//       //   arrangepic.appendChild(rating);
-//       //   rating.classList.add('rating');
-
-//        const tictext= document.createElement('div');
-//        tictext.textContent = business.data.industry;
-//         arrangepic.appendChild(tictext);
-//         tictext.classList.add('tic-text');
-
-//         const imgTag = document.createElement('img');
-       // imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png' // Assuming you have an 'imageUrl' property in your data
-//         imgTag.alt = 'Image'; // Provide alternative text for accessibility
-//         arrangepic.appendChild(imgTag);
-//         imgTag.classList.add('imgs');
-
-
-//         // Create and append h5 tag for the title
-//         const titleTag = document.createElement('h5');
-//         titleTag.textContent = business.data.businessName;
-//         arrangetext.appendChild(titleTag);
-
-//         // Create and append span tag for the address
-//         const addressTag = document.createElement('span');
-//         addressTag.textContent = business.data.businessAddress;
-//        arrangetext.appendChild(addressTag);
-
-//         // Create and append p tag for the subtitle
-//         const subtitleTag = document.createElement('p');
-//         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-//         arrangetext.appendChild(subtitleTag);
-
-//         // Create and append button tag for the opening time
-//         const openingTimeTag = document.createElement('div');
-//         openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-//         openingTimeTag.classList.add('open');
-//         arrangetext.appendChild(openingTimeTag);
-//         arrangeitems.appendChild(arrangepic)
-//         arrangeitems.appendChild(arrangetext)
-//         appendDiv.appendChild(arrangeitems)
-
-//         arrangeitems.addEventListener('click', () => {
-//         localStorage.removeItem('selectedUserId')
-//         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-//         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-//         localStorage.setItem('selectedUserId', business.id);
-//  window.location.href = `single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}`;
-//         navigateToUserProfile(business.id);
-
-//       });
-
-//   }
-
-//   })
-//   .catch(error => {
-//     console.error('Error updating value:', error);
-//   });
-//   fetch(`https://www.mpageshub.com/businessData?storedUserId=${storedUserId}`)
-//     .then(response => response.json())
-//     .then(items=> {
-
-//    const about = document.getElementById('aboutText');
-//         const address = document.getElementById('contactInfoAddress');
-//         const email = document.getElementById('contactInfoemail');
-//         const rating2 = document.getElementById('rating2');
-//         const businessNameh2= document.getElementById('businessNameh2');
-//         const no = document.getElementById('contactInfoNumber');
-//         const timeToOpen  = document.getElementById('timeToOpen');
-//         const timeToClose = document.getElementById('timeToClose');
-//         const image = document.getElementById('vidImage');
-//         const element = document.getElementById('myElement');
-//         // profileImage.src = storedUserData.photoURL || 'placeholder-image.jpg';
-// const imageUrl =  items.image1;
-
-// element.setAttribute('data-setbg', imageUrl);
-
-// // Set the background image using inline CSS
-// element.style.backgroundImage = `url(${imageUrl})`;
-//        rating2.textContent = businessInfo2.rating;
-//         businessNameh2.textContent = items.businessName;
-//         timeToOpen.textContent =  items.openingtime;
-//          timeToClose.textContent =  items.closingtime;
-//          email.textContent =  items.email;
-//          no.textContent =  items.phoneNo;
-//          address.textContent = items.businessAddress;
-//          about.textContent =  items.about;
-//          let imageSrc= items.image2
-
-//          image.src =imageSrc
-
-//         //  let latitude= items.latitude
-//         //  let longitude= items.longitude
-
-//           const location = new google.maps.LatLng( items.latitude,  items.longitude);
-//             const marker = new google.maps.Marker({
-//                 position: location,
-//                 map: map2,
-//                 title:storedUserData.businessAddress
-//             });
-
-//     })
-//     .catch(error => {
-//       console.log('Error fetching items:', error);
-//     });
 
 fetch('https://www.mpageshub.com/getMostSearched')
     .then(response => response.json())
@@ -169,25 +36,7 @@ fetch('https://www.mpageshub.com/getMostSearched')
     });
 
 
-// function navigateToUserProfile(businessId) {
-//         // Redirect to the user profile page with the user ID as a query parameter
-//         window.location.href = `/single-listing.html?id=${businessId}`;
-// }
 
-//  function initMap() {
-//   var coordinates = {
-//     lat: 6.5227,
-//     lng:3.6218
-//   };
-//   geocoder = new google.maps.Geocoder();
-//  map = new google.maps.Map(document.getElementById('map'), {
-//     zoom: 5,
-//     center: coordinates,
-//     scrollwheel: false
-//   });
-
-//  fetchCoordinates();
-//  }
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: {
@@ -301,13 +150,14 @@ function initMap() {
             });
         });
     }
+if (signedupAlready) {
 
-
-if (userUid) {
-myListings.href = "myListings.html"
+myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"
     }
+
+
 
 
   function initMap2() {

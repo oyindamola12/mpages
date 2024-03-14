@@ -1,7 +1,9 @@
 let map;
 let map2;
-let appendDiv = document.getElementById('col-lg-4');
+let appendDiv = document.getElementById('col-lg-3');
+let appendDiv2 = document.getElementById('col-lg-4');
 let appendDiv3 = document.getElementById('col-lg-5');
+let appendDiv4 = document.getElementById('col-lg-6');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
 let inputIndustry =localStorage.getItem('industry');
@@ -22,6 +24,7 @@ var userUid =localStorage.getItem('userId');
 const itemsPerPage = 12;
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
+ const noloading = document.getElementById('noloading');
 //  loading.style.display = 'block';
 var getBusinessesData = true;
 var searchwithin=false
@@ -29,6 +32,33 @@ var searchwithin=false
 var nextbtn= document.getElementById('next-btn');
 console.log(userUid)
 
+ function getUrlParameter(name) {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+var industrySearch = getUrlParameter('industryInput');
+var latSearch = getUrlParameter('lat');
+var lngSearch = getUrlParameter('lng');
+
+function getUrlParameter2(name) {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+
+function getUrlParameter3(name) {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+var industryInputview = getUrlParameter3('industryInputview');
 
 function navigateToUserProfile(businessId, businesslistingId) {
         // Redirect to the user profile page with the user ID as a query parameter
@@ -37,16 +67,222 @@ function navigateToUserProfile(businessId, businesslistingId) {
 }
 
  function toggleData(){
-  if (getBusinessesData === true && searchwithin ===false){
- fetch('https://www.mpageshub.com/getBusinesses')
+
+if (industrySearch&& latSearch&&lngSearch  ){
+ fetch('https://www.mpageshub.com/businessSearch', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch})
+  })
+  .then(response => response.json())
+  .then(items => {
+
+if(items&&items.length <=12){
+nextbtn.style.display = 'none';
+}
+if(items.length === 0){
+noloading.style.display = 'block';
+}
+loading.style.display = 'none';
+appendDiv4.innerHTML=''
+appendDiv3.innerHTML=''
+
+appendDiv.innerHTML=''
+
+   for (let i = 0; i < items.length; i++) {
+
+      const business = items[i];
+
+// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+// console.log( filteredArray)
+
+   const arrangeitems= document.createElement('a');
+
+
+
+      arrangeitems.classList.add('arrange-items');
+
+      const arrangepic= document.createElement('div');
+      arrangepic.classList.add('arrange-pic');
+
+        const arrangetext= document.createElement('div');
+       arrangetext.classList.add('arrange-text');
+
+      //  const rating= document.createElement('div');
+      //  rating.textContent = business.data.rating;
+      //   arrangepic.appendChild(rating);
+      //   rating.classList.add('rating');
+
+       const tictext= document.createElement('div');
+       tictext.textContent = business.data.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
+
+
+       const imgTag = document.createElement('img');
+      imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png' // Assuming you have an 'imageUrl' property in your data
+        imgTag.alt = 'Image'; // Provide alternative text for accessibility
+        arrangepic.appendChild(imgTag);
+        imgTag.classList.add('imgs');
+
+
+        // Create and append h5 tag for the title
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.data.businessName;
+        arrangetext.appendChild(titleTag);
+
+        // Create and append span tag for the address
+        const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+
+        // Create and append p tag for the subtitle
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+        arrangetext.appendChild(subtitleTag);
+
+        // Create and append button tag for the opening time
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
+        arrangeitems.appendChild(arrangepic)
+        arrangeitems.appendChild(arrangetext)
+        appendDiv2.appendChild(arrangeitems)
+
+        arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+        localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
+
+
+   navigateToUserProfile(business.data.userid,business.data.listingId);
+
+
+      });
+
+
+  }
+
+  })
+  .catch(error => {
+    console.error('Error updating value:', error);
+  });
+  }
+
+if ( industryInputview ){
+ fetch('https://www.mpageshub.com/businessSearch2', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ industry:industryInputview })
+  })
+  .then(response => response.json())
+  .then(items => {
+if(items&&items.length <=12){
+nextbtn.style.display = 'none';
+}
+if(items.length === 0){
+noloading.style.display = 'block';
+}
+loading.style.display = 'none';
+
+appendDiv.innerHTML=''
+appendDiv4.innerHTML=''
+
+appendDiv2.innerHTML=''
+
+   for (let i = 0; i < items.length; i++) {
+
+      const business = items[i];
+
+// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+// console.log( filteredArray)
+
+   const arrangeitems= document.createElement('a');
+
+      arrangeitems.classList.add('arrange-items');
+
+      const arrangepic= document.createElement('div');
+      arrangepic.classList.add('arrange-pic');
+
+        const arrangetext= document.createElement('div');
+       arrangetext.classList.add('arrange-text');
+
+       const tictext= document.createElement('div');
+       tictext.textContent = business.data.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
+
+        const imgTag = document.createElement('img');
+        imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png'// Assuming you have an 'imageUrl' property in your data
+        imgTag.alt = 'Image'; // Provide alternative text for accessibility
+        arrangepic.appendChild(imgTag);
+        imgTag.classList.add('imgs');
+
+
+        // Create and append h5 tag for the title
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.data.businessName;
+        arrangetext.appendChild(titleTag);
+
+        // Create and append span tag for the address
+        const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+
+        // Create and append p tag for the subtitle
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+        arrangetext.appendChild(subtitleTag);
+
+        // Create and append button tag for the opening time
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
+        arrangeitems.appendChild(arrangepic)
+        arrangeitems.appendChild(arrangetext)
+        appendDiv3.appendChild(arrangeitems)
+
+        arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+        localStorage.setItem('selectedUserId', business.id);
+        localStorage.setItem('listingId', business.data.listingId);
+        localStorage.setItem('owner', business.data.userid);
+        navigateToUserProfile(business.data.userid,business.data.listingId);
+
+      });
+
+  }
+
+  })
+  .catch(error => {
+    console.error('Error updating value:', error);
+  });
+  }
+  else{
+    fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
 if(items&&items.length <=12){
 nextbtn.style.display = 'none';
 }
+
+if(items.length === 0){
+noloading.style.display = 'block';
+}
   loading.style.display = 'none';
 
-      // Populate the list in the HTML with specified tags
+ // Populate the list in the HTML with specified tags
 //    var industry = document.querySelector('.select-styled2').textContent;
     for (let i = 0; i < items.length; i++) {
 
@@ -61,16 +297,6 @@ const images = JSON.stringify(business.data.Images);
 
    const arrangeitems= document.createElement('a');
 
- if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
 
       arrangeitems.classList.add('arrange-items');
 
@@ -130,18 +356,6 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('owner', business.data.userid);
 
 
-
- if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
-window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
         navigateToUserProfile(business.data.userid,business.data.listingId);
 
       });
@@ -151,311 +365,11 @@ window.location.href=`single-listing.html?businessName=${business.data.businessN
     .catch(error => {
       console.log('Error fetching items:', error);
     });
-
-  }
-
-if (getBusinessesData === false&&searchwithin ===false &&inputIndustry&&latitude&&longitude  ){
- fetch('https://www.mpageshub.com/businessSearch', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ industry:inputIndustry,lat:latitude ,lng:longitude})
-  })
-  .then(response => response.json())
-  .then(items => {
-
-if(items&&items.length <=12){
-nextbtn.style.display = 'none';
-}
-     loading.style.display = 'none';
-
-
-   for (let i = 0; i < items.length; i++) {
-
-      const business = items[i];
-
-// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
-// console.log( filteredArray)
-
-   const arrangeitems= document.createElement('a');
-
-
- if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-      arrangeitems.classList.add('arrange-items');
-
-      const arrangepic= document.createElement('div');
-      arrangepic.classList.add('arrange-pic');
-
-        const arrangetext= document.createElement('div');
-       arrangetext.classList.add('arrange-text');
-
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
-
-       const tictext= document.createElement('div');
-       tictext.textContent = business.data.industry;
-        arrangepic.appendChild(tictext);
-        tictext.classList.add('tic-text');
-
-
-       const imgTag = document.createElement('img');
-      imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png' // Assuming you have an 'imageUrl' property in your data
-        imgTag.alt = 'Image'; // Provide alternative text for accessibility
-        arrangepic.appendChild(imgTag);
-        imgTag.classList.add('imgs');
-
-
-        // Create and append h5 tag for the title
-        const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
-        arrangetext.appendChild(titleTag);
-
-        // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
-
-        // Create and append p tag for the subtitle
-        const subtitleTag = document.createElement('p');
-        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-        arrangetext.appendChild(subtitleTag);
-
-        // Create and append button tag for the opening time
-        const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-        openingTimeTag.classList.add('open');
-        arrangetext.appendChild(openingTimeTag);
-        arrangeitems.appendChild(arrangepic)
-        arrangeitems.appendChild(arrangetext)
-        appendDiv.appendChild(arrangeitems)
-
-        arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        localStorage.setItem('selectedUserId', business.id);
-        localStorage.setItem('listingId', business.data.listingId);
-        localStorage.setItem('owner', business.data.userid);
-
- if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
- window.location.href  =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
- window.location.href  =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
- window.location.href  =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-   navigateToUserProfile(business.data.userid,business.data.listingId);
-
-
-      });
-
-
-  }
-
-  })
-  .catch(error => {
-    console.error('Error updating value:', error);
-  });
-  }
-
-if (getBusinessesData === false&&searchwithin ===false &&industryInputview ){
- fetch('https://www.mpageshub.com/businessSearch2', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ industry:industryInputview })
-  })
-  .then(response => response.json())
-  .then(items => {
-
-if(items&&items.length <=12){
-nextbtn.style.display = 'none';
-}
-     loading.style.display = 'none';
-
-
-   for (let i = 0; i < items.length; i++) {
-
-      const business = items[i];
-
-// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
-// console.log( filteredArray)
-
-   const arrangeitems= document.createElement('a');
-
- if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
-      arrangeitems.classList.add('arrange-items');
-
-      const arrangepic= document.createElement('div');
-      arrangepic.classList.add('arrange-pic');
-
-        const arrangetext= document.createElement('div');
-       arrangetext.classList.add('arrange-text');
-
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
-
-       const tictext= document.createElement('div');
-       tictext.textContent = business.data.industry;
-        arrangepic.appendChild(tictext);
-        tictext.classList.add('tic-text');
-
-        const imgTag = document.createElement('img');
-     imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png'// Assuming you have an 'imageUrl' property in your data
-        imgTag.alt = 'Image'; // Provide alternative text for accessibility
-        arrangepic.appendChild(imgTag);
-        imgTag.classList.add('imgs');
-
-
-        // Create and append h5 tag for the title
-        const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
-        arrangetext.appendChild(titleTag);
-
-        // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
-
-        // Create and append p tag for the subtitle
-        const subtitleTag = document.createElement('p');
-        subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
-        arrangetext.appendChild(subtitleTag);
-
-        // Create and append button tag for the opening time
-        const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
-        openingTimeTag.classList.add('open');
-        arrangetext.appendChild(openingTimeTag);
-        arrangeitems.appendChild(arrangepic)
-        arrangeitems.appendChild(arrangetext)
-        appendDiv.appendChild(arrangeitems)
-
-        arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-        localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-        localStorage.setItem('selectedUserId', business.id);
-   localStorage.setItem('listingId', business.data.listingId);
-           localStorage.setItem('owner', business.data.userid);
-
-     if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-  window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
-  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-   navigateToUserProfile(business.data.userid,business.data.listingId);
-
-
-      });
-
-  }
-
-  })
-  .catch(error => {
-    console.error('Error updating value:', error);
-  });
   }
 }
 
 toggleData();
 
-function getUrlParameter2(name) {
-            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
-
-function getUrlParameter3(name) {
-            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
-    // var industryInputview = getUrlParameter3('industryInputview');
-
-
-
-//  function getUrlParameter(name) {
-//             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-//             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-//             var results = regex.exec(location.search);
-//             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-//         };
-
-//         // Get the business data from the URL query parameter
-
-//     // Display business information
-// // Handle error (e.g., display an error message)
-// const images = getUrlParameter('images');
-
-// // Deserialize the serialized array back into an array
-// const myImages  = JSON.parse(images );
-
-//  var businessName = getUrlParameter('businessName');
-
-//   var longitude =JSON.parse( getUrlParameter('longitude'));
-
-//   var latitude =JSON.parse( getUrlParameter('latitude'));
-
-
-//   var aboutData= getUrlParameter('about');
-
-//   var phoneNo = getUrlParameter('phoneNo');
-
-//   var emailData = getUrlParameter('email');
-
-//   var openingtime = getUrlParameter('openingtime');
-//   var closingtime = getUrlParameter('closingtime');
-
-//  var listingsId = getUrlParameter('listingId');
-//  var businessOwnerIds= getUrlParameter('userid');
-//   var industrys = getUrlParameter('industry');
-
-//   var businessAddress = getUrlParameter('businessAddress');
-
-
-
-        // Load the Places Autocomplete service when the window is loaded
-        // window.onload = function() {
-        //     initAutocomplete();
-        // };
  function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
@@ -483,127 +397,13 @@ function getUrlParameter3(name) {
             });
         });
     }
-
-//     function initMap(coordinates) {
-//   // const map = new google.maps.Map(document.getElementById("map"), {
-//   //   center: {
-//   //     lat:  6.5227,
-//   //   lng:3.6218
-//   //   },
-//   //   zoom: 13,
-//   //   mapTypeControl: false,
-//   // });
-//   // // map.fitBounds({ // bounds of NSW
-//   // //     "south": -37.5052801,
-//   // //     "west": 140.9992793,
-//   // //     "north": -28.15702,
-//   // //     "east": 159.1054441
-//   // //   });
-//   // const input = document.getElementById('inputSuburb');
-//   // const options = {
-//   //   fields: ["address_components", "geometry", "types", "name"],
-//   //   strictBounds: true,
-//   //   // bounds : { // bounds of NSW
-//   //   //   "south": -37.5052801,
-//   //   //   "west": 140.9992793,
-//   //   //   "north": -28.15702,
-//   //   //   "east": 159.1054441
-//   //   // },
-//   //   // componentRestrictions: {
-//   //   //   country: 'ng'
-//   //   // },
-//   //   // types: ['locality', 'postal_code']
-//   // };
-
-//   // autocomplete = new google.maps.places.Autocomplete(input, options);
-
-//   // autocomplete.addListener('place_changed', function() {
-//   //   const place = autocomplete.getPlace();
-//   //   console.log(place);
-//   // });
-
-//   // const infowindow = new google.maps.InfoWindow();
-//   // const infowindowContent = document.getElementById("infowindow-content");
-
-//   // infowindow.setContent(infowindowContent);
-
-//   // const marker = new google.maps.Marker({
-//   //   map,
-//   //   anchorPoint: new google.maps.Point(0, -29),
-//   //   //  icon: 'public/img/placeholder.png'
-//   // });
-
-//   // autocomplete.addListener("place_changed", () => {
-//   //   infowindow.close();
-//   //   marker.setVisible(true);
-
-//   //   const place = autocomplete.getPlace();
-
-//   //   if (!place.geometry || !place.geometry.location) {
-//   //     // User entered the name of a Place that was not suggested and
-//   //     // pressed the Enter key, or the Place Details request failed.
-//   //     window.alert("No details available for input: '" + place.name + "'");
-//   //     return;
-//   //   }
-
-//   //   // If the place has a geometry, then present it on a map.
-//   //   if (place.geometry.viewport) {
-//   //     map.fitBounds(place.geometry.viewport);
-//   //   } else {
-//   //     map.setCenter(place.geometry.location);
-//   //     map.setZoom(17);
-//   //   }
-
-//   //   marker.setPosition(place.geometry.location);
-//   //   marker.setVisible(true);
-//   //   infowindowContent.children["place-name"].textContent = place.name;
-//   //   infowindowContent.children["place-address"].textContent =
-//   //     place.formatted_address;
-//   //   infowindow.open(map, marker);
-//   // });
-
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//       zoom: 10,
-//       center: new google.maps.LatLng(6.5227,3.6218),
-//       mapTypeId: google.maps.MapTypeId.ROADMAP
-//     });
-
-//     var infowindow = new google.maps.InfoWindow();
-
-//     var marker, i;
-//   coordinates.forEach(coord => {
-//             const location = new google.maps.LatLng(coord.data.latitude, coord.data.longitude);
-//             const marker = new google.maps.Marker({
-//                 position: location,
-//                 map: map,
-
-//                 title: coord.data.businessAddress
-//             });
-//                 marker.setMap(map2)
-//         });
-
-
-//     // for (i = 0; i < locations.length; i++) {
-//     //   marker = new google.maps.Marker({
-//     //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-//     //     map: map
-//     //   });
-
-//     //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
-//     //     return function() {
-//     //       infowindow.setContent(locations[i][0]);
-//     //       infowindow.open(map, marker);
-//     //     }
-//     //   })(marker, i));
-//     // }
-// }
-
 async function getUsers() {
       const response = await fetch('/getCoordinates');
       const users = await response.json();
       return users;
     }
- var mlwStyles =[
+
+     var mlwStyles =[
                 {
                     featureType: "poi",
                     elementType: "labels",
@@ -612,19 +412,29 @@ async function getUsers() {
                     ]
                 }
             ];
-   async function initMap() {
-      const users = await getUsers();
+
+async function initMap() {
+    const users = await getUsers();
 
       // Create a LatLngBounds object to store the bounds of all markers
       const bounds = new google.maps.LatLngBounds();
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: {
+      lat: 0,
+    lng:0
+    },
+    zoom: 2,
+    mapTypeControl: false,
+     styles: mlwStyles
+  });
 
-      const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2,
-        center: { lat: 0, lng: 0 } ,// Center of the map
-        styles: mlwStyles
-      });
+  const input = document.getElementById('inputSuburb');
+  const options = {
+    fields: ["address_components", "geometry", "types", "name"],
+    strictBounds: true,
 
-      users.forEach(user => {
+  };
+ users.forEach(user => {
         const position = { lat: user.latitude, lng: user.longitude };
         // Extend the bounds to include the marker's position
         bounds.extend(position);
@@ -637,8 +447,89 @@ async function getUsers() {
 
       // Fit the map to the bounds
       map.fitBounds(bounds);
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  autocomplete.addListener('place_changed', function() {
+    const place = autocomplete.getPlace();
+    console.log(place);
+  });
+
+  const infowindow = new google.maps.InfoWindow();
+  const infowindowContent = document.getElementById("infowindow-content");
+
+  infowindow.setContent(infowindowContent);
+
+  const marker = new google.maps.Marker({
+    map,
+    anchorPoint: new google.maps.Point(0, -29),
+  });
+
+  autocomplete.addListener("place_changed", () => {
+    infowindow.close();
+    marker.setVisible(false);
+
+    const place = autocomplete.getPlace();
+
+    if (!place.geometry || !place.geometry.location) {
+      // User entered the name of a Place that was not suggested and
+      // pressed the Enter key, or the Place Details request failed.
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
     }
- initMap();
+
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+    infowindowContent.children["place-name"].textContent = place.name;
+    infowindowContent.children["place-address"].textContent =
+      place.formatted_address;
+    infowindow.open(map, marker);
+  });
+}
+
+window.initMap = initMap;
+
+
+  window.onload = function() {
+            initAutocomplete();
+        };
+
+
+
+  //  async function initMap() {
+  //     const users = await getUsers();
+
+  //     // Create a LatLngBounds object to store the bounds of all markers
+  //     const bounds = new google.maps.LatLngBounds();
+
+  //     const map = new google.maps.Map(document.getElementById('map'), {
+  //       zoom: 2,
+  //       center: { lat: 0, lng: 0 } ,// Center of the map
+  //       styles: mlwStyles
+  //     });
+
+  //     users.forEach(user => {
+  //       const position = { lat: user.latitude, lng: user.longitude };
+  //       // Extend the bounds to include the marker's position
+  //       bounds.extend(position);
+  //       const marker = new google.maps.Marker({
+  //         position: position,
+  //         map: map,
+  //         title: user.name
+  //       });
+  //     });
+
+  //     // Fit the map to the bounds
+  //     map.fitBounds(bounds);
+  //   }
+
 
 if (signedupAlready) {
 
@@ -647,16 +538,11 @@ myListings.href = "my-listings.html"
 myListings.href = "no-listings.html"
     }
 
-
-
-
  async function fetchDatas() {
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
- appendDiv.style.display = 'none'
-  loading.style.display = 'block';
-
+loading.style.display = 'block';
 var geocoder = new google.maps.Geocoder();
 
  geocoder.geocode({ 'address':location }, function (results, status) {
@@ -676,8 +562,20 @@ var geocoder = new google.maps.Geocoder();
   .then(response => response.json())
   .then(items => {
 
+if(items&&items.length <= 12){
+nextbtn.style.display = 'none';
+}
+if(items.length === 0){
+noloading.style.display = 'block';
+}
+loading.style.display = 'none';
 
-  loading.style.display = 'none';
+  appendDiv.innerHTML = ''
+
+appendDiv3.innerHTML=''
+appendDiv2.innerHTML=''
+
+
 
    for (let i = 0; i < items.length; i++) {
 
@@ -687,18 +585,6 @@ var geocoder = new google.maps.Geocoder();
 // console.log( filteredArray)
 
    const arrangeitems= document.createElement('a');
-
-
- if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
- arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
 
       arrangeitems.classList.add('arrange-items');
 
@@ -748,7 +634,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangetext.appendChild(openingTimeTag);
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
-        appendDiv3.appendChild(arrangeitems)
+        appendDiv4.appendChild(arrangeitems)
 
         arrangeitems.addEventListener('click', () => {
 
@@ -757,18 +643,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('selectedUserId', business.id);
         localStorage.setItem('listingId', business.data.listingId);
         localStorage.setItem('owner', business.data.userid);
-
-     if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-
- if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
-  window.location.href=`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
- if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
-  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    }
-   navigateToUserProfile(business.data.userid,business.data.listingId);
+        navigateToUserProfile(business.data.userid,business.data.listingId);
 
       });
 
@@ -801,11 +676,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
 
    const arrangeitems= document.createElement('a');
 
- if (business.hasOwnProperty('donation')) {
-  arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
-arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
+
 
       arrangeitems.classList.add('arrange-items');
 
@@ -864,11 +735,6 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         localStorage.setItem('listingId', business.data.listingId);
         localStorage.setItem('owner', business.data.userid);
 
- if (business.hasOwnProperty('donation')) {
-  window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-    } else {
-window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
-    }
    navigateToUserProfile(business.data.userid,business.data.listingId);
 
       });

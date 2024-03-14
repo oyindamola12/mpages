@@ -26,39 +26,6 @@ const itemsPerPage = 12;
  const loading = document.getElementById('loading');
 var storedUserIdlogin =localStorage.getItem('userId');
 var signedupAlready=  localStorage.getItem('signedup');
-// function findMostRecurringItem(arr) {
-//     // Create an object to store the count of each item
-//     const countMap = {};
-
-//     // Iterate through the array and count occurrences of each item
-//     arr.forEach(item => {
-//         countMap[item] = (countMap[item] || 0) + 1;
-//     });
-
-//     // Find the item(s) with the highest count
-//     let mostRecurringItems = [];
-//     let maxCount = 0;
-//     for (const [item, count] of Object.entries(countMap)) {
-//         if (count > maxCount) {
-//             mostRecurringItems = [item];
-//             maxCount = count;
-//         } else if (count === maxCount) {
-//             mostRecurringItems.push(item);
-//         }
-//     }
-
-//     // Return an object with the most recurring item(s) and its count
-//     return {
-//         mostRecurringItems: mostRecurringItems,
-//         recurringItemCount: maxCount
-//     };
-// }
-
-// // Example usage:
-// const array = [1, 2, 3, 2, 3, 4, 5, 2, 2];
-// const result = findMostRecurringItem(array);
-// console.log("Most recurring item(s):", result.mostRecurringItems);
-// console.log("Recurring item count:", result.recurringItemCount);
 
 
  if(signedupAlready==='true'){
@@ -293,7 +260,7 @@ yesNo.style.display = 'none';
  var location =document.querySelector('.select-styled3').textContent;
  var nav =document.getElementById('navigateSearch');
 
- 
+
  // Display the response
 
 

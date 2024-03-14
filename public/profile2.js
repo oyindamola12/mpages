@@ -198,6 +198,12 @@ showDonateButton(userData)
 
 getUserProfile()
 
+if (signedupAlready) {
+
+myListings.href = "my-listings.html"
+   } else {
+myListings.href = "no-listings.html"
+    }
 
 function on() {
   document.getElementById("overlay").style.display = "block";

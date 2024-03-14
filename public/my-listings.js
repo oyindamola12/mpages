@@ -11,7 +11,7 @@ var storedUserId =localStorage.getItem('selectedUserId');
 var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 const inputIndustry = localStorage.getItem('industry');
-
+var signedupAlready=  localStorage.getItem('signedup');
  let currentPage = 1;
 const itemsPerPage = 12;
 var userUid =localStorage.getItem('userId');
@@ -202,6 +202,12 @@ function navigateToUserProfile2(businessId, businesslistingId) {
 
 }
 //  getMyListing()
+if (signedupAlready) {
+
+myListings.href = "my-listings.html"
+   } else {
+myListings.href = "no-listings.html"
+    }
 
 async function getUsers() {
       const response = await fetch('/getCoordinates');

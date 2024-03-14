@@ -478,10 +478,13 @@ function toggleEditclosetime() {
 function previewImages(event) {
     const files = event.target.files;
     const imagePreview = document.getElementById('imagePreview2');
-console.log(files)
-    // Loop through the files
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+
+    // Combine the files from both sets into a single array
+    const allFiles = [...files];
+console.log(allFiles)
+    // Loop through the combined files
+    for (let i = 0; i < allFiles.length; i++) {
+        const file = allFiles[i];
         const reader = new FileReader();
 
         // Read the file as a data URL

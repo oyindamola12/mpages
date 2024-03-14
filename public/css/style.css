@@ -3483,8 +3483,9 @@ a:link, a:visited {
 		align-items: center;
 		}
 
-		#myElement{
-			height: 300px;
+		.hero-listing {
+			height: 400px;
+
 		}
 }
 

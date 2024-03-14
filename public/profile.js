@@ -475,30 +475,28 @@ function toggleEditclosetime() {
             }
       }
 
-  function previewImages(event) {
+function previewImages(event) {
     const files = event.target.files;
-
-console.log(files)
     const imagePreview = document.getElementById('imagePreview2');
-
-
-
+console.log(files)
+    // Loop through the files
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const reader = new FileReader();
 
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            imagePreview.appendChild(img);
-        }
-
+        // Read the file as a data URL
         reader.readAsDataURL(file);
 
+        // Callback function when reading is done
+        reader.onload = function(e) {
+            // Create an img element for each file
+            const img = document.createElement('img');
+            img.src = e.target.result;
 
+            // Append the img element to the imagePreview container
+            imagePreview.appendChild(img);
+        }
     }
-
-
 }
  async function updateData(newValue) {
 

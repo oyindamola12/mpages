@@ -3410,7 +3410,7 @@ a:link, a:visited {
 	}
 	.filter-search:after {
 		position: absolute;
-		margin-left: 30px;
+		margin-left: 20px;
 		top: 0;
 		width: 90%;
 		height: 90%;
@@ -3508,7 +3508,7 @@ a:link, a:visited {
 	}
 
 	#col-lg-5{
-	
+
 	}
 	.search-filter .filter-search {
 		padding: 30px;

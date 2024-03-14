@@ -3475,6 +3475,13 @@ a:link, a:visited {
 		justify-content: center;
 		align-items: center;
 	}
+
+	#col-lg-5{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		}
 }
 
 /* Small Mobile : 320px */

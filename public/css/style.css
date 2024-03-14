@@ -3469,12 +3469,12 @@ a:link, a:visited {
 		overflow-y: auto;
 
 	}
-	#container{
+	/* #container{
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	}
+	} */
 }
 
 /* Small Mobile : 320px */

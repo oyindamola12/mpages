@@ -782,6 +782,7 @@ window.history.replaceState(null, null, baseUrl);
 // noloading.style.display = 'block';
 // }
 // loading.style.display = 'none';
+noparams()
 appendDiv.style.display='block'
 appendDiv4.style.display='none'
 appendDiv3.style.display='none'

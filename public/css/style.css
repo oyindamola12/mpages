@@ -2399,7 +2399,7 @@ a:link, a:visited {
 .intro-share .share-icon a {
 	width:42px;
 	height:42px;
-	border: 1px solid #000;
+	border: 3px solid #000;
 	display: inline-block;
 	text-align: center;
     justify-content: center;
@@ -3485,7 +3485,7 @@ a:link, a:visited {
 
 		.hero-listing {
 			height: 400px;
-			margin-top: 1000px;
+
 
 		}
 }

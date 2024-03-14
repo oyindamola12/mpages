@@ -116,11 +116,11 @@ img {
 	border: none;
   }
 #col-lg-4{
-	display: block;
-    /* margin-bottom: 30px; */
-    margin: 20px 30px;
-    width: 14em;
-
+/* display:flex;
+	justify-content: space-around;
+	flex-direction: row;
+	padding: 20px;
+	width: 100vw; */
 }
 
   .engage{
@@ -3445,7 +3445,6 @@ a:link, a:visited {
 	.contact-section .contact-add {
 		margin-top: 22px;
 	}
-
 	.select-options2 {
 		display: none;
 		position: absolute;
@@ -3470,12 +3469,12 @@ a:link, a:visited {
 		overflow-y: auto;
 
 	}
-	/* #container{
+	#container{
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	} */
+	}
 }
 
 /* Small Mobile : 320px */

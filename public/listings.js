@@ -1,9 +1,7 @@
 let map;
 let map2;
 let appendDiv = document.getElementById('col-lg-5');
-let appendDiv2 = document.getElementById('col-lg-4');
-let appendDiv3 = document.getElementById('col-lg-');
-let appendDiv4 = document.getElementById('col-lg-');
+
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
 let inputIndustry =localStorage.getItem('industry');
@@ -69,10 +67,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
  function toggleData(){
 
 if (industrySearch&& latSearch&&lngSearch  ){
-appendDiv4.style.display='none'
-appendDiv3.style.display='none'
-appendDiv2.style.display='block'
-appendDiv.style.display='none'
+
 
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
@@ -149,7 +144,7 @@ loading.style.display = 'none';
         arrangetext.appendChild(openingTimeTag);
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
-        appendDiv2.appendChild(arrangeitems)
+        appendDiv.appendChild(arrangeitems)
 
         arrangeitems.addEventListener('click', () => {
         localStorage.removeItem('selectedUserId')
@@ -176,10 +171,7 @@ loading.style.display = 'none';
 
 if ( industryInputview ){
 
-appendDiv4.style.display='none'
-appendDiv3.style.display='block'
-appendDiv2.style.display='none'
-appendDiv.style.display='none'
+
  fetch('https://www.mpageshub.com/businessSearch2', {
     method: 'POST',
     headers: {
@@ -249,7 +241,7 @@ loading.style.display = 'none';
         arrangetext.appendChild(openingTimeTag);
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
-        appendDiv3.appendChild(arrangeitems)
+        appendDiv.appendChild(arrangeitems)
 
         arrangeitems.addEventListener('click', () => {
         localStorage.removeItem('selectedUserId')
@@ -275,10 +267,7 @@ loading.style.display = 'none';
 
 function noparams(){
 
-appendDiv4.style.display='none'
-appendDiv3.style.display='none'
-appendDiv2.style.display='none'
-appendDiv.style.display='block'
+
     fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
@@ -561,10 +550,7 @@ const baseUrl = window.location.href.split('?')[0];
 window.history.replaceState(null, null, baseUrl);
 
 noparams()
-appendDiv.style.display='block'
-appendDiv4.style.display='none'
-appendDiv3.style.display='none'
-appendDiv2.style.display='none'
+
 
 }
 
@@ -586,11 +572,7 @@ alert('Choose Industry a category and enter a location')
                    localStorage.setItem('industry', industry);
 getFiltered(latitude,longitude,industry)
 
-     appendDiv4.style.display='block'
-    appendDiv.style.display='none'
-
-appendDiv3.style.display='none'
-appendDiv2.style.display='none'
+   
                 }
 })
 }

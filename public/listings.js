@@ -1,9 +1,9 @@
 let map;
 let map2;
-let appendDiv = document.getElementById('col-lg-3');
-let appendDiv2 = document.getElementById('col-lg-4');
-let appendDiv3 = document.getElementById('col-lg-5');
-let appendDiv4 = document.getElementById('col-lg-6');
+let appendDiv = document.getElementsByClassName('col-lg-3');
+let appendDiv2 = document.getElementsByClassName('col-lg-4');
+let appendDiv3 = document.getElementsByClassName('col-lg-5');
+let appendDiv4 = document.getElementsByClassName('col-lg-6');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
 let inputIndustry =localStorage.getItem('industry');

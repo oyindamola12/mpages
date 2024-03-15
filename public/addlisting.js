@@ -337,8 +337,8 @@ const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
 const about = document.getElementById('about').value;
 const password =document.getElementById('password').value
- const fileInput = document.getElementById('fileImage');
-  const fileInputed = document.getElementById('fileImage').files;
+const fileInput = document.getElementById('fileImage');
+const fileInputed = document.getElementById('fileImage').files;
 
 const signupStatus= true;
 var userids =uuidv4()
@@ -395,8 +395,8 @@ var geocoder = new google.maps.Geocoder();
               'Content-Type': 'application/json'
             },
 
-   body:JSON.stringify({
-  businessName: businessName,
+ body:JSON.stringify({
+ businessName: businessName,
  contactPerson:contactPerson,
  businessAddress: businessAddress,
  industry:industry,
@@ -410,8 +410,8 @@ var geocoder = new google.maps.Geocoder();
  longitude:longitude,
  signupStatus:signupStatus,
  wantDonation:donate,
-addedListing:true,
-userids:userids,
+ addedListing:true,
+ userids:userids,
 
  })
 })

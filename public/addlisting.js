@@ -280,7 +280,7 @@ function toggleGallery() {
 function reopenImageGallery() {
     // Restore previously selected images
     const fileInput = document.getElementById('fileImage');
-    fileInput.value = ''; // Clear the current selection
+     // Clear the current selection
     selectedImages.forEach(image => {
         fileInput.files.push(image);
     });
@@ -489,6 +489,7 @@ else{
 
 
 }
+
  async function pay2(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;

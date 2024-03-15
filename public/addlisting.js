@@ -550,11 +550,11 @@ return false;
 
   //   }
 
-    //  if ( fileInputed.length >5  ) {
-    //     alert("You can only select a maxium of 5 images.");
-    //     return;
+     if ( fileInputed.length >5  ) {
+        alert("You can only select a maxium of 5 images.");
+        return;
 
-    // }
+    }
   // if (!fileInput) {
   //   console.error('File input element not found');
   //   return;

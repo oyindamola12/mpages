@@ -475,32 +475,76 @@ function toggleEditclosetime() {
             }
       }
 
+// function previewImages(event) {
+//     const files = event.target.files;
+//     const imagePreview = document.getElementById('imagePreview2');
+
+//     // Combine the files from both sets into a single array
+//     const allFiles = [...files];
+
+//     // Loop through the combined files
+//     for (let i = 0; i < allFiles.length; i++) {
+//         const file = allFiles[i];
+//         const reader = new FileReader();
+
+//         // Read the file as a data URL
+//         reader.readAsDataURL(file);
+
+//         // Callback function when reading is done
+//         reader.onload = function(e) {
+//             // Create an img element for each file
+//             const img = document.createElement('img');
+//             img.src = e.target.result;
+
+//             // Append the img element to the imagePreview container
+//             imagePreview.appendChild(img);
+//         }
+//     }
+// }
+
 function previewImages(event) {
-    const files = event.target.files;
-    const imagePreview = document.getElementById('imagePreview2');
 
-    // Combine the files from both sets into a single array
-    const allFiles = [...files];
 
-    // Loop through the combined files
-    for (let i = 0; i < allFiles.length; i++) {
-        const file = allFiles[i];
-        const reader = new FileReader();
+  const files = imageUpload.files;
 
-        // Read the file as a data URL
-        reader.readAsDataURL(file);
+  if (!files || files.length === 0) {
+    return; // No files selected
+  }
 
-        // Callback function when reading is done
-        reader.onload = function(e) {
-            // Create an img element for each file
-            const img = document.createElement('img');
-            img.src = e.target.result;
-             console.log(e.target.result)
-            // Append the img element to the imagePreview container
-            imagePreview.appendChild(img);
-        }
-    }
+  // Check if exceeding maximum allowed images
+  const currentImages = imageContainer.querySelectorAll('img').length;
+  const allowedToAdd = Math.max(0, MAX_IMAGES - currentImages);
+  const filesToAdd = files.slice(0, allowedToAdd); // Limit selected files
+
+  if (allowedToAdd === 0) {
+    alert('Maximum of 10 images allowed!');
+    return;
+  }
+
+  for (const file of filesToAdd) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      imageContainer.appendChild(img);
+
+      // Add event listener to display preview on hover (optional)
+      img.addEventListener('mouseover', () => {
+        preview.src = img.src;
+      });
+      img.addEventListener('mouseout', () => {
+        preview.src = ''; // Clear preview on mouseout
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  // Clear only selected files, not the entire input value
+  imageUpload.value = '';
 }
+
  async function updateData(newValue) {
 
             try {

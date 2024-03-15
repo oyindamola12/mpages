@@ -272,10 +272,10 @@ function previewImages(event) {
 
         var deleteImg = document.createElement('p');
         deleteImg.innerHTML = "x";
-        deleteImg.style.cursor = "pointer";
-        deleteImg.style.position = "absolute";
-        deleteImg.style.top = "0";
-        deleteImg.style.right = "0";
+        // deleteImg.style.cursor = "pointer";
+        // deleteImg.style.position = "absolute";
+        // deleteImg.style.top = "0";
+        // deleteImg.style.right = "0";
         deleteImg.style.backgroundColor = "yellow";
         deleteImg.style.borderRadius = "50%";
         deleteImg.style.width = "20px";

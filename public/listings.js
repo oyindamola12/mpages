@@ -540,19 +540,7 @@ myListings.href = "my-listings.html"
 myListings.href = "no-listings.html"
     }
 
- async function fetchDatas() {
-//  var industry= document.getElementById('searchIndustryInput').textContent;
-//  var location = document.getElementById('inputSuburb').value;
-
-
-const baseUrl = window.location.href.split('?')[0];
-// Replace the current URL with the updated one
-window.history.replaceState(null, null, baseUrl);
-
-noparams()
-
-
-}
+ 
 
 
  async function fetchDatas( ) {

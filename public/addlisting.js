@@ -271,7 +271,7 @@ function toggleGallery() {
     } else {
         // Hide file input to reopen gallery
         fileInput.style.display = 'none';
-        toggleButton.textContent = 'Upload Images';
+        toggleButton.textContent = 'Add more Images';
         reopenImageGallery(); // Call function to reopen the gallery
     }
 }

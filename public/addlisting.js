@@ -260,7 +260,31 @@ yesNo.style.display = 'none';
  var location =document.querySelector('.select-styled3').textContent;
  var nav =document.getElementById('navigateSearch');
 
+function toggleGallery() {
+    const fileInput = document.getElementById('fileImage');
+    const toggleButton = document.getElementById('toggle-button');
 
+    if (fileInput.style.display === 'none') {
+        // Show file input to upload images
+        fileInput.style.display = 'block';
+        toggleButton.textContent = 'Upload Images';
+    } else {
+        // Hide file input to reopen gallery
+        fileInput.style.display = 'none';
+        toggleButton.textContent = 'Upload Images';
+        reopenImageGallery(); // Call function to reopen the gallery
+    }
+}
+
+// Function to reopen the image gallery
+function reopenImageGallery() {
+    // Restore previously selected images
+    const fileInput = document.getElementById('fileImage');
+    fileInput.value = ''; // Clear the current selection
+    selectedImages.forEach(image => {
+        fileInput.files.push(image);
+    });
+}
  // Display the response
 
 

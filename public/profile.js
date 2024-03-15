@@ -517,9 +517,11 @@ function previewImages(event){
                 spanElm.appendChild(image);
 
                 deleteImg.onclick = function() {this.parentNode.remove()};
-                divElm.appendChild(spanElm);
                 divElm.appendChild(deleteImg);
+                divElm.appendChild(spanElm);
+
                 imgCont.appendChild(divElm);
+                console.log(URL.createObjectURL(event.target.files[i]);)
             }
 }
 

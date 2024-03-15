@@ -290,7 +290,7 @@ yesNo.style.display = 'none';
 
   function previewImages(event) {
     const files = event.target.files;
-const imagePreview = document.getElementById('imagePreview');
+    const imagePreview = document.getElementById('imagePreview');
 
 
     for (let i = 0; i < files.length; i++) {
@@ -306,39 +306,15 @@ const imagePreview = document.getElementById('imagePreview');
         reader.readAsDataURL(file);
 
 
-  //       const deleteBtn = document.createElement('button');
   //       deleteBtn.textContent = 'x';
   //         deleteBtn.type = 'button';
   // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
     }
 
-      // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
-      // selectedImagesContainer.innerHTML = '';
 
-  //     for (let i = 0; i < files.length; i++) {
-  //       const file = files[i];
-  //       const img = document.createElement('img');
-  //       img.src = URL.createObjectURL(file);
-
-  //       const deleteBtn = document.createElement('button');
-  //       deleteBtn.textContent = 'x';
-  //         deleteBtn.type = 'button';
-  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
-
-  //       const div = document.createElement('div');
-  //       div.appendChild(img);
-  //       div.appendChild(deleteBtn);
-  //      imagePreview.appendChild(div);
-  //     }
 }
 
-//  function createDeleteHandler(index, files, callback) {
-//       return function(event) {
-//         event.preventDefault();
-//         files.splice(index, 1);
-//         callback(files);
-//       };
-//     }
+
 function uuidv4(){
 return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11 ).replace(/[018]/g,(c)=>
 
@@ -372,56 +348,24 @@ if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||
 return false;
 
  }
+ if ( fileInputed.length >5  ) {
+        alert("You can only select a maxium of 5 images.");
+        return;
 
-  // if ( fileInputed.length < 3 ) {
-  //       alert("Please select a minimum of 3 images.");
-  //       return;
-
-  //   }
-
-  //    if ( fileInputed.length >5  ) {
-  //       alert("You can only select a maxium of 5 images.");
-  //       return;
-
-  //   }
-  //     if (!fileInput) {
-  //   console.error('File input element not found');
-  //   return;
-  // }
-
-
-  // Check if files are undefined or null
+    }
 
    const files = fileInput.files;
 
-            // if (files.length === 0) {
-            //     console.error('No files selected');
-            //     return;
-            // }
-
             const formData = new FormData();
 
-    // formData.append('businessName', businessName);
-    // formData.append('email', email);
-    // formData.append('phoneNo', phoneNo);
-    // formData.append('contactPerson', contactPerson);
-    // formData.append( 'businessAddress', businessAddress);
-    // formData.append('industry', industry);
-    // formData.append('openingtime', openingtime);
-    // formData.append('closingtime',closingtime);
-    // formData.append('about', about);
-    // formData.append(' addedListing', true);
-    // formData.append(' signupStatus', true);
-    // formData.append('password',password);
-    // formData.append(' wantDonation', donate);
  for (let i = 0; i < files.length; i++) {
                 formData.append('images', files[i]);
             }
 formData.append('userids', userids);
 
  var handler = PaystackPop.setup({
-      key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-     //key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+      //key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+     key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
       email:email,
       amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you

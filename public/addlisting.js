@@ -271,7 +271,7 @@ function toggleGallery() {
     } else {
         // Hide file input to reopen gallery
         fileInput.style.display = 'none';
-        toggleButton.textContent = 'Add more Images';
+        toggleButton.textContent = 'Upload Images';
         reopenImageGallery(); // Call function to reopen the gallery
     }
 }
@@ -280,7 +280,7 @@ function toggleGallery() {
 function reopenImageGallery() {
     // Restore previously selected images
     const fileInput = document.getElementById('fileImage');
-     // Clear the current selection
+    fileInput.value = ''; // Clear the current selection
     selectedImages.forEach(image => {
         fileInput.files.push(image);
     });
@@ -489,7 +489,6 @@ else{
 
 
 }
-
  async function pay2(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;
@@ -500,7 +499,7 @@ const openingtime= document.getElementById('openingtime').value;
 const closingtime = document.getElementById('closingtime').value;
 const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
-const about = document.getElementById('businessName').value;
+const about = document.getElementById('about').value;
 const fileInput = document.getElementById('fileImage');
 
 // var storedUserIdlogin =localStorage.getItem('userId');

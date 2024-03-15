@@ -340,32 +340,67 @@ const snapshot = await  db.collection('Users').doc(userId).collection('BusinessL
 
 });
 
+// app.post('/addImages2', upload.array('images'), async (req, res) => {
+//     const postid = req.body.postid;
+//     const userUid = req.body.userUid;
+//     console.log(userUid);
+//     console.log(postid);
+//     try {
+//         const imageUrls = [];
+//         const files = req.files;
+//         for (const image of files) {
+//             // Generate a unique file name for each image (you can customize this as needed)
+//             const fileName = `images/${Date.now()}_${image.originalname}`;
+
+//             // Upload the image to Firebase Storage
+//             const file = bucket.file(fileName);
+//             await file.save(image.buffer, {
+//                 metadata: {
+//                     contentType: image.mimetype,
+//                 },
+//             });
+
+//             // Get the public URL of the uploaded image
+//             const imageUrl = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
+//             imageUrls.push(imageUrl[0]);
+//         }
+
+//         // Update Firestore documents with image URLs
+//         const businessDb = db.collection('BusinessLists').doc(uniqueId);
+//         await businessDb.set({ Images: imageUrls }, { merge: true });
+
+//         const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(uniqueId);
+//         await businessDb2.set({ Images: imageUrls }, { merge: true });
+
+//         console.log('Images uploaded successfully');
+//         res.json({ message: 'Images uploaded successfully', imageUrls });
+//     } catch (error) {
+//         console.error('Error uploading images to Firebase Storage:', error);
+//         res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
+//     }
+// });
+
 app.post('/addImages2', upload.array('images'), async (req, res) => {
     const postid = req.body.postid;
     const userUid = req.body.userUid;
     console.log(userUid);
     console.log(postid);
+    console.log(req.files)
     try {
         const imageUrls = [];
         const files = req.files;
         for (const image of files) {
-            // Generate a unique file name for each image (you can customize this as needed)
             const fileName = `images/${Date.now()}_${image.originalname}`;
-
-            // Upload the image to Firebase Storage
             const file = bucket.file(fileName);
             await file.save(image.buffer, {
                 metadata: {
                     contentType: image.mimetype,
                 },
             });
-
-            // Get the public URL of the uploaded image
             const imageUrl = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
             imageUrls.push(imageUrl[0]);
         }
 
-        // Update Firestore documents with image URLs
         const businessDb = db.collection('BusinessLists').doc(uniqueId);
         await businessDb.set({ Images: imageUrls }, { merge: true });
 
@@ -379,8 +414,6 @@ app.post('/addImages2', upload.array('images'), async (req, res) => {
         res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
     }
 });
-
-
 app.post('/addContact',async (req, res)=> {
     const name = req.body.name;
     const message = req.body.message;

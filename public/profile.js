@@ -508,13 +508,14 @@ function previewImages(event){
                 var divElm = document.createElement('div');
                 divElm.id = "rowdiv" + i;
                 var spanElm = document.createElement('span');
+                var deleteImg = document.createElement('p');
+                deleteImg.innerHTML = "x";
                 var image = document.createElement('img');
                 image.src = URL.createObjectURL(event.target.files[i]);
                 image.id = "output" + i;
                 image.width = "200";
                 spanElm.appendChild(image);
-                var deleteImg = document.createElement('p');
-                deleteImg.innerHTML = "x";
+
                 deleteImg.onclick = function() {this.parentNode.remove()};
                 divElm.appendChild(spanElm);
                 divElm.appendChild(deleteImg);

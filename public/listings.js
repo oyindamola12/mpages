@@ -540,7 +540,7 @@ myListings.href = "my-listings.html"
 myListings.href = "no-listings.html"
     }
 
- 
+
 
 
  async function fetchDatas( ) {
@@ -570,6 +570,7 @@ getFiltered(latitude,longitude,industry)
 
 
 function getFiltered(latitude,longitude,industry){
+
  appendDiv.innerHTML=''
  loading.style.display = 'block';
  fetch('/api/businessSearch3', {

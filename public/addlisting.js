@@ -326,31 +326,31 @@ function reopenImageGallery() {
 }
 
 
-  function previewImages(event) {
-    const files = event.target.files;
-    const imagePreview = document.getElementById('imagePreview');
-console.log(files)
+//   function previewImages(event) {
+//     const files = event.target.files;
+//     const imagePreview = document.getElementById('imagePreview');
+// console.log(files)
 
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const reader = new FileReader();
+//     for (let i = 0; i < files.length; i++) {
+//         const file = files[i];
+//         const reader = new FileReader();
 
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            imagePreview.appendChild(img);
-        }
+//         reader.onload = function(e) {
+//             const img = document.createElement('img');
+//             img.src = e.target.result;
+//             imagePreview.appendChild(img);
+//         }
 
-        reader.readAsDataURL(file);
-
-
-  //       deleteBtn.textContent = 'x';
-  //         deleteBtn.type = 'button';
-  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
-    }
+//         reader.readAsDataURL(file);
 
 
-}
+//   //       deleteBtn.textContent = 'x';
+//   //         deleteBtn.type = 'button';
+//   // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+//     }
+
+
+// }
 
 
 function uuidv4(){

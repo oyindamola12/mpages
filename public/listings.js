@@ -560,7 +560,7 @@ noparams()
  var location = document.getElementById('inputSuburb').value;
 
 if( industry === "Choose Industry" || location === null){
-alert('Choose Industry a category and enter a location')
+alert('Choose Industry and enter a location')
 }else{
   var geocoder = new google.maps.Geocoder();
  geocoder.geocode({ 'address':location }, function (results, status) {

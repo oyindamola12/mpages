@@ -363,7 +363,7 @@ const about = document.getElementById('about').value;
 const password =document.getElementById('password').value
  const fileInput = document.getElementById('fileImage');
   const fileInputed = document.getElementById('fileImage').files;
-  var placeholder = "https://ibb.co/pxRnrcY"
+
 const signupStatus= true;
 var userids =uuidv4()
 
@@ -468,7 +468,7 @@ var geocoder = new google.maps.Geocoder();
  wantDonation:donate,
 addedListing:true,
 userids:userids,
-placeholder:placeholder
+
  })
 })
         .then(response => response.json())
@@ -533,7 +533,7 @@ const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
 const about = document.getElementById('businessName').value;
 const fileInput = document.getElementById('fileImage');
-var placeholder = "https://ibb.co/pxRnrcY"
+
 // var storedUserIdlogin =localStorage.getItem('userId');
 const fileInputed = document.getElementById('fileImage').files;
 
@@ -566,10 +566,7 @@ return false;
 
   const files = fileInput.files;
 
-  if (files.length === 0) {
-   console.error('No files selected');
-   return;
-}
+
 
   const formData = new FormData();
 
@@ -626,7 +623,7 @@ businessName: businessName,
 userId:userUid,
 wantDonation:donate,
 userids: postid,
-placeholder :placeholder
+
   })
            })
         .then(response =>  response.json())

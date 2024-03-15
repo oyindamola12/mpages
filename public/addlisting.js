@@ -465,253 +465,149 @@ else{
 
 
 }
-//  async function pay2(){
-// const businessName = document.getElementById('businessName').value;
-// const contactPerson = document.getElementById('contactPerson').value;
-// const industry =  document.querySelector('.select-styled').textContent;
-// const donate = document.getElementById('yesNo').textContent;
-// const businessAddress = document.getElementById('businessAddress').value;
-// const openingtime= document.getElementById('openingtime').value;
-// const closingtime = document.getElementById('closingtime').value;
-// const email = document.getElementById('email').value;
-// const phoneNo = document.getElementById('phoneNo').value;
-// const about = document.getElementById('businessName').value;
-// const fileInput = document.getElementById('fileImage');
+ async function pay2(){
+const businessName = document.getElementById('businessName').value;
+const contactPerson = document.getElementById('contactPerson').value;
+const industry =  document.querySelector('.select-styled').textContent;
+const donate = document.getElementById('yesNo').textContent;
+const businessAddress = document.getElementById('businessAddress').value;
+const openingtime= document.getElementById('openingtime').value;
+const closingtime = document.getElementById('closingtime').value;
+const email = document.getElementById('email').value;
+const phoneNo = document.getElementById('phoneNo').value;
+const about = document.getElementById('businessName').value;
+const fileInput = document.getElementById('fileImage');
 
-// // var storedUserIdlogin =localStorage.getItem('userId');
-// const fileInputed = document.getElementById('fileImage').files;
+// var storedUserIdlogin =localStorage.getItem('userId');
+const fileInputed = document.getElementById('fileImage').files;
 
-// let postid =uuidv4()
-//   if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
-//  alert("Please fill in all mandatory fields");
-// return false;
+let postid =uuidv4()
+  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+ alert("Please fill in all mandatory fields");
+return false;
 
-//     }
-
-//   // if ( fileInputed.length < 3 ) {
-//   //       alert("Please select a minimum of 3 images.");
-//   //       return;
-
-//   //   }
-
-//      if ( fileInputed.length >5  ) {
-//         alert("You can only select a maxium of 5 images.");
-//         return;
-
-//     }
-//   // if (!fileInput) {
-//   //   console.error('File input element not found');
-//   //   return;
-//   //   }
-
-
-
-//   // Check if files are undefined or null
-
-//   const files = fileInput.files;
-
-
-
-//   const formData = new FormData();
-
-//  for (let i = 0; i < files.length; i++) {
-//     formData.append('images', files[i]);
-// }
-// formData.append('postid', postid);
-// formData.append('userUid', userUid);
-
-//       var handler = PaystackPop.setup({
-//        key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-//        //key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
-//       email:email,
-//       amount: 3000 * 100,
-//       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-//       metadata: {
-//          custom_fields: [
-//             {
-//                 display_name: contactPerson,
-//                 variable_name: "mobile_number",
-//                 value: phoneNo
-//             }
-//          ]
-//       },
-//       callback: function  (response){
-
-//  if (response.status){
-
-// var geocoder = new google.maps.Geocoder();
-//  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
-//                 if (status == google.maps.GeocoderStatus.OK) {
-//                   const latitude = results[0].geometry.location.lat();
-//                     const longitude = results[0].geometry.location.lng();
-
-
-//   fetch('https://www.mpageshub.com/addBusiness2', {
-//             method: 'POST',
-//             headers: {
-//               'Content-Type': 'application/json'
-//             },
-//  body:JSON.stringify({
-// businessName: businessName,
-//  contactPerson:contactPerson,
-//  businessAddress: businessAddress,
-//  industry:industry,
-//  openingtime: openingtime,
-//  closingtime:closingtime,
-//  phoneNo:phoneNo,
-//  about: about,
-//  email: email,
-//  addedListing:true,
-//  latitude:latitude,
-//  longitude:longitude,
-// userId:userUid,
-// wantDonation:donate,
-// userids: postid,
-
-//   })
-//            })
-//         .then(response =>  response.json())
-//         .then( async data => {
-//             console.log('Server response:', data);
-
-//             // You can handle the server response as needed
-//             localStorage.setItem('userId',data.userId);
-//             localStorage.setItem('userData', JSON.stringify(data.businesses));
-//             localStorage.setItem('signedup', 'true');
-//             localStorage.setItem('addedListings', 'true');
-//             window.location.href ='my-listings.html';
-//         })
-//         .catch(error => {
-//             console.error('Error sending data to server:', error);
-//         });
-
-//   fetch('/addImages2', {
-//                 method: 'POST',
-//                 body: formData
-//             })
-//             .then(response => response.json())
-//             .then(data => {
-//                 console.log('Uploaded images:', data);
-//             })
-//             .catch(error => {
-//                 console.error('Error uploading images:', error);
-//             });
-
-//   } else {
-//  alert("Request failed.")
-//                 }
-//             });
-
-// }
-//    },
-//       onClose: function(){
-//           alert('window closed');
-//       }
-//     });
-//     handler.openIframe();
-//   }
-
-async function pay2() {
-    const businessName = document.getElementById('businessName').value;
-    const contactPerson = document.getElementById('contactPerson').value;
-    const industry = document.querySelector('.select-styled').textContent;
-    const donate = document.getElementById('yesNo').textContent;
-    const businessAddress = document.getElementById('businessAddress').value;
-    const openingtime = document.getElementById('openingtime').value;
-    const closingtime = document.getElementById('closingtime').value;
-    const email = document.getElementById('email').value;
-    const phoneNo = document.getElementById('phoneNo').value;
-    const about = document.getElementById('about').value;
-    const fileInput = document.getElementById('fileImage');
-    const files = fileInput.files;
-
-    const postid = uuidv4();
-    const userUid = localStorage.getItem('userId'); // Make sure you have the userId available
-
-    if (businessName === '' || contactPerson === '' || industry === '' || businessAddress === '' || phoneNo === '' || about === '' || email === '') {
-        alert("Please fill in all mandatory fields");
-        return false;
     }
 
-    if (files.length > 5) {
-        alert("You can only select a maximum of 5 images.");
+  // if ( fileInputed.length < 3 ) {
+  //       alert("Please select a minimum of 3 images.");
+  //       return;
+
+  //   }
+
+     if ( fileInputed.length >5  ) {
+        alert("You can only select a maxium of 5 images.");
         return;
+
     }
-
-    const formData = new FormData();
-
-    for (let i = 0; i < files.length; i++) {
-        formData.append('images', files[i]);
+  if (!fileInput) {
+    console.error('File input element not found');
+    return;
     }
+  // Check if files are undefined or null
 
-    formData.append('postid', postid);
-    formData.append('userUid', userUid);
+  const files = fileInput.files;
 
-    var handler = PaystackPop.setup({
-        key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-        email: email,
-        amount: 3000 * 100,
-        ref: '' + Math.floor((Math.random() * 1000000000) + 1),
-        metadata: {
-            custom_fields: [{
+
+  const formData = new FormData();
+
+ for (let i = 0; i < files.length; i++) {
+    formData.append('images', files[i]);
+}
+formData.append('postid', postid);
+formData.append('userUid', userUid);
+
+      var handler = PaystackPop.setup({
+       key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+       //key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+      email:email,
+      amount: 3000 * 100,
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
                 display_name: contactPerson,
                 variable_name: "mobile_number",
                 value: phoneNo
-            }]
-        },
-        callback: async function(response) {
-            if (response.status) {
-                try {
-                    const businessData = {
-                        businessName: businessName,
-                        contactPerson: contactPerson,
-                        businessAddress: businessAddress,
-                        industry: industry,
-                        openingtime: openingtime,
-                        closingtime: closingtime,
-                        phoneNo: phoneNo,
-                        about: about,
-                        email: email,
-                        addedListing: true,
-                        latitude: latitude,
-                        longitude: longitude,
-                        userId: userUid,
-                        wantDonation: donate,
-                        userids: postid,
-                    };
-
-                    const addBusinessResponse = await fetch('https://www.mpageshub.com/addBusiness2', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(businessData)
-                    });
-                    const addBusinessData = await addBusinessResponse.json();
-
-                    // Handle response as needed
-
-                    const addImagesResponse = await fetch('/addImages2', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    const addImagesData = await addImagesResponse.json();
-
-                    // Handle image upload response as needed
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Handle errors
-                }
-            } else {
-                alert("Request failed.")
             }
-        },
-        onClose: function() {
-            alert('Window closed');
-        }
+         ]
+      },
+      callback: function  (response){
+
+ if (response.status){
+
+var geocoder = new google.maps.Geocoder();
+ geocoder.geocode({ 'address':businessAddress },async function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  const latitude = results[0].geometry.location.lat();
+                    const longitude = results[0].geometry.location.lng();
+
+
+  fetch('https://www.mpageshub.com/addBusiness2', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+ body:JSON.stringify({
+businessName: businessName,
+ contactPerson:contactPerson,
+ businessAddress: businessAddress,
+ industry:industry,
+ openingtime: openingtime,
+ closingtime:closingtime,
+ phoneNo:phoneNo,
+ about: about,
+ email: email,
+ addedListing:true,
+ latitude:latitude,
+ longitude:longitude,
+userId:userUid,
+wantDonation:donate,
+userids: postid,
+
+  })
+           })
+        .then(response =>  response.json())
+        .then( async data => {
+            console.log('Server response:', data);
+
+            // You can handle the server response as needed
+            localStorage.setItem('userId',data.userId);
+            localStorage.setItem('userData', JSON.stringify(data.businesses));
+            localStorage.setItem('signedup', 'true');
+            localStorage.setItem('addedListings', 'true');
+            window.location.href ='my-listings.html';
+        })
+        .catch(error => {
+            console.error('Error sending data to server:', error);
+        });
+
+  fetch('/addImages2', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Uploaded images:', data);
+            })
+            .catch(error => {
+                console.error('Error uploading images:', error);
+            });
+
+  } else {
+ alert("Request failed.")
+                }
+            });
+
+}
+   },
+      onClose: function(){
+          alert('window closed');
+      }
     });
     handler.openIframe();
-}
+  }
+
+
 
   async function uploadImg(){
      const fileInputs = document.getElementById('fileInputs');

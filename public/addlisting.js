@@ -272,18 +272,18 @@ function previewImages(event) {
 
         var deleteImg = document.createElement('p');
         deleteImg.innerHTML = "x";
-        // deleteImg.style.cursor = "pointer";
+         deleteImg.style.cursor = "pointer";
         // deleteImg.style.position = "absolute";
         // deleteImg.style.top = "0";
         // deleteImg.style.right = "0";
-        deleteImg.style.backgroundColor = "yellow";
+        deleteImg.style.backgroundColor = "#ffc946";
         deleteImg.style.borderRadius = "50%";
         deleteImg.style.width = "20px";
         deleteImg.style.height = "20px";
         deleteImg.style.textAlign = "center";
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
-        deleteImg.style.margin = "0";
+        deleteImg.style.marginBottom = "10px";
         deleteImg.onclick = function() {this.parentNode.remove()}; // Delete button click event
 
         var image = document.createElement('img');

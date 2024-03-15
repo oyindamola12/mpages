@@ -3629,6 +3629,17 @@ a:link, a:visited {
 			margin-top: 40px;
 		}
 
+
+.share{
+
+	margin-bottom: 15px;
+	background: #000;
+	color:#fff;
+	padding:10px 20px;
+	border-radius: 5px;
+
+}
+
 }
 @media (max-width: 440px) {
 

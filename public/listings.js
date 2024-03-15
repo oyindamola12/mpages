@@ -572,7 +572,7 @@ alert('Choose Industry a category and enter a location')
                    localStorage.setItem('industry', industry);
 getFiltered(latitude,longitude,industry)
 
-   
+
                 }
 })
 }
@@ -582,8 +582,9 @@ getFiltered(latitude,longitude,industry)
 
 
 function getFiltered(latitude,longitude,industry){
-
-   fetch('/api/businessSearch3', {
+ appendDiv.innerHTML=''
+ loading.style.display = 'block';
+ fetch('/api/businessSearch3', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -618,10 +619,6 @@ loading.style.display = 'none';
         const arrangetext= document.createElement('div');
        arrangetext.classList.add('arrange-text');
 
-      //  const rating= document.createElement('div');
-      //  rating.textContent = business.data.rating;
-      //   arrangepic.appendChild(rating);
-      //   rating.classList.add('rating');
 
        const tictext= document.createElement('div');
        tictext.textContent = business.data.industry;
@@ -658,7 +655,7 @@ loading.style.display = 'none';
         arrangetext.appendChild(openingTimeTag);
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
-        appendDiv4.appendChild(arrangeitems)
+        appendDiv.appendChild(arrangeitems)
 
         arrangeitems.addEventListener('click', () => {
         localStorage.removeItem('selectedUserId')

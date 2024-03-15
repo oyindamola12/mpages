@@ -319,7 +319,7 @@ function toggleGallery() {
 function reopenImageGallery() {
     // Restore previously selected images
     const fileInput = document.getElementById('fileImage');
-    fileInput.value = ''; // Clear the current selection
+    // fileInput.value = ''; // Clear the current selection
     selectedImages.forEach(image => {
         fileInput.files.push(image);
     });

@@ -273,9 +273,9 @@ function previewImages(event) {
         var deleteImg = document.createElement('p');
         deleteImg.innerHTML = "x";
          deleteImg.style.cursor = "pointer";
-        // deleteImg.style.position = "absolute";
-        // deleteImg.style.top = "0";
-        // deleteImg.style.right = "0";
+        deleteImg.style.position = "absolute";
+        //deleteImg.style.top = "0";
+      deleteImg.style.right = "0";
         deleteImg.style.backgroundColor = "#ffc946";
         deleteImg.style.borderRadius = "50%";
         deleteImg.style.width = "20px";
@@ -290,7 +290,7 @@ function previewImages(event) {
         image.src = URL.createObjectURL(event.target.files[i]);
         image.id = "output" + i;
         image.width = "200";
-
+spanElm.appendChild(deleteImg)
         spanElm.appendChild(image);
 
         divElm.appendChild(deleteImg); // Add delete button to the div

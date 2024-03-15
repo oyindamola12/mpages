@@ -291,7 +291,7 @@ yesNo.style.display = 'none';
   function previewImages(event) {
     const files = event.target.files;
     const imagePreview = document.getElementById('imagePreview');
-
+console.log(files)
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -339,7 +339,7 @@ const about = document.getElementById('about').value;
 const password =document.getElementById('password').value
 const fileInput = document.getElementById('fileImage');
 const fileInputed = document.getElementById('fileImage').files;
-
+console.log(fileInputed )
 const signupStatus= true;
 var userids =uuidv4()
 

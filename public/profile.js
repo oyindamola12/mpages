@@ -481,7 +481,7 @@ function previewImages(event) {
 
     // Combine the files from both sets into a single array
     const allFiles = [...files];
-console.log(allFiles)
+
     // Loop through the combined files
     for (let i = 0; i < allFiles.length; i++) {
         const file = allFiles[i];
@@ -495,7 +495,7 @@ console.log(allFiles)
             // Create an img element for each file
             const img = document.createElement('img');
             img.src = e.target.result;
-
+             console.log(e.target.result)
             // Append the img element to the imagePreview container
             imagePreview.appendChild(img);
         }

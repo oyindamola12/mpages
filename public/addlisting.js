@@ -264,73 +264,73 @@ yesNo.style.display = 'none';
  // Display the response
 
 
-function previewImages(event){
-   var imgCont = document.getElementById('imagePreview');
-            for (let i = 0; i < event.target.files.length; i++) {
-                var divElm = document.createElement('div');
-                divElm.id = "rowdiv" + i;
-                var spanElm = document.createElement('span');
-                var deleteImg = document.createElement('p');
-                deleteImg.innerHTML = "x";
-                var image = document.createElement('img');
-                image.src = URL.createObjectURL(event.target.files[i]);
-                image.id = "output" + i;
-                image.width = "200";
-                spanElm.appendChild(image);
+// function previewImages(event){
+//    var imgCont = document.getElementById('imagePreview');
+//             for (let i = 0; i < event.target.files.length; i++) {
+//                 var divElm = document.createElement('div');
+//                 divElm.id = "rowdiv" + i;
+//                 var spanElm = document.createElement('span');
+//                 var deleteImg = document.createElement('p');
+//                 deleteImg.innerHTML = "x";
+//                 var image = document.createElement('img');
+//                 image.src = URL.createObjectURL(event.target.files[i]);
+//                 image.id = "output" + i;
+//                 image.width = "200";
+//                 spanElm.appendChild(image);
 
-                deleteImg.onclick = function() {this.parentNode.remove()};
-                divElm.appendChild(deleteImg);
-                divElm.appendChild(spanElm);
+//                 deleteImg.onclick = function() {this.parentNode.remove()};
+//                 divElm.appendChild(deleteImg);
+//                 divElm.appendChild(spanElm);
 
-                imgCont.appendChild(divElm);
-                console.log(URL.createObjectURL(event.target.files[i]))
-            }
-}
-
-
-//   function previewImages(event) {
-//     const files = event.target.files;
-// const imagePreview = document.getElementById('imagePreview');
-
-
-//     for (let i = 0; i < files.length; i++) {
-//         const file = files[i];
-//         const reader = new FileReader();
-
-//         reader.onload = function(e) {
-//             const img = document.createElement('img');
-//             img.src = e.target.result;
-//             imagePreview.appendChild(img);
-//         }
-
-//         reader.readAsDataURL(file);
-
-
-//   //       const deleteBtn = document.createElement('button');
-//   //       deleteBtn.textContent = 'x';
-//   //         deleteBtn.type = 'button';
-//   // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
-//     }
-
-//       // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
-//       // selectedImagesContainer.innerHTML = '';
-
-//   //     for (let i = 0; i < files.length; i++) {
-//   //       const file = files[i];
-//   //       const img = document.createElement('img');
-//   //       img.src = URL.createObjectURL(file);
-
-//   //       const deleteBtn = document.createElement('button');
-//   //       deleteBtn.textContent = 'x';
-//   //         deleteBtn.type = 'button';
-//   // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
-
-//   //       const div = document.createElement('div');
-//   //       div.appendChild(img);
-//   //       div.appendChild(deleteBtn);
-//   //      imagePreview.appendChild(div);
-//   //     }
+//                 imgCont.appendChild(divElm);
+//                 console.log(URL.createObjectURL(event.target.files[i]))
+//             }
 // }
+
+
+  function previewImages(event) {
+    const files = event.target.files;
+const imagePreview = document.getElementById('imagePreview');
+
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            imagePreview.appendChild(img);
+        }
+
+        reader.readAsDataURL(file);
+
+
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+    }
+
+      // const selectedImagesContainer = document.getElementById('selectedImagesContainer');
+      // selectedImagesContainer.innerHTML = '';
+
+  //     for (let i = 0; i < files.length; i++) {
+  //       const file = files[i];
+  //       const img = document.createElement('img');
+  //       img.src = URL.createObjectURL(file);
+
+  //       const deleteBtn = document.createElement('button');
+  //       deleteBtn.textContent = 'x';
+  //         deleteBtn.type = 'button';
+  // deleteBtn.onclick = createDeleteHandler(i, files, previewImages);
+
+  //       const div = document.createElement('div');
+  //       div.appendChild(img);
+  //       div.appendChild(deleteBtn);
+  //      imagePreview.appendChild(div);
+  //     }
+}
 
 //  function createDeleteHandler(index, files, callback) {
 //       return function(event) {

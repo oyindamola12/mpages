@@ -521,7 +521,7 @@ function previewImages(event){
                 divElm.appendChild(spanElm);
 
                 imgCont.appendChild(divElm);
-                console.log(URL.createObjectURL(event.target.files[i]);)
+                console.log(URL.createObjectURL(event.target.files[i]))
             }
 }
 

@@ -475,33 +475,52 @@ function toggleEditclosetime() {
             }
       }
 
-function previewImages(event) {
-    const files = event.target.files;
-    const imagePreview = document.getElementById('imagePreview2');
+// function previewImages(event) {
+//     const files = event.target.files;
+//     const imagePreview = document.getElementById('imagePreview2');
 
-    // Combine the files from both sets into a single array
-    const allFiles = [...files];
+//     // Combine the files from both sets into a single array
+//     const allFiles = [...files];
 
-    // Loop through the combined files
-    for (let i = 0; i < allFiles.length; i++) {
-        const file = allFiles[i];
-        const reader = new FileReader();
+//     // Loop through the combined files
+//     for (let i = 0; i < allFiles.length; i++) {
+//         const file = allFiles[i];
+//         const reader = new FileReader();
 
-        // Read the file as a data URL
-        reader.readAsDataURL(file);
+//         // Read the file as a data URL
+//         reader.readAsDataURL(file);
 
-        // Callback function when reading is done
-        reader.onload = function(e) {
-            // Create an img element for each file
-            const img = document.createElement('img');
-            img.src = e.target.result;
-console.log(event.target.files)
-            // Append the img element to the imagePreview container
-            imagePreview.appendChild(img);
-        }
-    }
+//         // Callback function when reading is done
+//         reader.onload = function(e) {
+//             // Create an img element for each file
+//             const img = document.createElement('img');
+//             img.src = e.target.result;
+
+//             // Append the img element to the imagePreview container
+//             imagePreview.appendChild(img);
+//         }
+//     }
+// }
+
+function previewImages(event){
+   var imgCont = document.getElementById('imagePreview2');
+            for (let i = 0; i < event.target.files.length; i++) {
+                var divElm = document.createElement('div');
+                divElm.id = "rowdiv" + i;
+                var spanElm = document.createElement('span');
+                var image = document.createElement('img');
+                image.src = URL.createObjectURL(event.target.files[i]);
+                image.id = "output" + i;
+                image.width = "200";
+                spanElm.appendChild(image);
+                var deleteImg = document.createElement('p');
+                deleteImg.innerHTML = "x";
+                deleteImg.onclick = function() {this.parentNode.remove()};
+                divElm.appendChild(spanElm);
+                divElm.appendChild(deleteImg);
+                imgCont.appendChild(divElm);
+            }
 }
-
 
  async function updateData(newValue) {
 

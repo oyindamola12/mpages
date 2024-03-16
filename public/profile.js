@@ -265,7 +265,7 @@ function display(userData) {
     myImages.forEach(image => {
       var deleteImg = document.createElement('p');
         deleteImg.innerHTML = "x";
-          deleteImg.classList.add('deleteImg');
+          deleteImg.classList.add( 'deleteImg');
 
         deleteImg.onclick =async function(){
             try {
@@ -275,7 +275,7 @@ function display(userData) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            itemId: userData.Images,
+           itemId: userData.Images,
             userId:userData.userId,
             listingId:userData.listingId
            // Replace with the name of the array field in Firestore

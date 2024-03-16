@@ -367,7 +367,11 @@ function previewImages(event) {
 async function updateImage(userData){
   const fileInput = document.getElementById('fileImage');
 const fileInputed = document.getElementById('fileImage').files;
+if ( fileInputed.length ===0  ) {
+        alert(" Select an image file");
+        return;
 
+    }
 if ( fileInputed.length >5  ) {
         alert("You can only select a maxium of 5 images.");
         return;

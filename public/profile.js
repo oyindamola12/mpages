@@ -277,7 +277,7 @@ function display(userData) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-        deleteImg.style.marginLeft = "80%";
+        // deleteImg.style.marginLeft = "80%";
         deleteImg.onclick =async function(){
             try {
         const response = await fetch('/removeFromArray', {

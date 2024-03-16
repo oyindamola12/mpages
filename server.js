@@ -1529,11 +1529,10 @@ const docRef2 = db.collection('BusinessLists').doc(listingId);
 app.post('/addImages3', upload.array('images'), async (req, res) => {
      const {   userId,listingId } = req.body;
 
-    console.log(req.files)
     try {
-        const imageUrls = [];
+       const imageUrls = [];
         const files = req.files;
-        for (const image of files) {
+      for (const image of files) {
             const fileName = `images/${Date.now()}_${image.originalname}`;
             const file = bucket.file(fileName);
             await file.save(image.buffer, {
@@ -1545,17 +1544,22 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
             imageUrls.push(imageUrl[0]);
         }
 
-        const businessDb = db.collection('BusinessLists').doc(listingId);
-        await businessDb.set({ Images: imageUrls }, { merge: true });
+        // Update the array in Firestore for both User and BusinessLists collections
+        const userDocRef = db.collection('Users').doc(userId).collection('BusinessLists').doc(listingId);
+        await userDocRef.update({
+            Images: admin.firestore.FieldValue.arrayUnion(imageUrls)
+        });
 
-        const businessDb2 = db.collection('Users').doc(userId).collection('BusinessLists').doc(listingId);
-        await businessDb2.set({ Images: imageUrls }, { merge: true });
+        const businessDocRef = db.collection('BusinessLists').doc(listingId);
+        await businessDocRef.update({
+            Images: admin.firestore.FieldValue.arrayUnion(imageUrls)
+        });
 
-        console.log('Images uploaded successfully');
-        res.json({ message: 'Images uploaded successfully', imageUrls });
+        res.status(200).send('Item added to array successfully');
     } catch (error) {
-        console.error('Error uploading images to Firebase Storage:', error);
-        res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
+        console.error('Error adding item to array:', error);
+        res.status(500).send('Internal server error');
     }
+   
 });
 app.listen(PORT, ()=> console.log('App is listening on url http://localhost:' + PORT))

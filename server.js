@@ -1514,7 +1514,7 @@ app.post('/api/removeFromArray', async (req, res) => {
     await docRef.update({
       Images: admin.firestore.FieldValue.arrayRemove(itemId)
     });
-const docRef2 = db.collection('BusinessLists').doc(listingId);
+    const docRef2 = db.collection('BusinessLists').doc(listingId);
     await docRef2.update({
       Images: admin.firestore.FieldValue.arrayRemove(itemId)
     });
@@ -1527,12 +1527,13 @@ const docRef2 = db.collection('BusinessLists').doc(listingId);
 
 
 app.post('/addImages3', upload.array('images'), async (req, res) => {
-     const {   userId,listingId } = req.body;
+    const { userId, listingId } = req.body;
 
     try {
-       const imageUrls = [];
+        const imageUrls = [];
         const files = req.files;
-      for (const image of files) {
+
+        for (const image of files) {
             const fileName = `images/${Date.now()}_${image.originalname}`;
             const file = bucket.file(fileName);
             await file.save(image.buffer, {
@@ -1547,12 +1548,12 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
         // Update the array in Firestore for both User and BusinessLists collections
         const userDocRef = db.collection('Users').doc(userId).collection('BusinessLists').doc(listingId);
         await userDocRef.update({
-            Images: admin.firestore.FieldValue.arrayUnion(imageUrls)
+            Images: admin.firestore.FieldValue.arrayUnion(...imageUrls)
         });
 
         const businessDocRef = db.collection('BusinessLists').doc(listingId);
         await businessDocRef.update({
-            Images: admin.firestore.FieldValue.arrayUnion(imageUrls)
+            Images: admin.firestore.FieldValue.arrayUnion(...imageUrls)
         });
 
         res.status(200).send('Item added to array successfully');
@@ -1560,6 +1561,6 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
         console.error('Error adding item to array:', error);
         res.status(500).send('Internal server error');
     }
-   
 });
+
 app.listen(PORT, ()=> console.log('App is listening on url http://localhost:' + PORT))

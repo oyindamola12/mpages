@@ -435,7 +435,7 @@ const fileInputed = document.getElementById('fileImage').files;
 const signupStatus= true;
 var userids =uuidv4()
 
-if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Industry'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
@@ -574,7 +574,7 @@ const fileInput = document.getElementById('fileImage');
 const fileInputed = document.getElementById('fileImage').files;
 
 let postid =uuidv4()
-  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Industry'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;
 

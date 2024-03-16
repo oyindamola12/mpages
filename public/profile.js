@@ -363,42 +363,47 @@ function previewImages(event) {
     }
 }
 
-async function updateImage(){
-  const fileInput = document.getElementById('fileImage');
-const fileInputed = document.getElementById('fileImage').files;
-if ( fileInputed.length ===0  ) {
-        alert(" Select an image file");
-        return;
+async function updateImage() {
+    const fileInput = document.getElementById('fileImage');
+    const files = fileInput.files;
 
-    }
-if ( fileInputed.length >5  ) {
-        alert("You can only select a maxium of 5 images.");
+    if (files.length === 0) {
+        alert("Select an image file");
         return;
-
     }
 
-   const files = fileInput.files;
+    if (files.length > 5) {
+        alert("You can only select a maximum of 5 images.");
+        return;
+    }
 
-            const formData = new FormData();
+    const formData = new FormData();
 
- for (let i = 0; i < files.length; i++) {
-  formData.append('images', files[i]);
-            }
-formData.append('userId',  businessOwnerIds);
-formData.append('listingId', listingsId);
-console.log(formData)
-            fetch('/addImages3', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Uploaded images:', data);
-            })
-            .catch(error => {
-                console.error('Error uploading images:', error);
-            });
- }
+    for (let i = 0; i < files.length; i++) {
+        formData.append('images', files[i]);
+    }
+
+    formData.append('userId', businessOwnerIds);
+    formData.append('listingId', listingsId);
+
+    try {
+        const response = await fetch('/addImages3', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Uploaded images:', data);
+        } else {
+            throw new Error('Failed to upload images');
+        }
+    } catch (error) {
+        console.error('Error uploading images:', error);
+        alert('Error uploading images');
+    }
+}
+
 
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');

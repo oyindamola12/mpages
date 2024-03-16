@@ -171,7 +171,7 @@ fetch('/api/getSingleProfile2', {
          about.textContent =  userData.about;
 initMap2(userData)
 display(userData)
-updateImage(userData)
+
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
@@ -360,11 +360,10 @@ function previewImages(event) {
 
         imgCont.appendChild(divElm);
 
-        console.log(URL.createObjectURL(event.target.files[i]));
     }
 }
 
-async function updateImage(userData){
+async function updateImage(){
   const fileInput = document.getElementById('fileImage');
 const fileInputed = document.getElementById('fileImage').files;
 if ( fileInputed.length ===0  ) {
@@ -385,8 +384,8 @@ if ( fileInputed.length >5  ) {
  for (let i = 0; i < files.length; i++) {
   formData.append('images', files[i]);
             }
-formData.append('userId', userData.userid);
-formData.append('listingId', userData.listingId);
+formData.append('userId',  businessOwnerIds);
+formData.append('listingId', listingsId);
 console.log(formData)
             fetch('/addImages3', {
                 method: 'POST',

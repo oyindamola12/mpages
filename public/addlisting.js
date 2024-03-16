@@ -260,10 +260,23 @@ yesNo.style.display = 'none';
  var location =document.querySelector('.select-styled3').textContent;
  var nav =document.getElementById('navigateSearch');
 
-let selectedImages = [];
+
  // Display the response
 function previewImages(event) {
     var imgCont = document.getElementById('imagePreview');
+        const fileInputs = document.getElementById('fileImage');
+       const newInput = document.createElement('input');
+      newInput.type = 'file';
+      newInput.name = 'images';
+      newInput.multiple = true;
+      fileInputs.appendChild(newInput);
+ const files = document.querySelectorAll('input[type="file"]');
+      files.forEach(fileInput => {
+        const selectedFiles = fileInput.files;
+        // Handle file upload logic here
+        console.log(selectedFiles);
+
+          });
     for (let i = 0; i < event.target.files.length; i++) {
         var divElm = document.createElement('div');
         divElm.id = "rowdiv" + i;

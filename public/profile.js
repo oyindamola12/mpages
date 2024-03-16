@@ -607,28 +607,6 @@ function toggleEditclosetime() {
 //     }
 // }
 
-function previewImages(event){
-   var imgCont = document.getElementById('imagePreview2');
-            for (let i = 0; i < event.target.files.length; i++) {
-                var divElm = document.createElement('div');
-                divElm.id = "rowdiv" + i;
-                var spanElm = document.createElement('span');
-                var deleteImg = document.createElement('p');
-                deleteImg.innerHTML = "x";
-                var image = document.createElement('img');
-                image.src = URL.createObjectURL(event.target.files[i]);
-                image.id = "output" + i;
-                image.width = "200";
-                spanElm.appendChild(image);
-
-                deleteImg.onclick = function() {this.parentNode.remove()};
-                divElm.appendChild(deleteImg);
-                divElm.appendChild(spanElm);
-
-                imgCont.appendChild(divElm);
-                console.log(URL.createObjectURL(event.target.files[i]))
-            }
-}
 
  async function updateData(newValue) {
 

@@ -263,6 +263,45 @@ function display(userData) {
     let myImages = userData.Images;
 
     myImages.forEach(image => {
+      var deleteImg = document.createElement('p');
+        deleteImg.innerHTML = "x";
+         deleteImg.style.cursor = "pointer";
+        // deleteImg.style.position = "absolute";
+        //deleteImg.style.top = "0";
+    //   deleteImg.style.right = "0";
+        deleteImg.style.backgroundColor = "#ffc946";
+        deleteImg.style.borderRadius = "50%";
+        deleteImg.style.width = "20px";
+        deleteImg.style.height = "20px";
+        deleteImg.style.textAlign = "center";
+        deleteImg.style.lineHeight = "20px";
+        deleteImg.style.color = "black";
+        deleteImg.style.marginBottom = "10px";
+          deleteImg.style.marginLeft = "80%";
+        deleteImg.onclick =async function(){
+            try {
+        const response = await fetch('/removeFromArray', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            itemId: userData.Images,
+           // Replace with the name of the array field in Firestore
+          })
+        });
+
+        if (response.ok) {
+          alert('Item removed from array successfully');
+        } else {
+          console.error('Failed to remove item from array:', response.statusText);
+          alert('Failed to remove item from array');
+        }
+      } catch (error) {
+        console.error('Error removing item from array:', error);
+        alert('Error removing item from array');
+      }
+        }
         const img = document.createElement('img');
         img.src = image;
         img.classList.add('IMAGEURL');

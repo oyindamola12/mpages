@@ -1505,5 +1505,20 @@ timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
 });
 
+app.post('/removeFromArray', async (req, res) => {
+  try {
+    const { itemId, arrayField } = req.body;
 
+    // Update the array in Firestore
+    const docRef = db.collection('Users').doc('yourDocument').collection('BusinessLists').doc('yourDocument');
+    await docRef.update({
+      Images: admin.firestore.FieldValue.arrayRemove(itemId)
+    });
+
+    res.status(200).send('Item removed from array successfully');
+  } catch (error) {
+    console.error('Error removing item from array:', error);
+    res.status(500).send('Internal server error');
+  }
+});
 app.listen(PORT, ()=> console.log('App is listening on url http://localhost:' + PORT))

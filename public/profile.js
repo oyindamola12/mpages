@@ -305,6 +305,7 @@ function display(userData) {
         const img = document.createElement('img');
         img.src = image;
         img.classList.add('IMAGEURL');
+                document.querySelector(".about-video").appendChild(deleteImg );
         document.querySelector(".about-video").appendChild(img);
     });
 

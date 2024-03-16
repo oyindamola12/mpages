@@ -265,7 +265,7 @@ function display(userData) {
     myImages.forEach(image => {
       var deleteImg = document.createElement('p');
         deleteImg.innerHTML = "x";
-          deleteImg.classList.add('arrange-pic');
+          deleteImg.classList.add(' deleteImg');
          deleteImg.style.cursor = "pointer";
         // deleteImg.style.position = "absolute";
         //deleteImg.style.top = "0";
@@ -278,7 +278,7 @@ function display(userData) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-        deleteImg.style.marginLeft = "50%";
+        // deleteImg.style.marginLeft = "50%";
         deleteImg.onclick =async function(){
             try {
         const response = await fetch('/removeFromArray', {

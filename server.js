@@ -1524,4 +1524,38 @@ const docRef2 = db.collection('BusinessLists').doc(listingId);
     res.status(500).send('Internal server error');
   }
 });
+
+
+app.post('/addImages3', upload.array('images'), async (req, res) => {
+     const {   userId,listingId } = req.body;
+
+    console.log(req.files)
+    try {
+        const imageUrls = [];
+        const files = req.files;
+        for (const image of files) {
+            const fileName = `images/${Date.now()}_${image.originalname}`;
+            const file = bucket.file(fileName);
+            await file.save(image.buffer, {
+                metadata: {
+                    contentType: image.mimetype,
+                },
+            });
+            const imageUrl = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
+            imageUrls.push(imageUrl[0]);
+        }
+
+        const businessDb = db.collection('BusinessLists').doc(listingId);
+        await businessDb.set({ Images: imageUrls }, { merge: true });
+
+        const businessDb2 = db.collection('Users').doc(userId).collection('BusinessLists').doc(listingId);
+        await businessDb2.set({ Images: imageUrls }, { merge: true });
+
+        console.log('Images uploaded successfully');
+        res.json({ message: 'Images uploaded successfully', imageUrls });
+    } catch (error) {
+        console.error('Error uploading images to Firebase Storage:', error);
+        res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
+    }
+});
 app.listen(PORT, ()=> console.log('App is listening on url http://localhost:' + PORT))

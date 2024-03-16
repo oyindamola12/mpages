@@ -171,7 +171,7 @@ fetch('/api/getSingleProfile2', {
          about.textContent =  userData.about;
 initMap2(userData)
 display(userData)
-
+updateImage(userData)
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
@@ -364,7 +364,37 @@ function previewImages(event) {
     }
 }
 
+async function updateImage(userData){
+  const fileInput = document.getElementById('fileImage');
+const fileInputed = document.getElementById('fileImage').files;
 
+if ( fileInputed.length >5  ) {
+        alert("You can only select a maxium of 5 images.");
+        return;
+
+    }
+
+   const files = fileInput.files;
+
+            const formData = new FormData();
+
+ for (let i = 0; i < files.length; i++) {
+                formData.append('images', files[i]);
+            }
+formData.append('userId', userData.userid);
+formData.append('listingId', userData.listingId);
+            fetch('/addImages3', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Uploaded images:', data);
+            })
+            .catch(error => {
+                console.error('Error uploading images:', error);
+            });
+ }
 
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');

@@ -284,7 +284,7 @@ function previewImages(event) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-          deleteImg.style.marginLeft = "20%";
+          deleteImg.style.marginLeft = "50%";
         deleteImg.onclick = function() {this.parentNode.remove()}; // Delete button click event
 
         var image = document.createElement('img');

@@ -690,7 +690,7 @@ userids: postid,
 
 
   async function uploadImg(){
-     const fileInputs = document.getElementById('fileInputs');
+     const fileInputs = document.getElementById('fileImage');
       const newInput = document.createElement('input');
       newInput.type = 'file';
       newInput.name = 'images';

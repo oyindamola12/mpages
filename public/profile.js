@@ -365,6 +365,7 @@ function previewImages(event) {
 
 async function updateImage() {
     const fileInput = document.getElementById('fileImage');
+        var imgCont = document.getElementById('imagePreview2');
     const files = fileInput.files;
 
     if (files.length === 0) {
@@ -395,6 +396,7 @@ async function updateImage() {
         if (response.ok) {
             const data = await response.json();
             console.log('Uploaded images:', data);
+imgCont.innerHTML=''
         } else {
             throw new Error('Failed to upload images');
         }

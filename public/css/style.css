@@ -3489,6 +3489,25 @@ a:link, a:visited {
 
 
 		}
+
+		.about-video img {
+
+			width: 80%;
+			height: 400px;
+			 object-fit: cover;
+			 margin-bottom: 30px;
+
+		 }
+
+		 .about-video{
+			 width:700px;
+		   height: 100%;
+
+			 float: left;
+			 margin-left: -18px;
+			 padding: 20px;
+
+		 }
 }
 
 /* Small Mobile : 320px */
@@ -3639,6 +3658,25 @@ a:link, a:visited {
 	border-radius: 5px;
 
 }
+
+.about-video img {
+
+	width: 60%;
+	height: 300px;
+	 object-fit: cover;
+	 margin-bottom: 30px;
+
+ }
+
+ .about-video{
+	 width:350px;
+   height: 100%;
+
+	 float: left;
+	 margin-left: -18px;
+	 padding: 20px;
+
+ }
 
 }
 @media (max-width: 440px) {

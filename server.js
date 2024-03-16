@@ -1505,7 +1505,7 @@ timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
 });
 
-app.post('/removeFromArray', async (req, res) => {
+app.post('/api/removeFromArray', async (req, res) => {
   try {
     const { itemId,  userId,listingId } = req.body;
 

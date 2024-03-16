@@ -298,7 +298,7 @@ function previewImages(event) {
         divElm.appendChild(spanElm);
 
         imgCont.appendChild(divElm);
-    
+
     }
 }
 
@@ -685,7 +685,6 @@ userids: postid,
     });
     handler.openIframe();
   }
-
 
 
   async function uploadImg(){

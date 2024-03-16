@@ -281,7 +281,7 @@ function display(userData) {
         // deleteImg.style.marginLeft = "50%";
         deleteImg.onclick =async function(){
             try {
-        const response = await fetch('/removeFromArray', {
+        const response = await fetch('/api/removeFromArray', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

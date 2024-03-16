@@ -279,31 +279,31 @@ function display(userData) {
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
         // deleteImg.style.marginLeft = "50%";
-        deleteImg.onclick =async function(){
-            try {
+        deleteImg.onclick =async function removeItem(itemId) {
+    try {
         const response = await fetch('/api/removeFromArray', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            itemId: userData.Images,
-            userId:userData.userid,
-            listingId:userData.listingId,
-           // Replace with the name of the array field in Firestore
-          })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                itemId:image,
+                userId: userData.userid,
+                listingId: userData.listingId,
+            })
         });
 
         if (response.ok) {
-          alert('Item removed from array successfully');
+            alert('Item removed from array successfully');
         } else {
-          console.error('Failed to remove item from array:', response.statusText);
-          alert('Failed to remove item from array');
+            console.error('Failed to remove item from array:', response.statusText);
+            alert('Failed to remove item from array');
         }
-      } catch (error) {
+    } catch (error) {
         console.error('Error removing item from array:', error);
         alert('Error removing item from array');
-      }
+    }
+
         }
         const img = document.createElement('img');
         img.src = image;

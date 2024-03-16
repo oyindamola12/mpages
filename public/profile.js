@@ -383,10 +383,11 @@ if ( fileInputed.length >5  ) {
             const formData = new FormData();
 
  for (let i = 0; i < files.length; i++) {
-                formData.append('images', files[i]);
+  formData.append('images', files[i]);
             }
 formData.append('userId', userData.userid);
 formData.append('listingId', userData.listingId);
+console.log(formData)
             fetch('/addImages3', {
                 method: 'POST',
                 body: formData

@@ -3662,14 +3662,14 @@ a:link, a:visited {
 .about-video img {
 
 	width: 60%;
-	height: 300px;
+	height: 400px;
 	 object-fit: cover;
 	 margin-bottom: 30px;
 
  }
 
  .about-video{
-	 width:350px;
+	 width:600px;
    height: 100%;
 
 	 float: left;

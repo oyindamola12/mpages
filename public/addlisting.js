@@ -702,10 +702,11 @@ userids: postid,
         const selectedFiles = fileInput.files;
         // Handle file upload logic here
         console.log(selectedFiles);
+
           });
   }
 
-
+uploadImg()
 
   function payWithPaystack() {
 signedupAlready==='true' ? pay2() : pay();

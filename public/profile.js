@@ -265,7 +265,7 @@ function display(userData) {
     myImages.forEach(image => {
       var deleteImg = document.createElement('p');
         deleteImg.innerHTML = "x";
-          deleteImg.classList.add(' deleteImg');
+          deleteImg.classList.add('deleteImg');
          deleteImg.style.cursor = "pointer";
         // deleteImg.style.position = "absolute";
         //deleteImg.style.top = "0";

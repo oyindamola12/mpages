@@ -185,9 +185,7 @@ background-color: #000;
 }
 .deleteImg{
 	cursor :pointer;
-	position :absolute;
-	top : 0;
-	right:0;
+
     background-color:#ffc946;
 	border-radius:"50%";
 	width :20px;
@@ -3523,18 +3521,7 @@ a:link, a:visited {
 
 		 }
 		 .deleteImg{
-			cursor :pointer;
-			position :absolute;
-			top : 0;
-			right:0;
-			background-color:#ffc946;
-			border-radius:"50%";
-			width :20px;
-			height:20px;
-		    text-align :center;
-			line-height:20px;
-			color :black;
-		    margin-bottom : 10px;
+
 			margin-left: "80%";
 		}
 }
@@ -3707,16 +3694,7 @@ a:link, a:visited {
 
  }
  .deleteImg{
-	cursor :pointer;
-	
-    background-color:#ffc946;
-	border-radius:"50%";
-	width :20px;
-    height:20px;
-text-align :center;
-	line-height:20px;
-	color :black;
-margin-bottom : 10px;
+
 	margin-left: "60%";
 }
 }

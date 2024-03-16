@@ -280,6 +280,111 @@ function display(userData) {
 
 // display()
 
+function previewImages(event) {
+    var imgCont = document.getElementById('imagePreview2');
+    for (let i = 0; i < event.target.files.length; i++) {
+        var divElm = document.createElement('div');
+        divElm.id = "rowdiv" + i;
+
+        var spanElm = document.createElement('span');
+
+        var deleteImg = document.createElement('p');
+        deleteImg.innerHTML = "x";
+         deleteImg.style.cursor = "pointer";
+        // deleteImg.style.position = "absolute";
+        //deleteImg.style.top = "0";
+    //   deleteImg.style.right = "0";
+        deleteImg.style.backgroundColor = "#ffc946";
+        deleteImg.style.borderRadius = "50%";
+        deleteImg.style.width = "20px";
+        deleteImg.style.height = "20px";
+        deleteImg.style.textAlign = "center";
+        deleteImg.style.lineHeight = "20px";
+        deleteImg.style.color = "black";
+        deleteImg.style.marginBottom = "10px";
+          deleteImg.style.marginLeft = "80%";
+        deleteImg.onclick = function() {this.parentNode.remove()}; // Delete button click event
+
+        var image = document.createElement('img');
+        image.src = URL.createObjectURL(event.target.files[i]);
+        image.id = "output" + i;
+        image.width = "200";
+
+        spanElm.appendChild(image);
+
+        divElm.appendChild(deleteImg); // Add delete button to the div
+        divElm.appendChild(spanElm);
+
+        imgCont.appendChild(divElm);
+
+        console.log(URL.createObjectURL(event.target.files[i]));
+    }
+}
+
+
+
+// function previewImages(event){
+//    var imgCont = document.getElementById('imagePreview');
+//             for (let i = 0; i < event.target.files.length; i++) {
+//                 var divElm = document.createElement('div');
+//                 divElm.id = "rowdiv" + i;
+//                 var spanElm = document.createElement('span');
+//                 var deleteImg = document.createElement('p');
+//                 deleteImg.innerHTML = "x";
+//                 deleteImg.style.cursor = "pointer"; // Change cursor to pointer
+//         deleteImg.style.position = "absolute"; // Position absolute
+//         deleteImg.style.top = "0"; // Move to top
+//         deleteImg.style.right = "0"; // Move to right
+//         deleteImg.style.backgroundColor = "#ffc946"; // Circle color yellow
+//         deleteImg.style.borderRadius = "50%"; // Make it a circle
+//         deleteImg.style.width = "20px"; // Set width
+//         deleteImg.style.height = "20px"; // Set height
+//         deleteImg.style.textAlign = "center"; // Center the text
+//         deleteImg.style.lineHeight = "20px"; // Center vertically
+//         deleteImg.style.color = "black"; // X color black
+//         deleteImg.style.margin = "0"; // Remove any margin
+//                 var image = document.createElement('img');
+//                 image.src = URL.createObjectURL(event.target.files[i]);
+//                 image.id = "output" + i;
+//                 image.width = "200";
+//                 spanElm.appendChild(image);
+
+//                 deleteImg.onclick = function() {this.parentNode.remove()};
+//                 divElm.appendChild(deleteImg);
+//                 divElm.appendChild(spanElm);
+
+//                 imgCont.appendChild(divElm);
+//                 console.log(URL.createObjectURL(event.target.files[i]))
+//             }
+// }
+// Function to toggle between Upload Images and Reopen Gallery
+
+function toggleGallery() {
+    const fileInput = document.getElementById('fileImage');
+    const toggleButton = document.getElementById('toggle-button');
+
+    if (fileInput.style.display === 'none') {
+        // Show file input to upload images
+        fileInput.style.display = 'block';
+        toggleButton.textContent = 'Reopen Gallery';
+    } else {
+        // Hide file input to reopen gallery
+        fileInput.style.display = 'none';
+        toggleButton.textContent = 'Upload Images';
+        reopenImageGallery(); // Call function to reopen the gallery
+    }
+}
+
+// Function to reopen the image gallery
+function reopenImageGallery() {
+    // Restore previously selected images
+    const fileInput = document.getElementById('fileImage');
+    // fileInput.value = ''; // Clear the current selection
+    selectedImages.forEach(image => {
+        fileInput.files.push(image);
+    });
+}
+
 function reviews(){
 
 

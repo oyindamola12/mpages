@@ -2906,7 +2906,7 @@ a:link, a:visited {
 .contact-form button {
 	color: #000;
 	font-size: 20px;
-	border: 1px solid #ffc946;
+	/* border: 1px solid #ffc946; */
 	background: #ffc946;
 	padding: 6px 42px;
 	cursor: pointer;

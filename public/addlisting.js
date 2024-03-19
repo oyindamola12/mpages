@@ -264,19 +264,7 @@ yesNo.style.display = 'none';
  // Display the response
 function previewImages(event) {
     var imgCont = document.getElementById('imagePreview');
-        const fileInputs = document.getElementById('fileImage');
-       const newInput = document.createElement('input');
-      newInput.type = 'file';
-      newInput.name = 'images';
-      newInput.multiple = true;
-      fileInputs.appendChild(newInput);
- const files = document.querySelectorAll('input[type="file"]');
-      files.forEach(fileInput => {
-        const selectedFiles = fileInput.files;
-        // Handle file upload logic here
-        console.log(selectedFiles);
-
-          });
+    
     for (let i = 0; i < event.target.files.length; i++) {
         var divElm = document.createElement('div');
         divElm.id = "rowdiv" + i;
@@ -317,6 +305,42 @@ function previewImages(event) {
 }
 
 
+
+// function previewImages(event){
+//    var imgCont = document.getElementById('imagePreview');
+//             for (let i = 0; i < event.target.files.length; i++) {
+//                 var divElm = document.createElement('div');
+//                 divElm.id = "rowdiv" + i;
+//                 var spanElm = document.createElement('span');
+//                 var deleteImg = document.createElement('p');
+//                 deleteImg.innerHTML = "x";
+//                 deleteImg.style.cursor = "pointer"; // Change cursor to pointer
+//         deleteImg.style.position = "absolute"; // Position absolute
+//         deleteImg.style.top = "0"; // Move to top
+//         deleteImg.style.right = "0"; // Move to right
+//         deleteImg.style.backgroundColor = "#ffc946"; // Circle color yellow
+//         deleteImg.style.borderRadius = "50%"; // Make it a circle
+//         deleteImg.style.width = "20px"; // Set width
+//         deleteImg.style.height = "20px"; // Set height
+//         deleteImg.style.textAlign = "center"; // Center the text
+//         deleteImg.style.lineHeight = "20px"; // Center vertically
+//         deleteImg.style.color = "black"; // X color black
+//         deleteImg.style.margin = "0"; // Remove any margin
+//                 var image = document.createElement('img');
+//                 image.src = URL.createObjectURL(event.target.files[i]);
+//                 image.id = "output" + i;
+//                 image.width = "200";
+//                 spanElm.appendChild(image);
+
+//                 deleteImg.onclick = function() {this.parentNode.remove()};
+//                 divElm.appendChild(deleteImg);
+//                 divElm.appendChild(spanElm);
+
+//                 imgCont.appendChild(divElm);
+//                 console.log(URL.createObjectURL(event.target.files[i]))
+//             }
+// }
+// Function to toggle between Upload Images and Reopen Gallery
 
 function toggleGallery() {
     const fileInput = document.getElementById('fileImage');

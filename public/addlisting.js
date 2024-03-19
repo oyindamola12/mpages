@@ -313,45 +313,10 @@ function previewImages(event) {
         imgCont.appendChild(divElm);
 
     }
+    //  imgCont.innerHTML=''
 }
 
 
-
-// function previewImages(event){
-//    var imgCont = document.getElementById('imagePreview');
-//             for (let i = 0; i < event.target.files.length; i++) {
-//                 var divElm = document.createElement('div');
-//                 divElm.id = "rowdiv" + i;
-//                 var spanElm = document.createElement('span');
-//                 var deleteImg = document.createElement('p');
-//                 deleteImg.innerHTML = "x";
-//                 deleteImg.style.cursor = "pointer"; // Change cursor to pointer
-//         deleteImg.style.position = "absolute"; // Position absolute
-//         deleteImg.style.top = "0"; // Move to top
-//         deleteImg.style.right = "0"; // Move to right
-//         deleteImg.style.backgroundColor = "#ffc946"; // Circle color yellow
-//         deleteImg.style.borderRadius = "50%"; // Make it a circle
-//         deleteImg.style.width = "20px"; // Set width
-//         deleteImg.style.height = "20px"; // Set height
-//         deleteImg.style.textAlign = "center"; // Center the text
-//         deleteImg.style.lineHeight = "20px"; // Center vertically
-//         deleteImg.style.color = "black"; // X color black
-//         deleteImg.style.margin = "0"; // Remove any margin
-//                 var image = document.createElement('img');
-//                 image.src = URL.createObjectURL(event.target.files[i]);
-//                 image.id = "output" + i;
-//                 image.width = "200";
-//                 spanElm.appendChild(image);
-
-//                 deleteImg.onclick = function() {this.parentNode.remove()};
-//                 divElm.appendChild(deleteImg);
-//                 divElm.appendChild(spanElm);
-
-//                 imgCont.appendChild(divElm);
-//                 console.log(URL.createObjectURL(event.target.files[i]))
-//             }
-// }
-// Function to toggle between Upload Images and Reopen Gallery
 
 function toggleGallery() {
     const fileInput = document.getElementById('fileImage');
@@ -456,8 +421,8 @@ return false;
 formData.append('userids', userids);
 
  var handler = PaystackPop.setup({
-    key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-     //key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+    //key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+     key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
       email:email,
       amount: 3000 * 100,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you

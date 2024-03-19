@@ -361,6 +361,7 @@ function previewImages(event) {
         imgCont.appendChild(divElm);
 
     }
+    //  imgCont.innerHTML=''
 }
 
 async function updateImage() {

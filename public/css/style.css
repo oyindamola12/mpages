@@ -840,9 +840,9 @@ a:link, a:visited {
 
 #upload-button2{
     display: inline-block;
-    background-color: #ffc946;
+    background-color: #000;
     color: black;
-    padding: 10px 10px;
+    padding: 10px 1px;
     cursor: pointer;
     border: none;
     border-radius: 5px;

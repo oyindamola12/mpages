@@ -840,13 +840,13 @@ a:link, a:visited {
 
 #upload-button2{
     display: inline-block;
-    background-color: #000;
+    background-color: #ffc946;
     color: black;
-    padding: 10px 1px;
+    padding: 10px 20px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-	height: 50px;
+	height: 30px;
     transition: background-color 0.3s;
 
 }

@@ -838,6 +838,19 @@ a:link, a:visited {
 
 }
 
+#upload-button2{
+    display: inline-block;
+    background-color: #ffc946;
+    color: black;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+	height: 50px;
+    transition: background-color 0.3s;
+
+}
+
 
 /* Style the image preview container */
 .image-preview {
@@ -2403,7 +2416,7 @@ cursor: pointer;
 	border-radius: 5px;
 }
 .intro-share .share-btn a.share {
-	margin-top: 15px;
+	margin-bottom: 15px;
 	background: #000;
 	color:#fff;
 }

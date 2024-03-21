@@ -2434,15 +2434,15 @@ a:link, a:visited {
 
 
 .intro-share .share-btn2 a {
-	/* color: #000;
+	color: #fff;
 	display: inline-block;
 	font-size: 16px;
 	font-weight: 700;
 	letter-spacing: 0.2px;
-	background: #ffc946;
+	background: #000;
 	padding: 7px 22px;
 	margin-left: 14px;
-	border-radius: 5px; */
+	border-radius: 5px;
 }
 .share{
 cursor: pointer;

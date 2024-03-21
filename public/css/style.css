@@ -2425,7 +2425,7 @@ a:link, a:visited {
 	flex-direction: row;
 }
 
-.intro-share .share-btn a {
+/* .intro-share .share-btn a {
 	color: #000;
 	display: inline-block;
 	font-size: 16px;
@@ -2435,7 +2435,7 @@ a:link, a:visited {
 	padding: 7px 22px;
 	margin-left: 14px;
 	border-radius: 5px;
-}
+} */
 
 
 .intro-share .share-btn2 a {

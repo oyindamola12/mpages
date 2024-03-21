@@ -295,6 +295,7 @@ function display(userData) {
 
         if (response.ok) {
             alert('Item removed from array successfully');
+            window.location.reload();
         } else {
             console.error('Failed to remove item from array:', response.statusText);
             alert('Failed to remove item from array');
@@ -397,7 +398,8 @@ async function updateImage() {
         if (response.ok) {
             const data = await response.json();
             console.log('Uploaded images:', data);
-imgCont.innerHTML=''
+           imgCont.innerHTML='';
+           window.location.reload();
         } else {
             throw new Error('Failed to upload images');
         }

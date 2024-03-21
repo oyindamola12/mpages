@@ -371,8 +371,7 @@ async function updateImage() {
     var loaderId = document.getElementById('loaderA');
     var shareSave = document.getElementById('shareSave');
 
- loaderId.style.display='block'
- shareSave.style.display='none'
+
     const files = fileInput.files;
 
     if (files.length === 0) {
@@ -384,7 +383,8 @@ async function updateImage() {
         alert("You can only select a maximum of 5 images.");
         return;
     }
-
+ loaderId.style.display='block'
+ shareSave.style.display='none'
     const formData = new FormData();
 
     for (let i = 0; i < files.length; i++) {

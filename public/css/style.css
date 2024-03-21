@@ -848,8 +848,8 @@ a:link, a:visited {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-	width:42px;
-	height:42px;
+	/* width:42px;
+	height:42px; */
     transition: background-color 0.3s;
 
 }

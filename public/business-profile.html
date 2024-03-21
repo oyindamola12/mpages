@@ -156,8 +156,8 @@
                             <div class="image-preview2" id="imagePreview2"></div>
                             <div class="share-btn">
                                 <a class="share" style="background-color: #ffc946;color: #000;"  onclick="document.getElementById('fileImage').click()" >Upload Images</a>
-                                <a class="share"  onclick="updateImage()">Save</a>
-                                <div class="loaderA"></div>
+                                <a class="share" id="shareSave" style="display: block;"  onclick="updateImage()">Save</a>
+                                <div class="loaderA" id="loaderA" style="display: none;"></div>
                             </div>
         <div class="share-icon">
         <a id="facebook" onclick="shareOnFacebook()" target="blank" title="facebook"><i class="fa fa-facebook"></i></a>

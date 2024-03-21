@@ -368,8 +368,11 @@ function previewImages(event) {
 async function updateImage() {
     var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
-    var loaderId = document.getElementById('loaderId');
+    var loaderId = document.getElementById('loaderA');
+    var shareSave = document.getElementById('shareSave');
+
  loaderId.style.display='block'
+ shareSave.style.display='none'
     const files = fileInput.files;
 
     if (files.length === 0) {
@@ -408,12 +411,12 @@ async function updateImage() {
             throw new Error('Failed to upload images');
         }
     } catch (error) {
-        imgCont.innerHTML='';
+           imgCont.innerHTML='';
            window.location.reload();
 
 
         console.error('Error uploading images:', error);
-        alert('Error uploading images');
+        // alert('Error uploading images');
     }
 }
 

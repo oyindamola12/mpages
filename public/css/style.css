@@ -833,11 +833,11 @@ a:link, a:visited {
 	color:#fff;
 	padding:10px 0px;
 	border-radius: 5px;
-width: 70px;
+    width: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
+display: none;
 	transition: opacity 0.75s, visibility 0.75s;
   }
 

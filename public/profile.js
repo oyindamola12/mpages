@@ -368,7 +368,7 @@ function previewImages(event) {
 async function updateImage() {
     var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
-    var loaderId = document.getElementById('loaderA');
+    var loaderId = document.querySelector('.loaderA');
     var shareSave = document.getElementById('shareSave');
 
 
@@ -403,9 +403,11 @@ async function updateImage() {
         if (response.ok) {
             const data = await response.json();
             console.log('Uploaded images:', data);
+             loaderId.style.display='none'
+              shareSave.style.display='block'
+           imgCont.innerHTML='';
             window.location.reload();
-          //   loaderId.style.display='none'
-          //  imgCont.innerHTML='';
+
 
         } else {
             throw new Error('Failed to upload images');

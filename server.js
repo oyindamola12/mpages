@@ -1558,6 +1558,7 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
 
         res.status(200).send('Item added to array successfully');
     } catch (error) {
+      console.log(error)
         console.error('Error adding item to array:', error);
         res.status(500).send('Internal server error');
     }

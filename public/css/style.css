@@ -837,7 +837,7 @@ a:link, a:visited {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	
+
 	transition: opacity 0.75s, visibility 0.75s;
   }
 
@@ -2415,6 +2415,8 @@ a:link, a:visited {
 
 .intro-share .share-btn {
 	margin-bottom: 45px;
+	display: flex;
+	flex-direction: row;
 }
 
 .intro-share .share-btn a {

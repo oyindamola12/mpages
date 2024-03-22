@@ -837,7 +837,7 @@ a:link, a:visited {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
+	text-align: center;
 	transition: opacity 0.75s, visibility 0.75s;
   }
 

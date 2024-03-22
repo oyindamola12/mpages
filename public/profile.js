@@ -381,7 +381,7 @@ function testB2(){
 async function updateImage() {
     var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
-    var loaderId = document.querySelector('.loaderA');
+    var loaderId = document.getElementById('indicatorButton');
     var shareSave = document.getElementById('shareSave');
 
 

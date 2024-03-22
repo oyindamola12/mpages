@@ -748,7 +748,7 @@ a:link, a:visited {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
-	border-bottom: #000 1px solid;
+
 }
 
 .spad {
@@ -1042,6 +1042,7 @@ margin-bottom: 15px;
 
 .header-section .main-menu {
 	float: left;
+	border-bottom: #000 1px solid;
 }
 
 .header-section .main-menu ul li {

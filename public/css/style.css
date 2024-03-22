@@ -833,10 +833,11 @@ a:link, a:visited {
 	color:#fff;
 	padding:10px 20px;
 	border-radius: 5px;
-    width: 70px;
-	display: flex;
+	width: calc(50% - 5px); /* Adjust width for indicator button */
+    padding: 10px 15px; /* Adjust padding for the indicator button */
+	/* display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; */
 	text-align: center;
 	transition: opacity 0.75s, visibility 0.75s;
   }

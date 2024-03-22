@@ -748,6 +748,7 @@ a:link, a:visited {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
+	border: #000 1px solid;
 }
 
 .spad {

@@ -416,10 +416,9 @@ async function updateImage() {
         if (response.ok) {
             const data = await response.json();
             console.log('Uploaded images:', data);
-             imgCont.innerHTML='';
              loaderId.style.display='none'
               shareSave.style.display='block'
-
+           imgCont.innerHTML='';
             window.location.reload();
 
 

@@ -365,6 +365,19 @@ function previewImages(event) {
     //  imgCont.innerHTML=''
 }
 
+function testB(){
+    var loaderId = document.querySelector('.loaderA');
+    var shareSave = document.getElementById('shareSave');
+    loaderId.style.display='block'
+ shareSave.style.display='none'
+}
+
+function testB2(){
+    var loaderId = document.querySelector('.loaderA');
+    var shareSave = document.getElementById('shareSave');
+    loaderId.style.display='inline-block'
+ shareSave.style.display='none'
+}
 async function updateImage() {
     var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
@@ -383,7 +396,7 @@ async function updateImage() {
         alert("You can only select a maximum of 5 images.");
         return;
     }
- loaderId.style.display='block'
+ loaderId.style.display='inline-block'
  shareSave.style.display='none'
     const formData = new FormData();
 

@@ -2420,6 +2420,7 @@ a:link, a:visited {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	justify-content: flex-end;
 }
 
 .intro-share .share-btn a {

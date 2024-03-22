@@ -2420,6 +2420,7 @@ a:link, a:visited {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	justify-content: flex-end;
 
 }
 
@@ -3479,6 +3480,14 @@ cursor: pointer;
 		margin-right: 14px;
 		margin-left: 0;
 		margin-bottom:15px ;
+	}
+	.intro-share .share-btn {
+
+		justify-content: flex-start;
+	}
+	.intro-share .share-btn2 {
+
+		justify-content: flex-start;
 	}
 	.about-right .contact-info {
 		padding-top: 0;

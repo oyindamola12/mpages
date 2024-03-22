@@ -825,10 +825,9 @@ a:link, a:visited {
 
 
 }
-/*
+
 .loaderA {
-	cursor: pointer;
-	margin-bottom: 15px;
+margin-bottom: 15px;
 	background-color: #000;
 	color:#fff;
 	padding:10px 20px;
@@ -838,9 +837,9 @@ a:link, a:visited {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	transition: opacity 0.75s, visibility 0.75s;
-  }
 
+  }
+/*
   .loaderA--hidden {
 	opacity: 100;
 	visibility:visible;
@@ -862,7 +861,7 @@ a:link, a:visited {
     100% { transform: rotate(360deg); }
 }
 
-.loaderA {
+.rolling-indicator {
     width: 20px;
     height: 20px;
     border: 2px solid #fff;

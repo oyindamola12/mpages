@@ -26,8 +26,8 @@ const itemsPerPage = 12;
  const loading = document.getElementById('loading');
 var storedUserIdlogin =localStorage.getItem('userId');
 var signedupAlready=  localStorage.getItem('signedup');
-
-
+    var imgCont6 = document.getElementById('imagePreview');
+console.log(imgCont6 )
  if(signedupAlready==='true'){
 hidepass.style.display='none';
 }
@@ -285,7 +285,7 @@ function previewImages(event) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-          deleteImg.style.marginLeft = "80%";
+        deleteImg.style.marginLeft = "80%";
         deleteImg.onclick = function() {this.parentNode.remove()}; // Delete button click event
 
         var image = document.createElement('img');

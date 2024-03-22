@@ -2418,6 +2418,7 @@ a:link, a:visited {
 	margin-bottom: 45px;
 	display: flex;
 	flex-direction: row;
+	width: 100%;
 }
 
 .intro-share .share-btn a {

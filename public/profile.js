@@ -366,14 +366,14 @@ function previewImages(event) {
 }
 
 function testB(){
-    var loaderId = document.querySelector('.loaderA');
+    var loaderId = document.getElementById('indicatorButton');
     var shareSave = document.getElementById('shareSave');
     loaderId.style.display='block'
  shareSave.style.display='none'
 }
 
 function testB2(){
-    var loaderId = document.querySelector('.loaderA');
+    var loaderId = document.getElementById('indicatorButton');
     var shareSave = document.getElementById('shareSave');
     loaderId.style.display='inline-block'
  shareSave.style.display='none'

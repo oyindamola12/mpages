@@ -504,6 +504,7 @@ var geocoder = new google.maps.Geocoder();
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
             localStorage.setItem('addedListings', 'true');
+            window.location.reload();
              window.location.href ='my-listings.html';
 
 
@@ -656,6 +657,7 @@ userids: postid,
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
             localStorage.setItem('addedListings', 'true');
+            window.location.reload();
             window.location.href ='my-listings.html';
         })
         .catch(error => {

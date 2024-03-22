@@ -1007,6 +1007,7 @@ margin-bottom: 15px;
 	position: absolute;
 	z-index: 1;
 	width: 100%;
+	border-bottom: #000 1.5px solid;
 }
 
 .header-section.listings:after {
@@ -1042,7 +1043,7 @@ margin-bottom: 15px;
 
 .header-section .main-menu {
 	float: left;
-	border-bottom: #000 1px solid;
+
 }
 
 .header-section .main-menu ul li {

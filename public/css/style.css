@@ -825,7 +825,7 @@ a:link, a:visited {
 
 
 }
-
+/*
 .loaderA {
 	cursor: pointer;
 	margin-bottom: 15px;
@@ -835,8 +835,8 @@ a:link, a:visited {
 	border-radius: 5px;
     width: 70px;
 	display: flex;
-	/* align-items: center;
-	justify-content: center; */
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 	transition: opacity 0.75s, visibility 0.75s;
   }
@@ -855,23 +855,32 @@ a:link, a:visited {
 	border-radius: 50%;
 	margin-left: 10px;
 	animation: loading 0.75s ease infinite;
-  }
+  } */
 
+  @keyframes roll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
+.loaderA {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-top-color: #000;
 
-  @keyframes loading {
+    border-radius: 50%;
+    animation: roll 1s linear infinite;
+}
+
+  /* @keyframes loading {
 	from {
 	  transform: rotate(0turn);
 	}
 	to {
 	  transform: rotate(1turn);
 	}
-  }
-  .buttonflex {
-    display: flex;
-    justify-content: space-between;
-    width: 200px; /* Adjust width as needed */
-}
+  } */
+
 #fileImage{
 	display: none;
 }

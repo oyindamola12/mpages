@@ -831,7 +831,7 @@ a:link, a:visited {
 	margin-bottom: 15px;
 	background-color: #000;
 	color:#fff;
-	padding:10px 20px;
+	/* padding:10px 20px; */
 	border-radius: 5px;
     width: 70px;
 	display: flex;
@@ -2432,7 +2432,12 @@ a:link, a:visited {
 	margin-left: 14px;
 	border-radius: 5px;
 }
-
+.intro-share .share-btn2 {
+	margin-bottom: 45px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
 .share{
 cursor: pointer;
 	margin-bottom: 15px;

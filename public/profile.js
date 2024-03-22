@@ -365,19 +365,19 @@ function previewImages(event) {
     //  imgCont.innerHTML=''
 }
 
-function testB(){
-    var loaderId = document.getElementById('indicatorButton');
-    var shareSave = document.getElementById('shareSave');
-    loaderId.style.display='block'
- shareSave.style.display='none'
-}
+// function testB(){
+//     var loaderId = document.getElementById('indicatorButton');
+//     var shareSave = document.getElementById('shareSave');
+//     loaderId.style.display='block'
+//  shareSave.style.display='none'
+// }
 
-function testB2(){
-    var loaderId = document.getElementById('indicatorButton');
-    var shareSave = document.getElementById('shareSave');
-    loaderId.style.display='inline-block'
- shareSave.style.display='none'
-}
+// function testB2(){
+//     var loaderId = document.getElementById('indicatorButton');
+//     var shareSave = document.getElementById('shareSave');
+//     loaderId.style.display='inline-block'
+//  shareSave.style.display='none'
+// }
 async function updateImage() {
     var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');

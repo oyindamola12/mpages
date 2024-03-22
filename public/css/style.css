@@ -846,28 +846,18 @@ a:link, a:visited {
 	visibility:visible;
   }
 
-  /* .loaderA::after {
+  .loaderA::after {
 	content: "";
 	width: 15px;
 	height: 15px;
-	border: 3px solid #fff;
-	border-top-color: #000;
-	border-radius: 50%;
-	margin-left: 10px;
-	animation: loading 0.75s ease infinite;
-  } */
-
-  .loaderB {
-	content: "";
-	width: 15px;
-	height: 15px;
-	background-color: #000;
 	border: 3px solid #fff;
 	border-top-color: #000;
 	border-radius: 50%;
 	margin-left: 10px;
 	animation: loading 0.75s ease infinite;
   }
+
+
 
   @keyframes loading {
 	from {
@@ -877,7 +867,11 @@ a:link, a:visited {
 	  transform: rotate(1turn);
 	}
   }
-
+  .buttonflex {
+    display: flex;
+    justify-content: space-between;
+    width: 200px; /* Adjust width as needed */
+}
 #fileImage{
 	display: none;
 }

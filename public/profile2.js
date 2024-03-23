@@ -172,7 +172,7 @@ fetch('/api/getSingleProfile', {
 
 element.style.backgroundRepeat = 'no-repeat';
 element.style.backgroundSize = 'cover';
-element.style.backgroundPosition = 'center center';
+element.style.backgroundPosition = 'top';
      businessNameh2.textContent =  userData.businessName;
        timeToOpen.textContent =  userData.openingtime;
         timeToClose.textContent = userData.closingtime;

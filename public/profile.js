@@ -164,7 +164,7 @@ fetch('/api/getSingleProfile2', {
      element.style.backgroundImage = `url(${imageUrl})`;
 
 element.style.backgroundRepeat = 'no-repeat';
-    element.style.backgroundSize = 'contain';
+ element.style.backgroundSize = 'cover';
 element.style.backgroundPosition = 'top';
      businessNameh2.textContent =  userData.businessName;
        timeToOpen.textContent =  userData.openingtime;

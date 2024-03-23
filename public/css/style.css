@@ -2541,8 +2541,7 @@ cursor: pointer;
 .about-video img {
 
    width: 100%;
-
-	object-fit: cover;
+object-fit: cover;
 	margin-bottom: 30px;
 
 }
@@ -3776,7 +3775,7 @@ cursor: pointer;
 	color:#fff;
 	padding:10px 20px;
 	border-radius: 5px;
-	
+
 
 }
 

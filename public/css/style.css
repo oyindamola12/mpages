@@ -2549,7 +2549,7 @@ object-fit: cover;
 .about-video{
 	width:754px;
   height: 100%;
-
+border-radius: 10px;
     float: left;
     margin-left: -18px;
     padding: 20px;

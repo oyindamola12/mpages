@@ -39,7 +39,8 @@ function generateUniqueId() {
 
 // Example usage:
 const uniqueId = generateUniqueId();
- // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
+
+console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
@@ -158,8 +159,8 @@ addListing:true,
 
 });
 
-const userListings =  db.collection('Users').doc( userids).collection('BusinessLists');
-await  userListings.add({
+const userListings =  db.collection('Users').doc( userids).collection('BusinessLists').doc(userids);
+await  userListings.set({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -179,8 +180,8 @@ await  userListings.add({
 
 });
 
-const businessDb =  db.collection('BusinessLists');
-await businessDb.add({
+const businessDb =  db.collection('BusinessLists').doc(userids);
+await businessDb.set({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -276,8 +277,8 @@ app.post('/addBusiness2',async (req, res)=> {
   try {
 
 
-const businessDb =  db.collection('BusinessLists');
-await businessDb.add({
+const businessDb =  db.collection('BusinessLists').doc(uniqueId);
+await businessDb.set({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -297,8 +298,8 @@ donation:donation,
 
 });
 
-const userListings =  db.collection('Users').doc(userId).collection('BusinessLists');
-await  userListings.add({
+const userListings =  db.collection('Users').doc(userId).collection('BusinessLists').doc(uniqueId );
+await  userListings.set({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -400,10 +401,10 @@ const snapshot = await  db.collection('Users').doc(userId).collection('BusinessL
 //             imageUrls.push(imageUrl[0]);
 //         }
 
-//         const businessDb = db.collection('BusinessLists').doc(postid);
+//         const businessDb = db.collection('BusinessLists').doc(uniqueId);
 //         await businessDb.set({ Images: imageUrls }, { merge: true });
 
-//         const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(postid);
+//         const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(uniqueId);
 //         await businessDb2.set({ Images: imageUrls }, { merge: true });
 
 //         console.log('Images uploaded successfully');
@@ -413,7 +414,6 @@ const snapshot = await  db.collection('Users').doc(userId).collection('BusinessL
 //         res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
 //     }
 // });
-
 app.post('/addContact',async (req, res)=> {
     const name = req.body.name;
     const message = req.body.message;
@@ -425,17 +425,6 @@ await businessDb.add({
 name:name,
 message:message,
 subject: subject,
-email:email,
-
-});
-});
-
-app.post('/NewsLetter',async (req, res)=> {
-
-const email = req.body.email;
-
-const businessDb =  db.collection('NewsLetter');
-await businessDb.add({
 email:email,
 
 });
@@ -862,7 +851,6 @@ app.post('/api/getSingleProfile2', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 app.post('/updateh2', async (req, res) => {
  const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;
@@ -1452,7 +1440,6 @@ app.post('/businessSearch2', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 app.post('/addDonations',async (req, res)=> {
 
 

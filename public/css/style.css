@@ -389,6 +389,7 @@ select:focus,
 button:focus,
 textarea:focus {
 	outline: none;
+	border: none;
 
 }
 .edith2{

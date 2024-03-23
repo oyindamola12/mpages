@@ -165,7 +165,7 @@ fetch('/api/getSingleProfile', {
 
 
  const imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPagesDesigns.png'
-   element.setAttribute('data-setbg', imageUrl);
+//    element.setAttribute('data-setbg', imageUrl);
     element.style.backgroundImage = `url(${imageUrl})`;
     element.style.backgroundRepeat = 'no-repeat';
     element.style.backgroundSize = 'contain';

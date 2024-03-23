@@ -418,8 +418,8 @@ const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
 const about = document.getElementById('about').value;
 const password =document.getElementById('password').value
-const fileInput = document.getElementById('fileImage');
-const fileInputed = document.getElementById('fileImage').files;
+// const fileInput = document.getElementById('fileImage');
+// const fileInputed = document.getElementById('fileImage').files;
 
 const signupStatus= true;
 var userids =uuidv4()
@@ -429,20 +429,20 @@ if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||
 return false;
 
  }
- if ( fileInputed.length >5  ) {
-        alert("You can only select a maxium of 5 images.");
-        return;
+//  if ( fileInputed.length >5  ) {
+//         alert("You can only select a maxium of 5 images.");
+//         return;
 
-    }
+//     }
 
-   const files = fileInput.files;
+  //  const files = fileInput.files;
 
-            const formData = new FormData();
+//             const formData = new FormData();
 
- for (let i = 0; i < files.length; i++) {
-                formData.append('images', files[i]);
-            }
-formData.append('userids', userids);
+//  for (let i = 0; i < files.length; i++) {
+//                 formData.append('images', files[i]);
+//             }
+// formData.append('userids', userids);
 
  var handler = PaystackPop.setup({
     //key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
@@ -514,17 +514,17 @@ var geocoder = new google.maps.Geocoder();
             console.error('Error sending data to server:', error);
         });
 
-           fetch('/addImages', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Uploaded images:', data);
-            })
-            .catch(error => {
-                console.error('Error uploading images:', error);
-            });
+          //  fetch('/addImages', {
+          //       method: 'POST',
+          //       body: formData
+          //   })
+          //   .then(response => response.json())
+          //   .then(data => {
+          //       console.log('Uploaded images:', data);
+          //   })
+          //   .catch(error => {
+          //       console.error('Error uploading images:', error);
+          //   });
 
 
 
@@ -558,10 +558,10 @@ const closingtime = document.getElementById('closingtime').value;
 const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
 const about = document.getElementById('about').value;
-const fileInput = document.getElementById('fileImage');
+// const fileInput = document.getElementById('fileImage');
 
-// var storedUserIdlogin =localStorage.getItem('userId');
-const fileInputed = document.getElementById('fileImage').files;
+// // var storedUserIdlogin =localStorage.getItem('userId');
+// const fileInputed = document.getElementById('fileImage').files;
 
 let postid = uuidv41()
 
@@ -577,27 +577,27 @@ return false;
 
   //   }
 
-     if ( fileInputed.length >5  ) {
-        alert("You can only select a maxium of 5 images.");
-        return;
+  //    if ( fileInputed.length >5  ) {
+  //       alert("You can only select a maxium of 5 images.");
+  //       return;
 
-    }
-  if (!fileInput) {
-    console.error('File input element not found');
-    return;
-    }
+  //   }
+  // if (!fileInput) {
+  //   console.error('File input element not found');
+  //   return;
+  //   }
   // Check if files are undefined or null
 
-  const files = fileInput.files;
+  // const files = fileInput.files;
 
 
-  const formData = new FormData();
+//   const formData = new FormData();
 
- for (let i = 0; i < files.length; i++) {
-    formData.append('images', files[i]);
-}
-formData.append('postid', postid);
-formData.append('userUid', userUid);
+//  for (let i = 0; i < files.length; i++) {
+//     formData.append('images', files[i]);
+// }
+// formData.append('postid', postid);
+// formData.append('userUid', userUid);
 
       var handler = PaystackPop.setup({
        //key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
@@ -665,17 +665,17 @@ userids: postid,
             console.error('Error sending data to server:', error);
         });
 
-  fetch('/addImages2', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Uploaded images:', data);
-            })
-            .catch(error => {
-                console.error('Error uploading images:', error);
-            });
+  // fetch('/addImages2', {
+  //               method: 'POST',
+  //               body: formData
+  //           })
+  //           .then(response => response.json())
+  //           .then(data => {
+  //               console.log('Uploaded images:', data);
+  //           })
+  //           .catch(error => {
+  //               console.error('Error uploading images:', error);
+  //           });
 
   } else {
  alert("Request failed.")
@@ -709,7 +709,7 @@ userids: postid,
           });
   }
 
-uploadImg()
+
 
   function payWithPaystack() {
 signedupAlready==='true' ? pay2() : pay();

@@ -871,7 +871,7 @@ margin-bottom: 15px;
     height: 20px;
     border: 2px solid #fff;
     border-top-color: #000;
-
+margin-left: 3px;
     border-radius: 50%;
     animation: roll 1s linear infinite;
 }

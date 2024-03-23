@@ -3206,6 +3206,10 @@ border-radius: 50%;
 	.intro-share {
 		text-align: left;
 	}
+
+.intro-share .share-btn {
+	justify-content: flex-start;
+}
 	.howitworks-section:after {
 		display: none;
 	}

@@ -1,5 +1,5 @@
 
-function uuidv4() {
+function uuidv41() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(5)
   );
@@ -563,7 +563,8 @@ const fileInput = document.getElementById('fileImage');
 // var storedUserIdlogin =localStorage.getItem('userId');
 const fileInputed = document.getElementById('fileImage').files;
 
-let postid =uuidv4()
+let postid = uuidv41()
+
   if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Industry'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;

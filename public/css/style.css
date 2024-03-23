@@ -2510,6 +2510,7 @@ cursor: pointer;
 	line-height: 42px;
 	margin-left: 7px;
 	padding-bottom: 3px;
+	cursor: pointer;
 }
 .resizeIcon{
 	/* font-size: 17px; */
@@ -3768,7 +3769,7 @@ cursor: pointer;
 
 
 .share{
-
+cursor: pointer;
 	margin-bottom: 15px;
 	background: #000;
 	color:#fff;

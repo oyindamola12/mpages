@@ -39,8 +39,7 @@ function generateUniqueId() {
 
 // Example usage:
 const uniqueId = generateUniqueId();
-
-console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
+ // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
@@ -277,7 +276,7 @@ app.post('/addBusiness2',async (req, res)=> {
   try {
 
 
-const businessDb =  db.collection('BusinessLists').doc(uniqueId);
+const businessDb =  db.collection('BusinessLists').doc(userids);
 await businessDb.set({
  businessName:businessName,
  fullName: contactPerson,
@@ -298,7 +297,7 @@ donation:donation,
 
 });
 
-const userListings =  db.collection('Users').doc(userId).collection('BusinessLists').doc(uniqueId );
+const userListings =  db.collection('Users').doc(userId).collection('BusinessLists').doc(userids );
 await  userListings.set({
  businessName:businessName,
  fullName: contactPerson,
@@ -401,10 +400,10 @@ app.post('/addImages2', upload.array('images'), async (req, res) => {
             imageUrls.push(imageUrl[0]);
         }
 
-        const businessDb = db.collection('BusinessLists').doc(uniqueId);
+        const businessDb = db.collection('BusinessLists').doc(postid);
         await businessDb.set({ Images: imageUrls }, { merge: true });
 
-        const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(uniqueId);
+        const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(postid);
         await businessDb2.set({ Images: imageUrls }, { merge: true });
 
         console.log('Images uploaded successfully');
@@ -414,6 +413,7 @@ app.post('/addImages2', upload.array('images'), async (req, res) => {
         res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
     }
 });
+
 app.post('/addContact',async (req, res)=> {
     const name = req.body.name;
     const message = req.body.message;

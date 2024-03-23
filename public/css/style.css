@@ -3604,7 +3604,7 @@ border-radius: 50%;
 		.about-video img {
 
 			width: 80%;
-			height: 400px;
+
 			 object-fit: cover;
 			 margin-bottom: 30px;
 
@@ -3781,7 +3781,7 @@ cursor: pointer;
 .about-video img {
 
 	width: 60%;
-	height: 400px;
+
 	 object-fit: cover;
 	 margin-bottom: 30px;
 

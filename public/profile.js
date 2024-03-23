@@ -452,7 +452,7 @@ var editIcon = document.querySelectorAll(".my-selector")
  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   var openImage=document.getElementById('fileImage')
-  openImage.click
+  openImage.click();
     shareEdit.style.display='none'
   shareSave.style.display='block'
   editIcon.style.display='block'

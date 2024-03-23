@@ -3500,12 +3500,13 @@ border-radius: 50%;
 		margin-bottom:15px ;
 		padding: 7px 12px;
 	}
-	.intro-share .share-btn {
 
+	.intro-share .share-btn {
+flex-direction: column;
 		justify-content: flex-start;
 	}
 	.intro-share .share-btn2 {
-
+		flex-direction: column;
 		justify-content: flex-start;
 	}
 	.about-right .contact-info {

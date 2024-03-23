@@ -447,7 +447,16 @@ var editIcon = document.querySelectorAll(".my-selector")
   shareSave.style.display='block'
   editIcon.style.display='block'
 }
-
+async function opengallery() {
+var editIcon = document.querySelectorAll(".my-selector")
+ var shareSave = document.getElementById('shareSave');
+  var shareEdit = document.getElementById('shareEdit');
+  var openImage=document.getElementById('fileImage')
+  openImage.click
+    shareEdit.style.display='none'
+  shareSave.style.display='block'
+  editIcon.style.display='block'
+}
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');
 //             for (let i = 0; i < event.target.files.length; i++) {

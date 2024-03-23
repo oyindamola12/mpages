@@ -3210,6 +3210,9 @@ border-radius: 50%;
 .intro-share .share-btn {
 	justify-content: flex-start;
 }
+.intro-share .share-btn2 {
+	justify-content: flex-start;
+}
 	.howitworks-section:after {
 		display: none;
 	}

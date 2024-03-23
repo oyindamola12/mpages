@@ -440,7 +440,7 @@ async function updateImage() {
     }
 }
 async function showEdit() {
-var editIcon = document.querySelectorAll(".fa")
+var editIcon = document.querySelectorAll(".fa-pencil")
  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
     shareEdit.style.display='none'

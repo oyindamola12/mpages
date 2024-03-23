@@ -451,8 +451,8 @@ async function opengallery() {
 var editIcon = document.querySelector(".my-selector")
  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
-  var openImage=document.getElementById('fileImage')
-  openImage.click();
+  // var openImage=document.getElementById('fileImage')
+  // openImage.click();
     shareEdit.style.display='none'
   shareSave.style.display='block'
   editIcon.style.display='block'

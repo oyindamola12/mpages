@@ -798,7 +798,7 @@ a:link, a:visited {
 	padding: 25px 50px;
 	border-radius: 50px;
 	letter-spacing: 1.5px;
-	
+
 	cursor: pointer;
 }
 
@@ -2462,12 +2462,14 @@ margin-bottom: 15px;
 	justify-content: flex-end;
 }
 .share{
-cursor: pointer;
+    cursor: pointer;
 	margin-bottom: 15px;
 	background: #000;
 	color:#fff;
 	padding:10px 20px;
 	border-radius: 5px;
+	border: none;
+	letter-spacing: 1.5px;
 
 }
 

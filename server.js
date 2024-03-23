@@ -429,7 +429,17 @@ email:email,
 
 });
 });
+app.post('/NewsLetter',async (req, res)=> {
 
+const email = req.body.email;
+
+const businessDb =  db.collection('NewsLetter');
+await businessDb.add({
+
+email:email,
+
+});
+});
 app.post('/register', async (req, res) => {
   const name = req.body.contactPerson;
     const phoneNo= req.body.phoneNo;

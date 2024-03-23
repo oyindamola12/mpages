@@ -714,3 +714,5 @@ userids: postid,
   function payWithPaystack() {
 signedupAlready==='true' ? pay2() : pay();
 }
+
+ 

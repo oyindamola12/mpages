@@ -1107,3 +1107,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
     // Initial fetch when the page loads
 
 // fetchPage(currentPage);
+window.onpopstate = function(event) {
+    // Reload the page when the user navigates back
+    location.reload();
+  };

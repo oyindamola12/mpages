@@ -387,3 +387,7 @@ myListings.href = "no-listings.html"
  }
 
   // fetchPage(currentPage);
+  window.onpopstate = function(event) {
+    // Reload the page when the user navigates back
+    location.reload();
+  };

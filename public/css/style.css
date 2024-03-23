@@ -2541,7 +2541,7 @@ cursor: pointer;
 .about-video img {
 
    width: 100%;
-   height: 469px;
+
 	object-fit: cover;
 	margin-bottom: 30px;
 

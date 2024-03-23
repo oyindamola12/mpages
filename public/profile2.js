@@ -168,7 +168,7 @@ fetch('/api/getSingleProfile', {
    element.setAttribute('data-setbg', imageUrl);
     element.style.backgroundImage = `url(${imageUrl})`;
     element.style.backgroundRepeat = 'no-repeat';
-    element.style.backgroundSize = 'cover';
+    element.style.backgroundSize = 'contain';
     element.style.backgroundPosition = 'top';
      businessNameh2.textContent =  userData.businessName;
        timeToOpen.textContent =  userData.openingtime;

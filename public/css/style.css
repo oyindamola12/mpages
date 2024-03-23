@@ -2539,17 +2539,16 @@ cursor: pointer;
 }
 
 .about-video img {
-
-   width: 100%;
+width: 100%;
 object-fit: cover;
-	margin-bottom: 30px;
+margin-bottom: 30px;
 
 }
 
 .about-video{
 	width:754px;
   height: 100%;
-border-radius: 10px;
+border-radius: 50%;
     float: left;
     margin-left: -18px;
     padding: 20px;

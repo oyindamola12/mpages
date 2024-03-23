@@ -388,13 +388,29 @@ async function updateImage() {
     var imgCont = document.getElementById('imagePreview2');
     var loaderId = document.getElementById('indicatorButton');
     var shareSave = document.getElementById('shareSave');
-
+  var shareEdit = document.getElementById('shareEdit');
+var editIcon1 = document.querySelector(".my-selector1")
+var editIcon2 = document.querySelector(".my-selector2")
+var editIcon3 = document.querySelector(".my-selector3")
+var editIcon4 = document.querySelector(".my-selector4")
+var editIcon5 = document.querySelector(".my-selector5")
+var editIcon6 = document.querySelector(".my-selector6")
+var editIcon7 = document.querySelector(".my-selector7")
 
     const files = fileInput.files;
 
     if (files.length === 0) {
-        alert("Select an image file");
-        return;
+
+  shareEdit.style.display='block'
+  shareSave.style.display='none'
+  editIcon1.style.display='none'
+  editIcon2.style.display='none'
+  editIcon3.style.display='none'
+  editIcon4.style.display='none'
+  editIcon5.style.display='none'
+  editIcon6.style.display='none'
+  editIcon7.style.display='none'
+ return;
     }
 
     if (files.length > 5) {

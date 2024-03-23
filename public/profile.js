@@ -442,6 +442,8 @@ async function updateImage() {
 async function showEdit() {
 var editIcon = document.querySelectorAll(".fa")
  var shareSave = document.getElementById('shareSave');
+  var shareEdit = document.getElementById('shareEdit');
+    shareEdit.style.display='none'
   shareSave.style.display='block'
   editIcon.style.display='block'
 }

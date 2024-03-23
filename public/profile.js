@@ -440,22 +440,47 @@ async function updateImage() {
     }
 }
 async function showEdit() {
-var editIcon = document.querySelector(".my-selector")
+var editIcon1 = document.querySelector(".my-selector1")
+var editIcon2 = document.querySelector(".my-selector2")
+var editIcon3 = document.querySelector(".my-selector3")
+var editIcon4 = document.querySelector(".my-selector4")
+var editIcon5 = document.querySelector(".my-selector5")
+var editIcon6 = document.querySelector(".my-selector6")
+var editIcon7 = document.querySelector(".my-selector7")
  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   shareEdit.style.display='none'
   shareSave.style.display='block'
-  editIcon.style.display='block'
+  editIcon1.style.display='block'
+  editIcon2.style.display='block'
+  editIcon3.style.display='block'
+  editIcon4.style.display='block'
+  editIcon5.style.display='block'
+  editIcon6.style.display='block'
+  editIcon7.style.display='block'
 }
 async function opengallery() {
-var editIcon = document.querySelector(".my-selector")
+var editIcon1 = document.querySelector(".my-selector1")
+var editIcon2 = document.querySelector(".my-selector2")
+var editIcon3 = document.querySelector(".my-selector3")
+var editIcon4 = document.querySelector(".my-selector4")
+var editIcon5 = document.querySelector(".my-selector5")
+var editIcon6 = document.querySelector(".my-selector6")
+var editIcon7 = document.querySelector(".my-selector7")
  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   // var openImage=document.getElementById('fileImage')
   // openImage.click();
     shareEdit.style.display='none'
   shareSave.style.display='block'
-  editIcon.style.display='block'
+  editIcon1.style.display='block'
+  editIcon2.style.display='block'
+  editIcon3.style.display='block'
+  editIcon4.style.display='block'
+  editIcon5.style.display='block'
+  editIcon6.style.display='block'
+  editIcon7.style.display='block'
+
 }
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');

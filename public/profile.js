@@ -382,6 +382,7 @@ function previewImages(event) {
 //     loaderId.style.display='inline-block'
 //  shareSave.style.display='none'
 // }
+
 async function updateImage() {
     var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
@@ -438,7 +439,12 @@ async function updateImage() {
         // alert('Error uploading images');
     }
 }
-
+async function showEdit() {
+var editIcon = document.querySelectorAll(".fa")
+ var shareSave = document.getElementById('shareSave');
+  shareSave.style.display='block'
+  editIcon.style.display='block'
+}
 
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');
@@ -760,6 +766,8 @@ async function editButtontoUpdate(){
 
 async function editButtontoSave(){
  const newValue = editInputh2.value;
+ var shareSave = document.getElementById('shareSave');
+ var shareEdit = document.getElementById('shareEdit');
  businessNameh2MyListings.style.display = 'block';
  editInputh2.style.display = 'none';
  editButton.style.display = 'inline-block';
@@ -781,6 +789,9 @@ async function editButtontoSave(){
  editInputh2.style.display = 'none';
  editButton.style.display = 'inline-block';
  saveButton.style.display = 'none';
+shareSave.style.display = 'block';
+shareEdit.style.display = 'none'
+window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -822,6 +833,7 @@ timeToOpenMyListings.style.display = 'block';
     editInputopen.style.display = 'none';
     editButtonopen.style.display = 'inline-block';
     saveButtonopen.style.display = 'none';
+     window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -863,6 +875,7 @@ async function closeButtontoSave(){
     editInputclose.style.display = 'none';
     editButtonclose.style.display = 'inline-block';
     saveButtonclose.style.display = 'none';
+     window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -876,6 +889,7 @@ async function addressButtontoUpdate(){
   editInputAddress.style.display = 'block';
   editButtonAddress.style.display = 'none';
   saveButtonAddress.style.display = 'inline-block';
+   window.location.reload();
 }
 
 async function addressButtontoSave(){
@@ -943,6 +957,7 @@ contactInfoNumberMyListings.style.display = 'block';
     editInputNumber.style.display = 'none';
     editButtonNumber.style.display = 'inline-block';
     saveButtonNumber.style.display = 'none';
+     window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -981,6 +996,7 @@ contactInfoemailMyListings.style.display = 'block';
     editInputemail.style.display = 'none';
     editButtonemail.style.display = 'inline-block';
     saveButtonemail.style.display = 'none';
+     window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -1020,6 +1036,7 @@ async function aboutButtontoSave(){
     editInputAbout.style.display = 'none';
     editButtonAbout.style.display = 'inline-block';
     saveButtonAbout.style.display = 'none';
+     window.location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);

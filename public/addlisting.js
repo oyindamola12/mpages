@@ -424,7 +424,7 @@ const password =document.getElementById('password').value
 const signupStatus= true;
 var userids =uuidv4()
 
-if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Industry'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
@@ -565,7 +565,7 @@ const about = document.getElementById('about').value;
 
 let postid = uuidv41()
 
-  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Industry'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
@@ -714,5 +714,3 @@ userids: postid,
   function payWithPaystack() {
 signedupAlready==='true' ? pay2() : pay();
 }
-
- 

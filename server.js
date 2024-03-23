@@ -158,8 +158,8 @@ addListing:true,
 
 });
 
-const userListings =  db.collection('Users').doc( userids).collection('BusinessLists').doc(userids);
-await  userListings.set({
+const userListings =  db.collection('Users').doc( userids).collection('BusinessLists');
+await  userListings.add({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -179,8 +179,8 @@ await  userListings.set({
 
 });
 
-const businessDb =  db.collection('BusinessLists').doc(userids);
-await businessDb.set({
+const businessDb =  db.collection('BusinessLists');
+await businessDb.add({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -213,44 +213,44 @@ await businessDb.set({
 
 });
 
-app.post('/addImages', upload.array('images'), async (req, res) => {
-    try {
-        const imageUrls = [];
-        const files = req.files;
-        const userids = req.body.userids;
+// app.post('/addImages', upload.array('images'), async (req, res) => {
+//     try {
+//         const imageUrls = [];
+//         const files = req.files;
+//         const userids = req.body.userids;
 
-        for (const image of files) {
-            // Generate a unique file name for each image (you can customize this as needed)
-            const fileName = `images/${Date.now()}_${image.originalname}`;
+//         for (const image of files) {
+//             // Generate a unique file name for each image (you can customize this as needed)
+//             const fileName = `images/${Date.now()}_${image.originalname}`;
 
-            // Upload the image to Firebase Storage
-            const file = bucket.file(fileName);
-            await file.save(image.buffer, {
-                metadata: {
-                    contentType: image.mimetype,
-                },
-            });
+//             // Upload the image to Firebase Storage
+//             const file = bucket.file(fileName);
+//             await file.save(image.buffer, {
+//                 metadata: {
+//                     contentType: image.mimetype,
+//                 },
+//             });
 
-            // Get the public URL of the uploaded image
-            const [imageUrl] = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
-            imageUrls.push(imageUrl);
-        }
+//             // Get the public URL of the uploaded image
+//             const [imageUrl] = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
+//             imageUrls.push(imageUrl);
+//         }
 
-        // Update Firestore documents with image URLs
-        const businessDb = db.collection('BusinessLists').doc(userids);
-        await businessDb.set({ Images: imageUrls }, { merge: true });
+//         // Update Firestore documents with image URLs
+//         const businessDb = db.collection('BusinessLists').doc(userids);
+//         await businessDb.set({ Images: imageUrls }, { merge: true });
 
-        const businessDb2 = db.collection('Users').doc(userids).collection('BusinessLists').doc(userids);
-        await businessDb2.set({ Images: imageUrls }, { merge: true });
+//         const businessDb2 = db.collection('Users').doc(userids).collection('BusinessLists').doc(userids);
+//         await businessDb2.set({ Images: imageUrls }, { merge: true });
 
-        console.log('Images uploaded successfully');
+//         console.log('Images uploaded successfully');
 
-        res.json({ message: 'Images uploaded successfully', imageUrls });
-    } catch (error) {
-        console.error('Error uploading images to Firebase Storage:', error);
-        res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
-    }
-});
+//         res.json({ message: 'Images uploaded successfully', imageUrls });
+//     } catch (error) {
+//         console.error('Error uploading images to Firebase Storage:', error);
+//         res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
+//     }
+// });
 
 
 app.post('/addBusiness2',async (req, res)=> {
@@ -276,8 +276,8 @@ app.post('/addBusiness2',async (req, res)=> {
   try {
 
 
-const businessDb =  db.collection('BusinessLists').doc(userids);
-await businessDb.set({
+const businessDb =  db.collection('BusinessLists');
+await businessDb.add({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -297,8 +297,8 @@ donation:donation,
 
 });
 
-const userListings =  db.collection('Users').doc(userId).collection('BusinessLists').doc(userids );
-await  userListings.set({
+const userListings =  db.collection('Users').doc(userId).collection('BusinessLists');
+await  userListings.add({
  businessName:businessName,
  fullName: contactPerson,
  businessAddress: businessAddress,
@@ -379,40 +379,40 @@ const snapshot = await  db.collection('Users').doc(userId).collection('BusinessL
 //     }
 // });
 
-app.post('/addImages2', upload.array('images'), async (req, res) => {
-    const postid = req.body.postid;
-    const userUid = req.body.userUid;
-    console.log(userUid);
-    console.log(postid);
-    console.log(req.files)
-    try {
-        const imageUrls = [];
-        const files = req.files;
-        for (const image of files) {
-            const fileName = `images/${Date.now()}_${image.originalname}`;
-            const file = bucket.file(fileName);
-            await file.save(image.buffer, {
-                metadata: {
-                    contentType: image.mimetype,
-                },
-            });
-            const imageUrl = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
-            imageUrls.push(imageUrl[0]);
-        }
+// app.post('/addImages2', upload.array('images'), async (req, res) => {
+//     const postid = req.body.postid;
+//     const userUid = req.body.userUid;
+//     console.log(userUid);
+//     console.log(postid);
+//     console.log(req.files)
+//     try {
+//         const imageUrls = [];
+//         const files = req.files;
+//         for (const image of files) {
+//             const fileName = `images/${Date.now()}_${image.originalname}`;
+//             const file = bucket.file(fileName);
+//             await file.save(image.buffer, {
+//                 metadata: {
+//                     contentType: image.mimetype,
+//                 },
+//             });
+//             const imageUrl = await file.getSignedUrl({ action: 'read', expires: '01-01-5000' });
+//             imageUrls.push(imageUrl[0]);
+//         }
 
-        const businessDb = db.collection('BusinessLists').doc(postid);
-        await businessDb.set({ Images: imageUrls }, { merge: true });
+//         const businessDb = db.collection('BusinessLists').doc(postid);
+//         await businessDb.set({ Images: imageUrls }, { merge: true });
 
-        const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(postid);
-        await businessDb2.set({ Images: imageUrls }, { merge: true });
+//         const businessDb2 = db.collection('Users').doc(userUid).collection('BusinessLists').doc(postid);
+//         await businessDb2.set({ Images: imageUrls }, { merge: true });
 
-        console.log('Images uploaded successfully');
-        res.json({ message: 'Images uploaded successfully', imageUrls });
-    } catch (error) {
-        console.error('Error uploading images to Firebase Storage:', error);
-        res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
-    }
-});
+//         console.log('Images uploaded successfully');
+//         res.json({ message: 'Images uploaded successfully', imageUrls });
+//     } catch (error) {
+//         console.error('Error uploading images to Firebase Storage:', error);
+//         res.status(500).json({ error: 'Error uploading images to Firebase Storage' });
+//     }
+// });
 
 app.post('/addContact',async (req, res)=> {
     const name = req.body.name;
@@ -425,6 +425,17 @@ await businessDb.add({
 name:name,
 message:message,
 subject: subject,
+email:email,
+
+});
+});
+
+app.post('/NewsLetter',async (req, res)=> {
+
+const email = req.body.email;
+
+const businessDb =  db.collection('NewsLetter');
+await businessDb.add({
 email:email,
 
 });
@@ -851,6 +862,7 @@ app.post('/api/getSingleProfile2', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 app.post('/updateh2', async (req, res) => {
  const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;
@@ -1440,6 +1452,7 @@ app.post('/businessSearch2', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 app.post('/addDonations',async (req, res)=> {
 
 

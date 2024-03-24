@@ -180,10 +180,12 @@ element.style.backgroundPosition = 'top';
 if(shareSave.style.display === 'none'){
 display2(userData)
   }
-
-if(shareSave.style.display === 'block'){
+  else{
 display(userData)
+
   }
+
+
 initMap2(userData)
 
 

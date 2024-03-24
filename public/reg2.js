@@ -1,3 +1,4 @@
+
 var signedupAlready=  localStorage.getItem('signedup');
 async function getUsers() {
       const response = await fetch('/getCoordinates');
@@ -5,7 +6,7 @@ async function getUsers() {
       return users;
     }
 
-     function getUrlParameter(name) {
+    function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             var results = regex.exec(location.search);
@@ -14,6 +15,7 @@ async function getUsers() {
 
 var listingsId = getUrlParameter('listingid');
 var businessOwnerIds = getUrlParameter('id');
+
  var mlwStyles =[
                 {
                     featureType: "poi",
@@ -116,14 +118,9 @@ return false;
       localStorage.setItem('userId',data.userId);
       localStorage.setItem('userBusiness',JSON.stringify(data.businesses));
       localStorage.setItem('signedup', 'true');
+      window.location.href = `/single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
 
 
-if (!window.location.search) {
-    window.location.href = '/no-listings.html';
-} else {
-    // Parameters found in the URL
-   window.location.href = `/single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
-}
 
  } else {
         alert(`Registration failed. ${data.error}`);

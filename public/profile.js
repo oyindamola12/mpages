@@ -237,6 +237,7 @@ myListings.href = "no-listings.html"
     }
 
 
+
  function shareOnFacebook() {
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
@@ -864,6 +865,7 @@ async function openButtontoUpdate(){
   editButtonopen.style.display = 'none';
   saveButtonopen.style.display = 'inline-block';
 }
+
 async function openButtontoSave(){
 
   const newValue = editInputopen.value;
@@ -992,6 +994,7 @@ async function numberButtontoUpdate(){
   editButtonNumber.style.display = 'none';
   saveButtonNumber.style.display = 'inline-block';
 }
+
 async function numberButtontoSave(){
 
   const newValue = editInputNumber.value;
@@ -1031,6 +1034,7 @@ async function emailButtontoUpdate(){
   editButtonemail.style.display = 'none';
   saveButtonemail.style.display = 'inline-block';
 }
+
 async function emailButtontoSave(){
 
   const newValue = editInputemail.value;
@@ -1062,6 +1066,7 @@ contactInfoemailMyListings.style.display = 'block';
   });
 
 }
+
 async function aboutButtontoUpdate(){
  editInputAbout.value = aboutTextMyListings.textContent;
   aboutTextMyListings.style.display = 'none';

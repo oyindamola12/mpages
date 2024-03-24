@@ -589,3 +589,6 @@ function payWithPaystack(){
   }
   }
         // Check if the 'param' parameter exists and has a value
+function gotoRegister(){
+   window.location.href = `/register.html?id=${businessOwnerIds}&listingid=${listingsId}`;
+}

@@ -171,7 +171,7 @@ img {
 	cursor: pointer;
 	width: 80%;
 	color: #000;
-	border-radius: 5px;
+	
 	margin-bottom: 15px;
 	text-align: left;
 
@@ -187,13 +187,13 @@ background-color: #000;
 .deleteImg{
 	cursor :pointer;
 
-    background-color:#ffc946;
-	border-radius:"50%";
+    background-color:#000;
+	border-radius:"2px";
 	width :20px;
     height:20px;
 text-align :center;
 	line-height:20px;
-	color :black;
+	color :#fff;
 margin-bottom : 10px;
 	margin-left: "100%";
 }
@@ -551,13 +551,13 @@ cursor: none;
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
-	color: #000;
-	background-color: #ffc946;
-	height: 30px;
-	width: 30px;
-	border-radius: 100%;
+	color: #fff;
+	background-color: #000;
+	height: 20px;
+	width: 20px;
+	border-radius: 2px;
 	z-index: 1;
 	display: flex;
 	justify-content: center;
@@ -567,17 +567,18 @@ cursor: none;
 .EnterReview{
 margin-bottom: 15px;
 height: 100px;
-border-radius: 5px;
+border-bottom: #000 1px solid;
 padding: 10px;
+
 
 
 
 }
 .inputName{
 	margin-bottom: 15px;
-	border-radius: 5px;
+
 	outline: none;
-	border: #000 1px solid;
+	border-bottom: #000 1px solid;
 	padding: 10px;
 
 }
@@ -586,7 +587,7 @@ padding: 10px;
 background-color: #000;
 color: #fff;
 width: 100px;
-height: 30px;
+height: 40px;
 border-radius: 5px;
 align-self: center;
 outline: none;

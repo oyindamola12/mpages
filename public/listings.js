@@ -78,7 +78,7 @@ if (industrySearch&& latSearch&&lngSearch  ){
   })
   .then(response => response.json())
   .then(items => {
-if(items&&items.length <=12){
+if(items&&items.length >=12){
 nextbtn.style.display = 'none';
 }
 if(items.length === 0){
@@ -181,7 +181,7 @@ if ( industryInputview ){
   })
   .then(response => response.json())
   .then(items => {
-if(items&&items.length <=12){
+if(items&&items.length >=12){
 nextbtn.style.display = 'none';
 }
 if(items.length === 0){
@@ -271,7 +271,7 @@ function noparams(){
     fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
-if(items&&items.length <=12){
+if(items&&items.length >=12){
 nextbtn.style.display = 'none';
 }
 
@@ -582,7 +582,7 @@ function getFiltered(latitude,longitude,industry){
   })
   .then(response => response.json())
   .then(items => {
-if(items&&items.length <=12){
+if(items&&items.length >=12){
 nextbtn.style.display = 'none';
 }
 if(items.length === 0){

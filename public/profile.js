@@ -271,9 +271,7 @@ function display(userData) {
         deleteImg.innerHTML = "x";
           deleteImg.classList.add('deleteImg');
          deleteImg.style.cursor = "pointer";
-        // deleteImg.style.position = "absolute";
-        //deleteImg.style.top = "0";
-    //   deleteImg.style.right = "0";
+
         deleteImg.style.backgroundColor = "#ffc946";
         deleteImg.style.borderRadius = "50%";
         deleteImg.style.width = "20px";
@@ -282,7 +280,7 @@ function display(userData) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-        // deleteImg.style.marginLeft = "50%";
+     
         deleteImg.onclick =async function removeItem(itemId) {
     try {
         const response = await fetch('/api/removeFromArray', {
@@ -317,16 +315,10 @@ function display(userData) {
         document.querySelector(".about-video").appendChild(img);
     });
 
-    // Alternative implementation using a for loop
-    // for (let i = 0; i < myImages.length; i++) {
-    //     const img = document.createElement('img');
-    //     img.src = myImages[i];
-    //     img.classList.add('IMAGEURL');
-    //     document.querySelector(".about-video").appendChild(img);
-    // }
+
 }
 
-// display()
+
 
 function previewImages(event) {
     var imgCont = document.getElementById('imagePreview2');

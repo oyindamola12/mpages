@@ -401,7 +401,7 @@ async function updateImage() {
  var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
     var loaderId = document.getElementById('indicatorButton');
-    var shareSave = document.getElementById('shareSave');
+    // var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
 var editIcon1 = document.querySelector(".my-selector1")
 var editIcon2 = document.querySelector(".my-selector2")
@@ -477,7 +477,7 @@ var editIcon4 = document.querySelector(".my-selector4")
 var editIcon5 = document.querySelector(".my-selector5")
 var editIcon6 = document.querySelector(".my-selector6")
 var editIcon7 = document.querySelector(".my-selector7")
- var shareSave = document.getElementById('shareSave');
+//  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   shareEdit.style.display='none'
   shareSave.style.display='block'
@@ -497,7 +497,7 @@ var editIcon4 = document.querySelector(".my-selector4")
 var editIcon5 = document.querySelector(".my-selector5")
 var editIcon6 = document.querySelector(".my-selector6")
 var editIcon7 = document.querySelector(".my-selector7")
- var shareSave = document.getElementById('shareSave');
+//  var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   // var openImage=document.getElementById('fileImage')
   // openImage.click();

@@ -177,7 +177,7 @@ element.style.backgroundPosition = 'top';
        address.textContent = userData.businessAddress;
          about.textContent =  userData.about;
 
-if(shareSave.style.display === 'none'){
+if(shareSave.style.display === 'block'){
 display2(userData)
   }
   else{

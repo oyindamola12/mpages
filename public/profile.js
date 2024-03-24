@@ -52,6 +52,11 @@ const timeToClose = document.getElementById('timeToCloseMyListings');
 const image = document.getElementById('image');
 const donateBtn = document.getElementById('share2');
 const element = document.getElementById('myElements');
+var shareSave = document.getElementById('shareSave');
+var shareEdit = document.getElementById('shareEdit');
+
+var showSave =shareSave.style.display = 'block'
+var showsEdit =shareEdit.style.display = 'block'
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -173,8 +178,15 @@ element.style.backgroundPosition = 'top';
        no.textContent = userData.phoneNo;
        address.textContent = userData.businessAddress;
          about.textContent =  userData.about;
-initMap2(userData)
+
+if(showsEdit){
+display2(userData)
+  }
+
+if(showSave){
 display(userData)
+  }
+initMap2(userData)
 
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
@@ -268,7 +280,7 @@ function display(userData) {
 
     myImages.forEach(image => {
       var deleteImg = document.createElement('p');
-        deleteImg.innerHTML = "x";
+        deleteImg.innerHTML = "&times;";
           deleteImg.classList.add('deleteImg');
          deleteImg.style.cursor = "pointer";
 
@@ -280,7 +292,7 @@ function display(userData) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-     
+
         deleteImg.onclick =async function removeItem(itemId) {
     try {
         const response = await fetch('/api/removeFromArray', {
@@ -318,6 +330,18 @@ function display(userData) {
 
 }
 
+function display2(userData) {
+
+        const myImages = userData.Images;
+
+        myImages.forEach(image => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.classList.add('IMAGEURL');
+            document.querySelector(".about-video").appendChild(img);
+        });
+
+}
 
 
 function previewImages(event) {
@@ -376,7 +400,7 @@ function previewImages(event) {
 // }
 
 async function updateImage() {
-    var fileInput = document.getElementById('fileImage');
+ var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
     var loaderId = document.getElementById('indicatorButton');
     var shareSave = document.getElementById('shareSave');

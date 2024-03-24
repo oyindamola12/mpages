@@ -79,7 +79,9 @@ if (industrySearch&& latSearch&&lngSearch  ){
   .then(response => response.json())
   .then(items => {
 if(items&&items.length >=12){
-nextbtn.style.display = 'none';
+nextbtn.style.display = 'block';
+}else{
+  nextbtn.style.display = 'none';
 }
 if(items.length === 0){
 noloading.style.display = 'block';
@@ -182,7 +184,9 @@ if ( industryInputview ){
   .then(response => response.json())
   .then(items => {
 if(items&&items.length >=12){
-nextbtn.style.display = 'none';
+nextbtn.style.display = 'block';
+}else{
+  nextbtn.style.display = 'none';
 }
 if(items.length === 0){
 noloading.style.display = 'block';
@@ -272,7 +276,9 @@ function noparams(){
     .then(response => response.json())
     .then(items=> {
 if(items&&items.length >=12){
-nextbtn.style.display = 'none';
+nextbtn.style.display = 'block';
+}else{
+  nextbtn.style.display = 'none';
 }
 
 if(items.length === 0){

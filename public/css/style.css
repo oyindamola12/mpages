@@ -794,7 +794,7 @@ a:link, a:visited {
 	color: #000;
 	background: #ffc946;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: normal;
 	border: none;
 	padding: 25px 50px;
 	border-radius: 50px;

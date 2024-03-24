@@ -250,6 +250,7 @@ cursor: pointer;
 top: 24%;
 	max-height: 120px;
 	overflow-y: auto;
+	text-align: left;
 
 }
 /* .select-options2 {
@@ -526,7 +527,7 @@ cursor: none;
     transform: translate(-50%, -50%);
     text-align: center;
     height: 250px;
-	width: 320px;
+	width: 350px;
 
 }
 .popupReview2 {
@@ -555,7 +556,7 @@ cursor: none;
 	background-color: #000;
 	height: 30px;
 	width: 30px;
-	border-radius: 2px;
+	border-radius: 4px;
 	z-index: 1;
 	display: flex;
 	justify-content: center;

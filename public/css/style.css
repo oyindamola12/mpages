@@ -525,10 +525,8 @@ cursor: none;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-
-
-	height: 250px;
-	width: 300px;
+    height: 250px;
+	width: 320px;
 
 }
 .popupReview2 {
@@ -551,19 +549,21 @@ cursor: none;
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 15px;
+    font-size: 20px;
     cursor: pointer;
 	color: #fff;
 	background-color: #000;
-	height: 20px;
-	width: 20px;
+	height: 30px;
+	width: 30px;
 	border-radius: 2px;
 	z-index: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 
 }
+
 .EnterReview{
 margin-bottom: 15px;
 height: 100px;

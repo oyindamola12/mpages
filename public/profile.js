@@ -55,7 +55,6 @@ const element = document.getElementById('myElements');
 var shareSave = document.getElementById('shareSave');
 var shareEdit = document.getElementById('shareEdit');
 
-
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -153,9 +152,6 @@ var listingsId = getUrlParameter('listingid');
 var businessOwnerIds = getUrlParameter('id');
 
 function getUserProfile(){
-
-  var showSave =shareSave.style.display = 'none'
-var showsEdit =shareEdit.style.display = 'block'
 fetch('/api/getSingleProfile2', {
   method: 'POST',
   headers: {
@@ -181,11 +177,11 @@ element.style.backgroundPosition = 'top';
        address.textContent = userData.businessAddress;
          about.textContent =  userData.about;
 
-if(showsEdit){
+if(shareSave.style.display === 'none'){
 display2(userData)
   }
 
-if(showSave){
+if(shareSave.style.display === 'block'){
 display(userData)
   }
 initMap2(userData)

@@ -567,9 +567,10 @@ cursor: none;
 .EnterReview{
 margin-bottom: 15px;
 height: 100px;
+border: #fff 1px solid;
 border-bottom: #000 1px solid;
 padding: 10px;
-border: #fff 1px solid;
+margin-top: 10px;
 
 
 
@@ -577,9 +578,7 @@ border: #fff 1px solid;
 .inputName{
 	margin-bottom: 15px;
 	outline: none;
-
-
-	border: #fff 1px solid;
+    border: #fff 1px solid;
 	border-bottom: #000 1px solid;
 	padding: 10px;
 

@@ -38,11 +38,14 @@ var userUid =localStorage.getItem('userId');
 // var donateBtn = document.getElementById('share2');
 // var divider= document.getElementById('divider');
 function hideContact() {
-    var contactText = document.getElementById('hidecontact');
+    var contactText = document.getElementById('showcontact');
+   var contactText2 = document.getElementById('hidecontact');
     if (signedupAlready && signedupAlready === 'true') {
         contactText.style.display = 'block';
+        contactText2.style.display = 'none';
     } else {
         contactText.style.display = 'none';
+        contactText2.style.display = 'block';
     }
 }
 

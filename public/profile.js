@@ -52,9 +52,8 @@ const timeToClose = document.getElementById('timeToCloseMyListings');
 const image = document.getElementById('image');
 const donateBtn = document.getElementById('share2');
 const element = document.getElementById('myElements');
-var shareSave = document.getElementById('shareSave');
-var shareEdit = document.getElementById('shareEdit');
-
+  var shareSave = document.getElementById('shareSave');
+  var shareEdit = document.getElementById('shareEdit');
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -177,17 +176,9 @@ element.style.backgroundPosition = 'top';
        address.textContent = userData.businessAddress;
          about.textContent =  userData.about;
 
-
-display2(userData)
-
-
-display(userData)
-
-
-
-
 initMap2(userData)
-
+display(userData)
+display2(userData)
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
@@ -403,7 +394,7 @@ async function updateImage() {
  var fileInput = document.getElementById('fileImage');
     var imgCont = document.getElementById('imagePreview2');
     var loaderId = document.getElementById('indicatorButton');
-    // var shareSave = document.getElementById('shareSave');
+    var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
 var editIcon1 = document.querySelector(".my-selector1")
 var editIcon2 = document.querySelector(".my-selector2")
@@ -426,13 +417,6 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon5.style.display='none'
   editIcon6.style.display='none'
   editIcon7.style.display='none'
-  if(shareSave.style.display === 'block'){
-display2()
-  }
-  else{
-display()
-
-  }
  return;
     }
 
@@ -486,7 +470,7 @@ var editIcon4 = document.querySelector(".my-selector4")
 var editIcon5 = document.querySelector(".my-selector5")
 var editIcon6 = document.querySelector(".my-selector6")
 var editIcon7 = document.querySelector(".my-selector7")
-//  var shareSave = document.getElementById('shareSave');
+ var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   shareEdit.style.display='none'
   shareSave.style.display='block'
@@ -497,13 +481,6 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon5.style.display='block'
   editIcon6.style.display='block'
   editIcon7.style.display='block'
-  if(shareSave.style.display === 'block'){
-display2()
-  }
-  else{
-display()
-
-  }
 }
 async function opengallery() {
 var editIcon1 = document.querySelector(".my-selector1")
@@ -513,7 +490,7 @@ var editIcon4 = document.querySelector(".my-selector4")
 var editIcon5 = document.querySelector(".my-selector5")
 var editIcon6 = document.querySelector(".my-selector6")
 var editIcon7 = document.querySelector(".my-selector7")
-//  var shareSave = document.getElementById('shareSave');
+ var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
   // var openImage=document.getElementById('fileImage')
   // openImage.click();
@@ -526,13 +503,7 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon5.style.display='block'
   editIcon6.style.display='block'
   editIcon7.style.display='block'
-if(shareSave.style.display === 'block'){
-display2()
-  }
-  else{
-display()
 
-  }
 }
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');

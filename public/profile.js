@@ -178,7 +178,7 @@ element.style.backgroundPosition = 'top';
 
 initMap2(userData)
 display(userData)
-display2(userData)
+// display2(userData)
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({

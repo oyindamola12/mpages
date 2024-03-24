@@ -275,13 +275,13 @@ function display(userData) {
           deleteImg.classList.add('deleteImg');
          deleteImg.style.cursor = "pointer";
 
-        deleteImg.style.backgroundColor = "#ffc946";
-        deleteImg.style.borderRadius = "50%";
+        deleteImg.style.backgroundColor = "#000";
+        // deleteImg.style.borderRadius = "50%";
         deleteImg.style.width = "20px";
         deleteImg.style.height = "20px";
         deleteImg.style.textAlign = "center";
         deleteImg.style.lineHeight = "20px";
-        deleteImg.style.color = "black";
+        deleteImg.style.color = "#fff";
         deleteImg.style.marginBottom = "10px";
 
         deleteImg.onclick =async function removeItem(itemId) {

@@ -177,13 +177,13 @@ element.style.backgroundPosition = 'top';
        address.textContent = userData.businessAddress;
          about.textContent =  userData.about;
 
-if(shareSave.style.display === 'block'){
+
 display2(userData)
-  }
-  else{
+
+
 display(userData)
 
-  }
+
 
 
 initMap2(userData)
@@ -426,6 +426,13 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon5.style.display='none'
   editIcon6.style.display='none'
   editIcon7.style.display='none'
+  if(shareSave.style.display === 'block'){
+display2()
+  }
+  else{
+display()
+
+  }
  return;
     }
 
@@ -490,6 +497,13 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon5.style.display='block'
   editIcon6.style.display='block'
   editIcon7.style.display='block'
+  if(shareSave.style.display === 'block'){
+display2()
+  }
+  else{
+display()
+
+  }
 }
 async function opengallery() {
 var editIcon1 = document.querySelector(".my-selector1")
@@ -512,7 +526,13 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon5.style.display='block'
   editIcon6.style.display='block'
   editIcon7.style.display='block'
+if(shareSave.style.display === 'block'){
+display2()
+  }
+  else{
+display()
 
+  }
 }
 // function previewImages(event){
 //    var imgCont = document.getElementById('imagePreview');

@@ -592,3 +592,7 @@ function payWithPaystack(){
 function gotoRegister(){
    window.location.href = `/register.html?id=${businessOwnerIds}&listingid=${listingsId}`;
 }
+
+function gotoLogin(){
+   window.location.href = `/login.html?id=${businessOwnerIds}&listingid=${listingsId}`;
+}

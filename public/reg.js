@@ -80,8 +80,14 @@ return false;
       localStorage.setItem('userId',data.userId);
       localStorage.setItem('userBusiness',JSON.stringify(data.businesses));
       localStorage.setItem('signedup', 'true');
-      window.location.href = '/my-listings.html';
+     
 
+if (!window.location.search) {
+    window.location.href = '/my-listings.html';
+} else {
+    // Parameters found in the URL
+   window.location.href = `/single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
+}
 
 
  } else {

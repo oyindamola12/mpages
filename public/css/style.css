@@ -42,6 +42,7 @@ body {
 	font-family: "Ubuntu", serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	overflow-x: hidden;
 
 }
 

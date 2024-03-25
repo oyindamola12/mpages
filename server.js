@@ -82,8 +82,6 @@ app.use(cors(corsOptions));
 
 
 //Upload image
- let cardNo = Math.floor(Math.random() * 1e6).toString();
- let userids = ''
 
 app.post('/addBusiness',async (req, res, )=> {
     const businessName = req.body.businessName;
@@ -440,13 +438,14 @@ email:email,
 
 });
 });
+
 app.post('/register', async (req, res) => {
-  const name = req.body.contactPerson;
+    const name = req.body.contactPerson;
     const phoneNo= req.body.phoneNo;
     const email = req.body.email;
     const password=req.body.password;
 
-    const user={
+   const user={
    email:req.body.email,
    password:req.body.password,
 }
@@ -462,7 +461,8 @@ app.post('/register', async (req, res) => {
     if (!userSnapshot.empty) {
           return res.status(401).json({ error: 'User Exist, Login' });
 
- }else{
+ }
+ else{
 const userResponse = await admin.auth().createUser({
 email:user.email,
 password:user.password,
@@ -475,10 +475,10 @@ phoneNo: phoneNo,
 email:email,
 password: password,
 userid:userResponse.uid,
-userListingId:cardNo
+
 });
  return res.status(200).json({userId:userResponse.uid,userResponse});
-// res.json({ userId:cardNo,userResponse})
+
     }
 } catch (error) {
     console.error('Error:', error.message);

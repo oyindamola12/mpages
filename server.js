@@ -440,7 +440,7 @@ email:email,
 });
 
 app.post('/register', async (req, res) => {
-    const name = req.body.contactPerson;
+    const name = req.body.firstName;
     const phoneNo= req.body.phoneNo;
     const email = req.body.email;
     const password=req.body.password;

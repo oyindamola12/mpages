@@ -602,7 +602,7 @@ try {
 app.get('/getBusinesses', async (req, res) => {
 
     try {
-    const snapshot = await db.collection('BusinessLists').limit(12).get();
+    const snapshot = await db.collection('BusinessLists').limit(4).get();
     const businesses = [];
     snapshot.forEach(doc => {
 
@@ -625,7 +625,7 @@ app.get('/getBusinesses', async (req, res) => {
 app.get('/getBusinesses2', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Get page number from query parameter, default to 1
-    const perPage = 12; // Number of items per page
+    const perPage = 4; // Number of items per page
     const startAt = (page - 1) * perPage;
 
     // Fetch data from Firestore with pagination

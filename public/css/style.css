@@ -1014,7 +1014,7 @@ margin-left: 3px;
 	height: 112px;
 	padding: 32px 0 31px 0px;
 	position: absolute;
-	z-index: 10;
+	z-index: -1;
 	width: 100%;
 	border-bottom: #000 1.5px solid;
 
@@ -1407,7 +1407,7 @@ margin-left: 3px;
 .categories-item {
 	position: relative;
 	margin-bottom: 26px;
-	z-index: 1;
+	z-index:-2;
 	height: 360px;
 	padding: 22px;
 	border-radius: 10px;
@@ -1433,7 +1433,7 @@ margin-left: 3px;
 	opacity: 0;
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
-	z-index: -1;
+	z-index: -2;
 	border-radius: 10px;
 }
 
@@ -3549,7 +3549,7 @@ border-radius: 50%;
 		content: "";
 		border-radius: 10px;
 		/* opacity: 0.43; */
-		z-index: -1;
+		/* z-index: -1; */
 
 	}
 	.filter-search {

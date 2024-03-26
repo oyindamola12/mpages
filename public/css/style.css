@@ -3546,7 +3546,7 @@ border-radius: 50%;
 		content: "";
 		border-radius: 10px;
 		/* opacity: 0.43; */
-		z-index: 2;
+		z-index: 1;
 
 	}
 	.filter-search {

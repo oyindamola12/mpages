@@ -1014,7 +1014,7 @@ margin-left: 3px;
 	height: 112px;
 	padding: 32px 0 31px 0px;
 	position: absolute;
-	z-index: 1;
+	z-index: 3;
 	width: 100%;
 	border-bottom: #000 1.5px solid;
 }

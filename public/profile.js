@@ -180,7 +180,7 @@ element.style.backgroundPosition = 'top';
 
 initMap2(userData)
 display(userData)
-showDonateButton(userData)
+
 fetchDonate1(userData)
 
   console.log('User Data:', userData);
@@ -318,18 +318,6 @@ function display(userData) {
 
 }
 
-function showDonateButton(userData) {
-    var donateBtn = document.getElementById('share2');
-    var divider = document.getElementById('divider');
-
-    if (userData && userData.donation === "Yes") {
-        divider.style.display = "block";
-        donateBtn.style.display = 'block';
-    } else {
-        divider.style.display = "none";
-        donateBtn.style.display = 'none';
-    }
-}
 
 async function fetchDonate1(userData) {
 
@@ -355,6 +343,7 @@ function offwithdraw() {
 async function fetchDonate2() {
 let Total= document.getElementById('Total');
 let Available = document.getElementById('Available');
+let withdraw = document.getElementById('withdraw');
 
 fetch('/api/getDonations', {
   method: 'POST',
@@ -366,11 +355,13 @@ fetch('/api/getDonations', {
 .then(response => response.json())
 .then(data => {
   if(data && data !== 0){
-  Available.innerHTML= data.totalAmount * 0.9;
-  Total.innerHTML=data.totalAmount
+  Available.textContent= data.totalAmount * 0.9;
+  Total.textContent=data.totalAmount
+  withdraw.style.display='block'
   }else{
-   Available.innerHTML= '0.00';
-  Total.innerHTML='0.00'
+   Available.textContent= '0.00';
+  Total.textContentL='0.00'
+  withdraw.style.display='none'
   }
 
 
@@ -617,7 +608,7 @@ function reopenImageGallery() {
 function reviews(){
 
 
-// var  reviewH2 = document.getElementById('review');
+ var  reviewH2 = document.getElementById('review');
  var  reviewerName = document.getElementById('reviewerName');
  var  reviewText = document.getElementById('reviewText');
   var  reviewTime = document.getElementById('reviewTime');
@@ -637,9 +628,8 @@ function reviews(){
 
 for (let i = 0; i < items.length; i++) {
 
-      const business = items[i];
-
-// const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
+const business = items[i];
+reviewH2.textContent='Reviews'
 reviewerName.textContent =business.data.reviewer;
 reviewText.textContent =business.data.review;
 reviewTime.textContent=business.data.date;

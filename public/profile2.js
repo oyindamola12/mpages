@@ -410,7 +410,7 @@ var  reviewH2 = document.getElementById('review');
 for (let i = 0; i < items.length; i++) {
 
       const business = items[i];
-
+reviewH2.textContent='Reviews'
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 reviewerName.textContent =business.data.reviewer;
 reviewText.textContent =business.data.review;

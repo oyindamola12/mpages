@@ -185,7 +185,7 @@ img {
 	cursor: pointer;
 	width: 80%;
 	color: #000;
-
+margin-top: 15px;
 	margin-bottom: 15px;
 	text-align: left;
 
@@ -608,7 +608,20 @@ cursor: none;
 	width: 300px;
 
 }
+.popupReview3 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 
+	height: 220px;
+	width: 300px;
+
+}
 .close {
     position: absolute;
     top: 10px;
@@ -671,6 +684,20 @@ margin-top: 10px;
 	cursor: pointer;
 	width: 100%;
 	}
+
+	.offAndSubmit2{
+		background-color: green;
+		color: #fff;
+		width: 100px;
+		height: 50px;
+		border-radius: 5px;
+		align-self: center;
+		outline: none;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		margin-top: 20px;
+		}
 .displayFlex{
 	display: flex;
 	flex-direction: column;

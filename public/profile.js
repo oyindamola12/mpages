@@ -420,7 +420,7 @@ fetch('https://www.mpageshub.com/getDonations', {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ listingId: listingsId, businessOwnerId: businessOwnerIds})
+  body: JSON.stringify({ listingId: listingsId, ownerId: businessOwnerIds})
 })
 .then(response => response.json())
 .then(data => {

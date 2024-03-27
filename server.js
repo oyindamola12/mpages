@@ -633,13 +633,14 @@ try {
 const snapshot =  db.collection('Users').doc(businessOwnerId).collection('BusinessLists').doc( businessId ).collection('Donations').get();
     // Extract data from the snapshot
    const donations = [];
-   snapshot.forEach((doc) => {
-      donations.push(doc.data());
-    });
 
- 
+    snapshot.forEach(doc => {
+       donations.push({
+      data: doc.data().amount,
+});
+    })
 
-    // Send JSON response to the HTML frontend
+   
 
     res.json(donations );
 

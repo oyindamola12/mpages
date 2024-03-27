@@ -322,10 +322,8 @@ function display(userData) {
 async function fetchDonate1(userData) {
 
 let hideDonateTotal= document.getElementById('hideDonateTotal');
-
   if (userData && userData.donation === "Yes") {
         hideDonateTotal.style.display = "block";
-
     } else {
         hideDonateTotal.style.display = "none";
 
@@ -373,6 +371,7 @@ fetch('/api/getDonations', {
 }
 
 fetchDonate2()
+
 function previewImages(event) {
     var imgCont = document.getElementById('imagePreview2');
     for (let i = 0; i < event.target.files.length; i++) {

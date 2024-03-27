@@ -142,16 +142,16 @@
                               onclick="closeButtontoSave()">Save</button>
                             </div>
                         </div>
-<div  class="hideDonateTotal" id="hideDonateTotal" >
+                          <div  class="hideDonateTotal" id="hideDonateTotal" >
                             <div style="display: flex;  background-color: grey; color: white; border-radius: 5px;padding-top: 5px;margin-right: 12px;max-width:100% ;padding-left: 10px; padding-right: 10px;">
                                 <div style="margin-right: 10px;  font-size: 12px; color: white;">Total<br>Balance:</div>
-                                <div id="Total" >0.00</div>
+                                <div id="Total" ></div>
                                 <div style="margin-right: 10px;  font-size: 12px;color: white;margin-left: 20px;">Available<br>Balance:</div>
-                                <div  id="Available" >0.00</div>
+                                <div  id="Available" ></div>
 
 
                             </div>
-                            <button class="share2"  style="display: block;" onclick="withdraw()">Withdraw</button>
+                            <button class="share2"  style="display: block;" onclick="onwithdraw()">Withdraw</button>
                         </div>
                         </div>
 
@@ -206,19 +206,50 @@
                 </div>
             </div>
         </div>
-        <div id="overlay">
-            <span class="close" onclick="off()">&times;</span>
-            <div class="popupReview">
+        <div id="overlay3">
 
+            <div class="popupReview2">
+        <span class="close" onclick="offwithdraw()">&times;</span>
                 <div >
-                    <form class="displayFlex">
-                <textarea placeholder="Enter Review"  name="review" id="EnterReview" class="EnterReview"></textarea>
-               <input type="text" placeholder="Your Name" id="inputNameMyListings" class="inputName" name="yourName">
-                <button class="offAndSubmit" onclick="off1()">Submit</button>
-            </form>
+
+                    <div class="displayFlex">
+                        <div class="select-styled4" id="bank" onclick="toggleOptions()">Choose Bank</div>
+                        <div class="select-options4" id="bankoptions">
+                            <div onclick="selectOption4('Access Bank Nigeria Plc')">Access Bank Nigeria Plc</div>
+                            <div onclick="selectOption4('Citibank Nigeria Limited')"> Citibank Nigeria Limited</div>
+                            <div onclick="selectOption4('Diamond Bank Plc')">Diamond Bank Plc</div>
+                            <div onclick="selectOption4('Ecobank Nigeria Plc')">Ecobank Nigeria Plc</div>
+                            <div onclick="selectOption4('Fidelity Bank Nigeria Plc')">Fidelity Bank Nigeria Plc</div>
+                            <div onclick="selectOption4('First Bank of Nigeria Plc')">First Bank of Nigeria Plc</div>
+                            <div onclick="selectOption4('First City Monument Bank Plc')">First City Monument Bank Plc</div>
+                            <div onclick="selectOption4('Guaranty Trust Bank Plc')">Guaranty Trust Bank Plc</div>
+                            <div onclick="selectOption4('Heritage Banking Company Ltd')">Heritage Banking Company Ltd</div>
+                            <div onclick="selectOption4('Jaiz Bank')">Jaiz Bank</div>
+                            <div onclick="selectOption4('Keystone Bank Ltd')">Keystone Bank Ltd</div>
+                            <div onclick="selectOption4('Kuda Bank')">Kuda Bank</div>
+                            <div onclick="selectOption4('Polaris Bank Ltd')">Polaris Bank Ltd</div>
+                            <div onclick="selectOption4('Providus Bank Limited')">Providus Bank Limited</div>
+                            <div onclick="selectOption4('Stanbic IBTC Bank Plc')">Stanbic IBTC Bank Plc</div>
+                            <div onclick="selectOption4('Standard Chartered Bank Nigeria')">Standard Chartered Bank Nigeria</div>
+                            <div onclick="selectOption4('Sterling Bank Plc')">Sterling Bank Plc</div>
+                            <div onclick="selectOption4('Suntrust Bank Nigeria Limited')">Suntrust Bank Nigeria Limited</div>
+                            <div onclick="selectOption4('Union Bank of Nigeria Plc')">Union Bank of Nigeria Plc</div>
+                            <div onclick="selectOption4('United Bank for Africa Plc')">United Bank for Africa Plc</div>
+                            <div onclick="selectOption4('Unity Bank Plc')">Unity Bank Plc</div>
+                            <div onclick="selectOption4('Wema Bank Plc')">Wema Bank Plc</div>
+                            <div onclick="selectOption4('Zenith Bank Plc')">Zenith Bank Plc</div>
+
+                        </div>
+                        <input type="text" placeholder="Type Other Amount" id="OtherAmount" class="inputName" name="yourName" >
+                        <input type="email" placeholder="Email" id="inputmail" class="inputName" name="emaiil" >
+
+                        <button type="button" class="offAndSubmit2" onclick="payWithPaystack()">Donate</button>
+                     </div>
+
+
+                    </div>
             </div>
             </div>
-    </div>
         <div class="about-item">
             <div class="container">
                 <div class="row">

@@ -632,18 +632,19 @@ try {
 
 const snapshot =  db.collection('Users').doc(businessOwnerId).collection('BusinessLists').doc( businessId ).collection('Donations').get();
     // Extract data from the snapshot
-    const businesses = [];
-    snapshot.forEach(doc => {
-      businesses.push({
-      id: doc.id,
-      data: doc.data()
-});;
+   const donations = [];
+   snapshot.forEach((doc) => {
+      donations.push(doc.data());
+    });
 
+ let totalAmount = 0;
+    donations.forEach((donation) => {
+      totalAmount += donation.amount;
     });
 
     // Send JSON response to the HTML frontend
 
-    res.json(businesses );
+    res.json({totalAmount } );
 
 
 

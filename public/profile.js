@@ -338,9 +338,9 @@ function showDonateButton(userData) {
 }
 
 async function fetchDonate1(userData) {
-let Total= document.getElementById('Total');
+
 let hideDonateTotal= document.getElementById('hideDonateTotal');
-let Available = document.getElementById('Available');
+
 
 
     if (userData && userData.donation === "Yes") {
@@ -351,7 +351,20 @@ let Available = document.getElementById('Available');
 
     }
 }
+function withdraw() {
 
+}
+
+
+
+function onwithdraw() {
+  document.getElementById("overlay3").style.display = "block";
+}
+
+function offwithdraw() {
+ document.getElementById("overlay3").style.display = "none";
+
+}
 async function fetchDonate2() {
 let Total= document.getElementById('Total');
 let Available = document.getElementById('Available');
@@ -364,34 +377,14 @@ fetch('/api/getDonations', {
   body: JSON.stringify({ listingId: listingsId, businessOwnerId: businessOwnerIds})
 })
 .then(response => response.json())
-.then(donation => {
-
- let imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPagesDesigns.png'
-    //  element.setAttribute('data-setbg', imageUrl);
-     element.style.backgroundImage = `url(${imageUrl})`;
-
-element.style.backgroundRepeat = 'no-repeat';
- element.style.backgroundSize = 'cover';
-element.style.backgroundPosition = 'top';
-     businessNameh2.textContent =  userData.businessName;
-       timeToOpen.textContent =  userData.openingtime;
-        timeToClose.textContent = userData.closingtime;
-        email.textContent = userData.email ;
-       no.textContent = userData.phoneNo;
-       address.textContent = userData.businessAddress;
-         about.textContent =  userData.about;
-
-initMap2(userData)
-display(userData)
-showDonateButton(userData)
-
-    //  const location = new google.maps.LatLng( latitude,  longitude);
-    //         const marker = new google.maps.Marker({
-    //             position: location,
-    //             map: map2,
-    //             title:businessAddress
-    //         });
-  // Handle the user data received from the backend
+.then(data => {
+  if(data && data !== 0){
+Available.innerHTML= data.totalAmount * 0.9;
+  Total.innerHTML=data.totalAmount
+  }else{
+   Available.innerHTML= '0.00';
+  Total.innerHTML='0.00'
+  }
 
 
 })

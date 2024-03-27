@@ -181,7 +181,7 @@ element.style.backgroundPosition = 'top';
 initMap2(userData)
 display(userData)
 showDonateButton(userData)
-
+fetchDonate1(userData)
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
     //             position: location,
@@ -341,9 +341,7 @@ async function fetchDonate1(userData) {
 
 let hideDonateTotal= document.getElementById('hideDonateTotal');
 
-
-
-    if (userData && userData.donation === "Yes") {
+  if (userData && userData.donation === "Yes") {
         hideDonateTotal.style.display = "block";
 
     } else {

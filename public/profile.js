@@ -323,7 +323,7 @@ async function fetchDonate1(userData) {
 
 let hideDonateTotal= document.getElementById('hideDonateTotal');
   if (userData && userData.donation === "Yes") {
-        hideDonateTotal.style.display = "block";
+        hideDonateTotal.style.display = "inline-flex";
     } else {
         hideDonateTotal.style.display = "none";
 
@@ -1143,3 +1143,13 @@ async function aboutButtontoSave(){
   });
 
 }
+ function toggleOptionsbank() {
+            var options = document.getElementById('bankoptions');
+            options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
+  }
+  function selectOption5(value) {
+            var styledSelect = document.querySelector('.select-styled5');
+            styledSelect.textContent = value;
+
+            toggleOptionsbank();
+  }

@@ -287,6 +287,11 @@ function display(userData) {
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
   }
 
+    function toggleOptionsbank() {
+            var options = document.getElementById('bankoptions');
+            options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
+  }
+
   function toggleOptions2() {
    var options = document.getElementById('options2');
     options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
@@ -304,6 +309,12 @@ function display(userData) {
             toggleOptions();
   }
 
+   function selectOption5(value) {
+            var styledSelect = document.querySelector('.select-styled5');
+            styledSelect.textContent = value;
+
+            toggleOptionsbank();
+  }
   function selectOption2(value) {
             var styledSelect = document.querySelector('.select-styled2');
             styledSelect.textContent = value;

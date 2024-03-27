@@ -178,6 +178,19 @@ img {
 
 }
 
+.select-styled5 {
+	display: inline-block;
+	padding: 16px 34px;
+	border-bottom: 1px solid #000;
+	cursor: pointer;
+	width: 80%;
+	color: #000;
+
+	margin-bottom: 15px;
+	text-align: left;
+
+}
+
 #divider{
 background-color: #000;
  height: 33px;
@@ -238,6 +251,24 @@ cursor: pointer;
 }
 
 .select-options4 {
+	display: none;
+	position: absolute;
+	background-color: #fff;
+	padding-left: 10px;
+	/* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
+	z-index: 1;
+	width: 86.5%;
+	border-radius: 5px;
+	border: #000 1px solid;
+	/* margin-top: 10px; */
+cursor: pointer;
+top: 24%;
+	max-height: 120px;
+	overflow-y: auto;
+	text-align: left;
+
+}
+.select-options5 {
 	display: none;
 	position: absolute;
 	background-color: #fff;
@@ -362,6 +393,14 @@ cursor: pointer;
 	cursor: pointer;
 }
 .select-options4 div:hover {
+	background-color: #000;
+	color: #ffc946;
+
+
+
+}
+
+.select-options5 div:hover {
 	background-color: #000;
 	color: #ffc946;
 

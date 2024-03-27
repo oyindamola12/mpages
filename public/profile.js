@@ -1,7 +1,7 @@
 let businesseListed = JSON.parse(localStorage.getItem('userBusiness'))
 let myListings = document.getElementById('myListings');
 let bankName = document.getElementById('bank')
-let setBankCode='ok'
+let setBankCode=''
 // let searchInput = document.getElementById('searchInput').value;
 let map;
 let map2;
@@ -262,11 +262,13 @@ function bankCode(){
     if (bankName.textContent === 'Zenith Bank Plc') {
       setBankCode='057';
     }
+console.log(setBankCode)
+
 }
 
 bankCode()
 
-console.log(setBankCode)
+
 var mlwStyles =[
                 {
                     featureType: "poi",

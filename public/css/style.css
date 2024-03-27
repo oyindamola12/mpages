@@ -1134,7 +1134,7 @@ margin-left: 3px;
 	content: "";
 	border-radius: 10px;
 	/* opacity: 0.43; */
-	z-index: -1;
+	z-index: -2;
 }
 
 .filter-search .category-search {
@@ -2490,7 +2490,7 @@ margin-left: 3px;
 	color:#fff;
 	padding:5px 15px;
 	border-radius: 5px;
-	margin-left: 20px;
+	margin-left: 10px;
 
 	border: none;
 	display: none;
@@ -3546,7 +3546,7 @@ border-radius: 50%;
 		content: "";
 		border-radius: 10px;
 		/* opacity: 0.43; */
-		z-index: -1;
+
 
 	}
 	.filter-search {

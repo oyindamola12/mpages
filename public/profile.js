@@ -1,7 +1,7 @@
 let businesseListed = JSON.parse(localStorage.getItem('userBusiness'))
 let myListings = document.getElementById('myListings');
 let bankName = document.getElementById('bank')
-let setBankCode=''
+
 // let searchInput = document.getElementById('searchInput').value;
 let map;
 let map2;
@@ -56,6 +56,7 @@ const donateBtn = document.getElementById('share2');
 const element = document.getElementById('myElements');
   var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
+  var accountNumber = document.getElementById('accountNumber')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -194,77 +195,7 @@ fetchDonate1(userData)
 getUserProfile()
 
 
-// function bankCode(){
 
-//     if (bankName.textContent === 'Citibank Nigeria Limited') {
-//       setBankCode ='023';
-//     }
-//     if (bankName.textContent === 'Diamond Bank Plc') {
-//       setBankCode='063';
-//     }
-//     if (bankName.textContent === 'Ecobank Nigeria Plc') {
-//       setBankCode='050';
-//     }
-//     if (bankName.textContent === 'Fidelity Bank Nigeria Plc') {
-//       setBankCode='070';
-//     }
-//     if (bankName.textContent === 'First Bank of Nigeria Plc') {
-//       setBankCode='011';
-//     }
-//     if (bankName.textContent === 'First City Monument Bank Plc') {
-//       setBankCode='214';
-//     }
-//     if (bankName.textContent === 'Guaranty Trust Bank Plc') {
-//       setBankCode='058';
-//     }
-//     if (bankName.textContent === 'Heritage Banking Company Ltd') {
-//       setBankCode='030';
-//     }
-//     if (bankName.textContent === 'Jaiz Bank') {
-//       setBankCode='301';
-//     }
-//     if (bankName.textContent === 'Keystone Bank Ltd') {
-//       setBankCode='082';
-//     }
-//     if (bankName.textContent === ' Kuda Bank') {
-//       setBankCode='502';
-//     }
-//     if (bankName.textContent === 'Polaris Bank Ltd') {
-//       setBankCode='076';
-//     }
-//     if (bankName.textContent === 'Providus Bank Limited') {
-//       setBankCode='101';
-//     }
-//     if (bankName.textContent === 'Stanbic IBTC Bank Plc') {
-//       setBankCode='221';
-//     }
-//     if (bankName.textContent === 'Standard Chartered Bank Nigeria') {
-//       setBankCode='068';
-//     }
-//     if (bankName.textContent === 'Sterling Bank Plc') {
-//       setBankCode='232';
-//     }
-//     if (bankName.textContent === 'Suntrust Bank Nigeria Limited') {
-//       setBankCode='100';
-//     }
-//     if (bankName.textContent === 'Union Bank of Nigeria Plc') {
-//       setBankCode='032';
-//     }
-//     if (bankName.textContent === 'United Bank for Africa Plc') {
-//       setBankCode='033';
-//     }
-//     if (bankName.textContent === 'Unity Bank Plc') {
-//       setBankCode='215';
-//     }
-//     if (bankName.textContent === 'Wema Bank Plc') {
-//       setBankCode='035';
-//     }
-//     if (bankName.textContent === 'Zenith Bank Plc') {
-//       setBankCode='057';
-//     }
-// console.log(setBankCode)
-
-// }
 function bankCode() {
     let setBankCode;
 
@@ -343,11 +274,44 @@ function bankCode() {
 
     console.log(setBankCode);
 }
-
-bankCode();
-
+let bankCodeValue = bankCode();
 
 
+async function verifyAccount() {
+ const accountNumber = document.getElementById('accountNumber').value;
+  const accountName = document.getElementById('accountName').value;
+var rollingindicator2=document.getElementById('rolling-indicator2')
+try {
+const response = await fetch('/verify-account', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({ accountNumber, bankCode: bankCodeValue  })
+ });
+ const data = await response.json();
+  accountName.textContent= data.accountName
+ rollingindicator2.style.display='none'
+// Handle the account verification response as needed
+} catch (error) {
+alert('Enter correct details');
+ rollingindicator2.style.display='block'
+            }
+        }
+
+
+
+if(accountNumber&&accountNumber.length === 10){
+
+verifyAccount();
+
+
+}
+
+if(accountNumber&&accountNumber.length < 10||accountNumber.length > 0){
+  var rollingindicator2=document.getElementById('rolling-indicator2')
+  rollingindicator2.style.display='block'
+}
 var mlwStyles =[
                 {
                     featureType: "poi",
@@ -356,7 +320,7 @@ var mlwStyles =[
                           { visibility: "off" }
                     ]
                 }
-            ];
+];
 
 function initMap2(userData) {
 

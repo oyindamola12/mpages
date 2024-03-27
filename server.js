@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const admin = require('firebase-admin');
 const path =require('path')
 const bodyParser = require('body-parser');
+const axios = require('axios');
 const { Storage } = require('@google-cloud/storage');
 const fs = require('fs');
 const multer =require('multer');
@@ -251,7 +252,28 @@ await businessDb.set({
 //     }
 // });
 
+app.post('/verify-account', async (req, res) => {
+    try {
+        // Get account number and bank code from the request body
+        const { accountNumber, bankCode } = req.body;
 
+        // Make a request to the Paystack API to verify the account
+        const response = await axios.get(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
+            headers: {
+                Authorization: `Bearer YOUR_PAYSTACK_SECRET_KEY`
+            }
+        });
+
+        // Extract the account details from the response
+       const accountName = response.data.data.account_name;
+
+        // Respond with the account details
+        res.json(accountName);
+    } catch (error) {
+        console.error('Error verifying account:', error.response.data);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 app.post('/addBusiness2',async (req, res)=> {
 
     const businessName = req.body.businessName;

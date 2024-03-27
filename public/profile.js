@@ -182,13 +182,7 @@ initMap2(userData)
 display(userData)
 showDonateButton(userData)
 fetchDonate1(userData)
-    //  const location = new google.maps.LatLng( latitude,  longitude);
-    //         const marker = new google.maps.Marker({
-    //             position: location,
-    //             map: map2,
-    //             title:businessAddress
-    //         });
-  // Handle the user data received from the backend
+
   console.log('User Data:', userData);
 
 })
@@ -349,9 +343,6 @@ let hideDonateTotal= document.getElementById('hideDonateTotal');
 
     }
 }
-
-
-
 
 function onwithdraw() {
   document.getElementById("overlay3").style.display = "block";

@@ -622,36 +622,21 @@ app.get('/getBusinesses', async (req, res) => {
   }
 });
 
-app.get('/getDonations', async (req, res) => {
-
-  const businessId = req.body.listingId;
-   const businessOwnerId = req.body.ownerId;
-
-try {
-    // Get businesses from Firestore where industry is equal to "restaurant"
-
-const snapshot =  db.collection('Users').doc(businessOwnerId).collection('BusinessLists').doc( businessId ).collection('Donations').get();
-    // Extract data from the snapshot
-   const donations = [];
-
+app.post('/getDonations', async (req, res) => {
+  const { listingId, ownerId } = req.body; // Destructure request body
+  try {
+    const snapshot = await db.collection('Users').doc(ownerId).collection('BusinessLists').doc(listingId).collection('Donations').get();
+    const donations = [];
     snapshot.forEach(doc => {
-       donations.push({
-      data: doc.data().amount,
-});
-    })
-
-   
-
-    res.json(donations );
-
-
-
+      donations.push({
+        amount: doc.data().amount, // Access 'amount' property from document data
+      });
+    });
+    res.json(donations);
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-
-
 });
 
 app.get('/getBusinesses2', async (req, res) => {

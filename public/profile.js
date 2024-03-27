@@ -411,40 +411,36 @@ function offwithdraw() {
 
 }
 async function fetchDonate2() {
-let Total= document.getElementById('Total');
-let Available = document.getElementById('Available');
-let withdraw = document.getElementById('withdraw');
-let totalAmount = 0;
-fetch('https://www.mpageshub.com/getDonations', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ listingId: listingsId, ownerId: businessOwnerIds})
-})
-.then(response => response.json())
-.then(data => {
-
+  let Total = document.getElementById('Total');
+  let Available = document.getElementById('Available');
+  let withdraw = document.getElementById('withdraw');
+  let totalAmount = 0;
+  try {
+    const response = await fetch('https://www.mpageshub.com/getDonations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ listingId: listingsId, ownerId: businessOwnerIds })
+    });
+    const data = await response.json();
     data.forEach((donation) => {
       totalAmount += donation.amount;
     });
-  if(data && data !== 0){
-  Available.textContent = totalAmount * 0.9;
-  Total.textContent=totalAmount
-  withdraw.style.display='block'
-  }else{
-   Available.textContent= '0.00';
-  Total.textContentL='0.00'
-  withdraw.style.display='none'
+    if (data && data.length !== 0) {
+      Available.textContent = (totalAmount * 0.9).toFixed(2); // Ensure toFixed(2) for two decimal places
+      Total.textContent = totalAmount.toFixed(2);
+      withdraw.style.display = 'block';
+    } else {
+      Available.textContent = '0.00';
+      Total.textContent = '0.00'; // Corrected typo from 'Total.textContentL'
+      withdraw.style.display = 'none';
+    }
+  } catch (error) {
+    console.error('Error fetching user data:', error);
   }
-
-
-})
-.catch(error => {
-  console.error('Error fetching user data:', error);
-});
-
 }
+
 
 fetchDonate2()
 

@@ -2402,7 +2402,17 @@ margin-left: 3px;
 	line-height: 35px;
 
 }
+.hideDonateTotal{
+	display: flex;
+	flex-direction: row;
+	/* display: none; */
 
+
+}
+
+.timeclose{
+display: flex; flex-direction: row;margin-top: 20px;
+}
 .about-intro .intro-text .open {
 	display: inline-block;
 	padding: 7px 15px;
@@ -3287,6 +3297,12 @@ border-radius: 50%;
 		margin-bottom: 45px;
 		margin-top: 40px;
 		display: none;
+	}
+	.timeclose{
+		flex-direction: column;
+	}
+	.hideDonateTotal{
+		margin-top: 30px;
 	}
 	.header-section .header-right {
 		display: none;

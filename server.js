@@ -622,6 +622,39 @@ app.get('/getBusinesses', async (req, res) => {
   }
 });
 
+app.get('/api/getDonations', async (req, res) => {
+
+  const businessId = req.body.listingId;
+   const businessOwnerId = req.body.ownerId;
+
+try {
+    // Get businesses from Firestore where industry is equal to "restaurant"
+
+const snapshot =  db.collection('Users').doc(businessOwnerId).collection('BusinessLists').doc( businessId ).collection('Donations').get();
+    // Extract data from the snapshot
+    const businesses = [];
+    snapshot.forEach(doc => {
+      businesses.push({
+      id: doc.id,
+      data: doc.data()
+});;
+
+    });
+
+    // Send JSON response to the HTML frontend
+
+    res.json(businesses );
+
+
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+
+});
+
 app.get('/getBusinesses2', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Get page number from query parameter, default to 1
@@ -1453,7 +1486,7 @@ app.post('/businessSearch2', async (req, res) => {
 app.post('/addDonations',async (req, res)=> {
 
 
-     const amount = req.body.OtherAmount;
+     const amount = req.body.amount;
 const email = req.body.email;
      const ownerId = req.body.ownerId;
 const documentId = req.body.documentId;
@@ -1474,9 +1507,9 @@ timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
 
 app.post('/addDonations2',async (req, res)=> {
-const amount = req.body.OtherAmount;
+const amount = req.body.amount;
 const email = req.body.email;
-     const ownerId = req.body.ownerId;
+const ownerId = req.body.ownerId;
 const documentId = req.body.documentId;
 
 const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('Donations');

@@ -1,5 +1,7 @@
 let businesseListed = JSON.parse(localStorage.getItem('userBusiness'))
 let myListings = document.getElementById('myListings');
+
+
 // let searchInput = document.getElementById('searchInput').value;
 let map;
 let map2;
@@ -178,7 +180,7 @@ element.style.backgroundPosition = 'top';
 
 initMap2(userData)
 display(userData)
-// display2(userData)
+showDonateButton(userData)
 
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
@@ -322,16 +324,80 @@ function display(userData) {
 
 }
 
-function display2(userData) {
+function showDonateButton(userData) {
+    var donateBtn = document.getElementById('share2');
+    var divider = document.getElementById('divider');
 
-        const myImages = userData.Images;
+    if (userData && userData.donation === "Yes") {
+        divider.style.display = "block";
+        donateBtn.style.display = 'block';
+    } else {
+        divider.style.display = "none";
+        donateBtn.style.display = 'none';
+    }
+}
 
-        myImages.forEach(image => {
-            const img = document.createElement('img');
-            img.src = image;
-            img.classList.add('IMAGEURL');
-            document.querySelector(".about-video").appendChild(img);
-        });
+async function fetchDonate1(userData) {
+let Total= document.getElementById('Total');
+let hideDonateTotal= document.getElementById('hideDonateTotal');
+let Available = document.getElementById('Available');
+
+
+    if (userData && userData.donation === "Yes") {
+        hideDonateTotal.style.display = "block";
+
+    } else {
+        hideDonateTotal.style.display = "none";
+
+    }
+}
+
+async function fetchDonate2() {
+let Total= document.getElementById('Total');
+let Available = document.getElementById('Available');
+
+fetch('/api/getDonations', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ listingId: listingsId, businessOwnerId: businessOwnerIds})
+})
+.then(response => response.json())
+.then(donation => {
+
+ let imageUrl = userData.Images && userData.Images.length > 0 ?userData.Images[0]:'img/mPagesDesigns.png'
+    //  element.setAttribute('data-setbg', imageUrl);
+     element.style.backgroundImage = `url(${imageUrl})`;
+
+element.style.backgroundRepeat = 'no-repeat';
+ element.style.backgroundSize = 'cover';
+element.style.backgroundPosition = 'top';
+     businessNameh2.textContent =  userData.businessName;
+       timeToOpen.textContent =  userData.openingtime;
+        timeToClose.textContent = userData.closingtime;
+        email.textContent = userData.email ;
+       no.textContent = userData.phoneNo;
+       address.textContent = userData.businessAddress;
+         about.textContent =  userData.about;
+
+initMap2(userData)
+display(userData)
+showDonateButton(userData)
+
+    //  const location = new google.maps.LatLng( latitude,  longitude);
+    //         const marker = new google.maps.Marker({
+    //             position: location,
+    //             map: map2,
+    //             title:businessAddress
+    //         });
+  // Handle the user data received from the backend
+
+
+})
+.catch(error => {
+  console.error('Error fetching user data:', error);
+});
 
 }
 

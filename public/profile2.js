@@ -478,7 +478,7 @@ fetch('https://www.mpageshub.com/addDonations2', {
             },
  body: JSON.stringify({
  email:email,
- OtherAmount:options,
+ amount:options,
 ownerId:businessOwnerIds,
 documentId:listingsId
 

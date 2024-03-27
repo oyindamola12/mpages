@@ -194,78 +194,157 @@ fetchDonate1(userData)
 getUserProfile()
 
 
-function bankCode(){
+// function bankCode(){
 
-    if (bankName.textContent === 'Citibank Nigeria Limited') {
-      setBankCode ='023';
-    }
-    if (bankName.textContent === 'Diamond Bank Plc') {
-      setBankCode='063';
-    }
-    if (bankName.textContent === 'Ecobank Nigeria Plc') {
-      setBankCode='050';
-    }
-    if (bankName.textContent === 'Fidelity Bank Nigeria Plc') {
-      setBankCode='070';
-    }
-    if (bankName.textContent === 'First Bank of Nigeria Plc') {
-      setBankCode='011';
-    }
-    if (bankName.textContent === 'First City Monument Bank Plc') {
-      setBankCode='214';
-    }
-    if (bankName.textContent === 'Guaranty Trust Bank Plc') {
-      setBankCode='058';
-    }
-    if (bankName.textContent === 'Heritage Banking Company Ltd') {
-      setBankCode='030';
-    }
-    if (bankName.textContent === 'Jaiz Bank') {
-      setBankCode='301';
-    }
-    if (bankName.textContent === 'Keystone Bank Ltd') {
-      setBankCode='082';
-    }
-    if (bankName.textContent === ' Kuda Bank') {
-      setBankCode='502';
-    }
-    if (bankName.textContent === 'Polaris Bank Ltd') {
-      setBankCode='076';
-    }
-    if (bankName.textContent === 'Providus Bank Limited') {
-      setBankCode='101';
-    }
-    if (bankName.textContent === 'Stanbic IBTC Bank Plc') {
-      setBankCode='221';
-    }
-    if (bankName.textContent === 'Standard Chartered Bank Nigeria') {
-      setBankCode='068';
-    }
-    if (bankName.textContent === 'Sterling Bank Plc') {
-      setBankCode='232';
-    }
-    if (bankName.textContent === 'Suntrust Bank Nigeria Limited') {
-      setBankCode='100';
-    }
-    if (bankName.textContent === 'Union Bank of Nigeria Plc') {
-      setBankCode='032';
-    }
-    if (bankName.textContent === 'United Bank for Africa Plc') {
-      setBankCode='033';
-    }
-    if (bankName.textContent === 'Unity Bank Plc') {
-      setBankCode='215';
-    }
-    if (bankName.textContent === 'Wema Bank Plc') {
-      setBankCode='035';
-    }
-    if (bankName.textContent === 'Zenith Bank Plc') {
-      setBankCode='057';
-    }
-console.log(setBankCode)
+//     if (bankName.textContent === 'Citibank Nigeria Limited') {
+//       setBankCode ='023';
+//     }
+//     if (bankName.textContent === 'Diamond Bank Plc') {
+//       setBankCode='063';
+//     }
+//     if (bankName.textContent === 'Ecobank Nigeria Plc') {
+//       setBankCode='050';
+//     }
+//     if (bankName.textContent === 'Fidelity Bank Nigeria Plc') {
+//       setBankCode='070';
+//     }
+//     if (bankName.textContent === 'First Bank of Nigeria Plc') {
+//       setBankCode='011';
+//     }
+//     if (bankName.textContent === 'First City Monument Bank Plc') {
+//       setBankCode='214';
+//     }
+//     if (bankName.textContent === 'Guaranty Trust Bank Plc') {
+//       setBankCode='058';
+//     }
+//     if (bankName.textContent === 'Heritage Banking Company Ltd') {
+//       setBankCode='030';
+//     }
+//     if (bankName.textContent === 'Jaiz Bank') {
+//       setBankCode='301';
+//     }
+//     if (bankName.textContent === 'Keystone Bank Ltd') {
+//       setBankCode='082';
+//     }
+//     if (bankName.textContent === ' Kuda Bank') {
+//       setBankCode='502';
+//     }
+//     if (bankName.textContent === 'Polaris Bank Ltd') {
+//       setBankCode='076';
+//     }
+//     if (bankName.textContent === 'Providus Bank Limited') {
+//       setBankCode='101';
+//     }
+//     if (bankName.textContent === 'Stanbic IBTC Bank Plc') {
+//       setBankCode='221';
+//     }
+//     if (bankName.textContent === 'Standard Chartered Bank Nigeria') {
+//       setBankCode='068';
+//     }
+//     if (bankName.textContent === 'Sterling Bank Plc') {
+//       setBankCode='232';
+//     }
+//     if (bankName.textContent === 'Suntrust Bank Nigeria Limited') {
+//       setBankCode='100';
+//     }
+//     if (bankName.textContent === 'Union Bank of Nigeria Plc') {
+//       setBankCode='032';
+//     }
+//     if (bankName.textContent === 'United Bank for Africa Plc') {
+//       setBankCode='033';
+//     }
+//     if (bankName.textContent === 'Unity Bank Plc') {
+//       setBankCode='215';
+//     }
+//     if (bankName.textContent === 'Wema Bank Plc') {
+//       setBankCode='035';
+//     }
+//     if (bankName.textContent === 'Zenith Bank Plc') {
+//       setBankCode='057';
+//     }
+// console.log(setBankCode)
 
+// }
+function bankCode() {
+    let setBankCode;
+
+    switch (bankName.textContent) {
+        case 'Citibank Nigeria Limited':
+            setBankCode = '023';
+            break;
+        case 'Diamond Bank Plc':
+            setBankCode = '063';
+            break;
+        case 'Ecobank Nigeria Plc':
+            setBankCode = '050';
+            break;
+        case 'Fidelity Bank Nigeria Plc':
+            setBankCode = '070';
+            break;
+        case 'First Bank of Nigeria Plc':
+            setBankCode = '011';
+            break;
+        case 'First City Monument Bank Plc':
+            setBankCode = '214';
+            break;
+        case 'Guaranty Trust Bank Plc':
+            setBankCode = '058';
+            break;
+        case 'Heritage Banking Company Ltd':
+            setBankCode = '030';
+            break;
+        case 'Jaiz Bank':
+            setBankCode = '301';
+            break;
+        case 'Keystone Bank Ltd':
+            setBankCode = '082';
+            break;
+        case 'Kuda Bank':
+            setBankCode = '502';
+            break;
+        case 'Polaris Bank Ltd':
+            setBankCode = '076';
+            break;
+        case 'Providus Bank Limited':
+            setBankCode = '101';
+            break;
+        case 'Stanbic IBTC Bank Plc':
+            setBankCode = '221';
+            break;
+        case 'Standard Chartered Bank Nigeria':
+            setBankCode = '068';
+            break;
+        case 'Sterling Bank Plc':
+            setBankCode = '232';
+            break;
+        case 'Suntrust Bank Nigeria Limited':
+            setBankCode = '100';
+            break;
+        case 'Union Bank of Nigeria Plc':
+            setBankCode = '032';
+            break;
+        case 'United Bank for Africa Plc':
+            setBankCode = '033';
+            break;
+        case 'Unity Bank Plc':
+            setBankCode = '215';
+            break;
+        case 'Wema Bank Plc':
+            setBankCode = '035';
+            break;
+        case 'Zenith Bank Plc':
+            setBankCode = '057';
+            break;
+        default:
+            // Handle the case when bankName does not match any of the cases above
+            console.log('Unknown bank:', bankName.textContent);
+            break;
+    }
+
+    console.log(setBankCode);
 }
 
+bankCode();
 bankCode()
 
 

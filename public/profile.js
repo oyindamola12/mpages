@@ -427,7 +427,7 @@ async function fetchDonate2() {
     data.forEach((donation) => {
       totalAmount += donation.amount;
     });
-    if (data && data.length !== 0) {
+    if (totalAmount !== 0) {
       Available.textContent = (totalAmount * 0.9).toFixed(2); // Ensure toFixed(2) for two decimal places
       Total.textContent = totalAmount.toFixed(2);
       withdraw.style.display = 'block';

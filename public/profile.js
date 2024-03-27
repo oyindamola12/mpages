@@ -337,7 +337,7 @@ function bankCode() {
             break;
         default:
             // Handle the case when bankName does not match any of the cases above
-            console.log('Unknown bank:', bankName.textContent);
+            console.log(bankName.textContent);
             break;
     }
 

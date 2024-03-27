@@ -265,6 +265,8 @@ function bankCode(){
 }
 
 bankCode()
+
+console.log(setBankCode)
 var mlwStyles =[
                 {
                     featureType: "poi",

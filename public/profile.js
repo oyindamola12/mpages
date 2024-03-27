@@ -381,7 +381,7 @@ fetch('/api/getDonations', {
 
 }
 
-
+fetchDonate2()
 function previewImages(event) {
     var imgCont = document.getElementById('imagePreview2');
     for (let i = 0; i < event.target.files.length; i++) {

@@ -1017,7 +1017,7 @@ margin-left: 3px;
 	/* z-index: -2; */
 	width: 100%;
 	border-bottom: #000 1.5px solid;
-	z-index: 5;
+	z-index: 12;
 }
 
 .header-section.listings:after {

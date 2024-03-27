@@ -351,9 +351,7 @@ let hideDonateTotal= document.getElementById('hideDonateTotal');
 
     }
 }
-function withdraw() {
 
-}
 
 
 
@@ -379,7 +377,7 @@ fetch('/api/getDonations', {
 .then(response => response.json())
 .then(data => {
   if(data && data !== 0){
-Available.innerHTML= data.totalAmount * 0.9;
+  Available.innerHTML= data.totalAmount * 0.9;
   Total.innerHTML=data.totalAmount
   }else{
    Available.innerHTML= '0.00';

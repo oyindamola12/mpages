@@ -415,7 +415,7 @@ let Total= document.getElementById('Total');
 let Available = document.getElementById('Available');
 let withdraw = document.getElementById('withdraw');
 let totalAmount = 0;
-fetch('/api/getDonations', {
+fetch('https://www.mpageshub.com/getDonations', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'

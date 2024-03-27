@@ -432,7 +432,7 @@ select:focus,
 button:focus,
 textarea:focus {
 	outline: none;
-	border: none;
+	border-bottom: 1px solid #000;
 
 }
 .edith2{
@@ -930,7 +930,7 @@ margin-bottom: 15px;
     height: 20px;
     border: 2px solid #fff;
     border-top-color: #000;
-margin-left: 3px;
+    margin-left: 3px;
     border-radius: 50%;
     animation: roll 1s linear infinite;
 }
@@ -2459,7 +2459,7 @@ margin-left: 3px;
 .hideDonateTotal{
 	display: flex;
 	flex-direction: row;
-	/* display: none; */
+	display: none;
 
 
 }

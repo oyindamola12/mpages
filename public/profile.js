@@ -1,7 +1,7 @@
 let businesseListed = JSON.parse(localStorage.getItem('userBusiness'))
 let myListings = document.getElementById('myListings');
 let bankName = document.getElementById('bank')
-let setBankCode=''
+let setBankCode='ok'
 // let searchInput = document.getElementById('searchInput').value;
 let map;
 let map2;

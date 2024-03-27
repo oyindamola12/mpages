@@ -622,7 +622,7 @@ app.get('/getBusinesses', async (req, res) => {
   }
 });
 
-app.get('/api/getDonations', async (req, res) => {
+app.get('/getDonations', async (req, res) => {
 
   const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;
@@ -637,14 +637,11 @@ const snapshot =  db.collection('Users').doc(businessOwnerId).collection('Busine
       donations.push(doc.data());
     });
 
- let totalAmount = 0;
-    donations.forEach((donation) => {
-      totalAmount += donation.amount;
-    });
+ 
 
     // Send JSON response to the HTML frontend
 
-    res.json({totalAmount } );
+    res.json(donations );
 
 
 

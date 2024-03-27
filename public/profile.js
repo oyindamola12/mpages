@@ -342,7 +342,7 @@ async function fetchDonate2() {
 let Total= document.getElementById('Total');
 let Available = document.getElementById('Available');
 let withdraw = document.getElementById('withdraw');
-
+let totalAmount = 0;
 fetch('/api/getDonations', {
   method: 'POST',
   headers: {
@@ -352,9 +352,13 @@ fetch('/api/getDonations', {
 })
 .then(response => response.json())
 .then(data => {
+
+    data.forEach((donation) => {
+      totalAmount += donation.amount;
+    });
   if(data && data !== 0){
-  Available.textContent= data.totalAmount * 0.9;
-  Total.textContent=data.totalAmount
+  Available.textContent = totalAmount * 0.9;
+  Total.textContent=totalAmount
   withdraw.style.display='block'
   }else{
    Available.textContent= '0.00';

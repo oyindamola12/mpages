@@ -56,7 +56,7 @@ const donateBtn = document.getElementById('share2');
 const element = document.getElementById('myElements');
   var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
-  var accountNumber = document.getElementById('accountNumber')
+  var accountNumber = document.getElementById('AccountNumber')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )

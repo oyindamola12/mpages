@@ -56,7 +56,7 @@ const donateBtn = document.getElementById('share2');
 const element = document.getElementById('myElements');
   var shareSave = document.getElementById('shareSave');
   var shareEdit = document.getElementById('shareEdit');
-  var accountNumber = document.getElementById('AccountNumber')
+  var accountNumber = document.getElementById('accountNumber')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -278,8 +278,8 @@ let bankCodeValue = bankCode();
 
 
 async function verifyAccount() {
- const accountNumber = document.getElementById('accountNumber').value;
-  const accountName = document.getElementById('accountName').value;
+const accountNumber = document.getElementById('accountNumber').value;
+const accountName = document.getElementById('accountName').value;
 var rollingindicator2=document.getElementById('rolling-indicator2')
 try {
 const response = await fetch('/verify-account', {

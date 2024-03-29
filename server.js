@@ -1490,14 +1490,12 @@ app.post('/businessSearch2', async (req, res) => {
   }
 });
 app.post('/addDonations',async (req, res)=> {
-
-
-     const amount = req.body.amount;
+const amount = req.body.amount;
 const email = req.body.email;
-     const ownerId = req.body.ownerId;
+const ownerId = req.body.ownerId;
 const documentId = req.body.documentId;
 
-const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('Donations');
+const businessDb =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId).collection('Donations');
 await businessDb.add({
 amount:amount,
 email:email,
@@ -1510,6 +1508,50 @@ amount:amount,
 email:email,
 timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
+
+const businessDb3 =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
+const businessDb4 =  db.collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
+
+admin.firestore().runTransaction(async (transaction) => {
+  // Check if the document exists
+  const doc = await transaction.get( businessDb3);
+   const doc2 = await transaction.get( businessDb4);
+
+  if (!doc.exists) {
+    // If the document doesn't exist, create it with the initial value
+    const initialValue = 0; // Set the initial value here
+    transaction.set( businessDb3, { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
+    return initialValue; // Return the initial value
+  }
+
+   if (!doc2.exists) {
+    // If the document doesn't exist, create it with the initial value
+    const initialValue = 0; // Set the initial value here
+    transaction.set(businessDb4 , { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
+    return initialValue; // Return the initial value
+  }
+
+  // Get the current value from Firestore
+  let currentValue = doc.data().totalDonation; // Replace 'yourField' with the field name where the number is stored
+
+  // Add the number to the current value
+  const numberToAdd = amount; // Change this to the number you want to add
+  const newValue = currentValue + numberToAdd;
+
+  // Update the value in Firestore
+  transaction.update(businessDb3 , { totalDonation: newValue });
+  transaction.update(businessDb4 , { totalDonation: newValue }); // Replace 'yourField' with the field name where the updated number will be stored
+
+  // Return the new value (optional)
+  return newValue;
+})
+.then((newValue) => {
+  console.log('Number added successfully. New value:', newValue);
+})
+.catch((error) => {
+  console.error('Error adding number:', error);
+});
+
 });
 
 app.post('/addDonations2',async (req, res)=> {
@@ -1530,6 +1572,51 @@ await businessDb2.add({
 amount:amount,
 email:email,
 timestamp: admin.firestore.FieldValue.serverTimestamp()
+});
+
+
+
+const businessDb3 =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
+const businessDb4 =  db.collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
+
+admin.firestore().runTransaction(async (transaction) => {
+  // Check if the document exists
+  const doc = await transaction.get( businessDb3);
+  const doc2 = await transaction.get( businessDb4);
+
+  if (!doc.exists) {
+    // If the document doesn't exist, create it with the initial value
+    const initialValue = 0; // Set the initial value here
+    transaction.set( businessDb3, { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
+    return initialValue; // Return the initial value
+  }
+
+   if (!doc2.exists) {
+    // If the document doesn't exist, create it with the initial value
+    const initialValue = 0; // Set the initial value here
+    transaction.set(businessDb4 , { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
+    return initialValue; // Return the initial value
+  }
+
+  // Get the current value from Firestore
+  let currentValue = doc.data().totalDonation; // Replace 'yourField' with the field name where the number is stored
+
+  // Add the number to the current value
+  const numberToAdd = amount; // Change this to the number you want to add
+  const newValue = currentValue + numberToAdd;
+
+  // Update the value in Firestore
+  transaction.update(businessDb3 , { totalDonation: newValue });
+  transaction.update(businessDb4 , { totalDonation: newValue }); // Replace 'yourField' with the field name where the updated number will be stored
+
+  // Return the new value (optional)
+  return newValue;
+})
+.then((newValue) => {
+  console.log('Number added successfully. New value:', newValue);
+})
+.catch((error) => {
+  console.error('Error adding number:', error);
 });
 });
 

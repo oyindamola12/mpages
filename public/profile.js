@@ -299,10 +299,8 @@ alert('Enter correct details');
             }
         }
 
-
 let accountnum = accountNumber.toString()
 if(accountNumber && accountnum.length === 10){
-
 verifyAccount();
 }
 

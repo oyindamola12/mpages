@@ -54,9 +54,9 @@ const timeToClose = document.getElementById('timeToCloseMyListings');
 const image = document.getElementById('image');
 const donateBtn = document.getElementById('share2');
 const element = document.getElementById('myElements');
-  var shareSave = document.getElementById('shareSave');
-  var shareEdit = document.getElementById('shareEdit');
-  var accountNumber = document.getElementById('accountNumber')
+var shareSave = document.getElementById('shareSave');
+var shareEdit = document.getElementById('shareEdit');
+var accountNumber = document.getElementById('accountNumber')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -289,25 +289,34 @@ headers: {
 },
 body: JSON.stringify({ accountNumber, bankCode: bankCodeValue  })
  });
+
  const data = await response.json();
-  accountName.textContent= data.accountName
+if(data && data.accountName){
+ accountName.textContent= data.accountName
  rollingindicator2.style.display='none'
+}
+
 // Handle the account verification response as needed
 } catch (error) {
 alert('Enter correct details');
- rollingindicator2.style.display='block'
+
             }
         }
 
 let accountnum = accountNumber.toString()
-if(accountNumber && accountnum.length === 10){
+if( accountnum.length === 10){
 verifyAccount();
 }
 
-if(accountNumber && accountnum.length < 10|| accountnum.length > 0){
+if( accountnum.length < 10|| accountnum.length > 0){
   var rollingindicator2=document.getElementById('rolling-indicator2')
   rollingindicator2.style.display='block'
 }
+if( accountnum.length === 0){
+  var rollingindicator2=document.getElementById('rolling-indicator2')
+  rollingindicator2.style.display='none'
+}
+
 var mlwStyles =[
                 {
                     featureType: "poi",

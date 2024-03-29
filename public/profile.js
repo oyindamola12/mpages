@@ -300,15 +300,13 @@ alert('Enter correct details');
         }
 
 
-
-if(accountNumber&&accountNumber.length === 10){
+let accountnum = accountNumber.toString()
+if(accountNumber && accountnum.length === 10){
 
 verifyAccount();
-
-
 }
 
-if(accountNumber&&accountNumber.length < 10||accountNumber.length > 0){
+if(accountNumber && accountnum.length < 10|| accountnum.length > 0){
   var rollingindicator2=document.getElementById('rolling-indicator2')
   rollingindicator2.style.display='block'
 }
@@ -487,7 +485,6 @@ async function fetchDonate2() {
     console.error('Error fetching user data:', error);
   }
 }
-
 
 fetchDonate2()
 

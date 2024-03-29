@@ -40,8 +40,8 @@ function generateUniqueId() {
 
 // Example usage:
 const uniqueId = generateUniqueId();
-
 console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
+const paystack='pk_test_733942352847369db55d32dc2b83d44db6b47fb1';//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
@@ -260,7 +260,7 @@ app.post('/verify-account', async (req, res) => {
         // Make a request to the Paystack API to verify the account
         const response = await axios.get(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
             headers: {
-                Authorization: `Bearer YOUR_PAYSTACK_SECRET_KEY`
+                Authorization: paystack
             }
         });
 

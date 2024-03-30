@@ -282,26 +282,26 @@ async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountName = document.getElementById('accountName').textContent;
 alert('Enter correct details');
-// try {
-// const response = await fetch('/verify-account', {
-// method: 'POST',
-// headers: {
-// 'Content-Type': 'application/json'
-// },
-// body: JSON.stringify({ accountNumber, bankCode: bankCodeValue  })
-//  });
+try {
+const response = await fetch('/verify-account', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({ accountNumber, bankCode: bankCodeValue  })
+ });
 
-//  const data = await response.json();
-// if(data && data.accountName){
-//  accountName.textContent= data.accountName
-//  rollingindicator2.style.display='none'
-// }
+ const data = await response.json();
+if(data && data.accountName){
+ accountName.textContent= data.accountName
+ rollingindicator2.style.display='none'
+}
 
-// // Handle the account verification response as needed
-// } catch (error) {
-// alert('Enter correct details');
+// Handle the account verification response as needed
+} catch (error) {
+alert('Enter correct details');
 
-//             }
+            }
         }
 accountNumber.addEventListener('keydown', function() {
     // Check if the length of the input value is equal to 10

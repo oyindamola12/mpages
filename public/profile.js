@@ -307,7 +307,7 @@ accountNumber.addEventListener('keydown', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 9) {
         // If the length is 10 after the key is pressed, display the reloader
-         verifyAccount();
+        //  verifyAccount();
        rollingindicator2.style.display='block'
     } else {
         // If the length is less than 10 after the key is pressed, hide the reloader

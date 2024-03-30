@@ -56,7 +56,7 @@ var shareSave = document.getElementById('shareSave');
 var shareEdit = document.getElementById('shareEdit');
 var accountNumber = document.getElementById('accountNumber')
 var rollingindicator2=document.getElementById('rolling-indicator2')
-var bankCode = document.getElementById('bankCode')
+
 // var bankName=document.getElementById('bank')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
@@ -1334,4 +1334,11 @@ async function aboutButtontoSave(){
             styledSelect.textContent = value;
 
             toggleOptionsbank();
+  }
+
+   function selectCodeOption(value) {
+var bankCode = document.getElementById('bankCode')
+            bankCode.textContent = value;
+
+            
   }

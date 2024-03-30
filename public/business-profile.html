@@ -215,37 +215,38 @@
                     <div class="displayFlex">
                         <div class="select-styled5" id="bank" onclick="toggleOptionsbank()">Choose Bank</div>
                         <div class="select-options5" id="bankoptions">
-                            <div onclick="selectOption5('Access Bank Nigeria Plc')">Access Bank Nigeria Plc</div>
-                            <div onclick="selectOption5('Citibank Nigeria Limited')"> Citibank Nigeria Limited</div>
-                            <div onclick="selectOption5('Diamond Bank Plc')">Diamond Bank Plc</div>
-                            <div onclick="selectOption5('Ecobank Nigeria Plc')">Ecobank Nigeria Plc</div>
-                            <div onclick="selectOption5('Fidelity Bank Nigeria Plc')">Fidelity Bank Nigeria Plc</div>
-                            <div onclick="selectOption5('First Bank of Nigeria Plc')">First Bank of Nigeria Plc</div>
-                            <div onclick="selectOption5('First City Monument Bank Plc')">First City Monument Bank Plc</div>
-                            <div onclick="selectOption5('Guaranty Trust Bank Plc')">Guaranty Trust Bank Plc</div>
-                            <div onclick="selectOption5('Heritage Banking Company Ltd')">Heritage Banking Company Ltd</div>
-                            <div onclick="selectOption5('Jaiz Bank')">Jaiz Bank</div>
-                            <div onclick="selectOption5('Keystone Bank Ltd')">Keystone Bank Ltd</div>
-                            <div onclick="selectOption5('Kuda Bank')">Kuda Bank</div>
-                            <div onclick="selectOption5('Polaris Bank Ltd')">Polaris Bank Ltd</div>
-                            <div onclick="selectOption5('Providus Bank Limited')">Providus Bank Limited</div>
-                            <div onclick="selectOption5('Stanbic IBTC Bank Plc')">Stanbic IBTC Bank Plc</div>
-                            <div onclick="selectOption5('Standard Chartered Bank Nigeria')">Standard Chartered Bank Nigeria</div>
-                            <div onclick="selectOption5('Sterling Bank Plc')">Sterling Bank Plc</div>
-                            <div onclick="selectOption5('Suntrust Bank Nigeria Limited')">Suntrust Bank Nigeria Limited</div>
-                            <div onclick="selectOption5('Union Bank of Nigeria Plc')">Union Bank of Nigeria Plc</div>
-                            <div onclick="selectOption5('United Bank for Africa Plc')">United Bank for Africa Plc</div>
-                            <div onclick="selectOption5('Unity Bank Plc')">Unity Bank Plc</div>
-                            <div onclick="selectOption5('Wema Bank Plc')">Wema Bank Plc</div>
-                            <div onclick="selectOption5('Zenith Bank Plc')">Zenith Bank Plc</div>
+                            <div onclick="selectOption5('Access Bank Nigeria Plc');selectCodeOption('044')">Access Bank Nigeria Plc</div>
+                            <div onclick="selectOption5('Citibank Nigeria Limited');selectCodeOption('023')"> Citibank Nigeria Limited</div>
+                            <div onclick="selectOption5('Diamond Bank Plc');selectCodeOption('063')">Diamond Bank Plc</div>
+                            <div onclick="selectOption5('Ecobank Nigeria Plc');selectCodeOption('050')">Ecobank Nigeria Plc</div>
+                            <div onclick="selectOption5('Fidelity Bank Nigeria Plc');selectCodeOption('070')">Fidelity Bank Nigeria Plc</div>
+                            <div onclick="selectOption5('First Bank of Nigeria Plc');selectCodeOption('011')">First Bank of Nigeria Plc</div>
+                            <div onclick="selectOption5('First City Monument Bank Plc');selectCodeOption('214')">First City Monument Bank Plc</div>
+                            <div onclick="selectOption5('Guaranty Trust Bank Plc');selectCodeOption('058')">Guaranty Trust Bank Plc</div>
+                            <div onclick="selectOption5('Heritage Banking Company Ltd');selectCodeOption('030')">Heritage Banking Company Ltd</div>
+                            <div onclick="selectOption5('Jaiz Bank');selectCodeOption('301')">Jaiz Bank</div>
+                            <div onclick="selectOption5('Keystone Bank Ltd');selectCodeOption('082')">Keystone Bank Ltd</div>
+                            <div onclick="selectOption5('Kuda Bank');selectCodeOption('502')">Kuda Bank</div>
+                            <div onclick="selectOption5('Polaris Bank Ltd');selectCodeOption('076')">Polaris Bank Ltd</div>
+                            <div onclick="selectOption5('Providus Bank Limited');selectCodeOption('101')">Providus Bank Limited</div>
+                            <div onclick="selectOption5('Stanbic IBTC Bank Plc');selectCodeOption('221')">Stanbic IBTC Bank Plc</div>
+                            <div onclick="selectOption5('Standard Chartered Bank Nigeria');selectCodeOption('068')">Standard Chartered Bank Nigeria</div>
+                            <div onclick="selectOption5('Sterling Bank Plc');selectCodeOption('232')">Sterling Bank Plc</div>
+                            <div onclick="selectOption5('Suntrust Bank Nigeria Limited');selectCodeOption('100')">Suntrust Bank Nigeria Limited</div>
+                            <div onclick="selectOption5('Union Bank of Nigeria Plc');selectCodeOption('032')">Union Bank of Nigeria Plc</div>
+                            <div onclick="selectOption5('United Bank for Africa Plc');selectCodeOption('033')">United Bank for Africa Plc</div>
+                            <div onclick="selectOption5('Unity Bank Plc');selectCodeOption('215')">Unity Bank Plc</div>
+                            <div onclick="selectOption5('Wema Bank Plc');selectCodeOption('035')">Wema Bank Plc</div>
+                            <div onclick="selectOption5('Zenith Bank Plc');selectCodeOption('057')">Zenith Bank Plc</div>
                         </div>
                         <input placeholder="Account Number" id="accountNumber" class="inputName" style="margin-top:0px ;" name="AccountNumber">
                         <div style="display: flex; flex-direction: row; border-bottom: #000 1px solid; padding-bottom: 10px;padding-left: 10px;padding-right: 10px; justify-content: space-between;">
-                        <div id="accountName">Account Name</div>
+                        <!-- <div id="accountName">Account Name</div> -->
+
                         <p id="bankCode"></p>
-                        <div class="rolling-indicator2" id="rolling-indicator2" style="display: none;"></div>
+                        <!-- <div class="rolling-indicator2" id="rolling-indicator2" style="display: none;"></div> -->
                         </div>
-                        <button type="button" class="offAndSubmit2" onclick="withdraw()">Proceed</button>
+                        <button type="button" class="offAndSubmit2" onclick="verifyAccount()">Proceed</button>
                      </div>
 
 

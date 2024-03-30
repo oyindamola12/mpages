@@ -196,85 +196,7 @@ getUserProfile()
 
 
 
-function bankCode() {
-    let setBankCode;
 
-    switch (bankName.textContent) {
-        case 'Citibank Nigeria Limited':
-            setBankCode = '023';
-            break;
-        case 'Diamond Bank Plc':
-            setBankCode = '063';
-            break;
-        case 'Ecobank Nigeria Plc':
-            setBankCode = '050';
-            break;
-        case 'Fidelity Bank Nigeria Plc':
-            setBankCode = '070';
-            break;
-        case 'First Bank of Nigeria Plc':
-            setBankCode = '011';
-            break;
-        case 'First City Monument Bank Plc':
-            setBankCode = '214';
-            break;
-        case 'Guaranty Trust Bank Plc':
-            setBankCode = '058';
-            break;
-        case 'Heritage Banking Company Ltd':
-            setBankCode = '030';
-            break;
-        case 'Jaiz Bank':
-            setBankCode = '301';
-            break;
-        case 'Keystone Bank Ltd':
-            setBankCode = '082';
-            break;
-        case 'Kuda Bank':
-            setBankCode = '502';
-            break;
-        case 'Polaris Bank Ltd':
-            setBankCode = '076';
-            break;
-        case 'Providus Bank Limited':
-            setBankCode = '101';
-            break;
-        case 'Stanbic IBTC Bank Plc':
-            setBankCode = '221';
-            break;
-        case 'Standard Chartered Bank Nigeria':
-            setBankCode = '068';
-            break;
-        case 'Sterling Bank Plc':
-            setBankCode = '232';
-            break;
-        case 'Suntrust Bank Nigeria Limited':
-            setBankCode = '100';
-            break;
-        case 'Union Bank of Nigeria Plc':
-            setBankCode = '032';
-            break;
-        case 'United Bank for Africa Plc':
-            setBankCode = '033';
-            break;
-        case 'Unity Bank Plc':
-            setBankCode = '215';
-            break;
-        case 'Wema Bank Plc':
-            setBankCode = '035';
-            break;
-        case 'Zenith Bank Plc':
-            setBankCode = '057';
-            break;
-        default:
-            // Handle the case when bankName does not match any of the cases above
-            console.log(bankName.textContent);
-            break;
-    }
-
-    console.log(setBankCode);
-}
-let bankCodeValue = bankCode();
 
 
 async function verifyAccount() {
@@ -383,8 +305,9 @@ accountNumber.addEventListener('keydown', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 9) {
         // If the length is 10 after the key is pressed, display the reloader
-         verifyAccount();
-       rollingindicator2.style.display='block'
+rollingindicator2.style.display='block'
+
+        verifyAccount();
     } else {
         // If the length is less than 10 after the key is pressed, hide the reloader
      rollingindicator2.style.display='none'

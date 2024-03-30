@@ -1620,6 +1620,37 @@ admin.firestore().runTransaction(async (transaction) => {
 });
 });
 
+app.post('/create-recipient', async (req, res) => {
+    try {
+        // Extract details from the request body sent from frontend
+        const { accountNumber, bankCode, name,  } = req.body;
+
+        // Make a request to the Paystack API to create a recipient code
+        const response = await axios.post('https://api.paystack.co/transferrecipient', {
+            type:  'nuban', // Default to 'nuban' if not provided
+            name,
+            account_number: accountNumber,
+            bank_code: bankCode,
+            currency:  'NGN' // Default to 'NGN' if not provided
+        }, {
+            headers: {
+                Authorization: `Bearer YOUR_PAYSTACK_SECRET_KEY`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Extract recipient code from the response
+        const recipientCode = response.data.data.recipient_code;
+
+        // Respond with the recipient code
+        res.json({ recipientCode });
+    } catch (error) {
+        console.error('Error creating recipient:', error.response.data);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
 app.post('/mostSearched',async (req, res)=> {
 const amount = req.body.OtherAmount;
 const email = req.body.email;

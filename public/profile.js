@@ -315,6 +315,13 @@ accountNumber.addEventListener('keydown', function() {
     }
 });
 
+accountNumber.addEventListener('keydown', function() {
+    // Check if the length of the input value is equal to 10
+    if (accountNumber.value.length === 10) {
+        // If the length is 10 after the key is pressed, display the reloader
+        verifyAccount();
+    }
+});
 accountNumber.addEventListener('change', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 10) {
@@ -386,7 +393,7 @@ function shareOnTwitter() {
 
 //&description=${description}
 
-     function shareOnPinterest() {
+ function shareOnPinterest() {
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
     const media = encodeURIComponent('IMAGE_URL'); // Replace 'IMAGE_URL' with the URL of the image you want to share
     const description = encodeURIComponent('DESCRIPTION'); // Replace 'DESCRIPTION' with a description of the image
@@ -397,6 +404,7 @@ function shareOnTwitter() {
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20user%20details:%20${url}`, '_blank');
     }
+
 function display(userData) {
     let myImages = userData.Images;
 
@@ -452,7 +460,6 @@ function display(userData) {
 
 }
 
-
 async function fetchDonate1(userData) {
 
 let hideDonateTotal= document.getElementById('hideDonateTotal');
@@ -472,6 +479,32 @@ function offwithdraw() {
  document.getElementById("overlay3").style.display = "none";
 
 }
+
+async function withdraw() {
+ document.getElementById("overlay3").style.display = "none";
+ document.getElementById("overlay4").style.display = "block";
+  const accountNumber = 'YOUR_ACCOUNT_NUMBER';
+    const bankCode = 'BANK_CODE'; // e.g., GTB has bank code '058'
+    const name = 'Recipient Name';
+    const type = 'nuban'; // 'nuban' or 'bvn' (defaults to 'nuban')
+    const currency = 'NGN'; // Currency code (defaults to 'NGN')
+
+    try {
+        const response = await fetch('/create-recipient', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ accountNumber, bankCode, name, type, currency })
+        });
+        const data = await response.json();
+        console.log(data.recipientCode); // Handle recipient code as needed
+    } catch (error) {
+        console.error('Error creating recipient:', error);
+    }
+
+}
+
 async function fetchDonate2() {
   let Total = document.getElementById('Total');
   let Available = document.getElementById('Available');
@@ -632,6 +665,7 @@ var editIcon7 = document.querySelector(".my-selector7")
         // alert('Error uploading images');
     }
 }
+
 async function showEdit() {
 var editIcon1 = document.querySelector(".my-selector1")
 var editIcon2 = document.querySelector(".my-selector2")
@@ -652,6 +686,7 @@ var editIcon7 = document.querySelector(".my-selector7")
   editIcon6.style.display='block'
   editIcon7.style.display='block'
 }
+
 async function opengallery() {
 var editIcon1 = document.querySelector(".my-selector1")
 var editIcon2 = document.querySelector(".my-selector2")
@@ -1070,7 +1105,6 @@ timeToOpenMyListings.style.display = 'block';
 
 }
 
-
 async function closeButtontoUpdate(){
   editInputclose.value = timeToCloseMyListings.textContent;
   timeToCloseMyListings.style.display = 'none';
@@ -1244,7 +1278,6 @@ async function aboutButtontoUpdate(){
   saveButtonAbout.style.display = 'inline-block';
 }
 
-
 async function aboutButtontoSave(){
 
   const newValue = editInputAbout.value;
@@ -1276,11 +1309,13 @@ async function aboutButtontoSave(){
   });
 
 }
+
  function toggleOptionsbank() {
             var options = document.getElementById('bankoptions');
             options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
   }
-  function selectOption5(value) {
+
+ function selectOption5(value) {
             var styledSelect = document.querySelector('.select-styled5');
             styledSelect.textContent = value;
 

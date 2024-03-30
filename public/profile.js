@@ -199,8 +199,11 @@ getUserProfile()
 
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
-const accountName = document.getElementById('accountName');
-
+// const accountName = document.getElementById('accountName');
+const accountNumber2 = document.getElementById('accountNumber').value;
+const accountName= document.getElementById('accountName');
+const bankName = document.getElementById('bankName');
+const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
 
 
@@ -210,12 +213,15 @@ method: 'POST',
 headers: {
 'Content-Type': 'application/json'
 },
-body:JSON.stringify({ accountNumber, bankCode:bankCode })
+body:JSON.stringify({ accountNumber:accountNumber, bankCode:bankCode })
  });
 
  const data = await response.json();
 if(data && data.accountName){
- accountName.textContent = data.accountName
+accountName.textContent = data.accountName
+accountNumber2.textContent =accountNumber.textContent
+bankName2.textContent =bankName.textContent
+
 
 }
 
@@ -224,6 +230,9 @@ if(data && data.accountName){
 alert('Enter correct details');
 
 }
+
+  document.getElementById("overlay3").style.display = "none";
+  document.getElementById("overlay4").style.display = "bock";
         }
 
 
@@ -370,6 +379,7 @@ function onwithdraw() {
 
 function offwithdraw() {
  document.getElementById("overlay3").style.display = "none";
+  document.getElementById("overlay4").style.display = "bock";
 
 }
 

@@ -326,7 +326,7 @@ accountNumber.addEventListener('change', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 10) {
         // If the length is 10, display the reloader
-          verifyAccount();
+        
       rollingindicator2.style.display='block'
 
     }else {

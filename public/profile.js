@@ -201,7 +201,7 @@ async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountNumber2 = document.getElementById('accountNumber2')
 const accountName= document.getElementById('accountName');
-const bankName = document.getElementById('bankName').value;
+const bankName = document.getElementById('bankName').textContent;
 const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
 console.log(bankCode)
@@ -278,7 +278,7 @@ myListings.href = "no-listings.html"
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
        const title = encodeURIComponent('M.PAGES'); // Replace 'YOUR_TITLE' with the title you want to share on Facebook
     const description = encodeURIComponent('Check out my business on m.pages, the No1 Muslim Online Business Directory, with over 40million ready Muslim Customers. Contact me in the link here:')
-    
+
 
     // Construct the Facebook share link with the app link format
     const shareLink = `fb://share/?link=${url}&title=${title}&description=${description}`;

@@ -231,8 +231,8 @@ alert('Enter correct details');
 
 }
 
-  document.getElementById("overlay3").style.display = "none";
-  document.getElementById("overlay4").style.display = "bock";
+  document.getElementById("popupReview3").style.display = "none";
+  document.getElementById("popupReview4").style.display = "bock";
         }
 
 

@@ -57,6 +57,7 @@ const element = document.getElementById('myElements');
 var shareSave = document.getElementById('shareSave');
 var shareEdit = document.getElementById('shareEdit');
 var accountNumber = document.getElementById('accountNumber')
+var rollingindicator2=document.getElementById('rolling-indicator2')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -279,8 +280,8 @@ let bankCodeValue = bankCode();
 
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
-const accountName = document.getElementById('accountName').value;
-var rollingindicator2=document.getElementById('rolling-indicator2')
+const accountName = document.getElementById('accountName').textContent;
+
 try {
 const response = await fetch('/verify-account', {
 method: 'POST',
@@ -303,20 +304,17 @@ alert('Enter correct details');
             }
         }
 
-let accountnum = accountNumber.toString()
-if( accountnum.length === 10){
-verifyAccount();
-}
-
-if( !accountnum.trim() || accountnum.length!==10){
-  var rollingindicator2=document.getElementById('rolling-indicator2')
-  rollingindicator2.style.display='none'
-}else{
-    var rollingindicator2=document.getElementById('rolling-indicator2')
-  rollingindicator2.style.display='block'
-}
-
-
+accountNumber.addEventListener('change', function() {
+    // Check if the length of the input value is equal to 10
+    if (accountNumber.value.length === 10) {
+        // If the length is 10, display the reloader
+      rollingindicator2.style.display='block'
+        verifyAccount();
+    }else {
+        // If the length is less than 10, hide the reloader
+       rollingindicator2.style.display='none'
+    }
+});
 var mlwStyles =[
                 {
                     featureType: "poi",

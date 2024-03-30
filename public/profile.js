@@ -283,7 +283,7 @@ const accountName = document.getElementById('accountName');
 let bankName = document.getElementById('bank').textContent
 let bankCode = document.getElementById('bankCode').textContent
 
-switch (bankName) {
+switch (bankName.trim()) {
         case 'Citibank Nigeria Limited':
            bankCode.textContent = '023';
             break;
@@ -356,7 +356,9 @@ switch (bankName) {
             break;
 
           }
+return bankCode;
 alert('Enter correct details');
+
 // try {
 // const response = await fetch('/verify-account', {
 // method: 'POST',

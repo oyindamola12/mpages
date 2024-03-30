@@ -232,7 +232,7 @@ alert('Enter correct details');
 }
 
   document.getElementById("popupReview3").style.display = "none";
-  document.getElementById("popupReview4").style.display = "bock";
+  document.getElementById("popupReview4").style.display = "block";
         }
 
 

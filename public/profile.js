@@ -557,32 +557,27 @@ function offwithdraw() {
 
 }
 
-async function withdraw() {
- var accountNumber = document.getElementById('accountNumber').value
- document.getElementById("overlay3").style.display = "none";
- document.getElementById("overlay4").style.display = "block";
+// async function withdraw() {
+//  var accountNumber = document.getElementById('accountNumber').value
+//  document.getElementById("overlay3").style.display = "none";
+//  document.getElementById("overlay4").style.display = "block";
 
-  const accountNumber = 'YOUR_ACCOUNT_NUMBER';
-    const bankCode = 'BANK_CODE'; // e.g., GTB has bank code '058'
-    const name = 'Recipient Name';
-    const type = 'nuban'; // 'nuban' or 'bvn' (defaults to 'nuban')
-    const currency = 'NGN'; // Currency code (defaults to 'NGN')
 
-    try {
-        const response = await fetch('/create-recipient', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ accountNumber, bankCode, name, })
-        });
-        const data = await response.json();
-        console.log(data.recipientCode); // Handle recipient code as needed
-    } catch (error) {
-        console.error('Error creating recipient:', error);
-    }
+//     try {
+//         const response = await fetch('/create-recipient', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({ accountNumber, bankCode, name, })
+//         });
+//         const data = await response.json();
+//         console.log(data.recipientCode); // Handle recipient code as needed
+//     } catch (error) {
+//         console.error('Error creating recipient:', error);
+//     }
 
-}
+// }
 
 async function fetchDonate2() {
   let Total = document.getElementById('Total');

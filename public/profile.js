@@ -194,7 +194,7 @@ fetchDonate1(userData)
 
 getUserProfile()
 
-async function verifyAccount() {
+async function verifyBankcode() {
   let bankName = document.getElementById('bank').textContent
 let bankCode = document.getElementById('bankCode')
   if (bankName === 'Access Bank Nigeria Plc') {
@@ -268,7 +268,7 @@ let bankCode = document.getElementById('bankCode')
     }
  console.log(bankCode)
 }
-
+verifyBankcode()
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountName = document.getElementById('accountName');

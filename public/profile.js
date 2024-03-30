@@ -283,79 +283,6 @@ const accountName = document.getElementById('accountName');
 let bankName = document.getElementById('bank').textContent
 let bankCode = document.getElementById('bankCode').textContent
 
-// switch (bankName.trim()) {
-//         case 'Citibank Nigeria Limited':
-//            bankCode.textContent = '023';
-//             break;
-//         case 'Diamond Bank Plc':
-//             bankCode.textContent = '063';
-//             break;
-//         case 'Ecobank Nigeria Plc':
-//              bankCode.textContent = '050';
-//             break;
-//         case 'Fidelity Bank Nigeria Plc':
-//              bankCode.textContent = '070';
-//             break;
-//         case 'First Bank of Nigeria Plc':
-//             bankCode.textContent = '011';
-//             break;
-//         case 'First City Monument Bank Plc':
-//              bankCode.textContent = '214';
-//             break;
-//         case 'Guaranty Trust Bank Plc':
-//              bankCode.textContent = '058';
-//             break;
-//         case 'Heritage Banking Company Ltd':
-//              bankCode.textContent = '030';
-//             break;
-//         case 'Jaiz Bank':
-//             bankCode.textContent = '301';
-//             break;
-//         case 'Keystone Bank Ltd':
-//            bankCode.textContent = '082';
-//             break;
-//         case 'Kuda Bank':
-//              bankCode.textContent = '502';
-//             break;
-//         case 'Polaris Bank Ltd':
-//             bankCode.textContent = '076';
-//             break;
-//         case 'Providus Bank Limited':
-//             bankCode.textContent = '101';
-//             break;
-//         case 'Stanbic IBTC Bank Plc':
-//              bankCode.textContent = '221';
-//             break;
-//         case 'Standard Chartered Bank Nigeria':
-//             bankCode.textContent = '068';
-//             break;
-//         case 'Sterling Bank Plc':
-//             bankCode.textContent = '232';
-//             break;
-//         case 'Suntrust Bank Nigeria Limited':
-//             bankCode.textContent = '100';
-//             break;
-//         case 'Union Bank of Nigeria Plc':
-//            bankCode.textContent = '032';
-//             break;
-//         case 'United Bank for Africa Plc':
-//              bankCode.textContent = '033';
-//             break;
-//         case 'Unity Bank Plc':
-//              bankCode.textContent = '215';
-//             break;
-//         case 'Wema Bank Plc':
-//            bankCode.textContent = '035';
-//             break;
-//         case 'Zenith Bank Plc':
-//              bankCode.textContent = '057';
-//             break;
-//         default:
-//             // Handle the case when bankName does not match any of the cases above
-//             console.log(bankName.textContent);
-//             break;
-
-//           }
 
  if (bankName === 'Access Bank Nigeria Plc') {
      bankCode.textContent='044';
@@ -427,7 +354,7 @@ let bankCode = document.getElementById('bankCode').textContent
     if (bankName === 'Zenith Bank Plc') {
      bankCode.textContent='057';
     }
-return bankCode;
+
 alert('Enter correct details');
 
 // try {
@@ -454,7 +381,7 @@ alert('Enter correct details');
 
 accountNumber.addEventListener('keydown', function() {
     // Check if the length of the input value is equal to 10
-    if (accountNumber.value.length === 10) {
+    if (accountNumber.value.length === 9) {
         // If the length is 10 after the key is pressed, display the reloader
          verifyAccount();
        rollingindicator2.style.display='block'

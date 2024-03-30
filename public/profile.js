@@ -219,7 +219,7 @@ body:JSON.stringify({ accountNumber:accountNumber, bankCode:bankCode })
  const data = await response.json();
 
 
-accountName.textContent=data
+accountName.innerHTML=data
 console.log(accountName)
 // Handle the account verification response as needed
 } catch (error) {

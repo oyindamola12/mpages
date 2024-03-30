@@ -623,6 +623,21 @@ cursor: none;
 	width: 300px;
 
 }
+
+
+.popupReview4 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 285px;
+	width: 300px;
+
+}
 .close {
     position: absolute;
     top: 10px;

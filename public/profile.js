@@ -308,7 +308,7 @@ if( accountnum.length === 10){
 verifyAccount();
 }
 
-if( accountnum.length < 10|| accountnum.length > 0){
+if( accountnum.length >0|| accountnum.length < 10){
   var rollingindicator2=document.getElementById('rolling-indicator2')
   rollingindicator2.style.display='block'
 }

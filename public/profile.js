@@ -194,14 +194,10 @@ fetchDonate1(userData)
 
 getUserProfile()
 
-
 async function verifyAccount() {
-const accountNumber = document.getElementById('accountNumber').value;
-const accountName = document.getElementById('accountName');
-let bankName = document.getElementById('bank').textContent
-let bankCode = document.getElementById('bankCode').textContent
-
-    if (bankName === 'Access Bank Nigeria Plc') {
+  let bankName = document.getElementById('bank').textContent
+let bankCode = document.getElementById('bankCode')
+  if (bankName === 'Access Bank Nigeria Plc') {
      bankCode.textContent='044';
     }
     if (bankName === 'Citibank Nigeria Limited') {
@@ -270,9 +266,19 @@ let bankCode = document.getElementById('bankCode').textContent
     if (bankName === 'Zenith Bank Plc') {
      bankCode.textContent='057';
     }
+ console.log(bankCode)
+}
+
+async function verifyAccount() {
+const accountNumber = document.getElementById('accountNumber').value;
+const accountName = document.getElementById('accountName');
+let bankName = document.getElementById('bank').textContent
+let bankCode = document.getElementById('bankCode').textContent
+
+
 
  alert('Enter correct details');
- console.log(bankCode)
+
 
 // try {
 // const response = await fetch('/verify-account', {

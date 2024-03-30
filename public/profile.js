@@ -205,7 +205,7 @@ const accountName= document.getElementById('accountName');
 const bankName = document.getElementById('bankName');
 const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
-
+console.log(bankCode)
 
 try {
 const response = await fetch('/verify-account', {

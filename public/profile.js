@@ -195,6 +195,8 @@ fetchDonate1(userData)
 
 getUserProfile()
 
+
+
 async function verifyBankcode() {
   let bankName = document.getElementById('bank').textContent
   let bankCode = document.getElementById('bankCode')
@@ -270,8 +272,13 @@ async function verifyBankcode() {
 
 }
 
+window.addEventListener('load', function() {
+   verifyBankcode()
+});
+
  console.log(bankCode.textContent)
-verifyBankcode()
+
+
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountName = document.getElementById('accountName');

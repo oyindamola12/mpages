@@ -10,7 +10,7 @@ const { Storage } = require('@google-cloud/storage');
 const fs = require('fs');
 const multer =require('multer');
 const uuid = require('uuid-v4');
-
+require('dotenv').config();
 const publicPath=path.join(__dirname,'public')
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,7 +41,7 @@ function generateUniqueId() {
 // Example usage:
 const uniqueId = generateUniqueId();
 console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
-const PAYSTACK_SECRET_KEY= 'sk_test_4db3cca34a216b384b053d460417c998c0dfad22';//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
+const PAYSTACK_SECRET_KEY= process.env.PAYSTACK_SECRET_KEY;//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
 const bucket = admin.storage().bucket();

@@ -305,7 +305,7 @@ function display(userData) {
             toggleOptions();
   }
 
- 
+
   function selectOption2(value) {
             var styledSelect = document.querySelector('.select-styled2');
             styledSelect.textContent = value;
@@ -419,32 +419,40 @@ reviewerName.textContent=business.data.reviewer
 
 reviews()
  function shareOnFacebook() {
-      const url = encodeURIComponent(window.location.href);
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
+       const title = encodeURIComponent('M.PAGES'); // Replace 'YOUR_TITLE' with the title you want to share on Facebook
+    const description = encodeURIComponent('Check out this business on m.pages, the No1 Muslim Online Business Directory, with over 40million ready Muslim Customers. Contact them in the link here:')
+
+
+    // Construct the Facebook share link with the app link format
+    const shareLink = `fb://share/?link=${url}&title=${title}&description=${description}`;
+
+    // Open the Facebook app if available, otherwise open in browser
+    window.open(shareLink, '_blank');
     }
 function shareOnTwitter() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('YOUR_TEXT'); // Replace 'YOUR_TEXT' with the text you want to share on Twitter
-    window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
+    const text = encodeURIComponent('Check out this business on m.pages, the No1 Muslim Online Business Directory, with over 40million ready Muslim Customers. Contact them in the link here:'); // Replace 'YOUR_TEXT' with the text you want to share on Twitter
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
 }
 
      function shareOnLinkedin() {
       const url = encodeURIComponent(window.location.href);
-      window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
+      window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=Check out this business on m.pages, the No1 Muslim Online Business Directory, with over 40million ready Muslim Customers. Contact them in the link here:`, '_blank');
     }
 
 //&description=${description}
 
      function shareOnPinterest() {
     const url = encodeURIComponent(window.location.href);
-    const media = encodeURIComponent('IMAGE_URL'); // Replace 'IMAGE_URL' with the URL of the image you want to share
-    const description = encodeURIComponent('DESCRIPTION'); // Replace 'DESCRIPTION' with a description of the image
-    window.open(`https://www.pinterest.com/pin/create/button/?url=${url}`, '_blank');
+     // Replace 'IMAGE_URL' with the URL of the image you want to share
+    const description = encodeURIComponent('Check out this business on m.pages, the No1 Muslim Online Business Directory, with over 40million ready Muslim Customers. Contact them in the link here:'); // Replace 'DESCRIPTION' with a description of the image
+    window.open(`https://www.pinterest.com/pin/create/button/?url=${url}&description=${description}`, '_blank');
 }
 
   function shareOnWhatsApp() {
       const url = encodeURIComponent(window.location.href);
-      window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20user%20details:%20${url}`, '_blank');
+      window.open(`https://api.whatsapp.com/send?text=Check%20out%20this%20business%20on%20m.pages%20,%20the%20No1.%20Muslim%20Online%20Business%20Directory%20,%20with%20over%2040million%20ready%20Muslim%20Customers.%20Contact%20them%20in%20the%20link%20here:%20${url}`, '_blank');
     }
 
 function payWithPaystack1() {

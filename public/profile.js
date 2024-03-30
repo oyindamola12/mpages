@@ -56,6 +56,7 @@ var shareSave = document.getElementById('shareSave');
 var shareEdit = document.getElementById('shareEdit');
 var accountNumber = document.getElementById('accountNumber')
 var rollingindicator2=document.getElementById('rolling-indicator2')
+var bankCode = document.getElementById('bankCode')
 // var bankName=document.getElementById('bank')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
@@ -266,8 +267,10 @@ async function verifyBankcode() {
     if (bankName === 'Zenith Bank Plc') {
      bankCode.textContent='057';
     }
- console.log(bankCode.textContent)
+
 }
+
+ console.log(bankCode.textContent)
 verifyBankcode()
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;

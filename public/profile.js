@@ -197,161 +197,37 @@ getUserProfile()
 
 
 
-async function verifyBankcode() {
-  let bankName = document.getElementById('bank').textContent
-  let bankCode = document.getElementById('bankCode')
-  if (bankName === 'Access Bank Nigeria Plc') {
-     bankCode.textContent='044';
-    }
-    if (bankName === 'Citibank Nigeria Limited') {
-     bankCode.textContent='023';
-    }
-    if (bankName === 'Diamond Bank Plc') {
-      bankCode.textContent='063';
-    }
-    if (bankName === 'Ecobank Nigeria Plc') {
-     bankCode.textContent='050';
-    }
-    if (bankName === 'Fidelity Bank Nigeria Plc') {
-    bankCode.textContent='070';
-    }
-    if (bankName === 'First Bank of Nigeria Plc') {
-    bankCode.textContent='011';
-    }
-    if (bankName === 'First City Monument Bank Plc') {
-    bankCode.textContent='214';
-    }
-    if (bankName === 'Guaranty Trust Bank Plc') {
-     bankCode.textContent='058';
-    }
-    if (bankName === 'Heritage Banking Company Ltd') {
-    bankCode.textContent='030';
-    }
-    if (bankName === 'Jaiz Bank') {
-    bankCode.textContent='301';
-    }
-    if (bankName === 'Keystone Bank Ltd') {
-    bankCode.textContent='082';
-    }
-    if (bankName === ' Kuda Bank') {
-   bankCode.textContent='502';
-    }
-    if (bankName === 'Polaris Bank Ltd') {
-      bankCode.textContent='076';
-    }
-    if (bankName === 'Providus Bank Limited') {
-     bankCode.textContent='101';
-    }
-    if (bankName === 'Stanbic IBTC Bank Plc') {
-      bankCode.textContent='221';
-    }
-    if (bankName === 'Standard Chartered Bank Nigeria') {
-     bankCode.textContent='068';
-    }
-    if (bankName === 'Sterling Bank Plc') {
-     bankCode.textContent='232';
-    }
-    if (bankName === 'Suntrust Bank Nigeria Limited') {
-     bankCode.textContent='100';
-    }
-    if (bankName === 'Union Bank of Nigeria Plc') {
-     bankCode.textContent='032';
-    }
-    if (bankName === 'United Bank for Africa Plc') {
-    bankCode.textContent='033';
-    }
-    if (bankName === 'Unity Bank Plc') {
-    bankCode.textContent='215';
-    }
-    if (bankName === 'Wema Bank Plc') {
-    bankCode.textContent='035';
-    }
-    if (bankName === 'Zenith Bank Plc') {
-     bankCode.textContent='057';
-    }
-
-}
-
-window.addEventListener('load', function() {
-   verifyBankcode()
-});
-
- console.log(bankCode.textContent)
-
-
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountName = document.getElementById('accountName');
-let bankName = document.getElementById('bank').textContent
+
 let bankCode = document.getElementById('bankCode').textContent
 
 
+try {
+const response = await fetch('/verify-account', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body:JSON.stringify({ accountNumber, bankCode:bankCode })
+ });
 
- alert('Enter correct details');
+ const data = await response.json();
+if(data && data.accountName){
+ accountName.textContent = data.accountName
 
+}
 
-// try {
-// const response = await fetch('/verify-account', {
-// method: 'POST',
-// headers: {
-// 'Content-Type': 'application/json'
-// },
-// body:JSON.stringify({ accountNumber, bankCode:bankCode })
-//  });
+// Handle the account verification response as needed
+} catch (error) {
+alert('Enter correct details');
 
-//  const data = await response.json();
-// if(data && data.accountName){
-//  accountName.textContent= data.accountName
-//  rollingindicator2.style.display='none'
-// }
-
-// // Handle the account verification response as needed
-// } catch (error) {
-// alert('Enter correct details');
-
-// }
+}
         }
 
 
 
-accountNumber.addEventListener('keydown', function() {
-    // Check if the length of the input value is equal to 10
-    if (accountNumber.value.length === 9) {
-          verifyAccount()
-        // If the length is 10 after the key is pressed, display the reloader
-rollingindicator2.style.display='block'
-
-
-    } else {
-        // If the length is less than 10 after the key is pressed, hide the reloader
-     rollingindicator2.style.display='none'
-    }
-});
-
-// accountNumber.addEventListener('keydown', function() {
-//     // Check if the length of the input value is equal to 10
-//     if (accountNumber.value.length === 10) {
-//         // If the length is 10 after the key is pressed, display the reloader
-//         verifyAccount();
-//     }
-// });
-
-accountNumber.addEventListener('change', function() {
-    // Check if the length of the input value is equal to 10
-    if (accountNumber.value.length === 10) {
-        // If the length is 10, display the reloader
-
-      rollingindicator2.style.display='block'
-
-    }else {
-        // If the length is less than 10, hide the reloader
-       rollingindicator2.style.display='none'
-    }
-});
-
-if (accountNumber.value.length === 10) {
-    verifyAccount()
-}
 var mlwStyles =[
                 {
                     featureType: "poi",
@@ -1340,5 +1216,5 @@ async function aboutButtontoSave(){
 var bankCode = document.getElementById('bankCode')
             bankCode.textContent = value;
 
-            
+
   }

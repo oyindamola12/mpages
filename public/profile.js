@@ -196,7 +196,7 @@ getUserProfile()
 
 async function verifyBankcode() {
   let bankName = document.getElementById('bank').textContent
-let bankCode = document.getElementById('bankCode')
+  let bankCode = document.getElementById('bankCode')
   if (bankName === 'Access Bank Nigeria Plc') {
      bankCode.textContent='044';
     }
@@ -266,7 +266,7 @@ let bankCode = document.getElementById('bankCode')
     if (bankName === 'Zenith Bank Plc') {
      bankCode.textContent='057';
     }
- console.log(bankCode)
+ console.log(bankCode.textContent)
 }
 verifyBankcode()
 async function verifyAccount() {

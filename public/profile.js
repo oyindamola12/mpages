@@ -303,13 +303,25 @@ alert('Enter correct details');
 
             }
         }
+accountNumber.addEventListener('keydown', function() {
+    // Check if the length of the input value is equal to 10
+    if (accountNumber.value.length === 9) {
+        // If the length is 10 after the key is pressed, display the reloader
+         verifyAccount();
+       rollingindicator2.style.display='block'
+    } else {
+        // If the length is less than 10 after the key is pressed, hide the reloader
+     rollingindicator2.style.display='none'
+    }
+});
 
 accountNumber.addEventListener('change', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 10) {
         // If the length is 10, display the reloader
+          verifyAccount();
       rollingindicator2.style.display='block'
-        verifyAccount();
+
     }else {
         // If the length is less than 10, hide the reloader
        rollingindicator2.style.display='none'

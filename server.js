@@ -1623,7 +1623,7 @@ admin.firestore().runTransaction(async (transaction) => {
 app.post('/create-recipient', async (req, res) => {
     try {
         // Extract details from the request body sent from frontend
-        const { accountNumber, bankCode, name,  } = req.body;
+        const { accountNumber, bankCode, name, } = req.body;
 
         // Make a request to the Paystack API to create a recipient code
         const response = await axios.post('https://api.paystack.co/transferrecipient', {
@@ -1634,7 +1634,7 @@ app.post('/create-recipient', async (req, res) => {
             currency:  'NGN' // Default to 'NGN' if not provided
         }, {
             headers: {
-                Authorization: `Bearer YOUR_PAYSTACK_SECRET_KEY`,
+                Authorization: paystack,
                 'Content-Type': 'application/json'
             }
         });

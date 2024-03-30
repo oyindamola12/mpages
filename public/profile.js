@@ -1,8 +1,6 @@
 let businesseListed = JSON.parse(localStorage.getItem('userBusiness'))
 let myListings = document.getElementById('myListings');
-let bankName = document.getElementById('bank')
 
-// let searchInput = document.getElementById('searchInput').value;
 let map;
 let map2;
 let selectedBusinessId = localStorage.getItem('selectedListingId');
@@ -58,6 +56,7 @@ var shareSave = document.getElementById('shareSave');
 var shareEdit = document.getElementById('shareEdit');
 var accountNumber = document.getElementById('accountNumber')
 var rollingindicator2=document.getElementById('rolling-indicator2')
+// var bankName=document.getElementById('bank')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
 // console.log(selectedBusinessId )
@@ -280,29 +279,106 @@ let bankCodeValue = bankCode();
 
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
-const accountName = document.getElementById('accountName').textContent;
+const accountName = document.getElementById('accountName');
+let bankName = document.getElementById('bank').textContent
+let bankCode = document.getElementById('bankCode').textContent
+
+switch (bankName) {
+        case 'Citibank Nigeria Limited':
+           bankCode.textContent = '023';
+            break;
+        case 'Diamond Bank Plc':
+            bankCode.textContent = '063';
+            break;
+        case 'Ecobank Nigeria Plc':
+             bankCode.textContent = '050';
+            break;
+        case 'Fidelity Bank Nigeria Plc':
+             bankCode.textContent = '070';
+            break;
+        case 'First Bank of Nigeria Plc':
+            bankCode.textContent = '011';
+            break;
+        case 'First City Monument Bank Plc':
+             bankCode.textContent = '214';
+            break;
+        case 'Guaranty Trust Bank Plc':
+             bankCode.textContent = '058';
+            break;
+        case 'Heritage Banking Company Ltd':
+             bankCode.textContent = '030';
+            break;
+        case 'Jaiz Bank':
+            bankCode.textContent = '301';
+            break;
+        case 'Keystone Bank Ltd':
+           bankCode.textContent = '082';
+            break;
+        case 'Kuda Bank':
+             bankCode.textContent = '502';
+            break;
+        case 'Polaris Bank Ltd':
+            bankCode.textContent = '076';
+            break;
+        case 'Providus Bank Limited':
+            bankCode.textContent = '101';
+            break;
+        case 'Stanbic IBTC Bank Plc':
+             bankCode.textContent = '221';
+            break;
+        case 'Standard Chartered Bank Nigeria':
+            bankCode.textContent = '068';
+            break;
+        case 'Sterling Bank Plc':
+            bankCode.textContent = '232';
+            break;
+        case 'Suntrust Bank Nigeria Limited':
+            bankCode.textContent = '100';
+            break;
+        case 'Union Bank of Nigeria Plc':
+           bankCode.textContent = '032';
+            break;
+        case 'United Bank for Africa Plc':
+             bankCode.textContent = '033';
+            break;
+        case 'Unity Bank Plc':
+             bankCode.textContent = '215';
+            break;
+        case 'Wema Bank Plc':
+           bankCode.textContent = '035';
+            break;
+        case 'Zenith Bank Plc':
+             bankCode.textContent = '057';
+            break;
+        default:
+            // Handle the case when bankName does not match any of the cases above
+            console.log(bankName.textContent);
+            break;
+
+          }
 alert('Enter correct details');
-try {
-const response = await fetch('/verify-account', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body: JSON.stringify({ accountNumber, bankCode: bankCodeValue  })
- });
+// try {
+// const response = await fetch('/verify-account', {
+// method: 'POST',
+// headers: {
+// 'Content-Type': 'application/json'
+// },
+// body:JSON.stringify({ accountNumber, bankCode:bankCode })
+//  });
 
- const data = await response.json();
-if(data && data.accountName){
- accountName.textContent= data.accountName
- rollingindicator2.style.display='none'
-}
+//  const data = await response.json();
+// if(data && data.accountName){
+//  accountName.textContent= data.accountName
+//  rollingindicator2.style.display='none'
+// }
 
-// Handle the account verification response as needed
-} catch (error) {
-alert('Enter correct details');
+// // Handle the account verification response as needed
+// } catch (error) {
+// alert('Enter correct details');
 
-            }
+// }
         }
+
 accountNumber.addEventListener('keydown', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 9) {
@@ -322,11 +398,12 @@ accountNumber.addEventListener('keydown', function() {
         verifyAccount();
     }
 });
+
 accountNumber.addEventListener('change', function() {
     // Check if the length of the input value is equal to 10
     if (accountNumber.value.length === 10) {
         // If the length is 10, display the reloader
-        
+
       rollingindicator2.style.display='block'
 
     }else {
@@ -334,6 +411,7 @@ accountNumber.addEventListener('change', function() {
        rollingindicator2.style.display='none'
     }
 });
+
 var mlwStyles =[
                 {
                     featureType: "poi",
@@ -374,7 +452,6 @@ myListings.href = "no-listings.html"
     }
 
 
-
  function shareOnFacebook() {
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
@@ -386,7 +463,7 @@ function shareOnTwitter() {
     window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
 }
 
-     function shareOnLinkedin() {
+function shareOnLinkedin() {
       const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
       window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=YOUR_TITLE`, '_blank');
     }
@@ -481,8 +558,10 @@ function offwithdraw() {
 }
 
 async function withdraw() {
+ var accountNumber = document.getElementById('accountNumber').value
  document.getElementById("overlay3").style.display = "none";
  document.getElementById("overlay4").style.display = "block";
+
   const accountNumber = 'YOUR_ACCOUNT_NUMBER';
     const bankCode = 'BANK_CODE'; // e.g., GTB has bank code '058'
     const name = 'Recipient Name';
@@ -495,7 +574,7 @@ async function withdraw() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ accountNumber, bankCode, name, type, currency })
+            body: JSON.stringify({ accountNumber, bankCode, name, })
         });
         const data = await response.json();
         console.log(data.recipientCode); // Handle recipient code as needed

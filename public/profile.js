@@ -308,14 +308,14 @@ if( accountnum.length === 10){
 verifyAccount();
 }
 
-if( accountnum.length >0 && accountnum.length < 10){
-  var rollingindicator2=document.getElementById('rolling-indicator2')
-  rollingindicator2.style.display='block'
-}
-if( accountnum.length === 0){
+if( !accountnum.trim() || accountnum.length!==10){
   var rollingindicator2=document.getElementById('rolling-indicator2')
   rollingindicator2.style.display='none'
+}else{
+    var rollingindicator2=document.getElementById('rolling-indicator2')
+  rollingindicator2.style.display='block'
 }
+
 
 var mlwStyles =[
                 {

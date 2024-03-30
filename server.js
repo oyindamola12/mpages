@@ -41,7 +41,7 @@ function generateUniqueId() {
 // Example usage:
 const uniqueId = generateUniqueId();
 console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
-const paystack= 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772';//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
+const PAYSTACK_SECRET_KEY= 'sk_test_4db3cca34a216b384b053d460417c998c0dfad22';//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
@@ -260,7 +260,7 @@ app.post('/verify-account', async (req, res) => {
         // Make a request to the Paystack API to verify the account
         const response = await axios.get(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
             headers: {
-                Authorization: paystack
+                Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`
             }
         });
 
@@ -1634,8 +1634,8 @@ app.post('/create-recipient', async (req, res) => {
             currency:  'NGN' // Default to 'NGN' if not provided
         }, {
             headers: {
-                Authorization: paystack,
-                'Content-Type': 'application/json'
+             Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`,
+             'Content-Type': 'application/json'
             }
         });
 

@@ -201,7 +201,7 @@ async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountNumber2 = document.getElementById('accountNumber2')
 const accountName= document.getElementById('accountName');
-const bankName = document.getElementById('bankName').textContent;
+const bankName = document.getElementById('bankName').value;
 const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
 console.log(bankCode)

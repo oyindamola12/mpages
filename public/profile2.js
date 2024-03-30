@@ -223,13 +223,9 @@ function off2() {
 
 function showDonateButton(userData) {
     var donateBtn = document.getElementById('share2');
-
-
     if (userData && userData.donation === "Yes") {
-
         donateBtn.style.display = 'block';
     } else {
-       
         donateBtn.style.display = 'none';
     }
 }
@@ -418,6 +414,7 @@ reviewerName.textContent=business.data.reviewer
 }
 
 reviews()
+
  function shareOnFacebook() {
   const url = `single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
        const title = encodeURIComponent('M.PAGES'); // Replace 'YOUR_TITLE' with the title you want to share on Facebook

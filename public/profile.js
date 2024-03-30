@@ -199,10 +199,9 @@ getUserProfile()
 
 async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
-// const accountName = document.getElementById('accountName');
-const accountNumber2 = document.getElementById('accountNumber').value;
+const accountNumber2 = document.getElementById('accountNumber2')
 const accountName= document.getElementById('accountName');
-const bankName = document.getElementById('bankName');
+const bankName = document.getElementById('bankName').textContent;
 const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
 console.log(bankCode)
@@ -219,11 +218,13 @@ body:JSON.stringify({ accountNumber:accountNumber, bankCode:bankCode })
  const data = await response.json();
 
 
-accountName.innerHTML=data
+accountName.textContent=data
+accountNumber2.textContent=accountNumber
+bankName2.textContent=bankName
 console.log(accountName)
-// Handle the account verification response as needed
+
 } catch (error) {
-alert('Enter correct details');
+alert('Enter correct details:', error);
 
 }
 

@@ -41,7 +41,7 @@ function generateUniqueId() {
 // Example usage:
 const uniqueId = generateUniqueId();
 console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
-const paystack='pk_test_733942352847369db55d32dc2b83d44db6b47fb1';//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
+const paystack= 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772';//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
 const bucket = admin.storage().bucket();

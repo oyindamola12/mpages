@@ -417,26 +417,29 @@ async function withdraw() {
    var name=  document.getElementById("accountName").textContent;
    var accountNumber=  document.getElementById("accountNumber2").textContent;
    var bankCode=  document.getElementById("bankCode").textContent;
-      try {
-                    const response = await fetch('/complete-transaction', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ accountNumber, bankCode, name, amount })
-                    });
-                    const data = await response.json();
 
-                    if (response.ok) {
-                        // Handle successful transfer
-                        alert('Transfer successful:', data);
-                    } else {
-                       alert(data.error || 'Something went wrong');
-                    }
-                } catch (error) {
-                    alert('Error:', error);
-                    // errorDiv.textContent = 'Failed to complete transaction';
-                }
+
+   console.log(amount,name,accountNumber,bankCode)
+      // try {
+      //               const response = await fetch('/complete-transaction', {
+      //                   method: 'POST',
+      //                   headers: {
+      //                       'Content-Type': 'application/json'
+      //                   },
+      //                   body: JSON.stringify({ accountNumber, bankCode, name, amount })
+      //               });
+      //               const data = await response.json();
+
+      //               if (response.ok) {
+      //                   // Handle successful transfer
+      //                   alert('Transfer successful:', data);
+      //               } else {
+      //                  alert(data.error || 'Something went wrong');
+      //               }
+      //           } catch (error) {
+      //               alert('Error:', error);
+      //               // errorDiv.textContent = 'Failed to complete transaction';
+      //           }
 }
 
 async function fetchDonate2() {

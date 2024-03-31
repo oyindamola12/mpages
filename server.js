@@ -1651,7 +1651,7 @@ app.post('/complete-transaction', async (req, res) => {
         // Initiate transfer
         const transferResponse = await axios.post('https://api.paystack.co/transfer', {
             source: 'balance',
-            amount: amount * 100, // Amount should be in kobo (multiply by 100)
+            amount: 10000 * 100, // Amount should be in kobo (multiply by 100)
             recipient: recipientCode,
             currency: 'NGN'
         }, {

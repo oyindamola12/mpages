@@ -375,7 +375,7 @@ console.log(bankCode)
                     const data = await response.json();
 
                     if (response.ok) {
-                         accountName.textContent = 'Name:' + " " + data;
+                         accountName.textContent = 'Name:' + " " + data.accountName ;
                         accountNumber2.textContent = 'Account No:' + " " + accountNumber;
                         bankName2.textContent='Bank Name:' + " " + bankName
                         Available2.textContent='Amount' + '' + Available

@@ -361,32 +361,31 @@ const accountName= document.getElementById('accountName');
 const bankName = document.getElementById('bankName').textContent;
 const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
+ let Available = document.getElementById('Available').textContent;
+  let Available2 = document.getElementById('Available2');
 console.log(bankCode)
+      try {
+                    const response = await fetch('/verify-account', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ accountNumber, bankCode })
+                    });
+                    const data = await response.json();
 
-try {
-const response = await fetch('/verify-account', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body:JSON.stringify({ accountNumber:accountNumber, bankCode:bankCode })
- });
-
- const data = await response.json();
-
-
-accountName.textContent=data
-accountNumber2.textContent=accountNumber
-bankName2.textContent=bankName
-
-
-
-createRecipient(accountName,accountNumber,bankName,bankCode)
-
-} catch (error) {
-alert('Enter correct details:', error);
-
-}
+                    if (response.ok) {
+                         accountName.textContent = 'Name:' + " " + data;
+                        accountNumber2.textContent = 'Account No:' + " " + accountNumber;
+                        bankName2.textContent='Bank Name:' + " " + bankName
+                        Available2.textContent='Amount' + '' + Available
+                    } else {
+                       alert(data.error || 'Something went wrong');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                   alert('Failed to verify account');
+                }
 
   document.getElementById("popupReview3").style.display = "none";
   document.getElementById("popupReview4").style.display = "block";
@@ -455,7 +454,7 @@ async function fetchDonate2() {
     } else {
       Available.textContent = '0.00';
       Total.textContent = '0.00'; // Corrected typo from 'Total.textContentL'
-      withdraw.style.display = 'none';
+      // withdraw.style.display = 'none';
     }
   } catch (error) {
     console.error('Error fetching user data:', error);

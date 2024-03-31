@@ -1608,77 +1608,66 @@ app.post('/verify-account', async (req, res) => {
         // Make a request to the Paystack API to verify the account
         const response = await axios.get(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
             headers: {
-                Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`
+                Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`
             }
         });
 
+        // If account verification fails, send an error response to the frontend
+        if (!response.data.status) {
+            return res.status(400).json({ error: 'Invalid account number or bank code' });
+        }
+
         // Extract the account details from the response
-       const accountName = response.data.data.account_name;
+        const accountName = response.data.data.account_name;
 
         // Respond with the account details
-        res.json(accountName);
+        res.json({ accountName });
     } catch (error) {
         console.error('Error verifying account:', error.response.data);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
-app.post('/create-recipient', async (req, res) => {
+app.post('/complete-transaction', async (req, res) => {
     try {
         // Extract details from the request body sent from frontend
-        const { accountNumber, bankCode, name, } = req.body;
-        // Make a request to the Paystack API to create a recipient code
-        const response = await axios.post('https://api.paystack.co/transferrecipient', {
-            type:  'nuban', // Default to 'nuban' if not provided
+        const { accountNumber, bankCode, name, amount, listingsId, businessOwnerIds } = req.body;
+
+        // Create recipient
+        const createRecipientResponse = await axios.post('https://api.paystack.co/transferrecipient', {
+            type: 'nuban', // Default to 'nuban' if not provided
             name,
             account_number: accountNumber,
             bank_code: bankCode,
-            currency:  'NGN' // Default to 'NGN' if not provided
+            currency: 'NGN' // Default to 'NGN' if not provided
         }, {
             headers: {
-             Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`,
-             'Content-Type': 'application/json'
+                Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
+                'Content-Type': 'application/json'
             }
         });
+        const recipientCode = createRecipientResponse.data.data.recipient_code;
 
-        // Extract recipient code from the response
-        const recipientCode = response.data.data.recipient_code;
-
-        // Respond with the recipient code
-        res.json({ recipientCode });
-    } catch (error) {
-        console.error('Error creating recipient:', error.response.data);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-app.post('/transfer', async (req, res) => {
-  
-    try {
-        // Extract recipient code and amount from the request body sent from frontend
-        const { recipientCode, amount,listingsId,businessOwnerIds} = req.body;
-
-        // Make a request to the Paystack API to initiate transfer
-        const response = await axios.post('https://api.paystack.co/transfer', {
+        // Initiate transfer
+        const transferResponse = await axios.post('https://api.paystack.co/transfer', {
             source: 'balance',
             amount: amount * 100, // Amount should be in kobo (multiply by 100)
             recipient: recipientCode,
             currency: 'NGN'
         }, {
             headers: {
-                 Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`,
+                Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
                 'Content-Type': 'application/json'
             }
         });
 
         // Respond with the transfer response from Paystack API
-        res.json(response.data);
+        res.json({ transferResponse: transferResponse.data });
     } catch (error) {
-        console.error('Error initiating transfer:', error.response.data);
+        console.error('Error completing transaction:', error.response.data);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
 app.post('/mostSearched',async (req, res)=> {
 const amount = req.body.OtherAmount;
 const email = req.body.email;

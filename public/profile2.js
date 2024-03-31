@@ -76,42 +76,6 @@ function getUrlParameter3(name) {
 var listingsId = getUrlParameter('listingid');
 var businessOwnerIds = getUrlParameter('id');
 
-        // Get the business data from the URL query parameter
-
-//     // Display business information
-// // Handle error (e.g., display an error message)
-// const images = getUrlParameter('images');
-
-// // Deserialize the serialized array back into an array
-// const myImages  = JSON.parse(images );
-
-//  var businessName = getUrlParameter('businessName');
-
-//   var longitude =JSON.parse( getUrlParameter('longitude'));
-
-//   var latitude =JSON.parse( getUrlParameter('latitude'));
-
-//   var aboutData= getUrlParameter('about');
-
-//   var phoneNo = getUrlParameter('phoneNo');
-
-//   var emailData = getUrlParameter('email');
-
-//   var openingtime = getUrlParameter('openingtime');
-//   var closingtime = getUrlParameter('closingtime');
-
-//  var listingsId = getUrlParameter('listingId');
-//  var businessOwnerIds= getUrlParameter('userid');
-//   var industrys = getUrlParameter('industry');
-
-//   var businessAddress = getUrlParameter('businessAddress');
-
-
-
-        // Load the Places Autocomplete service when the window is loaded
-        // window.onload = function() {
-        //     initAutocomplete();
-        // };
  function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {
@@ -128,11 +92,6 @@ var businessOwnerIds = getUrlParameter('id');
             });
     }
 
-// function shareToOnline() {
-
-//   facebook.href=`https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/single-listing.htmlsingle-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
-//     }
-// shareToOnline()
  function addMarkers(coordinates) {
         coordinates.forEach(coord => {
             const location = new google.maps.LatLng(coord.data.latitude, coord.data.longitude);
@@ -240,7 +199,8 @@ var mlwStyles =[
                           { visibility: "off" }
                     ]
                 }
-            ];
+];
+
 function initMap2(userData) {
 
   geocoder = new google.maps.Geocoder();

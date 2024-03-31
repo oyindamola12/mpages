@@ -373,9 +373,9 @@ console.log(bankCode)
                         body: JSON.stringify({ accountNumber, bankCode })
                     });
                     const data = await response.json();
-
+                    const nameAcc=data.accountName.charAt(0).toUpperCase() + data.accountName.slice(1).toLowerCase();
                     if (response.ok) {
-                         accountName.textContent = 'Name:' + " " + data.accountName;
+                         accountName.textContent = 'Name:' + " " + nameAcc;
                         accountNumber2.textContent = 'Account No:' + " " + accountNumber;
                         bankName2.textContent='Bank Name:' + " " + bankName
                         Available2.textContent='Amount' + '' + Available

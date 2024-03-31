@@ -389,7 +389,7 @@ console.log(bankCode)
 
   document.getElementById("popupReview3").style.display = "none";
   document.getElementById("popupReview4").style.display = "block";
-        }
+ }
 
 async function createRecipient() {
  var accountNumber = document.getElementById('accountNumber').value

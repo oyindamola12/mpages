@@ -412,22 +412,31 @@ async function createRecipient() {
   document.getElementById("popupReview4").style.display = "none";
   document.getElementById("popupReview5").style.display = "block";
 }
-async function withdraw(recipientCode) {
-   var amount=  document.getElementById("amount");
+async function withdraw() {
+   var amount=  document.getElementById("Available2").textContent;
+   var name=  document.getElementById("accountName").textContent;
+   var accountNumber=  document.getElementById("accountNumber2").textContent;
+   var bankCode=  document.getElementById("bankCode").textContent;
+      try {
+                    const response = await fetch('/complete-transaction', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ accountNumber, bankCode, name, amount })
+                    });
+                    const data = await response.json();
 
-    try {
-        const response = await fetch('/transfer', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ recipientCode, amount, listingsId,businessOwnerIds})
-        });
-        const data = await response.json();
-        console.log(data); // Handle transfer response as needed
-    } catch (error) {
-        console.error('Error initiating transfer:', error);
-    }
+                    if (response.ok) {
+                        // Handle successful transfer
+                        alert('Transfer successful:', data);
+                    } else {
+                       alert(data.error || 'Something went wrong');
+                    }
+                } catch (error) {
+                    alert('Error:', error);
+                    // errorDiv.textContent = 'Failed to complete transaction';
+                }
 }
 
 async function fetchDonate2() {

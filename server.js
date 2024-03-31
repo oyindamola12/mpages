@@ -252,28 +252,7 @@ await businessDb.set({
 //     }
 // });
 
-app.post('/verify-account', async (req, res) => {
-    try {
-        // Get account number and bank code from the request body
-        const { accountNumber, bankCode } = req.body;
 
-        // Make a request to the Paystack API to verify the account
-        const response = await axios.get(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
-            headers: {
-                Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`
-            }
-        });
-
-        // Extract the account details from the response
-       const accountName = response.data.data.account_name;
-
-        // Respond with the account details
-        res.json(accountName);
-    } catch (error) {
-        console.error('Error verifying account:', error.response.data);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 app.post('/addBusiness2',async (req, res)=> {
 
     const businessName = req.body.businessName;
@@ -647,11 +626,11 @@ app.get('/getBusinesses', async (req, res) => {
 app.post('/getDonations', async (req, res) => {
   const { listingId, ownerId } = req.body; // Destructure request body
   try {
-    const snapshot = await db.collection('Users').doc(ownerId).collection('BusinessLists').doc(listingId).collection('Donations').get();
+    const snapshot = await db.collection('Users').doc(ownerId).collection('BusinessLists').doc(listingId).collection('DonationsTotal').get();
     const donations = [];
     snapshot.forEach(doc => {
-      donations.push({
-        amount: doc.data().amount, // Access 'amount' property from document data
+    donations.push({
+      amount: doc.data().totalDonation, // Access 'amount' property from document data
       });
     });
     res.json(donations);
@@ -900,6 +879,7 @@ app.post('/api/getSingleProfile2', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 app.post('/updateh2', async (req, res) => {
  const businessId = req.body.listingId;
    const businessOwnerId = req.body.ownerId;
@@ -1620,11 +1600,33 @@ admin.firestore().runTransaction(async (transaction) => {
 });
 });
 
+app.post('/verify-account', async (req, res) => {
+    try {
+        // Get account number and bank code from the request body
+        const { accountNumber, bankCode } = req.body;
+
+        // Make a request to the Paystack API to verify the account
+        const response = await axios.get(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
+            headers: {
+                Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`
+            }
+        });
+
+        // Extract the account details from the response
+       const accountName = response.data.data.account_name;
+
+        // Respond with the account details
+        res.json(accountName);
+    } catch (error) {
+        console.error('Error verifying account:', error.response.data);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 app.post('/create-recipient', async (req, res) => {
     try {
         // Extract details from the request body sent from frontend
         const { accountNumber, bankCode, name, } = req.body;
-
         // Make a request to the Paystack API to create a recipient code
         const response = await axios.post('https://api.paystack.co/transferrecipient', {
             type:  'nuban', // Default to 'nuban' if not provided
@@ -1650,6 +1652,32 @@ app.post('/create-recipient', async (req, res) => {
     }
 });
 
+app.post('/transfer', async (req, res) => {
+  
+    try {
+        // Extract recipient code and amount from the request body sent from frontend
+        const { recipientCode, amount,listingsId,businessOwnerIds} = req.body;
+
+        // Make a request to the Paystack API to initiate transfer
+        const response = await axios.post('https://api.paystack.co/transfer', {
+            source: 'balance',
+            amount: amount * 100, // Amount should be in kobo (multiply by 100)
+            recipient: recipientCode,
+            currency: 'NGN'
+        }, {
+            headers: {
+                 Authorization:`Bearer ${PAYSTACK_SECRET_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Respond with the transfer response from Paystack API
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error initiating transfer:', error.response.data);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 app.post('/mostSearched',async (req, res)=> {
 const amount = req.body.OtherAmount;

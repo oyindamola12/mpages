@@ -266,12 +266,32 @@
 
                                 </div>
 
-                                <button type="button" class="offAndSubmit2" onclick="withdraw()">Confirm Withdrawal</button>
+                                <button type="button" class="offAndSubmit2" onclick="createRecipient()">Confirm Details</button>
                              </div>
 
 
                             </div>
                     </div>
+
+             <div class="popupReview5" id="popupReview5" style="display: none;">
+                        <span class="close" onclick="offwithdraw()">&times;</span>
+                                <div >
+
+                                    <div class="displayFlex">
+                                        <div style="border-bottom: #000 1px solid; padding-bottom: 10px;padding-left: 10px;padding-right: 10px; ">
+                                            <input  placeholder="Amount" id="amount" class="inputName" style="margin-top:0px ;" name="amount">
+                                        </div>
+                                        <div style="border-bottom: #000 1px solid; padding-bottom: 10px;padding-left: 10px;padding-right: 10px; ">
+                                            <input type="password" placeholder="Enter login password" id="withdrawPassword" class="inputName" style="margin-top:0px ;" name="withdrawPassword">
+
+                                        </div>
+
+                                        <button type="button" class="offAndSubmit2" onclick="withdraw()">Withdraw</button>
+                                     </div>
+
+
+                                    </div>
+                            </div>
             </div>
         <div class="about-item">
             <div class="container">

@@ -197,43 +197,6 @@ getUserProfile()
 
 
 
-async function verifyAccount() {
-const accountNumber = document.getElementById('accountNumber').value;
-const accountNumber2 = document.getElementById('accountNumber2')
-const accountName= document.getElementById('accountName');
-const bankName = document.getElementById('bankName').textContent;
-const bankName2 = document.getElementById('bankName2');
-let bankCode = document.getElementById('bankCode').textContent
-console.log(bankCode)
-
-try {
-const response = await fetch('/verify-account', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body:JSON.stringify({ accountNumber:accountNumber, bankCode:bankCode })
- });
-
- const data = await response.json();
-
-
-accountName.textContent=data
-accountNumber2.textContent=accountNumber
-bankName2.textContent=bankName
-console.log(accountName)
-
-} catch (error) {
-alert('Enter correct details:', error);
-
-}
-
-  document.getElementById("popupReview3").style.display = "none";
-  document.getElementById("popupReview4").style.display = "block";
-        }
-
-
-
 var mlwStyles =[
                 {
                     featureType: "poi",
@@ -390,27 +353,83 @@ function offwithdraw() {
 
 }
 
-// async function withdraw() {
-//  var accountNumber = document.getElementById('accountNumber').value
-//  document.getElementById("overlay3").style.display = "none";
-//  document.getElementById("overlay4").style.display = "block";
+
+async function verifyAccount() {
+const accountNumber = document.getElementById('accountNumber').value;
+const accountNumber2 = document.getElementById('accountNumber2')
+const accountName= document.getElementById('accountName');
+const bankName = document.getElementById('bankName').textContent;
+const bankName2 = document.getElementById('bankName2');
+let bankCode = document.getElementById('bankCode').textContent
+console.log(bankCode)
+
+try {
+const response = await fetch('/verify-account', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body:JSON.stringify({ accountNumber:accountNumber, bankCode:bankCode })
+ });
+
+ const data = await response.json();
 
 
-//     try {
-//         const response = await fetch('/create-recipient', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({ accountNumber, bankCode, name, })
-//         });
-//         const data = await response.json();
-//         console.log(data.recipientCode); // Handle recipient code as needed
-//     } catch (error) {
-//         console.error('Error creating recipient:', error);
-//     }
+accountName.textContent=data
+accountNumber2.textContent=accountNumber
+bankName2.textContent=bankName
 
-// }
+
+
+createRecipient(accountName,accountNumber,bankName,bankCode)
+
+} catch (error) {
+alert('Enter correct details:', error);
+
+}
+
+  document.getElementById("popupReview3").style.display = "none";
+  document.getElementById("popupReview4").style.display = "block";
+        }
+
+async function createRecipient() {
+ var accountNumber = document.getElementById('accountNumber').value
+ var bankCode = document.getElementById('bankCode').value
+ var name = document.getElementById('accountName').value
+
+    try {
+        const response = await fetch('/create-recipient', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ accountNumber, bankCode, name})
+        });
+        const data = await response.json();
+          initiateTransfer(data)// Handle recipient code as needed
+    } catch (error) {
+        console.error('Error creating recipient:', error);
+    }
+  document.getElementById("popupReview4").style.display = "none";
+  document.getElementById("popupReview5").style.display = "block";
+}
+async function withdraw(recipientCode) {
+   var amount=  document.getElementById("amount");
+
+    try {
+        const response = await fetch('/transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ recipientCode, amount, listingsId,businessOwnerIds})
+        });
+        const data = await response.json();
+        console.log(data); // Handle transfer response as needed
+    } catch (error) {
+        console.error('Error initiating transfer:', error);
+    }
+}
 
 async function fetchDonate2() {
   let Total = document.getElementById('Total');

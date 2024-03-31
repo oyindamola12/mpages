@@ -375,10 +375,10 @@ console.log(bankCode)
                     const data = await response.json();
                     const nameAcc=data.accountName.charAt(0).toUpperCase() + data.accountName.slice(1).toLowerCase();
                     if (response.ok) {
-                         accountName.textContent = 'Name:' + " " + nameAcc;
-                        accountNumber2.textContent = 'Account No:' + " " + accountNumber;
-                        bankName2.textContent='Bank Name:' + " " + bankName
-                        Available2.textContent='Amount' + '' + Available
+                         accountName.textContent = data.accountName;
+                        accountNumber2.textContent = accountNumber;
+                        bankName2.textContent= bankName
+                        Available2.textContent= Available
                     } else {
                        alert(data.error || 'Something went wrong');
                     }

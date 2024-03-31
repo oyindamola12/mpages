@@ -358,7 +358,7 @@ async function verifyAccount() {
 const accountNumber = document.getElementById('accountNumber').value;
 const accountNumber2 = document.getElementById('accountNumber2')
 const accountName= document.getElementById('accountName');
-const bankName = document.getElementById('bankName').textContent;
+const bankName = document.getElementById('bank').textContent;
 const bankName2 = document.getElementById('bankName2');
 let bankCode = document.getElementById('bankCode').textContent
  let Available = document.getElementById('Available').textContent;
@@ -453,7 +453,7 @@ async function fetchDonate2() {
       withdraw.style.display = 'block';
     } else {
       Available.textContent = '0.00';
-      Total.textContent = '0.00'; // Corrected typo from 'Total.textContentL'
+      Total.textContent = '0.00';
       // withdraw.style.display = 'none';
     }
   } catch (error) {

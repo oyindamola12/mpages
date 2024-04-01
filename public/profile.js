@@ -348,8 +348,26 @@ function onwithdraw() {
 }
 
 function offwithdraw() {
+
+const accountNumber = document.getElementById('accountNumber');
+const accountNumber2 = document.getElementById('accountNumber2')
+const accountName= document.getElementById('accountName');
+const bankName = document.getElementById('bank');
+const bankName2 = document.getElementById('bankName2');
+let bankCode = document.getElementById('bankCode')
+let Available = document.getElementById('Available')
+let Available2 = document.getElementById('Available2');
+
+accountNumber.textContent =''
+accountNumber2.textContent =''
+accountName.textContent=''
+bankName.textContent=''
+bankName2.textContent=''
+bankCode.textContent=''
+Available.textContent='0.00'
+Available2.textContent=''
+
  document.getElementById("overlay3").style.display = "none";
-  document.getElementById("overlay4").style.display = "bock";
 
 }
 
@@ -383,6 +401,8 @@ console.log(bankCode)
   document.getElementById("popupReview4").style.display = "block";
                     } else {
                        alert(data.error || 'Something went wrong');
+                         document.getElementById("popupReview3").style.display = "block";
+  document.getElementById("popupReview4").style.display = "none";
 
                     }
                 } catch (error) {
@@ -422,8 +442,6 @@ async function withdraw() {
    var accountNumber=  document.getElementById("accountNumber2").textContent;
    var bankCode=  document.getElementById("bankCode").textContent;
 
-
-
       try {
                     const response = await fetch('/complete-transaction', {
                         method: 'POST',
@@ -442,10 +460,17 @@ async function withdraw() {
   document.getElementById("popupReview5").style.display = "block";
                     } else {
                        alert('Something went wrong, try again in a few minutes');
+
+
+  document.getElementById("popupReview5").style.display = "none";
+  document.getElementById("popupReview4").style.display = "block";
                     }
                 } catch (error) {
                     alert('Something went wrong, try again in a few minutes');
                     // errorDiv.textContent = 'Failed to complete transaction';
+
+  document.getElementById("popupReview5").style.display = "none";
+  document.getElementById("popupReview4").style.display = "block";
                 }
 }
 

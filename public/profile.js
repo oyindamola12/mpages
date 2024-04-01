@@ -379,39 +379,43 @@ console.log(bankCode)
                         accountNumber2.textContent = accountNumber;
                         bankName2.textContent= bankName
                         Available2.textContent= Available
+   document.getElementById("popupReview3").style.display = "none";
+  document.getElementById("popupReview4").style.display = "block";
                     } else {
                        alert(data.error || 'Something went wrong');
+
                     }
                 } catch (error) {
                     console.error('Error:', error);
                    alert('Failed to verify account');
+  document.getElementById("popupReview3").style.display = "block";
+  document.getElementById("popupReview4").style.display = "none";
                 }
 
-  document.getElementById("popupReview3").style.display = "none";
-  document.getElementById("popupReview4").style.display = "block";
+
  }
 
-async function createRecipient() {
- var accountNumber = document.getElementById('accountNumber').value
- var bankCode = document.getElementById('bankCode').value
- var name = document.getElementById('accountName').value
+// async function createRecipient() {
+//  var accountNumber = document.getElementById('accountNumber').value
+//  var bankCode = document.getElementById('bankCode').value
+//  var name = document.getElementById('accountName').value
 
-    try {
-        const response = await fetch('/create-recipient', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ accountNumber, bankCode, name})
-        });
-        const data = await response.json();
-          initiateTransfer(data)// Handle recipient code as needed
-    } catch (error) {
-        console.error('Error creating recipient:', error);
-    }
-  document.getElementById("popupReview4").style.display = "none";
-  document.getElementById("popupReview5").style.display = "block";
-}
+//     try {
+//         const response = await fetch('/create-recipient', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({ accountNumber, bankCode, name})
+//         });
+//         const data = await response.json();
+//           initiateTransfer(data)// Handle recipient code as needed
+//     } catch (error) {
+//         console.error('Error creating recipient:', error);
+//     }
+//   document.getElementById("popupReview4").style.display = "none";
+//   document.getElementById("popupReview5").style.display = "block";
+// }
 async function withdraw() {
    var amount=  document.getElementById("Available2").textContent;
    var name=  document.getElementById("accountName").textContent;
@@ -419,7 +423,7 @@ async function withdraw() {
    var bankCode=  document.getElementById("bankCode").textContent;
 
 
-   console.log(amount,name,accountNumber,bankCode)
+
       try {
                     const response = await fetch('/complete-transaction', {
                         method: 'POST',
@@ -433,11 +437,14 @@ async function withdraw() {
                     if (response.ok) {
                         // Handle successful transfer
                         alert('Transfer successful:', data);
+
+  document.getElementById("popupReview4").style.display = "none";
+  document.getElementById("popupReview5").style.display = "block";
                     } else {
-                       alert(data.error || 'Something went wrong');
+                       alert('Something went wrong, try again in a few minutes');
                     }
                 } catch (error) {
-                    alert('Error:', error);
+                    alert('Something went wrong, try again in a few minutes');
                     // errorDiv.textContent = 'Failed to complete transaction';
                 }
 }

@@ -1490,12 +1490,12 @@ timestamp: admin.firestore.FieldValue.serverTimestamp()
 });
 
 const businessDb3 =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
-const businessDb4 =  db.collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
+
 
 admin.firestore().runTransaction(async (transaction) => {
   // Check if the document exists
   const doc = await transaction.get( businessDb3);
-   const doc2 = await transaction.get( businessDb4);
+
 
   if (!doc.exists) {
     // If the document doesn't exist, create it with the initial value
@@ -1504,12 +1504,6 @@ admin.firestore().runTransaction(async (transaction) => {
     return initialValue; // Return the initial value
   }
 
-   if (!doc2.exists) {
-    // If the document doesn't exist, create it with the initial value
-    const initialValue = 0; // Set the initial value here
-    transaction.set(businessDb4 , { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
-    return initialValue; // Return the initial value
-  }
 
   // Get the current value from Firestore
   let currentValue = doc.data().totalDonation; // Replace 'yourField' with the field name where the number is stored
@@ -1520,7 +1514,7 @@ admin.firestore().runTransaction(async (transaction) => {
 
   // Update the value in Firestore
   transaction.update(businessDb3 , { totalDonation: newValue });
-  transaction.update(businessDb4 , { totalDonation: newValue }); // Replace 'yourField' with the field name where the updated number will be stored
+ // Replace 'yourField' with the field name where the updated number will be stored
 
   // Return the new value (optional)
   return newValue;
@@ -1557,26 +1551,21 @@ timestamp: admin.firestore.FieldValue.serverTimestamp()
 
 
 const businessDb3 =  db.collection('Users').doc(ownerId).collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
-const businessDb4 =  db.collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
+// const businessDb4 =  db.collection('BusinessLists').doc(documentId ).collection('DonationsTotal');
 
 admin.firestore().runTransaction(async (transaction) => {
   // Check if the document exists
   const doc = await transaction.get( businessDb3);
-  const doc2 = await transaction.get( businessDb4);
+  // const doc2 = await transaction.get( businessDb4);
 
   if (!doc.exists) {
     // If the document doesn't exist, create it with the initial value
     const initialValue = 0; // Set the initial value here
-    transaction.set( businessDb3, { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
+    transaction.set( businessDb3, { totalDonation: initialValue,listingsId, businessOwnerIds }); // Replace 'yourField' with the field name where the number will be stored
     return initialValue; // Return the initial value
   }
 
-   if (!doc2.exists) {
-    // If the document doesn't exist, create it with the initial value
-    const initialValue = 0; // Set the initial value here
-    transaction.set(businessDb4 , { totalDonation: initialValue }); // Replace 'yourField' with the field name where the number will be stored
-    return initialValue; // Return the initial value
-  }
+
 
   // Get the current value from Firestore
   let currentValue = doc.data().totalDonation; // Replace 'yourField' with the field name where the number is stored
@@ -1587,7 +1576,7 @@ admin.firestore().runTransaction(async (transaction) => {
 
   // Update the value in Firestore
   transaction.update(businessDb3 , { totalDonation: newValue });
-  transaction.update(businessDb4 , { totalDonation: newValue }); // Replace 'yourField' with the field name where the updated number will be stored
+ // Replace 'yourField' with the field name where the updated number will be stored
 
   // Return the new value (optional)
   return newValue;
@@ -1651,7 +1640,7 @@ app.post('/complete-transaction', async (req, res) => {
         // Initiate transfer
         const transferResponse = await axios.post('https://api.paystack.co/transfer', {
             source: 'balance',
-            amount: 10000 * 100, // Amount should be in kobo (multiply by 100)
+            amount: amount * 100, // Amount should be in kobo (multiply by 100)
             recipient: recipientCode,
             currency: 'NGN'
         }, {
@@ -1661,6 +1650,21 @@ app.post('/complete-transaction', async (req, res) => {
             }
         });
 
+         if (transferResponse.data.status === 'success') {
+
+    // const donationsRef =  db.collection('BusinessLists').doc(listingsId ).collection('DonationsTotal');
+    const donationsRef =  db.collection('Users').doc(businessOwnerIds ).collection('BusinessLists').doc(listingsId ).collection('DonationsTotal');
+            const querySnapshot = await donationsRef.where('listingsId', 'in', listingsId)
+                                                    .where('businessOwnerIds', 'in', businessOwnerIds)
+                                                    .get();
+
+            const batch = db.batch();
+            querySnapshot.forEach(doc => {
+                batch.update(doc.ref, { totalDonation: 0 });
+            });
+
+            await batch.commit();
+        }
         // Respond with the transfer response from Paystack API
         res.json({ transferResponse: transferResponse.data });
     } catch (error) {

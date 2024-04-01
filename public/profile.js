@@ -366,6 +366,7 @@ bankName2.textContent=''
 bankCode.textContent=''
 Available.textContent='0.00'
 Available2.textContent=''
+document.getElementById("popupReview3").style.display = "block";
  document.getElementById("popupReview4").style.display = "none";
  document.getElementById("overlay3").style.display = "none";
 

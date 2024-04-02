@@ -716,9 +716,11 @@ margin-top: 10px;
 	border: none;
 	cursor: pointer;
 	width: 100%;
+	margin-top: -20px;
+
 	}
 
-	.offAndSubmit2{
+	.offAndSubmit3{
 		background-color: green;
 		color: #fff;
 		width: 100px;

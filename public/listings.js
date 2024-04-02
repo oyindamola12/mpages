@@ -130,9 +130,9 @@ loading.style.display = 'none';
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+      //   const addressTag = document.createElement('span');
+      //   addressTag.textContent = business.data.businessAddress;
+      //  arrangetext.appendChild(addressTag);
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -229,9 +229,9 @@ loading.style.display = 'none';
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+      //   const addressTag = document.createElement('span');
+      //   addressTag.textContent = business.data.businessAddress;
+      //  arrangetext.appendChild(addressTag);
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -334,9 +334,9 @@ const images = JSON.stringify(business.data.Images);
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address v
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+      //   const addressTag = document.createElement('span');
+      //   addressTag.textContent = business.data.businessAddress;
+      //  arrangetext.appendChild(addressTag);
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -633,9 +633,9 @@ loading.style.display = 'none';
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+      //   const addressTag = document.createElement('span');
+      //   addressTag.textContent = business.data.businessAddress;
+      //  arrangetext.appendChild(addressTag);
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -1051,9 +1051,9 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-        const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
-       arrangetext.appendChild(addressTag);
+      //   const addressTag = document.createElement('span');
+      //   addressTag.textContent = business.data.businessAddress;
+      //  arrangetext.appendChild(addressTag);
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');

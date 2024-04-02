@@ -2573,6 +2573,19 @@ display: flex; flex-direction: row;margin-top: 20px;
 	border-radius: 5px;
 
 }
+
+.availableBox{
+	display: inline-flex;
+	
+	padding: 7px 15px;
+	border: grey 1px solid;
+	font-size: 14px;
+	color: #000;
+	letter-spacing: 0.2px;
+	margin-right: 12px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+}
 .selected-image {
     display: block; /* Ensures images are displayed as blocks */
     max-width: 100%; /* Ensures images don't exceed the width of their container */

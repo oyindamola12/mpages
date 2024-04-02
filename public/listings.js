@@ -130,9 +130,13 @@ loading.style.display = 'none';
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-      //   const addressTag = document.createElement('span');
-      //   addressTag.textContent = business.data.businessAddress;
-      //  arrangetext.appendChild(addressTag);
+
+       if (signedupAlready) {
+ const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+   }
+
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -229,11 +233,15 @@ loading.style.display = 'none';
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-      //   const addressTag = document.createElement('span');
-      //   addressTag.textContent = business.data.businessAddress;
-      //  arrangetext.appendChild(addressTag);
 
-        // Create and append p tag for the subtitle
+
+       if (signedupAlready) {
+ const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+   }
+
+   // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
         arrangetext.appendChild(subtitleTag);
@@ -334,9 +342,13 @@ const images = JSON.stringify(business.data.Images);
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address v
-      //   const addressTag = document.createElement('span');
-      //   addressTag.textContent = business.data.businessAddress;
-      //  arrangetext.appendChild(addressTag);
+
+       if (signedupAlready) {
+ const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+   }
+
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -633,9 +645,13 @@ loading.style.display = 'none';
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-      //   const addressTag = document.createElement('span');
-      //   addressTag.textContent = business.data.businessAddress;
-      //  arrangetext.appendChild(addressTag);
+
+       if (signedupAlready) {
+ const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+   }
+
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');
@@ -1051,9 +1067,13 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
-      //   const addressTag = document.createElement('span');
-      //   addressTag.textContent = business.data.businessAddress;
-      //  arrangetext.appendChild(addressTag);
+
+       if (signedupAlready) {
+ const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress;
+       arrangetext.appendChild(addressTag);
+   }
+
 
         // Create and append p tag for the subtitle
         const subtitleTag = document.createElement('p');

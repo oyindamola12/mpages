@@ -2551,8 +2551,7 @@ display: flex; flex-direction: row;margin-top: 20px;
 }
 .about-intro .intro-text .open {
 	display: inline-block;
-	/* padding: 7px 15px; */
-	padding: 10px;
+	padding: 7px 15px;
 	background: #ffc946;
 	font-size: 14px;
 	color: #000;
@@ -2564,7 +2563,7 @@ display: flex; flex-direction: row;margin-top: 20px;
 
 .about-intro .intro-text .closed {
 	display: inline-block;
-	padding:10px;
+	padding: 7px 15px;
 	background: #ffc946;
 	font-size: 14px;
 	color: #000;
@@ -2578,8 +2577,9 @@ display: flex; flex-direction: row;margin-top: 20px;
 .availableBox{
 	display: inline-flex;
 	max-width:100% ;
-	padding: 7px 10px;
+	padding: 10px;
 	 /* padding-right: 10px; */
+	 height: 50px;
 	 font-size: 13px;
 	border: grey 1px solid;
 	font-size: 14px;

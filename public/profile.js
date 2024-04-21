@@ -344,7 +344,8 @@ let hideDonateTotal= document.getElementById('hideDonateTotal');
 }
 
 function onwithdraw() {
-  document.getElementById("overlay3").style.display = "block";
+  alert('Feature will be available soon.')
+  // document.getElementById("overlay3").style.display = "block";
 }
 
 function offwithdraw() {
@@ -494,8 +495,8 @@ async function fetchDonate2() {
     totalAmount += amount;
 });
     if (totalAmount !== 0) {
-      Available.textContent = (totalAmount * 0.9).toFixed(2); // Ensure toFixed(2) for two decimal places
-      Total.textContent = totalAmount.toFixed(2);
+      Available.textContent = "#" + (totalAmount * 0.9).toFixed(2); // Ensure toFixed(2) for two decimal places
+      Total.textContent = "#" + totalAmount.toFixed(2);
       withdraw.style.display = 'block';
     } else {
       Available.textContent = '0.00';

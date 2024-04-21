@@ -4037,3 +4037,13 @@ cursor: pointer;
 	}
 
 }
+
+@media (max-width: 360px) {
+	.availableBox{
+
+		max-width:110% ;
+
+
+
+	}
+}

@@ -489,9 +489,10 @@ async function fetchDonate2() {
       body: JSON.stringify({ listingId: listingsId, ownerId: businessOwnerIds })
     });
     const data = await response.json();
-    data.forEach((donation) => {
-      totalAmount += donation.amount;
-    });
+   data.forEach((donation) => {
+    let amount = parseFloat(donation.amount); // Convert string to number
+    totalAmount += amount;
+});
     if (totalAmount !== 0) {
       Available.textContent = (totalAmount * 0.9).toFixed(2); // Ensure toFixed(2) for two decimal places
       Total.textContent = totalAmount.toFixed(2);

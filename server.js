@@ -626,7 +626,7 @@ app.get('/getBusinesses', async (req, res) => {
 app.post('/getDonations', async (req, res) => {
   const { listingId, ownerId } = req.body; // Destructure request body
   try {
-    const snapshot = await db.collection('Users').doc(ownerId).collection('BusinessLists').get();
+    const snapshot = await db.collection('Users').doc(ownerId).collection('BusinessLists').doc(listingId).collection('Donations').get();
     const donations = [];
     snapshot.forEach(doc => {
     donations.push({

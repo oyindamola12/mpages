@@ -552,6 +552,7 @@ cursor: none;
 
   }
 
+
   #overlay2 {
 	position: fixed; /* Sit on top of the page content */
 	display: none; /* Hidden by default */
@@ -579,7 +580,6 @@ cursor: none;
 	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
 	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 	cursor: pointer; /* Add a pointer on hover */
-
 
   }
   .popupReview {
@@ -674,6 +674,24 @@ cursor: none;
 
 }
 
+.close3 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+	color: #000;
+	/* background-color: #000; */
+	height: 30px;
+	width: 30px;
+	border-radius: 4px;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+}
 .EnterReview{
 margin-bottom: 15px;
 height: 100px;
@@ -2611,6 +2629,11 @@ display: flex; flex-direction: row;margin-top: 20px;
 	border-radius: 5px;
 
 }
+.totalBorder{
+	font-size: 16px;
+	border-right: 1px solid grey;
+    padding-right: 10px;
+}
 .selected-image {
     display: block; /* Ensures images are displayed as blocks */
     max-width: 100%; /* Ensures images don't exceed the width of their container */
@@ -3240,12 +3263,117 @@ border-radius: 50%;
 }
 
 .contact-section .contact-add {
-	margin-top: -22px;
+	margin-top: 15px;
+	/* background-image: url("../img/contact-add.png") ; */
+	background-color: #ffd200;
+	width: 558px;
+	height: 361px;
+	border-radius: 20px;
+position: relative;
+	/* background-repeat: no-repeat;
+	/* background-size: 100% 100%; */
+
+
 }
 
-.contact-section .contact-add img {
-	min-width: 100%;
+.contact-add2 {
+
+	background-color: #ffd200;
+	width: 558px;
+	height: 361px;
+	border-radius: 20px;
+
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -200px;
+
+
+
 }
+
+
+#overlaylisting{
+	position:  fixed; /* Sit on top of the page content */
+	display: none; /* Hidden by default */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+
+
+
+
+
+  }
+
+.logoTransfr{
+	width: 25%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 30px;
+}
+.transfrphone{
+position: absolute;
+width: 63%;
+display: block;
+vertical-align: top;
+top: -30px;
+left: 38%;
+
+
+}
+.transfrphone2{
+	display: none;
+
+
+	}
+.TransfrWhite{
+	height: 72%;
+	width: 92%;
+	margin-left: 20px;
+
+	background-color: #fff;
+	border-radius: 16px;
+
+	padding: 20px;
+
+}
+.instant{
+	color: #4744c4;
+	font-size: 30px;
+	line-height: 33px;
+	font-weight: 100;
+	margin-bottom: 50px;
+}
+.downloadBtn{
+	display: inline-block;
+    background-color: #fff;
+	/* border: 1px solid #4744c4; */
+	border:1px solid #4744c4 ;
+
+font-style: 8px;
+	/* border: none; */
+	font-weight: 100;
+    color: #4744c4;
+    padding: 4px 18px ;
+    cursor: pointer;
+
+
+    border-radius:100px;
+
+/*
+    transition: background-color 0.3s; */
+}
+/* .contact-section .contact-add img {
+	min-width: 100%;
+} */
 
 /* -------------------------------- Responsive Media Styles ----------------------------------*/
 
@@ -3447,6 +3575,114 @@ border-radius: 50%;
 	}
 }
 
+@media only screen and (min-width: 420px) and (max-width: 650px) {
+	.contact-section .contact-add {
+		margin-top: 15px;
+		/* background-image: url("../img/contact-add.png") ;
+		background-color:none; */
+		padding-bottom: 10px;
+		width: 400px;
+		height: 800px;
+		border-radius: 20px;
+	position: relative;
+		/* background-repeat: no-repeat;
+		/* background-size: 100% 100%; */
+align-self: center;
+
+
+	}
+
+	.contact-add2 {
+
+		background-color: #ffd200;
+		width: 400px;
+		height: 800px;
+		border-radius: 20px;
+
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		margin-top: -100px;
+		margin-left: -200px;
+
+
+
+
+
+
+
+
+		/* background-repeat: no-repeat;
+		/* background-size: 100% 100%; */
+
+
+	}
+
+	.contact-addSpace{
+
+		align-items: center;
+		justify-content: center;
+		display: flex;
+	}
+	.logoTransfr{
+		width: 40%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		margin-left: 20px;
+	}
+	.transfrphone{
+	display: none;
+
+
+
+	}
+	.transfrphone2{
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		display: block;
+
+		bottom: 0%;
+		left: 0%;
+
+
+
+		}
+	.TransfrWhite{
+		height: 85%;
+		width: 89%;
+		margin-left: 20px;
+
+		background-color: #fff;
+		border-radius: 16px;
+
+		padding: 20px;
+
+	}
+	.instant{
+		color: #4744c4;
+		font-size: 40px;
+		line-height: 42px;
+		font-weight: 100;
+		margin-bottom: 50px;
+	}
+	.downloadBtn{
+		display: inline-block;
+		background-color: #fff;
+		/* border: 1px solid #4744c4; */
+		border:1px solid #4744c4 ;
+	    font-size: 18px;
+		/* border: none; */
+		font-weight: 100;
+		color: #4744c4;
+		padding: 5px 20px ;
+		cursor: pointer;
+		border-radius:100px;
+
+	/*
+		transition: background-color 0.3s; */
+	}
+}
 /* Large Mobile : 480px */
 
 @media only screen and (max-width: 767px) {
@@ -3764,6 +4000,8 @@ border-radius: 50%;
 	}
 	.contact-section .contact-add {
 		margin-top: 22px;
+/* width: 300px;
+	height: 361px; */
 	}
 	.select-options2 {
 		display: none;
@@ -3831,11 +4069,23 @@ border-radius: 50%;
 
 			margin-left: "80%";
 		}
+
+		.availableBox{
+			display: flex;
+			flex-direction: column;
+		}
+		.totalBorder{
+			font-size: 16px;
+			border-bottom: 1px solid grey;
+			padding-bottom: 10px;
+		}
+
+
 }
 
 /* Small Mobile : 320px */
 
-@media (max-width: 500px) {
+@media  only screen and (max-width: 500px) {
 	.categories-item .categories-text {
 		padding: 30px 15px 30px 48px;
 	}
@@ -4009,7 +4259,7 @@ cursor: pointer;
 	margin-left: "60%";
 }
 }
-@media (max-width: 440px) {
+@media   only screen and (max-width: 440px) {
 
 	.select-options2 {
 		display: none;
@@ -4036,9 +4286,103 @@ cursor: pointer;
 
 	}
 
+	.contact-section .contact-add {
+		margin-top: 15px;
+
+		padding-bottom: 10px;
+		width: 400px;
+		height: 800px;
+		border-radius: 20px;
+	position: relative;
+
+align-self: center;
+
+
+	}
+
+	.contact-add2 {
+
+		background-color: #ffd200;
+		width: 330px;
+		height: 700px;
+		border-radius: 20px;
+
+		position: absolute;
+		top: 30%;
+		left: 60%;
+		margin-top: -100px;
+
+
+	}
+
+	.contact-addSpace{
+
+		align-items: center;
+		justify-content: center;
+		display: flex;
+	}
+	.logoTransfr{
+		width: 40%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		margin-left: 20px;
+	}
+	.transfrphone{
+	display: none;
+
+
+
+	}
+	.transfrphone2{
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		display: block;
+
+		bottom: 0%;
+		left: 0%;
+
+
+
+		}
+	.TransfrWhite{
+		height: 85%;
+		width: 89%;
+		margin-left: 20px;
+
+		background-color: #fff;
+		border-radius: 16px;
+
+		padding: 20px;
+
+	}
+	.instant{
+		color: #4744c4;
+		font-size: 35px;
+		line-height: 37px;
+		font-weight: 100;
+		margin-bottom: 50px;
+	}
+	.downloadBtn{
+		display: inline-block;
+		background-color: #fff;
+		/* border: 1px solid #4744c4; */
+		border:1px solid #4744c4 ;
+	    font-size: 16px;
+		/* border: none; */
+		font-weight: 100;
+		color: #4744c4;
+		padding: 5px 20px ;
+		cursor: pointer;
+		border-radius:100px;
+
+	/*
+		transition: background-color 0.3s; */
+	}
+
 }
 
-@media (max-width: 360px) {
+@media  only screen and (max-width: 360px) {
 	.availableBox{
 
 		max-width:110% ;

@@ -2,6 +2,7 @@
 let map2;
 let businessedListed = JSON.parse(localStorage.getItem('userBusiness'))
 let myListings = document.getElementById('myListings');
+
 // let searchInput = document.getElementById('searchInput').value;
 let appendDiv3 = document.getElementById('col-lg-5');
 const selectedBusinessId = localStorage.getItem('selectedListingId');
@@ -371,6 +372,15 @@ myListings.href = "no-listings.html"
 
             toggleOptions();
   }
+  function on() {
+  document.getElementById("overlaylisting").style.display = "block";
+}
+on()
+
+  function closeIt() {
+  document.getElementById("overlaylisting").style.display = "none";
+}
+
 
   function selectOption2(value) {
             var styledSelect = document.querySelector('.select-styled2');

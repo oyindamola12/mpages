@@ -36,13 +36,14 @@
 
 html,
 body {
-	height: 100vh;
-	/* background-color:#000 ; */
+	height: 100%;
+	
 
 	font-family: "Ubuntu", serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-	overflow-x: hidden;
+	overflow-x:initial;
+
 
 
 }
@@ -442,6 +443,7 @@ textarea:focus {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
+
 }
 .edit{
 	border: none;
@@ -2745,6 +2747,10 @@ display: flex; flex-direction: row;margin-top: 20px;
 	margin-bottom: 82px;
 }
 
+.about-desc{
+
+
+}
 .about-left .about-desc h4 {
 	color: #000;
 	font-weight: 700;
@@ -3296,7 +3302,7 @@ position: relative;
 
 
 #overlaylisting{
-	position:  absolute; /* Sit on top of the page content */
+	position:  fixed; /* Sit on top of the page content */
 	display: none; /* Hidden by default */
 	width: 100%; /* Full width (cover the whole page) */
     height: 100%;/* Full height (cover the whole page) */
@@ -3319,6 +3325,13 @@ position: relative;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	margin-left: 30px;
+}
+.transfr{
+	/* background-color: #000; */
+
+	margin-left: 15px;
+
+
 }
 .transfrphone{
 position: absolute;
@@ -3351,7 +3364,7 @@ left: 38%;
 	font-size: 30px;
 	line-height: 33px;
 	font-weight: 100;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 .downloadBtn{
 	display: inline-block;
@@ -3577,6 +3590,9 @@ font-style: 8px;
 }
 
 @media only screen and (min-width: 420px) and (max-width: 650px) {
+	body{
+	overflow-x:scroll ;
+}
 	.contact-section .contact-add {
 		margin-top: 15px;
 		/* background-image: url("../img/contact-add.png") ;
@@ -3593,6 +3609,7 @@ align-self: center;
 
 	}
 
+
 	.contact-add2 {
 
 		background-color: #ffd200;
@@ -3601,7 +3618,7 @@ align-self: center;
 		border-radius: 20px;
 
 		position: absolute;
-		top: 30%;
+		/* top: 30%; */
 		left: 50%;
 		margin-top: -100px;
 		margin-left: -200px;
@@ -3665,7 +3682,7 @@ align-self: center;
 		font-size: 40px;
 		line-height: 42px;
 		font-weight: 100;
-		margin-bottom: 50px;
+		margin-bottom: 10px;
 	}
 	.downloadBtn{
 		display: inline-block;
@@ -4261,7 +4278,9 @@ cursor: pointer;
 }
 }
 @media   only screen and (max-width: 440px) {
-
+	/* body{
+		overflow-x:scroll ;
+	} */
 	.select-options2 {
 		display: none;
 		position: absolute;
@@ -4362,7 +4381,7 @@ align-self: center;
 		font-size: 35px;
 		line-height: 37px;
 		font-weight: 100;
-		margin-bottom: 50px;
+		margin-bottom: 10px;
 	}
 	.downloadBtn{
 		display: inline-block;

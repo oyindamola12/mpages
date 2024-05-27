@@ -37,12 +37,12 @@
 html,
 body {
 	height: 100%;
-	
+
 
 	font-family: "Ubuntu", serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-	overflow-x:initial;
+	overflow-x:hidden;
 
 
 
@@ -3290,7 +3290,7 @@ position: relative;
 	height: 361px;
 	border-radius: 20px;
 
-	position: fixed;
+	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-top: -100px;
@@ -3310,7 +3310,7 @@ position: relative;
 	left: 0;
 	right: 0;
 	bottom: 0;
-
+	overflow:auto;
 	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
 	z-index: 12; /* Specify a stack order in case you're using a different order for other elements */
 
@@ -3590,8 +3590,9 @@ font-style: 8px;
 }
 
 @media only screen and (min-width: 420px) and (max-width: 650px) {
-	body{
-	overflow-x:scroll ;
+#overlaylisting{
+	overflow: auto;
+	height: 150%;
 }
 	.contact-section .contact-add {
 		margin-top: 15px;
@@ -3618,7 +3619,7 @@ align-self: center;
 		border-radius: 20px;
 
 		position: absolute;
-		/* top: 30%; */
+		top: 10%;
 		left: 50%;
 		margin-top: -100px;
 		margin-left: -200px;
@@ -4278,9 +4279,7 @@ cursor: pointer;
 }
 }
 @media   only screen and (max-width: 440px) {
-	/* body{
-		overflow-x:scroll ;
-	} */
+
 	.select-options2 {
 		display: none;
 		position: absolute;
@@ -4328,7 +4327,7 @@ align-self: center;
 		border-radius: 20px;
 
 		position: absolute;
-		top: 30%;
+top: 20%;
 		left: 60%;
 		margin-top: -100px;
 

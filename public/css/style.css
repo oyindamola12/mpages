@@ -3444,6 +3444,15 @@ margin-top: -3px;
 
 	line-height: 13px;
 }
+
+.transfrEmail{
+	border:none ;
+	border-bottom: 1px solid #4744c4;color: #4744c4;
+	font-size: 13px;
+	width: 150px;
+	margin-right: 10px;
+	font-weight: 100;
+}
 .downloadBtn{
 	display: inline-block;
     background-color: #fff;
@@ -3710,7 +3719,13 @@ contact-section .contact-add img {
 
 
 	}
+.inputandEmailMove{
+	margin-top: 50px;
+}
 
+.transfrEmail{
+	width: 200px;
+}
 
 }
 
@@ -4603,6 +4618,9 @@ margin-bottom: 15px;
 		transition: background-color 0.3s; */
 	}
 
+	.transfrEmail{
+		width: 150px;
+	}
 }
 
 @media only screen and (min-width: 420px) and (max-width: 440px) {

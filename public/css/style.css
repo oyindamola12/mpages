@@ -3725,9 +3725,12 @@ contact-section .contact-add img {
 
 	}
 .inputandEmailMove{
-	margin-top: 50px;
+	margin-top: 110px;
 }
 
+.inputandEmailMove2{
+	margin-top: 170px;
+}
 .transfrEmail{
 	width: 200px;
 }

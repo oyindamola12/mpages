@@ -428,6 +428,21 @@ email:email,
 
 });
 });
+
+
+app.post('/transfr',async (req, res)=> {
+
+
+const email = req.body.email;
+
+const businessDb =  db.collection('Loan request');
+await businessDb.add({
+
+email:email,
+
+});
+});
+
 app.post('/NewsLetter',async (req, res)=> {
 
 const email = req.body.email;

@@ -395,6 +395,33 @@ alert('Choose Industry  and enter a location')
 }
 on()
 
+async function loans() {
+      const email = document.getElementById('transfrEmail').value;
+
+
+if(email === ''){
+ alert("Please fill in all mandatory fields");
+return false;
+ }
+
+      const response = await fetch('https://www.mpageshub.com/transfr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+     if (response.ok) {
+alert('Infomation summited successfully')
+
+
+ } else {
+        alert(`${data.error}`);
+      }
+}
   function closeIt() {
   document.getElementById("overlaylisting").style.display = "none";
 }

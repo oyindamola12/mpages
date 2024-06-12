@@ -381,6 +381,33 @@ on()
   document.getElementById("overlaylisting").style.display = "none";
 }
 
+async function loans() {
+      const email = document.getElementById('transfrEmail').value;
+
+
+if(email === ''){
+ alert("Please fill in all mandatory fields");
+return false;
+ }
+
+      const response = await fetch('https://www.mpageshub.com/transfr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+     if (response.ok) {
+alert('Transfr App link has been sent to your email')
+
+
+ } else {
+        alert(`${data.error}`);
+      }
+}
 
   function selectOption2(value) {
             var styledSelect = document.querySelector('.select-styled2');

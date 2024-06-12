@@ -3388,6 +3388,7 @@ margin-top: -3px;
 	border-radius: 16px;
 display: flex;
 flex-direction: column;
+	justify-content: space-between;
 	padding: 20px;
 
 }
@@ -3398,8 +3399,11 @@ flex-direction: column;
 margin-top: -3px;
 	background-color: #fff;
 	border-radius: 16px;
+	display: flex;
+	flex-direction: column;
+		justify-content: space-between;
+		padding: 20px;
 
-	padding: 20px;
 
 }
 
@@ -3423,7 +3427,7 @@ margin-top: -3px;
 	/* line-height: 33px; */
 	font-weight: 100;
 	margin-top: -10px;
-	margin-bottom:35px ;
+
 	margin-left: 9px;
 }
 
@@ -3728,6 +3732,16 @@ contact-section .contact-add img {
 	width: 200px;
 }
 
+.TransfrWhite{
+
+	display: block;
+}
+
+.TransfrWhiteContact{
+
+	display: block;
+}
+
 }
 
 @media only screen and (min-width: 420px) and (max-width: 800px) {
@@ -3832,7 +3846,7 @@ align-self: center;
 
 		padding: 20px;
 		margin-top: 0.5%;
-
+		display: block;
 	}
 
 

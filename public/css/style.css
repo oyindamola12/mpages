@@ -3698,7 +3698,17 @@ contact-section .contact-add img {
 		padding-left: 0%;
 		padding-right: 0%;
 	}
+	.work-sectio {
+		margin: 0;
+		background-image: none !important;
+		background-color: #ffc946;
+		height: 95%;
+		margin-left: 3%;
 
+		width: 94%;
+		padding-left: 0%;
+		padding-right: 0%;
+	}
 	.work-section .section-title h2 {
     font-size: 48px;
 	margin-top: -8%;

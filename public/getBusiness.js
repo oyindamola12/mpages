@@ -415,7 +415,7 @@ return false;
       const data = await response.json();
 
      if (response.ok) {
-alert('Infomation summited successfully')
+alert('Transfr App link will be sent to your email')
 
 
  } else {

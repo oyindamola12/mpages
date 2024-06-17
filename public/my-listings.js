@@ -401,7 +401,7 @@ return false;
       const data = await response.json();
 
      if (response.ok) {
-alert('Transfr App link has been sent to your email')
+alert('Transfr App link will be sent to your email')
 
 
  } else {

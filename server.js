@@ -268,7 +268,6 @@ app.post('/addBusiness2',async (req, res)=> {
     const userids = req.body.userids;
     const lat = req.body.latitude;
     const lng = req.body.longitude
-
      const donation=req.body.wantDonation
     // const files = req.files
 // const userId=req.body.userId

@@ -26,14 +26,14 @@ const itemsPerPage = 12;
  const loading = document.getElementById('loading');
 var storedUserIdlogin =localStorage.getItem('userId');
 var signedupAlready=  localStorage.getItem('signedup');
+var addedListings=  localStorage.getItem('addedListings');
     var imgCont6 = document.getElementById('imagePreview');
 console.log(imgCont6 )
  if(signedupAlready==='true'){
 hidepass.style.display='none';
 }
 
-if (signedupAlready) {
-
+if (signedupAlready === 'true' && addedListings === 'true') {
 myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"
@@ -195,8 +195,6 @@ function navigateToUserProfile(businessId) {
         // Redirect to the user profile page with the user ID as a query parameter
         window.location.href = `/single-listing.html?id=${businessId}`;
 }
-
-
 
 
 
@@ -503,6 +501,7 @@ var geocoder = new google.maps.Geocoder();
              localStorage.setItem('userId',data.userId);
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
+
             localStorage.setItem('addedListings', 'true');
             window.location.reload();
              window.location.href ='my-listings.html';

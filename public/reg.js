@@ -1,4 +1,5 @@
 var signedupAlready=  localStorage.getItem('signedup');
+var addedListings=  localStorage.getItem('addedListings');
 let myListings = document.getElementById('myListings');
 async function getUsers() {
       const response = await fetch('/getCoordinates');
@@ -50,8 +51,7 @@ var businessOwnerIds = getUrlParameter('id');
       // Fit the map to the bounds
       map.fitBounds(bounds);
     }
-    if (signedupAlready) {
-
+ if (signedupAlready === 'true' && addedListings === 'true') {
 myListings.href = "my-listings.html"
    } else {
 myListings.href = "no-listings.html"

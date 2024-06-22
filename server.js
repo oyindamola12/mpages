@@ -436,7 +436,6 @@ const email = req.body.email;
 
 const businessDb =  db.collection('Loan request');
 await businessDb.add({
-
 email:email,
 
 });

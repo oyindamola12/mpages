@@ -28,7 +28,7 @@ var getBusinessesData = true;
 var searchwithin=false
 
 var nextbtn= document.getElementById('next-btn');
-console.log(userUid)
+// console.log(userUid)
 
  function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -92,6 +92,7 @@ loading.style.display = 'none';
    for (let i = 0; i < items.length; i++) {
 
       const business = items[i];
+      console.log(business.data.email)
 
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)
@@ -283,6 +284,7 @@ function noparams(){
     fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
+
 if(items&&items.length >=12){
 nextbtn.style.display = 'block';
 }else{
@@ -299,6 +301,7 @@ loading.style.display = 'none';
     for (let i = 0; i < items.length; i++) {
 
       const business = items[i];
+      console.log(business.data.email)
 // console.log( business.data.Images[1])
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)

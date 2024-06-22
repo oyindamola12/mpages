@@ -575,7 +575,7 @@ alert('Choose Industry and enter a location')
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-getFiltered(latitude,longitude,industry)
+                       getFiltered(latitude,longitude,industry)
 
 
                 }
@@ -1015,6 +1015,7 @@ function fetchPage(page) {
     for (let i = 0; i < items.length; i++) {
       const business = items[i];
 
+console.log(business.data.email)
 const myJSON = JSON.stringify(business)
       const arrangeitems= document.createElement('a');
 

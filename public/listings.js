@@ -92,7 +92,7 @@ loading.style.display = 'none';
    for (let i = 0; i < items.length; i++) {
 
       const business = items[i];
-      console.log(business.data.email)
+      // console.log(business.data.email)
 
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)
@@ -301,7 +301,8 @@ loading.style.display = 'none';
     for (let i = 0; i < items.length; i++) {
 
       const business = items[i];
-      console.log(business.data.email)
+
+      
 // console.log( business.data.Images[1])
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)

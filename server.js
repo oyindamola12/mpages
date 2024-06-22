@@ -617,7 +617,7 @@ try {
 app.get('/getBusinesses', async (req, res) => {
 
     try {
-    const snapshot = await db.collection('BusinessLists').get();
+    const snapshot = await db.collection('BusinessLists').limit(4).get();
     const businesses = [];
     snapshot.forEach(doc => {
 

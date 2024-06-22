@@ -617,7 +617,7 @@ try {
 app.get('/getBusinesses', async (req, res) => {
 
     try {
-    const snapshot = await db.collection('BusinessLists').limit(4).get();
+    const snapshot = await db.collection('BusinessLists').get();
     const businesses = [];
     snapshot.forEach(doc => {
 
@@ -1397,9 +1397,6 @@ function deg2rad(deg) {
 }
 
 
-
-
-
 app.post('/businessSearch2', async (req, res) => {
   try {
 
@@ -1487,7 +1484,6 @@ app.post('/businessSearch2', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 
 app.post('/addDonations',async (req, res)=> {

@@ -406,148 +406,6 @@ c ^
 );
 }
 
-// async function pay(){
-// const businessName = document.getElementById('businessName').value;
-// const contactPerson = document.getElementById('contactPerson').value;
-// const donate = document.getElementById('yesNo').textContent;
-// const industry =  document.querySelector('.select-styled').textContent;
-// const businessAddress = document.getElementById('businessAddress').value;
-// const openingtime= document.getElementById('openingtime').value;
-// const closingtime = document.getElementById('closingtime').value;
-// const email = document.getElementById('email').value;
-// const phoneNo = document.getElementById('phoneNo').value;
-// const about = document.getElementById('about').value;
-// const password =document.getElementById('password').value
-// // const fileInput = document.getElementById('fileImage');
-// // const fileInputed = document.getElementById('fileImage').files;
-
-// const signupStatus= true;
-// var userids =uuidv4()
-
-// if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
-//  alert("Please fill in all mandatory fields");
-// return false;
-
-//  }
-// //  if ( fileInputed.length >5  ) {
-// //         alert("You can only select a maxium of 5 images.");
-// //         return;
-
-// //     }
-
-//   //  const files = fileInput.files;
-
-// //             const formData = new FormData();
-
-// //  for (let i = 0; i < files.length; i++) {
-// //                 formData.append('images', files[i]);
-// //             }
-// // formData.append('userids', userids);
-
-//  var handler = PaystackPop.setup({
-//     //key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-//      key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
-//       email:email,
-//       amount: 3000 * 100,
-//       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-//       metadata: {
-//          custom_fields: [
-//             {
-//                 display_name: contactPerson,
-//                 variable_name: "mobile_number",
-//                 value: phoneNo
-//             }
-//          ]
-//       },
-//       callback: function (response){
-//  if (response.status){
-
-// // var options = { content: galleryData};
-
-// var geocoder = new google.maps.Geocoder();
-//  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
-//                 if (status == google.maps.GeocoderStatus.OK) {
-//                   const latitude = results[0].geometry.location.lat();
-//                     const longitude = results[0].geometry.location.lng();
-
-//         fetch('https://www.mpageshub.com/addBusiness', {
-//             method: 'POST',
-//             headers: {
-//               'Content-Type': 'application/json'
-//             },
-
-//  body:JSON.stringify({
-//  businessName: businessName,
-//  contactPerson:contactPerson,
-//  businessAddress: businessAddress,
-//  industry:industry,
-//  openingtime: openingtime,
-//  closingtime:closingtime,
-//  phoneNo:phoneNo,
-//  about: about,
-//  email: email,
-//  password:password,
-//  latitude:latitude,
-//  longitude:longitude,
-//  signupStatus:signupStatus,
-//  wantDonation:donate,
-//  addedListing:true,
-//  userids:userids,
-
-//  })
-// })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log('Server response:', data);
-//             // You can handle the server response as needed
-//              localStorage.setItem('userId',data.userId);
-//             localStorage.setItem('userData', JSON.stringify(data.businesses));
-//             localStorage.setItem('signedup', 'true');
-//             localStorage.setItem('addedListings', 'true');
-//             window.location.reload();
-//              window.location.href ='my-listings.html';
-
-
-
-//         })
-//         .catch(error => {
-//             console.error('Error sending data to server:', error);
-//         });
-
-//           //  fetch('/addImages', {
-//           //       method: 'POST',
-//           //       body: formData
-//           //   })
-//           //   .then(response => response.json())
-//           //   .then(data => {
-//           //       console.log('Uploaded images:', data);
-//           //   })
-//           //   .catch(error => {
-//           //       console.error('Error uploading images:', error);
-//           //   });
-
-
-
-//              } else {
-//                     alert("Request failed.")
-//                 }
-//             });
-
-// }
-// else{
-//     alert('Try again in a few minutes')
-// }
-
-//       },
-//       onClose: function(){
-//           alert('window closed');
-//       }
-//     });
-//     handler.openIframe();
-
-
-// }
-
 async function pay(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;
@@ -585,6 +443,26 @@ return false;
 //                 formData.append('images', files[i]);
 //             }
 // formData.append('userids', userids);
+
+ var handler = PaystackPop.setup({
+    //key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+     key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+      email:email,
+      amount: 3000 * 100,
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: contactPerson,
+                variable_name: "mobile_number",
+                value: phoneNo
+            }
+         ]
+      },
+      callback: function (response){
+ if (response.status){
+
+// var options = { content: galleryData};
 
 var geocoder = new google.maps.Geocoder();
  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
@@ -655,8 +533,130 @@ var geocoder = new google.maps.Geocoder();
                 }
             });
 
+}
+else{
+    alert('Try again in a few minutes')
+}
+
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+
 
 }
+
+// async function pay(){
+// const businessName = document.getElementById('businessName').value;
+// const contactPerson = document.getElementById('contactPerson').value;
+// const donate = document.getElementById('yesNo').textContent;
+// const industry =  document.querySelector('.select-styled').textContent;
+// const businessAddress = document.getElementById('businessAddress').value;
+// const openingtime= document.getElementById('openingtime').value;
+// const closingtime = document.getElementById('closingtime').value;
+// const email = document.getElementById('email').value;
+// const phoneNo = document.getElementById('phoneNo').value;
+// const about = document.getElementById('about').value;
+// const password =document.getElementById('password').value
+// // const fileInput = document.getElementById('fileImage');
+// // const fileInputed = document.getElementById('fileImage').files;
+
+// const signupStatus= true;
+// var userids =uuidv4()
+
+// if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+//  alert("Please fill in all mandatory fields");
+// return false;
+
+//  }
+// //  if ( fileInputed.length >5  ) {
+// //         alert("You can only select a maxium of 5 images.");
+// //         return;
+
+// //     }
+
+//   //  const files = fileInput.files;
+
+// //             const formData = new FormData();
+
+// //  for (let i = 0; i < files.length; i++) {
+// //                 formData.append('images', files[i]);
+// //             }
+// // formData.append('userids', userids);
+
+// var geocoder = new google.maps.Geocoder();
+//  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
+//                 if (status == google.maps.GeocoderStatus.OK) {
+//                   const latitude = results[0].geometry.location.lat();
+//                     const longitude = results[0].geometry.location.lng();
+
+//         fetch('https://www.mpageshub.com/addBusiness', {
+//             method: 'POST',
+//             headers: {
+//               'Content-Type': 'application/json'
+//             },
+
+//  body:JSON.stringify({
+//  businessName: businessName,
+//  contactPerson:contactPerson,
+//  businessAddress: businessAddress,
+//  industry:industry,
+//  openingtime: openingtime,
+//  closingtime:closingtime,
+//  phoneNo:phoneNo,
+//  about: about,
+//  email: email,
+//  password:password,
+//  latitude:latitude,
+//  longitude:longitude,
+//  signupStatus:signupStatus,
+//  wantDonation:donate,
+//  addedListing:true,
+//  userids:userids,
+
+//  })
+// })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('Server response:', data);
+//             // You can handle the server response as needed
+//              localStorage.setItem('userId',data.userId);
+//             localStorage.setItem('userData', JSON.stringify(data.businesses));
+//             localStorage.setItem('signedup', 'true');
+//             localStorage.setItem('addedListings', 'true');
+//             window.location.reload();
+//              window.location.href ='my-listings.html';
+
+
+
+//         })
+//         .catch(error => {
+//             console.error('Error sending data to server:', error);
+//         });
+
+//           //  fetch('/addImages', {
+//           //       method: 'POST',
+//           //       body: formData
+//           //   })
+//           //   .then(response => response.json())
+//           //   .then(data => {
+//           //       console.log('Uploaded images:', data);
+//           //   })
+//           //   .catch(error => {
+//           //       console.error('Error uploading images:', error);
+//           //   });
+
+
+
+//              } else {
+//                     alert("Request failed.")
+//                 }
+//             });
+
+
+// }
 
  async function pay2(){
 const businessName = document.getElementById('businessName').value;

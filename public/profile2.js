@@ -18,7 +18,6 @@ var storedUserId =localStorage.getItem('selectedUserId');
  var about = document.getElementById('aboutText');
  var address = document.getElementById('contactInfoAddress');
  var email= document.getElementById('contactInfoemail');
-
 //const rating2 = document.getElementById('rating2');
  var businessNameh2= document.getElementById('businessNameh2');
  var no = document.getElementById('contactInfoNumber');
@@ -34,7 +33,6 @@ var storedUserId =localStorage.getItem('selectedUserId');
 var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 var userUid =localStorage.getItem('userId');
-
 // var donateBtn = document.getElementById('share2');
 // var divider= document.getElementById('divider');
 function hideContact() {
@@ -48,8 +46,8 @@ function hideContact() {
         contactText2.style.display = 'block';
     }
 }
+hideContact()
 
-   hideContact()
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');

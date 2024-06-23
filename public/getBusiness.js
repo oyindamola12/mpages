@@ -99,10 +99,10 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
  window.location.href =`listings.html?industryInputview=${items.secondmostSearched}`;
 })
     })
-
     .catch(error => {
       console.log('Error fetching items:', error);
     });
+
 
   fetch('https://www.mpageshub.com/thirdFrequentIndustry')
     .then(response => response.json())
@@ -128,6 +128,7 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
       fetch('https://www.mpageshub.com/fourthFrequentIndustry')
     .then(response => response.json())
     .then(items=> {
+
 let forthhigestListing= document.getElementById('forthhigestListing');
 let forthhigestListingLength = document.getElementById('forthhigestListingLength');
 let viewAll =document.getElementById('viewAll4');
@@ -374,16 +375,14 @@ if( industry === "Choose Industry" || location === null){
 alert('Choose Industry  and enter a location')
 }else{
   var geocoder = new google.maps.Geocoder();
+
  geocoder.geocode({ 'address':location }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                  const latitude = results[0].geometry.location.lat();
                    const longitude = results[0].geometry.location.lng();
-                        const address = results[0].formatted_address;
-                        console.log(address)
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-                   localStorage.setItem('location', address)
                    window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
                 }
               })

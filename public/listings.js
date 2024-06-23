@@ -40,8 +40,6 @@ var nextbtn= document.getElementById('next-btn');
 var industrySearch = getUrlParameter('industryInput');
 var latSearch = getUrlParameter('lat');
 var lngSearch = getUrlParameter('lng');
-var location  = getUrlParameter('location')
-
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -68,13 +66,15 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
  function toggleData(){
 
-if (industrySearch&&latSearch&&lngSearch ){
+if (industrySearch&& latSearch&&lngSearch  ){
+
+
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch, })
+    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch})
   })
   .then(response => response.json())
   .then(items => {
@@ -86,8 +86,9 @@ nextbtn.style.display = 'block';
 if(items.length === 0){
 noloading.style.display = 'block';
 }
-
 loading.style.display = 'none';
+
+
    for (let i = 0; i < items.length; i++) {
 
       const business = items[i];
@@ -116,11 +117,13 @@ loading.style.display = 'none';
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
 
+
        const imgTag = document.createElement('img');
       imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png' // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
+
 
         // Create and append h5 tag for the title
         const titleTag = document.createElement('h5');
@@ -417,7 +420,6 @@ if (!window.location.search) {
             });
         });
     }
-
 async function getUsers() {
       const response = await fetch('/getCoordinates');
       const users = await response.json();
@@ -517,9 +519,11 @@ async function initMap() {
 
 // window.initMap = initMap;
 
+
 //   window.onload = function() {
 //             initAutocomplete();
 //         };
+
 
 
   //  async function initMap() {
@@ -560,7 +564,7 @@ myListings.href = "no-listings.html"
 
 
 
- async function fetchDatas() {
+ async function fetchDatas( ) {
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
@@ -575,7 +579,7 @@ alert('Choose Industry and enter a location')
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-                       getFiltered(latitude,longitude,industry, location)
+                       getFiltered(latitude,longitude,industry)
 
 
                 }
@@ -586,7 +590,7 @@ alert('Choose Industry and enter a location')
 }
 
 
-function getFiltered(latitude,longitude,industry,location){
+function getFiltered(latitude,longitude,industry){
 
  appendDiv.innerHTML=''
  loading.style.display = 'block';
@@ -595,11 +599,10 @@ function getFiltered(latitude,longitude,industry,location){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:industry,lat:latitude ,lng:longitude, location:location})
+    body: JSON.stringify({ industry:industry,lat:latitude ,lng:longitude})
   })
   .then(response => response.json())
   .then(items => {
-
 if(items&&items.length >=12){
 nextbtn.style.display = 'none';
 }
@@ -607,7 +610,6 @@ if(items.length === 0){
 noloading.style.display = 'block';
 }
 loading.style.display = 'none';
-
 
 
    for (let i = 0; i < items.length; i++) {
@@ -648,10 +650,10 @@ loading.style.display = 'none';
 
         // Create and append span tag for the address
 
-        if (signedupAlready) {
-        const addressTag = document.createElement('span');
+       if (signedupAlready) {
+ const addressTag = document.createElement('span');
         addressTag.textContent = business.data.businessAddress;
-        arrangetext.appendChild(addressTag);
+       arrangetext.appendChild(addressTag);
    }
 
 

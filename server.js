@@ -1050,7 +1050,7 @@ app.get('/mostFrequentIndustries', async (req, res) => {
     try {
         const mostFrequentIndustry = await getMostFrequentIndustry();
          console.log("Most frequent industries:", mostFrequentIndustry );
-        const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',mostFrequentIndustry).get();
+        const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',mostFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1099,7 +1099,7 @@ getMostFrequentIndustry()
 app.get('/secondFrequentIndustry', async (req, res) => {
     try {
         const secondFrequentIndustry = await getSecondFrequentIndustry();
-          const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',secondFrequentIndustry).get();
+          const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',secondFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1152,7 +1152,7 @@ async function getSecondFrequentIndustry() {
  app.get('/thirdFrequentIndustry', async (req, res) => {
     try {
         const thirdFrequentIndustry = await getThirdFrequentIndustry();
-           const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',thirdFrequentIndustry).get();
+           const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',thirdFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1206,7 +1206,7 @@ getThirdFrequentIndustry()
 app.get('/fourthFrequentIndustry', async (req, res) => {
     try {
         const fourthFrequentIndustry = await getFourthFrequentIndustry();
-           const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',fourthFrequentIndustry).get();
+           const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',fourthFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1260,7 +1260,7 @@ getFourthFrequentIndustry()
 app.get('/fifthFrequentIndustry', async (req, res) => {
     try {
         const fifthFrequentIndustry = await getFifthFrequentIndustry();
-           const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',fifthFrequentIndustry).get();
+           const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',fifthFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1331,54 +1331,52 @@ try {
  })
 
  app.post('/businessSearch', async (req, res) => {
+  try {
 
-     const selectedIndustry = req.body.industry;
+    const selectedIndustry = req.body.industry;
     const latitude = parseFloat(req.body.lat); // Convert latitude to float
     const longitude = parseFloat(req.body.lng); // Convert longitude to float
-    // const location = req.body.location
 
-    try {
-        // Query Firestore based on the category
-        const   querySnapshot= await db.collection('BusinessLists')
+    // Query Firestore collection based on selected industry
+    const querySnapshot = await db.collection('BusinessLists')
       .where('industry', '==', selectedIndustry)
       .get();
 
-         const businesses = [];
+    // Initialize an array to store filtered data
+    const businesses = [];
 
     // Iterate through query snapshot
-
-  querySnapshot.forEach(doc => {
-      // const userData = doc.data();
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
 
-      // if (userData.images && userData.images.length > 0) {
-      //   imageUrl = userData.images[0];
+      // if ( data.images &&  data.images.length > 0) {
+      //   imageUrl =  data.images[0];
       // }
+      // // Filter data based on location (latitude and longitude)
+      // Calculate distance between location and selected coordinates
+      const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
 
-      businesses.push({
+      // You can define your own distance threshold for filtering
+      const maxDistance = 10; // Example: 10 kilometers
+
+      // If distance is within the threshold, include the data
+      if (distance <= maxDistance) {
+       businesses.push({
       id: doc.id,
       data: doc.data(),
-      // imageUrl :imageUrl
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+
 });
+      }
+    });
 
- })
-        // if (snapshot.empty) {
-        //     return res.json([]);
-        // }
-
-        // // Filter results based on the address
-        // const businesses = snapshot.docs
-        //     .map(doc => doc.data())
-        //     .filter(business =>
-        //      business.businessAddress.toLowerCase().includes(location.toLowerCase())
-        //     );
-
-        res.json(businesses);
-    } catch (error) {
-        console.error('Error getting documents', error);
-        res.status(500).send('Error getting documents');
-    }
-
+    // Send filtered data as response
+    res.json(businesses);
+  } catch (error) {
+    console.error('Error searching:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -1437,53 +1435,55 @@ app.post('/businessSearch2', async (req, res) => {
   }
 });
 
-
  app.post('/api/businessSearch3', async (req, res) => {
+  try {
 
-     const selectedIndustry = req.body.industry;
+    const selectedIndustry = req.body.industry;
     const latitude = parseFloat(req.body.lat); // Convert latitude to float
     const longitude = parseFloat(req.body.lng); // Convert longitude to float
-    // const location = req.body.location
 
-    try {
-        // Query Firestore based on the category
-        const snapshot= await db.collection('BusinessLists')
+    // Query Firestore collection based on selected industry
+    const querySnapshot = await db.collection('BusinessLists')
       .where('industry', '==', selectedIndustry)
       .get();
 
-        // if (snapshot.empty) {
-        //     return res.json([]);
-        // }
+    // Initialize an array to store filtered data
+    const businesses = [];
 
-        // // Filter results based on the address
-        // const businesses = snapshot.docs
-        //     .map(doc => doc.data())
-        //     .filter(business =>
-        //      business.businessAddress.toLowerCase().includes(location.toLowerCase())
-        //     );
-
-          querySnapshot.forEach(doc => {
-      // const userData = doc.data();
+    // Iterate through query snapshot
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
 
-      // if (userData.images && userData.images.length > 0) {
-      //   imageUrl = userData.images[0];
+      // if ( data.images &&  data.images.length > 0) {
+      //   imageUrl =  data.images[0];
       // }
+      // // Filter data based on location (latitude and longitude)
+      // Calculate distance between location and selected coordinates
+      const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
 
-      businesses.push({
+      // You can define your own distance threshold for filtering
+      const maxDistance = 10; // Example: 10 kilometers
+
+      // If distance is within the threshold, include the data
+      if (distance <= maxDistance) {
+       businesses.push({
       id: doc.id,
       data: doc.data(),
-      // imageUrl :imageUrl
-});
-
- })
-        res.json(businesses);
-    } catch (error) {
-        console.error('Error getting documents', error);
-        res.status(500).send('Error getting documents');
-    }
+      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
 
 });
+      }
+    });
+
+    // Send filtered data as response
+    res.json(businesses);
+  } catch (error) {
+    console.error('Error searching:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 app.post('/addDonations',async (req, res)=> {
 const amount = req.body.amount;

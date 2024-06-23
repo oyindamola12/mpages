@@ -46,7 +46,9 @@ var nextbtn= document.getElementById('next-btn');
 var industrySearch = getUrlParameter('industryInput');
 var latSearch = getUrlParameter('lat');
 var lngSearch = getUrlParameter('lng');
-var loc = getUrlLoc(locations)
+
+var loc = getUrlLoc(locations).replace(/ /g, '+')
+console.log(loc)
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');

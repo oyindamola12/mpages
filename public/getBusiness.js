@@ -381,8 +381,7 @@ alert('Choose Industry  and enter a location')
                 if (status == google.maps.GeocoderStatus.OK) {
                  const latitude = results[0].geometry.location.lat();
                    const longitude = results[0].geometry.location.lng();
-                   const loc= results[0].formatted_address
-                   const locations= loc.replace(/ /g, '+')
+                   const locations= results[0].formatted_address
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);

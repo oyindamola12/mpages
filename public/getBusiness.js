@@ -396,8 +396,8 @@ alert('Choose Industry  and enter a location')
 on()
 
 async function loans() {
-      const email = document.getElementById('transfrEmail').value;
-
+ const email = document.getElementById('transfrEmail').value;
+  document.getElementById("overlaylisting").style.display = "none";
 
 if(email === ''){
  alert("Please fill in all mandatory fields");
@@ -415,7 +415,7 @@ return false;
       const data = await response.json();
 
      if (response.ok) {
-alert('Transfr App link will be sent to your email')
+     document.getElementById("overlaylisting").style.display = "none";
 
 
  } else {

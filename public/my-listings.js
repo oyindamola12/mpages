@@ -385,6 +385,8 @@ async function loans() {
       const email = document.getElementById('transfrEmail').value;
 
 
+
+
 if(email === ''){
  alert("Please fill in all mandatory fields");
 return false;
@@ -401,8 +403,8 @@ return false;
       const data = await response.json();
 
      if (response.ok) {
-alert('Transfr App link will be sent to your email')
 
+    document.getElementById("overlaylisting").style.display = "none";
 
  } else {
         alert(`${data.error}`);

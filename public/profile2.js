@@ -578,9 +578,9 @@ return false;
       const data = await response.json();
 
      if (response.ok) {
-alert('Transfr App link will be sent to your email')
 
 
+    document.getElementById("overlaylisting").style.display = "none";
  } else {
         alert(`${data.error}`);
       }

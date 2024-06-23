@@ -378,10 +378,11 @@ alert('Choose Industry  and enter a location')
                 if (status == google.maps.GeocoderStatus.OK) {
                  const latitude = results[0].geometry.location.lat();
                    const longitude = results[0].geometry.location.lng();
+                        const address = results[0].formatted_address;
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}&location=${location}`;
+                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}&location=${address}`;
                 }
               })
 }

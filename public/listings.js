@@ -75,7 +75,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
  function toggleData(){
 
-if (industrySearch&& latSearch&&lngSearch  ){
+if (industrySearch&& latSearch&&lngSearch&&loc ){
 
 
  fetch('https://www.mpageshub.com/businessSearch', {
@@ -96,9 +96,8 @@ if(items.length === 0){
 noloading.style.display = 'block';
 }
 loading.style.display = 'none';
-
-
-   for (let i = 0; i < items.length; i++) {
+const filteredItems = items.filter(business => business.data.businessAddress && business.data.businessAddress.includes(loc));
+for (let i = 0; i < filteredItems.length; i++) {
 
       const business = items[i];
       // console.log(business.data.email)

@@ -36,10 +36,17 @@ var nextbtn= document.getElementById('next-btn');
             var results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         };
+         function getUrlLoc(name) {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
 
 var industrySearch = getUrlParameter('industryInput');
 var latSearch = getUrlParameter('lat');
 var lngSearch = getUrlParameter('lng');
+var loc = getUrlLoc(locations)
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');

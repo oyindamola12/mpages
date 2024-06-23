@@ -382,6 +382,7 @@ alert('Choose Industry  and enter a location')
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
+                   localStorage.setItem('location', address)
                    window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}&location=${address}`;
                 }
               })

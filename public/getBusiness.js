@@ -379,11 +379,12 @@ alert('Choose Industry  and enter a location')
                  const latitude = results[0].geometry.location.lat();
                    const longitude = results[0].geometry.location.lng();
                         const address = results[0].formatted_address;
+                        console.log(address)
                    localStorage.setItem('lat', JSON.stringify(latitude));
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
                    localStorage.setItem('location', address)
-                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}&location=${address}`;
+                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
                 }
               })
 }

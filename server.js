@@ -1335,24 +1335,43 @@ try {
      const selectedIndustry = req.body.industry;
     const latitude = parseFloat(req.body.lat); // Convert latitude to float
     const longitude = parseFloat(req.body.lng); // Convert longitude to float
-    const location = req.body.location
+    // const location = req.body.location
 
     try {
         // Query Firestore based on the category
-        const snapshot= await db.collection('BusinessLists')
+        const   querySnapshot= await db.collection('BusinessLists')
       .where('industry', '==', selectedIndustry)
       .get();
 
-        if (snapshot.empty) {
-            return res.json([]);
-        }
+         const businesses = [];
 
-        // Filter results based on the address
-        const businesses = snapshot.docs
-            .map(doc => doc.data())
-            .filter(business =>
-             business.businessAddress.toLowerCase().includes(location.toLowerCase())
-            );
+    // Iterate through query snapshot
+
+  querySnapshot.forEach(doc => {
+      // const userData = doc.data();
+      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+
+      // if (userData.images && userData.images.length > 0) {
+      //   imageUrl = userData.images[0];
+      // }
+
+      businesses.push({
+      id: doc.id,
+      data: doc.data(),
+      // imageUrl :imageUrl
+});
+
+ })
+        // if (snapshot.empty) {
+        //     return res.json([]);
+        // }
+
+        // // Filter results based on the address
+        // const businesses = snapshot.docs
+        //     .map(doc => doc.data())
+        //     .filter(business =>
+        //      business.businessAddress.toLowerCase().includes(location.toLowerCase())
+        //     );
 
         res.json(businesses);
     } catch (error) {
@@ -1424,7 +1443,7 @@ app.post('/businessSearch2', async (req, res) => {
      const selectedIndustry = req.body.industry;
     const latitude = parseFloat(req.body.lat); // Convert latitude to float
     const longitude = parseFloat(req.body.lng); // Convert longitude to float
-    const location = req.body.location
+    // const location = req.body.location
 
     try {
         // Query Firestore based on the category
@@ -1432,17 +1451,32 @@ app.post('/businessSearch2', async (req, res) => {
       .where('industry', '==', selectedIndustry)
       .get();
 
-        if (snapshot.empty) {
-            return res.json([]);
-        }
+        // if (snapshot.empty) {
+        //     return res.json([]);
+        // }
 
-        // Filter results based on the address
-        const businesses = snapshot.docs
-            .map(doc => doc.data())
-            .filter(business =>
-             business.businessAddress.toLowerCase().includes(location.toLowerCase())
-            );
+        // // Filter results based on the address
+        // const businesses = snapshot.docs
+        //     .map(doc => doc.data())
+        //     .filter(business =>
+        //      business.businessAddress.toLowerCase().includes(location.toLowerCase())
+        //     );
 
+          querySnapshot.forEach(doc => {
+      // const userData = doc.data();
+      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+
+      // if (userData.images && userData.images.length > 0) {
+      //   imageUrl = userData.images[0];
+      // }
+
+      businesses.push({
+      id: doc.id,
+      data: doc.data(),
+      // imageUrl :imageUrl
+});
+
+ })
         res.json(businesses);
     } catch (error) {
         console.error('Error getting documents', error);

@@ -68,13 +68,13 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
  function toggleData(){
 
-if (industrySearch&&latSearch&&lngSearch&&location ){
+if (industrySearch&&latSearch&&lngSearch ){
  fetch('https://www.mpageshub.com/businessSearch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch, location:location})
+    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch, })
   })
   .then(response => response.json())
   .then(items => {

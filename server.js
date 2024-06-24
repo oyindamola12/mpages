@@ -916,7 +916,7 @@ businessName:updateData,
 });
 
 
-app.get('/searchBusinesses', async (req, res) => {
+app.post('/searchBusinesses', async (req, res) => {
     const { industry, lat, lng } = req.query;
 
     const radiusInKm = 10; // Define your search radius

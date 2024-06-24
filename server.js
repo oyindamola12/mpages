@@ -914,8 +914,8 @@ businessName:updateData,
 
 
 });
-app.post('/businessSearch', async (req, res) => {
-    
+app.get('/businessSearch', async (req, res) => {
+
 //   try {
 
 

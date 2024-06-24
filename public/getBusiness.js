@@ -168,7 +168,6 @@ viewAll.addEventListener('click', () => {    // Create and append p tag for the 
     });
 
 
-
 if (signedupAlready) {
 
 myListings.href = "my-listings.html"
@@ -269,17 +268,6 @@ async function initMap() {
     infowindow.open(map, marker);
   });
 }
-   let autocomplete;
- function initAutocomplete() {
-            // Initialize the autocomplete object
-          autocomplete = new google.maps.places.Autocomplete(
-                document.getElementById('inputSuburb'),
-                { types: ['(cities)'] }
-            );
-
-            // Set the data fields to return when the user selects a place.
-            autocomplete.setFields(['address_components', 'geometry', 'name', 'formatted_address']);
-        }
 
 window.initMap = initMap;
 
@@ -287,8 +275,6 @@ window.initMap = initMap;
   window.onload = function() {
             initAutocomplete();
         };
-
-
 
 
  function addMarkers(coordinates) {
@@ -318,8 +304,6 @@ window.initMap = initMap;
                 console.error('Error fetching coordinates:', error);
             });
     }
-
-
 
   function toggleOptions() {
             var options = document.getElementById('options');
@@ -377,44 +361,31 @@ yesNo.style.display = 'none';
             toggleOptions3();
  }
 
-
  var nav =document.getElementById('navigateSearch');
 
-//  async function fetchData() {
-//  var industry= document.getElementById('searchIndustryInput').textContent;
-//  var location = document.getElementById('inputSuburb').value;
+ async function fetchData() {
+ var industry= document.getElementById('searchIndustryInput').textContent;
+ var location = document.getElementById('inputSuburb').value;
 
-// if( industry === "Choose Industry" || location === null){
-// alert('Choose Industry  and enter a location')
-// }else{
-//   var geocoder = new google.maps.Geocoder();
+if( industry === "Choose Industry" || location === null){
+alert('Choose Industry  and enter a location')
+}else{
+  var geocoder = new google.maps.Geocoder();
 
-//  geocoder.geocode({ 'address':location }, function (results, status) {
-
-//                 if (status == google.maps.GeocoderStatus.OK) {
-//                  const latitude = results[0].geometry.location.lat();
-//                    const longitude = results[0].geometry.location.lng();
-//                    const locations= results[0].formatted_address
-//                    localStorage.setItem('lat', JSON.stringify(latitude));
-//                    localStorage.setItem('lng', JSON.stringify(longitude));
-//                    localStorage.setItem('industry', industry);
-//                    window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}&locations=${locations}`;
-//                 }
-//               })
-// }
+ geocoder.geocode({ 'address':location }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                 const latitude = results[0].geometry.location.lat();
+                   const longitude = results[0].geometry.location.lng();
+                   localStorage.setItem('lat', JSON.stringify(latitude));
+                   localStorage.setItem('lng', JSON.stringify(longitude));
+                   localStorage.setItem('industry', industry);
+                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
+                }
+              })
+}
 
 
-// }
-
- function fetchData() {
- const industry= document.getElementById('searchIndustryInput').textContent;
-  const locations = document.getElementById('inputSuburb').value;
-            // Encode the parameters and navigate to the results page
-              window.location.href =`listings.html?industryInput=${industry}&locations=${locations}`;
-        }
-        // Initialize the autocomplete functionality
-        initAutocomplete();
-
+}
   function on() {
   document.getElementById("overlaylisting").style.display = "block";
 }
@@ -447,6 +418,7 @@ return false;
         alert(`${data.error}`);
       }
 }
+
   function closeIt() {
   document.getElementById("overlaylisting").style.display = "none";
 }

@@ -915,6 +915,34 @@ businessName:updateData,
 
 });
 
+
+app.get('/searchBusinesses', async (req, res) => {
+    const { industry, lat, lng } = req.query;
+
+    const radiusInKm = 10; // Define your search radius
+
+    const center = new admin.firestore.GeoPoint(parseFloat(lat), parseFloat(lng));
+
+    try {
+        const query = geocollection
+            .near({ center, radius: radiusInKm })
+            .where('industry', '==', industry);
+
+        const snapshot = await query.get();
+
+        if (snapshot.empty) {
+            return res.json([]);
+        }
+
+        const businesses = snapshot.docs.map(doc => doc.data());
+        res.json(businesses);
+        console.log(businesses)
+    } catch (error) {
+        console.error('Error getting documents', error);
+        res.status(500).send('Error getting documents');
+    }
+});
+
 app.post('/updateopen', async (req, res) => {
 const userid = req.body.userUid;
 // const documentId = req.body.selectedBusinessId;

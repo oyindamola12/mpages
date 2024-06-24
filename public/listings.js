@@ -99,7 +99,7 @@ loading.style.display = 'none';
 const filteredItems = items.filter(business => business.data.businessAddress && business.data.businessAddress.includes(loc));
 for (let i = 0; i < filteredItems.length; i++) {
 
-      const business = items[i];
+       const business = filteredItems[i];
       // console.log(business.data.email)
 
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');

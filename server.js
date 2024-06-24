@@ -985,7 +985,7 @@ app.get('/businessSearch', async (req, res) => {
 
       const { industry, lat, lng } = req.query;
 
-    const radiusInKm = 10; // Define your search radius
+    const radiusInKm = 100; // Define your search radius
 
     const center = new admin.firestore.GeoPoint(parseFloat(lat), parseFloat(lng));
 

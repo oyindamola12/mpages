@@ -616,7 +616,7 @@ try {
 app.get('/getBusinesses', async (req, res) => {
 
     try {
-    const snapshot = await db.collection('BusinessLists').limit(4).get();
+    const snapshot = await db.collection('BusinessLists').limit(8).get();
     const businesses = [];
     snapshot.forEach(doc => {
 
@@ -1509,7 +1509,7 @@ app.post('/businessSearch2', async (req, res) => {
       const maxDistance = 10; // Example: 10 kilometers
 
       // If distance is within the threshold, include the data
-      if (distance <= maxDistance) {
+      if (distance === maxDistance) {
        businesses.push({
       id: doc.id,
       data: doc.data(),

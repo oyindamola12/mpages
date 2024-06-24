@@ -44,8 +44,8 @@ var nextbtn= document.getElementById('next-btn');
         };
 
 var industrySearch = getUrlParameter('industryInput');
-var latSearch = getUrlParameter('lat');
-var lngSearch = getUrlParameter('lng');
+// var latSearch = getUrlParameter('lat');
+// var lngSearch = getUrlParameter('lng');
 
 var loc = getUrlLoc("locations").replace(/ /g, ' ')
 console.log(loc)
@@ -75,7 +75,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
  function toggleData(){
 
-if (industrySearch&& latSearch&&lngSearch&&loc ){
+if (industrySearch&&loc ){
 
 
  fetch('https://www.mpageshub.com/businessSearch', {
@@ -83,7 +83,7 @@ if (industrySearch&& latSearch&&lngSearch&&loc ){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch})
+    body: JSON.stringify({ industry:industrySearch,location:loc})
   })
   .then(response => response.json())
   .then(items => {

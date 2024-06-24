@@ -100,7 +100,7 @@ const filteredItems = items.filter(business => business.data.businessAddress && 
 for (let i = 0; i < filteredItems.length; i++) {
 
        const business = filteredItems[i];
-      // console.log(business.data.email)
+      console.log(business.data)
 
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)

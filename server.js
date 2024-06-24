@@ -1050,7 +1050,7 @@ app.get('/mostFrequentIndustries', async (req, res) => {
     try {
         const mostFrequentIndustry = await getMostFrequentIndustry();
          console.log("Most frequent industries:", mostFrequentIndustry );
-        const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',mostFrequentIndustry).get();
+        const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',mostFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1099,7 +1099,7 @@ getMostFrequentIndustry()
 app.get('/secondFrequentIndustry', async (req, res) => {
     try {
         const secondFrequentIndustry = await getSecondFrequentIndustry();
-          const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',secondFrequentIndustry).get();
+          const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',secondFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1152,7 +1152,7 @@ async function getSecondFrequentIndustry() {
  app.get('/thirdFrequentIndustry', async (req, res) => {
     try {
         const thirdFrequentIndustry = await getThirdFrequentIndustry();
-           const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',thirdFrequentIndustry).get();
+           const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',thirdFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1206,7 +1206,7 @@ getThirdFrequentIndustry()
 app.get('/fourthFrequentIndustry', async (req, res) => {
     try {
         const fourthFrequentIndustry = await getFourthFrequentIndustry();
-           const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',fourthFrequentIndustry).get();
+           const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',fourthFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {
@@ -1260,7 +1260,7 @@ getFourthFrequentIndustry()
 app.get('/fifthFrequentIndustry', async (req, res) => {
     try {
         const fifthFrequentIndustry = await getFifthFrequentIndustry();
-           const resultSnapshot =await db.collection('MostSearchedIndustry').where('industry', '==',fifthFrequentIndustry).get();
+           const resultSnapshot =await db.collection('BusinessLists').where('industry', '==',fifthFrequentIndustry).get();
 
     const documents = [];
     resultSnapshot.forEach(doc => {

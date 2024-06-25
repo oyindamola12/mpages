@@ -206,75 +206,75 @@ myListings.href = "no-listings.html"
      }
 
 
-async function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: {
-      lat: 0,
-    lng:0
-    },
-    zoom: 13,
-    mapTypeControl: false,
-  });
+// async function initMap() {
+//   const map = new google.maps.Map(document.getElementById("map"), {
+//     center: {
+//       lat: 0,
+//     lng:0
+//     },
+//     zoom: 13,
+//     mapTypeControl: false,
+//   });
 
-  const input = document.getElementById('inputSuburb');
-  const options = {
-    fields: ["address_components", "geometry", "types", "name"],
-    strictBounds: true,
+//   const input = document.getElementById('inputSuburb');
+//   const options = {
+//     fields: ["address_components", "geometry", "types", "name"],
+//     strictBounds: true,
 
-  };
+//   };
 
-  autocomplete = new google.maps.places.Autocomplete(input, options);
+//   autocomplete = new google.maps.places.Autocomplete(input, options);
 
-  autocomplete.addListener('place_changed', function() {
-    const place = autocomplete.getPlace();
-    console.log(place);
-  });
+//   autocomplete.addListener('place_changed', function() {
+//     const place = autocomplete.getPlace();
+//     console.log(place);
+//   });
 
-  const infowindow = new google.maps.InfoWindow();
-  const infowindowContent = document.getElementById("infowindow-content");
+//   const infowindow = new google.maps.InfoWindow();
+//   const infowindowContent = document.getElementById("infowindow-content");
 
-  infowindow.setContent(infowindowContent);
+//   infowindow.setContent(infowindowContent);
 
-  const marker = new google.maps.Marker({
-    map,
-    anchorPoint: new google.maps.Point(0, -29),
-  });
+//   const marker = new google.maps.Marker({
+//     map,
+//     anchorPoint: new google.maps.Point(0, -29),
+//   });
 
-  autocomplete.addListener("place_changed", () => {
-    infowindow.close();
-    marker.setVisible(false);
+//   autocomplete.addListener("place_changed", () => {
+//     infowindow.close();
+//     marker.setVisible(false);
 
-    const place = autocomplete.getPlace();
+//     const place = autocomplete.getPlace();
 
-    if (!place.geometry || !place.geometry.location) {
-      // User entered the name of a Place that was not suggested and
-      // pressed the Enter key, or the Place Details request failed.
-      window.alert("No details available for input: '" + place.name + "'");
-      return;
-    }
+//     if (!place.geometry || !place.geometry.location) {
+//       // User entered the name of a Place that was not suggested and
+//       // pressed the Enter key, or the Place Details request failed.
+//       window.alert("No details available for input: '" + place.name + "'");
+//       return;
+//     }
 
-    // If the place has a geometry, then present it on a map.
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(17);
-    }
+//     // If the place has a geometry, then present it on a map.
+//     if (place.geometry.viewport) {
+//       map.fitBounds(place.geometry.viewport);
+//     } else {
+//       map.setCenter(place.geometry.location);
+//       map.setZoom(17);
+//     }
 
-    marker.setPosition(place.geometry.location);
-    marker.setVisible(true);
-    infowindowContent.children["place-name"].textContent = place.name;
-    infowindowContent.children["place-address"].textContent = place.formatted_address;
-    infowindow.open(map, marker);
-  });
-}
+//     marker.setPosition(place.geometry.location);
+//     marker.setVisible(true);
+//     infowindowContent.children["place-name"].textContent = place.name;
+//     infowindowContent.children["place-address"].textContent = place.formatted_address;
+//     infowindow.open(map, marker);
+//   });
+// }
 
-window.initMap = initMap;
+// window.initMap = initMap;
 
 
-  window.onload = function() {
-            initAutocomplete();
-        };
+//   window.onload = function() {
+//             initAutocomplete();
+//         };
 
 
  function addMarkers(coordinates) {
@@ -363,29 +363,46 @@ yesNo.style.display = 'none';
 
  var nav =document.getElementById('navigateSearch');
 
- async function fetchData() {
+  async function fetchDatas( ) {
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
 if( industry === "Choose Industry" || location === null){
-alert('Choose Industry  and enter a location')
+alert('Choose Industry and enter a location')
 }else{
-  var geocoder = new google.maps.Geocoder();
-
- geocoder.geocode({ 'address':location }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                 const latitude = results[0].geometry.location.lat();
-                   const longitude = results[0].geometry.location.lng();
-                   localStorage.setItem('lat', JSON.stringify(latitude));
+               localStorage.setItem('location', location);
                    localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
-                   window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
-                }
-              })
+                   window.location.href =`listings.html?location=${location}&industryInput=${industry}`;
+
 }
 
 
 }
+
+//  async function fetchData() {
+//  var industry= document.getElementById('searchIndustryInput').textContent;
+//  var location = document.getElementById('inputSuburb').value;
+
+// if( industry === "Choose Industry" || location === null){
+// alert('Choose Industry  and enter a location')
+// }else{
+//   var geocoder = new google.maps.Geocoder();
+
+//  geocoder.geocode({ 'address':location }, function (results, status) {
+//                 if (status == google.maps.GeocoderStatus.OK) {
+//                  const latitude = results[0].geometry.location.lat();
+//                    const longitude = results[0].geometry.location.lng();
+//                    localStorage.setItem('lat', JSON.stringify(latitude));
+//                    localStorage.setItem('lng', JSON.stringify(longitude));
+//                    localStorage.setItem('industry', industry);
+//                    window.location.href =`listings.html?lat=${latitude}&lng=${longitude}&industryInput=${industry}`;
+//                 }
+//               })
+// }
+
+
+// }
   function on() {
   document.getElementById("overlaylisting").style.display = "block";
 }

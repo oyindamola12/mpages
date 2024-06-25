@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Words in Sentence</title>
+</head>
+<body>
+    <h1>Check Words in Sentence for Specific Characters</h1>
+    <form id="checkWordsForm">
+        <label for="sentence">Sentence:</label><br>
+        <input type="text" id="sentence" name="sentence" required><br><br>
+
+        <label for="chars">Characters to Check:</label><br>
+        <input type="text" id="chars" name="chars" required><br><br>
+
+        <button type="button" onclick="checkWords()">Check Words</button>
+    </form>
+
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        function checkWords() {
+            const sentence = document.getElementById('sentence').value;
+            const chars = document.getElementById('chars').value;
+
+            // Convert chars to a set for easy checking
+            const charsSet = new Set(chars.split(''));
+
+            // Split the sentence into words
+            const words = sentence.split(' ');
+
+            // Filter words that contain any of the characters
+            const result = words.filter(word => {
+                for (const char of word) {
+                    if (charsSet.has(char)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+
+            // Display the result
+            document.getElementById('result').textContent = result.join(', ');
+        }
+    </script>
+</body>
+</html>

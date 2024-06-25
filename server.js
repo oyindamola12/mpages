@@ -12,7 +12,7 @@ const multer =require('multer');
 const uuid = require('uuid-v4');
 require('dotenv').config();
 const publicPath=path.join(__dirname,'public')
-
+const { GeoFirestore } = require('geofirestore');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(publicPath))
 const storage = new Storage({
@@ -44,7 +44,12 @@ console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
 const PAYSTACK_SECRET_KEY= process.env.PAYSTACK_SECRET_KEY;//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
 const db = admin.firestore();
+// Create a GeoFirestore reference
+const geofirestore = new GeoFirestore(db);
+// Create a GeoCollection reference
+const geocollection = geofirestore.collection('BusinessLists');
 const bucket = admin.storage().bucket();
+
 // const storage = multer.memoryStorage()
 // const upload = multer({storage:storage})
 const upload = multer({
@@ -146,6 +151,7 @@ password:user.password,
 
 
 const addUsers =  db.collection('Users').doc(userids);
+
 await addUsers.set({
 fullName:contactPerson,
 phoneNo: phoneNo,
@@ -158,7 +164,7 @@ addListing:true,
 
 });
 
-const userListings =  db.collection('Users').doc( userids).collection('BusinessLists').doc(userids);
+const userListings =  db.collection('Users').doc(userids).collection('BusinessLists').doc(userids);
 await  userListings.set({
  businessName:businessName,
  fullName: contactPerson,
@@ -179,7 +185,7 @@ await  userListings.set({
 
 });
 
-const businessDb =  db.collection('BusinessLists').doc(userids);
+const businessDb = db.collection('BusinessLists').doc(userids);
 await businessDb.set({
  businessName:businessName,
  fullName: contactPerson,
@@ -915,99 +921,37 @@ businessName:updateData,
 
 });
 app.get('/businessSearch', async (req, res) => {
+  const selectedIndustry = req.body.industry;
+  const keywords = req.body.location.toLowerCase().split(' ').join(" ").replace(/\,/g,"");
+  try {
 
-//   try {
+       const snapshot = await db.collection('BusinessLists')
+            .where('industry', '==', selectedIndustry)
+            .get();
+    const businesses = [];
 
-
-//       const selectedIndustry = req.body.industry;
-//     const loc = parseFloat(req.body.location); // Convert latitude to float
-//     // Convert longitude to float
-
-//     // Query Firestore collection based on selected industry
-
-//    // Convert longitude to float
-
-//     // Query Firestore collection based on selected industry
-//     const querySnapshot = await db.collection('BusinessLists')
-//       .where('industry', '==', selectedIndustry)
-//       .get();
-
-//     // Initialize an array to store filtered data
-//     const businesses = [];
-
-//     // Iterate through query snapshot
-
-//   querySnapshot.forEach(doc => {
-//       // const userData = doc.data();
-//       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
-
-//       // if (userData.images && userData.images.length > 0) {
-//       //   imageUrl = userData.images[0];
-//       // }
-
-//       businesses.push({
-//       id: doc.id,
-//       data: doc.data(),
-//       // imageUrl :imageUrl
-// });
-
-//  })
-//  // Send filtered data as response
-//     res.json(businesses);
-//   } catch (error) {
-//     console.error('Error searching:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const address = data.businessAddress.toLowerCase();
 
 
+      // Check if any keyword is included in the name or description
+      const matches = keywords.some(keyword => address.includes(keyword));
+      if (matches) {
+        businesses.push(data);
+      }
+    });
 
-    // try {
-    //     const snapshot = await db.collection('businesses')
-    //         .where('industry', '==', selectedIndustry)
-    //         .get();
-
-    //     if (snapshot.empty) {
-    //         return res.json([]);
-    //     }
-
-    //     // Filter results based on the location
-    //     const businesses = snapshot.docs
-    //         .map(doc => doc.data())
-    //         .filter(business =>
-    //             business.businessAddress && business.businessAddress.includes(loc)
-    //         );
-
-    //     res.json(businesses);
-    // } catch (error) {
-    //     console.error('Error getting documents', error);
-    //     res.status(500).send('Error getting documents');
-    // }
-
-      const { industry, lat, lng } = req.query;
-
-    const radiusInKm = 100; // Define your search radius
-
-    const center = new admin.firestore.GeoPoint(parseFloat(lat), parseFloat(lng));
-
-    try {
-        const query = geocollection
-            .near({ center, radius: radiusInKm })
-            .where('industry', '==', industry);
-
-        const snapshot = await query.get();
-
-        if (snapshot.empty) {
-            return res.json([]);
-        }
-
-        const businesses = snapshot.docs.map(doc => doc.data());
-        res.json(businesses);
-        console.log(businesses)
-    } catch (error) {
-        console.error('Error getting documents', error);
-        res.status(500).send('Error getting documents');
-    }
+    res.status(200).json(businesses);
+  } catch (error) {
+    console.error('Error searching items', error);
+    res.status(500).send('Error searching items');
+  }
 });
+
+
+
+
 
 // app.post('/searchBusinesses', async (req, res) => {
 //     const { industry, lat, lng } = req.query;
@@ -1515,76 +1459,76 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
-app.post('/businessSearch', async (req, res) => {
-     const selectedIndustry = req.body.industry;
-    const loc = parseFloat(req.body.location);
-//   try {
+// app.post('/businessSearch', async (req, res) => {
+//      const selectedIndustry = req.body.industry;
+//     const loc = parseFloat(req.body.location);
+// //   try {
 
 
-//       const selectedIndustry = req.body.industry;
-//     const loc = parseFloat(req.body.location); // Convert latitude to float
-//     // Convert longitude to float
+// //       const selectedIndustry = req.body.industry;
+// //     const loc = parseFloat(req.body.location); // Convert latitude to float
+// //     // Convert longitude to float
 
-//     // Query Firestore collection based on selected industry
+// //     // Query Firestore collection based on selected industry
 
-//    // Convert longitude to float
+// //    // Convert longitude to float
 
-//     // Query Firestore collection based on selected industry
-//     const querySnapshot = await db.collection('BusinessLists')
-//       .where('industry', '==', selectedIndustry)
-//       .get();
+// //     // Query Firestore collection based on selected industry
+// //     const querySnapshot = await db.collection('BusinessLists')
+// //       .where('industry', '==', selectedIndustry)
+// //       .get();
 
-//     // Initialize an array to store filtered data
-//     const businesses = [];
+// //     // Initialize an array to store filtered data
+// //     const businesses = [];
 
-//     // Iterate through query snapshot
+// //     // Iterate through query snapshot
 
-//   querySnapshot.forEach(doc => {
-//       // const userData = doc.data();
-//       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+// //   querySnapshot.forEach(doc => {
+// //       // const userData = doc.data();
+// //       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
 
-//       // if (userData.images && userData.images.length > 0) {
-//       //   imageUrl = userData.images[0];
-//       // }
+// //       // if (userData.images && userData.images.length > 0) {
+// //       //   imageUrl = userData.images[0];
+// //       // }
 
-//       businesses.push({
-//       id: doc.id,
-//       data: doc.data(),
-//       // imageUrl :imageUrl
+// //       businesses.push({
+// //       id: doc.id,
+// //       data: doc.data(),
+// //       // imageUrl :imageUrl
+// // });
+
+// //  })
+// //  // Send filtered data as response
+// //     res.json(businesses);
+// //   } catch (error) {
+// //     console.error('Error searching:', error);
+// //     res.status(500).json({ error: 'Internal server error' });
+// //   }
+
+
+
+//     try {
+//         const snapshot = await db.collection('businesses')
+//             .where('industry', '==', selectedIndustry)
+//             .get();
+
+//         if (snapshot.empty) {
+//             return res.json([]);
+//         }
+
+//         // Filter results based on the location
+//         const businesses = snapshot.docs
+//             .map(doc => doc.data())
+//             .filter(business =>
+//                 business.businessAddress && business.businessAddress.includes(loc)
+//             );
+
+//         res.json(businesses);
+//     } catch (error) {
+//         console.error('Error getting documents', error);
+//         res.status(500).send('Error getting documents');
+//     }
 // });
-
-//  })
-//  // Send filtered data as response
-//     res.json(businesses);
-//   } catch (error) {
-//     console.error('Error searching:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-
-
-
-    try {
-        const snapshot = await db.collection('businesses')
-            .where('industry', '==', selectedIndustry)
-            .get();
-
-        if (snapshot.empty) {
-            return res.json([]);
-        }
-
-        // Filter results based on the location
-        const businesses = snapshot.docs
-            .map(doc => doc.data())
-            .filter(business =>
-                business.businessAddress && business.businessAddress.includes(loc)
-            );
-
-        res.json(businesses);
-    } catch (error) {
-        console.error('Error getting documents', error);
-        res.status(500).send('Error getting documents');
-    }
-});
 
 app.post('/businessSearch2', async (req, res) => {
   try {
@@ -1625,55 +1569,83 @@ app.post('/businessSearch2', async (req, res) => {
   }
 });
 
- app.post('/api/businessSearch3', async (req, res) => {
+//  app.post('/api/businessSearch3', async (req, res) => {
+//   try {
+
+//     const selectedIndustry = req.body.industry;
+//     const latitude = parseFloat(req.body.lat); // Convert latitude to float
+//     const longitude = parseFloat(req.body.lng); // Convert longitude to float
+
+//     // Query Firestore collection based on selected industry
+//     const querySnapshot = await db.collection('BusinessLists')
+//       .where('industry', '==', selectedIndustry)
+//       .get();
+
+//     // Initialize an array to store filtered data
+//     const businesses = [];
+
+//     // Iterate through query snapshot
+//     querySnapshot.forEach((doc) => {
+//       const data = doc.data();
+//       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+
+//       // if ( data.images &&  data.images.length > 0) {
+//       //   imageUrl =  data.images[0];
+//       // }
+//       // // Filter data based on location (latitude and longitude)
+//       // Calculate distance between location and selected coordinates
+//       const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
+
+//       // You can define your own distance threshold for filtering
+//       const maxDistance = 10; // Example: 10 kilometers
+
+//       // If distance is within the threshold, include the data
+//       if (distance === maxDistance) {
+//        businesses.push({
+//       id: doc.id,
+//       data: doc.data(),
+//       coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
+
+// });
+//       }
+//     });
+
+//     // Send filtered data as response
+//     res.json(businesses);
+//   } catch (error) {
+//     console.error('Error searching:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
+
+app.get('/api/businessSearch3', async (req, res) => {
+  const selectedIndustry = req.body.industry;
+  const keywords = req.body.location.toLowerCase().split(' ').join(" ").replace(/\,/g,"");
   try {
 
-    const selectedIndustry = req.body.industry;
-    const latitude = parseFloat(req.body.lat); // Convert latitude to float
-    const longitude = parseFloat(req.body.lng); // Convert longitude to float
-
-    // Query Firestore collection based on selected industry
-    const querySnapshot = await db.collection('BusinessLists')
-      .where('industry', '==', selectedIndustry)
-      .get();
-
-    // Initialize an array to store filtered data
+       const snapshot = await db.collection('BusinessLists')
+            .where('industry', '==', selectedIndustry)
+            .get();
     const businesses = [];
 
-    // Iterate through query snapshot
-    querySnapshot.forEach((doc) => {
+    snapshot.forEach(doc => {
       const data = doc.data();
-      // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
+      const address = data.businessAddress.toLowerCase();
 
-      // if ( data.images &&  data.images.length > 0) {
-      //   imageUrl =  data.images[0];
-      // }
-      // // Filter data based on location (latitude and longitude)
-      // Calculate distance between location and selected coordinates
-      const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
 
-      // You can define your own distance threshold for filtering
-      const maxDistance = 10; // Example: 10 kilometers
-
-      // If distance is within the threshold, include the data
-      if (distance === maxDistance) {
-       businesses.push({
-      id: doc.id,
-      data: doc.data(),
-      coordinates:{latitude:doc.data().latitude,ongitude:doc.data().longitude},
-
-});
+      // Check if any keyword is included in the name or description
+      const matches = keywords.some(keyword => address.includes(keyword));
+      if (matches) {
+      businesses.push(data);
       }
     });
 
-    // Send filtered data as response
-    res.json(businesses);
+    res.status(200).json(businesses);
   } catch (error) {
-    console.error('Error searching:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error searching items', error);
+    res.status(500).send('Error searching items');
   }
 });
-
 
 app.post('/addDonations',async (req, res)=> {
 const amount = req.body.amount;

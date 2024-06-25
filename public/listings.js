@@ -39,8 +39,10 @@ var nextbtn= document.getElementById('next-btn');
 
 
 var industrySearch = getUrlParameter('industryInput');
-var latSearch = getUrlParameter('lat');
-var lngSearch = getUrlParameter('lng');
+var locations = getUrlParameter('location');
+
+// var latSearch = getUrlParameter('lat');
+// var lngSearch = getUrlParameter('lng');
 
 function getUrlParameter2(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
@@ -67,7 +69,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
  function toggleData(){
 
-if (industrySearch&& latSearch&&lngSearch  ){
+if (industrySearch&& locations ){
 
 
  fetch('https://www.mpageshub.com/businessSearch', {
@@ -75,7 +77,7 @@ if (industrySearch&& latSearch&&lngSearch  ){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:industrySearch,lat:latSearch ,lng:lngSearch})
+    body: JSON.stringify({ industry:industrySearch,location:locations})
   })
   .then(response => response.json())
   .then(items => {
@@ -649,86 +651,86 @@ async function getUsers() {
                 }
             ];
 
-async function initMap() {
-    const users = await getUsers();
+// async function initMap() {
+//     const users = await getUsers();
 
-      // Create a LatLngBounds object to store the bounds of all markers
-      const bounds = new google.maps.LatLngBounds();
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: {
-      lat: 0,
-    lng:0
-    },
-    zoom: 2,
-    mapTypeControl: false,
-     styles: mlwStyles
-  });
+//       // Create a LatLngBounds object to store the bounds of all markers
+//       const bounds = new google.maps.LatLngBounds();
+//   const map = new google.maps.Map(document.getElementById("map"), {
+//     center: {
+//       lat: 0,
+//     lng:0
+//     },
+//     zoom: 2,
+//     mapTypeControl: false,
+//      styles: mlwStyles
+//   });
 
-  const input = document.getElementById('inputSuburb');
-  const options = {
-    fields: ["address_components", "geometry", "types", "name"],
-    strictBounds: true,
+//   const input = document.getElementById('inputSuburb');
+//   const options = {
+//     fields: ["address_components", "geometry", "types", "name"],
+//     strictBounds: true,
 
-  };
+//   };
 
- users.forEach(user => {
-        const position = { lat: user.latitude, lng: user.longitude };
-        // Extend the bounds to include the marker's position
-        bounds.extend(position);
-        const marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          title: user.name
-        });
-      });
+//  users.forEach(user => {
+//         const position = { lat: user.latitude, lng: user.longitude };
+//         // Extend the bounds to include the marker's position
+//         bounds.extend(position);
+//         const marker = new google.maps.Marker({
+//           position: position,
+//           map: map,
+//           title: user.name
+//         });
+//       });
 
-      // Fit the map to the bounds
-  map.fitBounds(bounds);
-  autocomplete = new google.maps.places.Autocomplete(input, options);
+//       // Fit the map to the bounds
+//   map.fitBounds(bounds);
+//   autocomplete = new google.maps.places.Autocomplete(input, options);
 
-  autocomplete.addListener('place_changed', function() {
-    const place = autocomplete.getPlace();
-    console.log(place);
-  });
+//   autocomplete.addListener('place_changed', function() {
+//     const place = autocomplete.getPlace();
+//     console.log(place);
+//   });
 
-  const infowindow = new google.maps.InfoWindow();
-  const infowindowContent = document.getElementById("infowindow-content");
-  infowindow.setContent(infowindowContent);
+//   const infowindow = new google.maps.InfoWindow();
+//   const infowindowContent = document.getElementById("infowindow-content");
+//   infowindow.setContent(infowindowContent);
 
-  const marker = new google.maps.Marker({
-    map,
-    anchorPoint: new google.maps.Point(0, -29),
-  });
+//   const marker = new google.maps.Marker({
+//     map,
+//     anchorPoint: new google.maps.Point(0, -29),
+//   });
 
-  autocomplete.addListener("place_changed", () => {
-    infowindow.close();
-    marker.setVisible(false);
+//   autocomplete.addListener("place_changed", () => {
+//     infowindow.close();
+//     marker.setVisible(false);
 
-    const place = autocomplete.getPlace();
+//     const place = autocomplete.getPlace();
 
-    if (!place.geometry || !place.geometry.location) {
-      // User entered the name of a Place that was not suggested and
-      // pressed the Enter key, or the Place Details request failed.
-      window.alert("No details available for input: '" + place.name + "'");
-      return;
-    }
+//     if (!place.geometry || !place.geometry.location) {
+//       // User entered the name of a Place that was not suggested and
+//       // pressed the Enter key, or the Place Details request failed.
+//       window.alert("No details available for input: '" + place.name + "'");
+//       return;
+//     }
 
-    // If the place has a geometry, then present it on a map.
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(17);
-    }
+//     // If the place has a geometry, then present it on a map.
+//     if (place.geometry.viewport) {
+//       map.fitBounds(place.geometry.viewport);
+//     } else {
+//       map.setCenter(place.geometry.location);
+//       map.setZoom(17);
+//     }
 
-    marker.setPosition(place.geometry.location);
-    marker.setVisible(true);
-    infowindowContent.children["place-name"].textContent = place.name;
-    infowindowContent.children["place-address"].textContent = place.formatted_address;
-    infowindow.open(map, marker);
-  });
-   map.fitBounds(bounds);
-}
+//     marker.setPosition(place.geometry.location);
+//     marker.setVisible(true);
+//     infowindowContent.children["place-name"].textContent = place.name;
+//     infowindowContent.children["place-address"].textContent = place.formatted_address;
+//     infowindow.open(map, marker);
+//   });
+//    map.fitBounds(bounds);
+// }
 
 // window.initMap = initMap;
 
@@ -784,26 +786,19 @@ myListings.href = "no-listings.html"
 if( industry === "Choose Industry" || location === null){
 alert('Choose Industry and enter a location')
 }else{
-  var geocoder = new google.maps.Geocoder();
- geocoder.geocode({ 'address':location }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                 const latitude = results[0].geometry.location.lat();
-                   const longitude = results[0].geometry.location.lng();
-                   localStorage.setItem('lat', JSON.stringify(latitude));
-                   localStorage.setItem('lng', JSON.stringify(longitude));
-                   localStorage.setItem('industry', industry);
-                       getFiltered(latitude,longitude,industry)
 
+              localStorage.setItem('location', JSON.stringify(location));
+                //  localStorage.setItem('lng', JSON.stringify(longitude));
+                  localStorage.setItem('industry', industry);
+                   getFiltered(industry,location)
 
-                }
-})
 }
 
 
 }
 
 
-function getFiltered(latitude,longitude,industry){
+function getFiltered(industry, location){
 
  appendDiv.innerHTML=''
  loading.style.display = 'block';
@@ -812,7 +807,7 @@ function getFiltered(latitude,longitude,industry){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ industry:industry,lat:latitude ,lng:longitude})
+    body: JSON.stringify({ industry:industry,location:location})
   })
   .then(response => response.json())
   .then(items => {

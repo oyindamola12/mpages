@@ -595,93 +595,93 @@ async function getUsers() {
                 }
             ];
 
-// async function initMap() {
-//     const users = await getUsers();
+async function initMap() {
+    const users = await getUsers();
 
-//       // Create a LatLngBounds object to store the bounds of all markers
-//       const bounds = new google.maps.LatLngBounds();
-//   const map = new google.maps.Map(document.getElementById("map"), {
-//     center: {
-//       lat: 0,
-//     lng:0
-//     },
-//     zoom: 2,
-//     mapTypeControl: false,
-//      styles: mlwStyles
-//   });
+      // Create a LatLngBounds object to store the bounds of all markers
+      const bounds = new google.maps.LatLngBounds();
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: {
+      lat: 0,
+    lng:0
+    },
+    zoom: 2,
+    mapTypeControl: false,
+     styles: mlwStyles
+  });
 
-//   const input = document.getElementById('inputSuburb');
-//   const options = {
-//     fields: ["address_components", "geometry", "types", "name"],
-//     strictBounds: true,
+  const input = document.getElementById('inputSuburb');
+  const options = {
+    fields: ["address_components", "geometry", "types", "name"],
+    strictBounds: true,
 
-//   };
+  };
 
-//  users.forEach(user => {
-//         const position = { lat: user.latitude, lng: user.longitude };
-//         // Extend the bounds to include the marker's position
-//         bounds.extend(position);
-//         const marker = new google.maps.Marker({
-//           position: position,
-//           map: map,
-//           title: user.name
-//         });
-//       });
+ users.forEach(user => {
+        const position = { lat: user.latitude, lng: user.longitude };
+        // Extend the bounds to include the marker's position
+        bounds.extend(position);
+        const marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: user.name
+        });
+      });
 
-//       // Fit the map to the bounds
-//   map.fitBounds(bounds);
-//   autocomplete = new google.maps.places.Autocomplete(input, options);
+      // Fit the map to the bounds
+  map.fitBounds(bounds);
+  autocomplete = new google.maps.places.Autocomplete(input, options);
 
-//   autocomplete.addListener('place_changed', function() {
-//     const place = autocomplete.getPlace();
-//     console.log(place);
-//   });
+  autocomplete.addListener('place_changed', function() {
+    const place = autocomplete.getPlace();
+    console.log(place);
+  });
 
-//   const infowindow = new google.maps.InfoWindow();
-//   const infowindowContent = document.getElementById("infowindow-content");
-//   infowindow.setContent(infowindowContent);
+  const infowindow = new google.maps.InfoWindow();
+  const infowindowContent = document.getElementById("infowindow-content");
+  infowindow.setContent(infowindowContent);
 
-//   const marker = new google.maps.Marker({
-//     map,
-//     anchorPoint: new google.maps.Point(0, -29),
-//   });
+  const marker = new google.maps.Marker({
+    map,
+    anchorPoint: new google.maps.Point(0, -29),
+  });
 
-//   autocomplete.addListener("place_changed", () => {
-//     infowindow.close();
-//     marker.setVisible(false);
+  autocomplete.addListener("place_changed", () => {
+    infowindow.close();
+    marker.setVisible(false);
 
-//     const place = autocomplete.getPlace();
+    const place = autocomplete.getPlace();
 
-//     if (!place.geometry || !place.geometry.location) {
-//       // User entered the name of a Place that was not suggested and
-//       // pressed the Enter key, or the Place Details request failed.
-//       window.alert("No details available for input: '" + place.name + "'");
-//       return;
-//     }
+    if (!place.geometry || !place.geometry.location) {
+      // User entered the name of a Place that was not suggested and
+      // pressed the Enter key, or the Place Details request failed.
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
+    }
 
-//     // If the place has a geometry, then present it on a map.
-//     if (place.geometry.viewport) {
-//       map.fitBounds(place.geometry.viewport);
-//     } else {
-//       map.setCenter(place.geometry.location);
-//       map.setZoom(17);
-//     }
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
 
-//     marker.setPosition(place.geometry.location);
-//     marker.setVisible(true);
-//     infowindowContent.children["place-name"].textContent = place.name;
-//     infowindowContent.children["place-address"].textContent = place.formatted_address;
-//     infowindow.open(map, marker);
-//   });
-//    map.fitBounds(bounds);
-// }
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+    infowindowContent.children["place-name"].textContent = place.name;
+    infowindowContent.children["place-address"].textContent = place.formatted_address;
+    infowindow.open(map, marker);
+  });
+   map.fitBounds(bounds);
+}
 
-// window.initMap = initMap;
+window.initMap = initMap;
 
 
-//   window.onload = function() {
-//             initAutocomplete();
-//         };
+  window.onload = function() {
+            initAutocomplete();
+        };
 
 
 

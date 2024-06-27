@@ -1020,12 +1020,12 @@ async function editButtontoSave(){
  console.log('Value updated successfully:', data);
 
  businessNameh2MyListings.textContent = newValue;
- businessNameh2MyListings.style.display = 'block';
- editInputh2.style.display = 'none';
- editButton.style.display = 'inline-block';
- saveButton.style.display = 'none';
-shareSave.style.display = 'block';
-shareEdit.style.display = 'none'
+ //businessNameh2MyListings.style.display = 'block';
+//  editInputh2.style.display = 'none';
+//  editButton.style.display = 'inline-block';
+//  saveButton.style.display = 'none';
+// shareSave.style.display = 'block';
+// shareEdit.style.display = 'none'
 location.reload();
   })
   .catch(error => {
@@ -1106,11 +1106,11 @@ async function closeButtontoSave(){
     console.log('Value updated successfully:', data);
     // Update the UI
     timeToCloseMyListings.textContent = newValue;
-    timeToCloseMyListings.style.display = 'block';
-    editInputclose.style.display = 'none';
-    editButtonclose.style.display = 'inline-block';
-    saveButtonclose.style.display = 'none';
-     window.location.reload();
+    // timeToCloseMyListings.style.display = 'block';
+    // editInputclose.style.display = 'none';
+    // editButtonclose.style.display = 'inline-block';
+    // saveButtonclose.style.display = 'none';
+     location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -1148,11 +1148,11 @@ async function addressButtontoSave(){
     console.log('Value updated successfully:', data);
     // Update the UI
     contactInfoAddressMyListings.textContent = newValue;
-    contactInfoAddressMyListings.style.display = 'block';
-    editInputAddress.style.display = 'none';
-    editButtonAddress.style.display = 'inline-block';
-    saveButtonAddress.style.display = 'none';
-      window.location.reload();
+    // contactInfoAddressMyListings.style.display = 'block';
+    // editInputAddress.style.display = 'none';
+    // editButtonAddress.style.display = 'inline-block';
+    // saveButtonAddress.style.display = 'none';
+    location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -1190,11 +1190,11 @@ contactInfoNumberMyListings.style.display = 'block';
     console.log('Value updated successfully:', data);
     // Update the UI
 contactInfoNumberMyListings.textContent = newValue;
-contactInfoNumberMyListings.style.display = 'block';
-    editInputNumber.style.display = 'none';
-    editButtonNumber.style.display = 'inline-block';
-    saveButtonNumber.style.display = 'none';
-     window.location.reload();
+// contactInfoNumberMyListings.style.display = 'block';
+//     editInputNumber.style.display = 'none';
+//     editButtonNumber.style.display = 'inline-block';
+//     saveButtonNumber.style.display = 'none';
+     location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -1230,11 +1230,11 @@ async function emailButtontoSave(){
     console.log('Value updated successfully:', data);
     // Update the UI
 contactInfoemailMyListings.textContent = newValue;
-contactInfoemailMyListings.style.display = 'block';
-    editInputemail.style.display = 'none';
-    editButtonemail.style.display = 'inline-block';
-    saveButtonemail.style.display = 'none';
-     window.location.reload();
+// contactInfoemailMyListings.style.display = 'block';
+//     editInputemail.style.display = 'none';
+//     editButtonemail.style.display = 'inline-block';
+//     saveButtonemail.style.display = 'none';
+     location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -1270,11 +1270,11 @@ async function aboutButtontoSave(){
     console.log('Value updated successfully:', data);
     // Update the UI
     aboutTextMyListings.textContent = newValue;
-    aboutTextMyListings.style.display = 'block';
-    editInputAbout.style.display = 'none';
-    editButtonAbout.style.display = 'inline-block';
-    saveButtonAbout.style.display = 'none';
-     window.location.reload();
+    // aboutTextMyListings.style.display = 'block';
+    // editInputAbout.style.display = 'none';
+    // editButtonAbout.style.display = 'inline-block';
+    // saveButtonAbout.style.display = 'none';
+    location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);

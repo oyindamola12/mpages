@@ -99,7 +99,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
           const imgTag = document.createElement('img');
           imgTag.src =
-            business.data.Images && business.Images.length > 0
+            business.Images && business.Images.length > 0
               ? business.Images[0]
               : 'img/mPagesDesigns.png';
           imgTag.alt = 'Image';

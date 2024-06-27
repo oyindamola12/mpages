@@ -333,12 +333,12 @@ const timeToClose = document.getElementById('timeToClose');
 //Set the background image using inline CSS
        element.style.backgroundImage = `url(${imageUrl})`;
 
-       businessNameh2.textContent =  businessName;
+       businessNameh2.textContent =  businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
        timeToOpen.textContent =  openingtime;
        timeToClose.textContent = closingtime;
        email.textContent = emailData ;
        no.textContent = phoneNo;
-       address.textContent = businessAddress;
+       address.textContent = businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
        about.textContent =  aboutData;
 
            image2.src=image2Data

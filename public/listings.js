@@ -107,12 +107,12 @@ function navigateToUserProfile(businessId, businesslistingId) {
           imgTag.classList.add('imgs');
 
           const titleTag = document.createElement('h5');
-          titleTag.textContent = business.data.businessName;
+          titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
           arrangetext.appendChild(titleTag);
 
           if (signedupAlready) {
             const addressTag = document.createElement('span');
-            addressTag.textContent = business.data.businessAddress;
+            addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
             arrangetext.appendChild(addressTag);
           }
 
@@ -184,12 +184,12 @@ function navigateToUserProfile(businessId, businesslistingId) {
           imgTag.classList.add('imgs');
 
           const titleTag = document.createElement('h5');
-          titleTag.textContent = business.data.businessName;
+          titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
           arrangetext.appendChild(titleTag);
 
           if (signedupAlready) {
             const addressTag = document.createElement('span');
-            addressTag.textContent = business.data.businessAddress;
+            addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
             arrangetext.appendChild(addressTag);
           }
 
@@ -501,14 +501,14 @@ const images = JSON.stringify(business.data.Images);
 
         // Create and append h5 tag for the title
         const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
+        titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address v
 
        if (signedupAlready) {
  const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
+        addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
        arrangetext.appendChild(addressTag);
    }
 

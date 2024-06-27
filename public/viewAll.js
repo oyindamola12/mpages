@@ -573,12 +573,12 @@ element.style.backgroundImage = `url(${imageUrl})`;
 //Set the background image using inline CSS
        element.style.backgroundImage = `url(${imageUrl})`;
 
-     businessNameh2.textContent =  businessName;
+     businessNameh2.textContent =  businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
        timeToOpen.textContent =  openingtime;
         timeToClose.textContent = closingtime;
         email.textContent = emailData ;
        no.textContent = phoneNo;
-       address.textContent = businessAddress;
+       address.textContent = businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
          about.textContent =  aboutData;
 
            image2.src=image2Data
@@ -678,12 +678,12 @@ const myJSON = JSON.stringify(business)
 
         // Create and append h5 tag for the title
         const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
+        titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
         arrangetext.appendChild(titleTag);
 
         // Create and append span tag for the address
         const addressTag = document.createElement('span');
-        addressTag.textContent = business.data.businessAddress;
+        addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
        arrangetext.appendChild(addressTag);
 
         // Create and append p tag for the subtitle

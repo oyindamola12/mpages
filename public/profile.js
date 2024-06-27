@@ -1110,12 +1110,12 @@ async function closeButtontoSave(){
     // editInputclose.style.display = 'none';
     // editButtonclose.style.display = 'inline-block';
     // saveButtonclose.style.display = 'none';
-     location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
-
+location.reload();
 }
 
 async function addressButtontoUpdate(){

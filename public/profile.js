@@ -1026,11 +1026,12 @@ async function editButtontoSave(){
 //  saveButton.style.display = 'none';
 // shareSave.style.display = 'block';
 // shareEdit.style.display = 'none'
-location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
+  location.reload();
 }
 
 async function openButtontoUpdate(){
@@ -1069,12 +1070,12 @@ timeToOpenMyListings.style.display = 'block';
     // editInputopen.style.display = 'none';
     // editButtonopen.style.display = 'inline-block';
     // saveButtonopen.style.display = 'none';
-     location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
-
+location.reload();
 }
 
 async function closeButtontoUpdate(){
@@ -1152,12 +1153,12 @@ async function addressButtontoSave(){
     // editInputAddress.style.display = 'none';
     // editButtonAddress.style.display = 'inline-block';
     // saveButtonAddress.style.display = 'none';
-    location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
-
+location.reload();
 
 }
 
@@ -1194,11 +1195,12 @@ contactInfoNumberMyListings.textContent = newValue;
 //     editInputNumber.style.display = 'none';
 //     editButtonNumber.style.display = 'inline-block';
 //     saveButtonNumber.style.display = 'none';
-     location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
+  location.reload();
 
 }
 
@@ -1234,12 +1236,12 @@ contactInfoemailMyListings.textContent = newValue;
 //     editInputemail.style.display = 'none';
 //     editButtonemail.style.display = 'inline-block';
 //     saveButtonemail.style.display = 'none';
-     location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
-
+location.reload();
 }
 
 async function aboutButtontoUpdate(){
@@ -1274,12 +1276,12 @@ async function aboutButtontoSave(){
     // editInputAbout.style.display = 'none';
     // editButtonAbout.style.display = 'inline-block';
     // saveButtonAbout.style.display = 'none';
-    location.reload();
+
   })
   .catch(error => {
     console.error('Error updating value:', error);
   });
-
+location.reload();
 }
 
  function toggleOptionsbank() {

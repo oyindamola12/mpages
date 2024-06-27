@@ -779,7 +779,7 @@ function getFiltered(industry, location) {
       loading.style.display = 'none';
 
       items.forEach((business) => {
-        console.log(business)
+        console.log(business.data.industry)
         const arrangeitems = document.createElement('a');
         arrangeitems.classList.add('arrange-items');
 

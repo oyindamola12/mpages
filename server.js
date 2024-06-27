@@ -56,11 +56,6 @@ const upload = multer({
   storage: multer.memoryStorage(), // Store files in memory temporarily
 });
 
-app.use(session({
-  secret: 'your-secret-key', // Replace with a random string used to sign the session ID cookie
-  resave: false,
-  saveUninitialized: true
-}));
 const firebaseConfig = {
      apiKey: "AIzaSyDCeY-Tx9d2NKkPy_Vv1Qs3OwMWudqY8Ag",
           authDomain: "mpages-f2ff6.firebaseapp.com",

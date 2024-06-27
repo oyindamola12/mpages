@@ -779,7 +779,7 @@ myListings.href = "no-listings.html"
 
 
 
- async function fetchDatas( ) {
+ async function fetchDatas() {
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
@@ -791,9 +791,29 @@ alert('Choose Industry and enter a location')
                 //  localStorage.setItem('lng', JSON.stringify(longitude));
                   localStorage.setItem('industry', industry);
                    getFiltered(industry,location)
+                   mostSearch(industry)
 
 }
 
+
+}
+
+
+
+
+
+async function mostSearch(industry) {
+
+
+      const response = await fetch('https://www.mpageshub.com/MostSearched', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ industry:industry}),
+      });
+
+      const data = await response.json();
 
 }
 
@@ -921,7 +941,6 @@ function off2() {
 
 
 function payWithPaystack1() {
-
 
   var options = document.getElementById('industry').textContent;
   var email = document.getElementById('inputmail').value;

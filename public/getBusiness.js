@@ -363,15 +363,15 @@ yesNo.style.display = 'none';
 
  var nav =document.getElementById('navigateSearch');
 
-  async function fetchDatas( ) {
+  async function fetchDatas() {
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 
 if( industry === "Choose Industry" || location === null){
 alert('Choose Industry and enter a location')
 }else{
+                 mostSearch(industry)
                localStorage.setItem('location', location);
-                   localStorage.setItem('lng', JSON.stringify(longitude));
                    localStorage.setItem('industry', industry);
                    window.location.href =`listings.html?location=${location}&industryInput=${industry}`;
 
@@ -379,6 +379,40 @@ alert('Choose Industry and enter a location')
 
 
 }
+
+
+async function mostSearch(industry) {
+ const response = await fetch('https://www.mpageshub.com/MostSearched', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ industry:industry}),
+      });
+
+      const data = await response.json();
+
+}
+
+
+//   async function fetchDatas() {
+//  var industry= document.getElementById('searchIndustryInput').textContent;
+//  var location = document.getElementById('inputSuburb').textContent;
+
+// if( industry === "Choose Industry" || location === null){
+// alert('Choose Industry and enter a location')
+// }else{
+
+//               localStorage.setItem('location', JSON.stringify(location));
+//                 //  localStorage.setItem('lng', JSON.stringify(longitude));
+//                   localStorage.setItem('industry', industry);
+
+
+// }
+
+
+// }
+
 
 //  async function fetchData() {
 //  var industry= document.getElementById('searchIndustryInput').textContent;
@@ -403,6 +437,9 @@ alert('Choose Industry and enter a location')
 
 
 // }
+
+
+
   function on() {
   document.getElementById("overlaylisting").style.display = "block";
 }

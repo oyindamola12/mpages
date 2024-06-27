@@ -952,8 +952,6 @@ app.get('/businessSearch', async (req, res) => {
 
 
 
-
-
 // app.post('/searchBusinesses', async (req, res) => {
 //     const { industry, lat, lng } = req.query;
 

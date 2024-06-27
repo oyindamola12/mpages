@@ -1026,7 +1026,7 @@ async function editButtontoSave(){
  saveButton.style.display = 'none';
 shareSave.style.display = 'block';
 shareEdit.style.display = 'none'
-window.location.reload();
+location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);
@@ -1065,11 +1065,11 @@ timeToOpenMyListings.style.display = 'block';
     console.log('Value updated successfully:', data);
     // Update the UI
     timeToOpenMyListings.textContent = newValue;
-    timeToOpenMyListings.style.display = 'block';
-    editInputopen.style.display = 'none';
-    editButtonopen.style.display = 'inline-block';
-    saveButtonopen.style.display = 'none';
-     window.location.reload();
+    // timeToOpenMyListings.style.display = 'block';
+    // editInputopen.style.display = 'none';
+    // editButtonopen.style.display = 'inline-block';
+    // saveButtonopen.style.display = 'none';
+     location.reload();
   })
   .catch(error => {
     console.error('Error updating value:', error);

@@ -685,16 +685,19 @@ app.get('/getBusinesses2', async (req, res) => {
       .limit(perPage)
       .get();
 
-      const businesses = [];
-      snapshot.forEach(doc => {
+    if (snapshot.empty) {
+      // If no documents are found
+      return res.status(404).json({ message: 'No documents available' });
+    }
 
+    const businesses = [];
+    snapshot.forEach(doc => {
       businesses.push({
-      id: doc.id,
-      data:doc.data(),
-      coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
-
-});;
-    })
+        id: doc.id,
+        data: doc.data(),
+        coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
+      });
+    });
 
     res.json(businesses); // Send data as JSON response
   } catch (error) {
@@ -702,6 +705,7 @@ app.get('/getBusinesses2', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 app.post('/review', async (req, res) => {
    const reviewer = req.body.data.reviewerName;

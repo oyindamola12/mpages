@@ -621,22 +621,34 @@ try {
 });
 
 app.get('/getBusinesses', async (req, res) => {
+  try {
+    // Fetch all documents to get the count
+    const snapshot = await db.collection('BusinessLists').get();
+    const totalDocuments = snapshot.size;
 
-    try {
-    const snapshot = await db.collection('BusinessLists').limit(8).get();
+    // Generate 12 unique random indices
+    const randomIndices = new Set();
+    while (randomIndices.size < 12) {
+      const randomIndex = Math.floor(Math.random() * totalDocuments);
+      randomIndices.add(randomIndex);
+    }
+
     const businesses = [];
-    snapshot.forEach(doc => {
+    let index = 0;
 
-      businesses.push({
-      id: doc.id,
-      data: doc.data() ,
-      coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
+    // Fetch documents at the random indices
+    for (const doc of snapshot.docs) {
+      if (randomIndices.has(index)) {
+        businesses.push({
+          id: doc.id,
+          data: doc.data(),
+          coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
+        });
+      }
+      index++;
+    }
 
-});;
-
-    })
-
-    res.json( businesses );
+    res.json(businesses);
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).send('Error fetching data');

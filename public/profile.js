@@ -172,12 +172,12 @@ fetch('/api/getSingleProfile2', {
 element.style.backgroundRepeat = 'no-repeat';
  element.style.backgroundSize = 'cover';
 element.style.backgroundPosition = 'top';
-     businessNameh2.textContent =  userData.businessName;
+     businessNameh2.textContent =  userData.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
        timeToOpen.textContent =  userData.openingtime;
         timeToClose.textContent = userData.closingtime;
         email.textContent = userData.email ;
        no.textContent = userData.phoneNo;
-       address.textContent = userData.businessAddress;
+       address.textContent = userData.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
          about.textContent =  userData.about;
 
 initMap2(userData)

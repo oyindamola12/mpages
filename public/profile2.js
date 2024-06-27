@@ -136,6 +136,7 @@ fetch('/api/getSingleProfile', {
 initMap2(userData)
 display(userData)
 showDonateButton(userData)
+
     //  const location = new google.maps.LatLng( latitude,  longitude);
     //         const marker = new google.maps.Marker({
     //             position: location,

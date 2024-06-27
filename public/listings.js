@@ -630,7 +630,7 @@ async function initMap() {
 
       // Fit the map to the bounds
   map.fitBounds(bounds);
-  autocomplete = new google.maps.places.Autocomplete(input, options);
+  // autocomplete = new google.maps.places.Autocomplete(input, options);
 
   autocomplete.addListener('place_changed', function() {
     const place = autocomplete.getPlace();

@@ -93,35 +93,35 @@ function navigateToUserProfile(businessId, businesslistingId) {
           arrangetext.classList.add('arrange-text');
 
           const tictext = document.createElement('div');
-          tictext.textContent = business.data.industry;
+          tictext.textContent = business.industry;
           arrangepic.appendChild(tictext);
           tictext.classList.add('tic-text');
 
           const imgTag = document.createElement('img');
           imgTag.src =
-            business.data.Images && business.data.Images.length > 0
-              ? business.data.Images[0]
+            business.data.Images && business.Images.length > 0
+              ? business.Images[0]
               : 'img/mPagesDesigns.png';
           imgTag.alt = 'Image';
           arrangepic.appendChild(imgTag);
           imgTag.classList.add('imgs');
 
           const titleTag = document.createElement('h5');
-          titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+          titleTag.textContent = business.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
           arrangetext.appendChild(titleTag);
 
           if (signedupAlready) {
             const addressTag = document.createElement('span');
-            addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+            addressTag.textContent = business.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
             arrangetext.appendChild(addressTag);
           }
 
           const subtitleTag = document.createElement('p');
-          subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
+          subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
           arrangetext.appendChild(subtitleTag);
 
           const openingTimeTag = document.createElement('div');
-          openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
+          openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
           openingTimeTag.classList.add('open');
           arrangetext.appendChild(openingTimeTag);
 
@@ -131,12 +131,12 @@ function navigateToUserProfile(businessId, businesslistingId) {
 
           arrangeitems.addEventListener('click', () => {
             localStorage.removeItem('selectedUserId');
-            localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-            localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+            localStorage.setItem('selectedUserData', JSON.stringify(business));
+            localStorage.setItem('userDataId', JSON.stringify(business.userid));
             localStorage.setItem('selectedUserId', business.id);
-            localStorage.setItem('listingId', business.data.listingId);
-            localStorage.setItem('owner', business.data.userid);
-            navigateToUserProfile(business.data.userid, business.data.listingId);
+            localStorage.setItem('listingId', business.listingId);
+            localStorage.setItem('owner', business.userid);
+            navigateToUserProfile(business.userid, business.listingId);
           });
         });
       })
@@ -826,13 +826,13 @@ function getFiltered(industry, location) {
         appendDiv.appendChild(arrangeitems);
 
         arrangeitems.addEventListener('click', () => {
-          // localStorage.removeItem('selectedUserId');
-          // localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-          // localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-          // localStorage.setItem('selectedUserId', business.id);
-          // localStorage.setItem('listingId', business.data.listingId);
-          // localStorage.setItem('owner', business.data.userid);
-          // navigateToUserProfile(business.data.userid, business.data.listingId);
+          localStorage.removeItem('selectedUserId');
+          localStorage.setItem('selectedUserData', JSON.stringify(business));
+          localStorage.setItem('userDataId', JSON.stringify(business.userid));
+          localStorage.setItem('selectedUserId', business.id);
+          localStorage.setItem('listingId', business.listingId);
+          localStorage.setItem('owner', business.userid);
+          navigateToUserProfile(business.userid, business.listingId);
         });
       });
     })

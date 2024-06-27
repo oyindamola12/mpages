@@ -56,6 +56,11 @@ const upload = multer({
   storage: multer.memoryStorage(), // Store files in memory temporarily
 });
 
+app.use(session({
+  secret: 'your-secret-key', // Replace with a random string used to sign the session ID cookie
+  resave: false,
+  saveUninitialized: true
+}));
 const firebaseConfig = {
      apiKey: "AIzaSyDCeY-Tx9d2NKkPy_Vv1Qs3OwMWudqY8Ag",
           authDomain: "mpages-f2ff6.firebaseapp.com",
@@ -620,6 +625,40 @@ try {
   }
 });
 
+// app.get('/getBusinesses', async (req, res) => {
+//   try {
+//     // Fetch all documents to get the count
+//     const snapshot = await db.collection('BusinessLists').get();
+//     const totalDocuments = snapshot.size;
+
+//     // Generate 12 unique random indices
+//     const randomIndices = new Set();
+//     while (randomIndices.size < 12) {
+//       const randomIndex = Math.floor(Math.random() * totalDocuments);
+//       randomIndices.add(randomIndex);
+//     }
+
+//     const businesses = [];
+//     let index = 0;
+
+//     // Fetch documents at the random indices
+//     for (const doc of snapshot.docs) {
+//       if (randomIndices.has(index)) {
+//         businesses.push({
+//           id: doc.id,
+//           data: doc.data(),
+//           coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
+//         });
+//       }
+//       index++;
+//     }
+
+//     res.json(businesses);
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     res.status(500).send('Error fetching data');
+//   }
+// });
 app.get('/getBusinesses', async (req, res) => {
   try {
     // Fetch all documents to get the count
@@ -648,6 +687,9 @@ app.get('/getBusinesses', async (req, res) => {
       index++;
     }
 
+    // Store initial set of document IDs in session
+    req.session.initialDocumentIds = businesses.map(business => business.id);
+
     res.json(businesses);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -672,40 +714,78 @@ app.post('/getDonations', async (req, res) => {
   }
 });
 
+// app.get('/getBusinesses2', async (req, res) => {
+//   try {
+//     const page = parseInt(req.query.page) || 1; // Get page number from query parameter, default to 1
+//     const perPage = 4; // Number of items per page
+//     const startAt = (page - 1) * perPage;
+
+//     // Fetch data from Firestore with pagination
+//     const snapshot = await db.collection('BusinessLists')
+//       .orderBy('timestamp') // Assuming you have a createdAt field for sorting
+//       .offset(startAt)
+//       .limit(perPage)
+//       .get();
+
+//     if (snapshot.empty) {
+//       // If no documents are found
+//       return res.status(404).json({ message: 'No documents available' });
+//     }
+
+//     const businesses = [];
+//     snapshot.forEach(doc => {
+//       businesses.push({
+//         id: doc.id,
+//         data: doc.data(),
+//         coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
+//       });
+//     });
+
+//     res.json(businesses); // Send data as JSON response
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
 app.get('/getBusinesses2', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Get page number from query parameter, default to 1
-    const perPage = 4; // Number of items per page
+    const perPage = 12; // Number of items per page
+
+    // Calculate the starting point for the current page
     const startAt = (page - 1) * perPage;
 
-    // Fetch data from Firestore with pagination
+    // Fetch data from Firestore with pagination and excluding initial document IDs
     const snapshot = await db.collection('BusinessLists')
-      .orderBy('timestamp') // Assuming you have a createdAt field for sorting
-      .offset(startAt)
+      .orderBy('timestamp') // Replace with your sorting criteria
+      .startAt(startAt)
       .limit(perPage)
       .get();
 
+    // Check if there are no documents for the current page
     if (snapshot.empty) {
-      // If no documents are found
-      return res.status(404).json({ message: 'No documents available' });
+      return res.status(404).json({ message: 'No more documents available' });
     }
 
     const businesses = [];
     snapshot.forEach(doc => {
-      businesses.push({
-        id: doc.id,
-        data: doc.data(),
-        coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
-      });
+      // Ensure fetched document ID is not in initial set
+      if (!req.session.initialDocumentIds.includes(doc.id)) {
+        businesses.push({
+          id: doc.id,
+          data: doc.data(),
+          coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
+        });
+      }
     });
 
-    res.json(businesses); // Send data as JSON response
+    res.json(businesses);
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 
 app.post('/review', async (req, res) => {
    const reviewer = req.body.data.reviewerName;

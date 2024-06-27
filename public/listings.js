@@ -779,7 +779,7 @@ function getFiltered(industry, location) {
       loading.style.display = 'none';
 
       items.forEach((business) => {
-        console.log(business.data)
+        console.log(business)
         const arrangeitems = document.createElement('a');
         arrangeitems.classList.add('arrange-items');
 
@@ -790,30 +790,30 @@ function getFiltered(industry, location) {
         arrangetext.classList.add('arrange-text');
 
         const tictext = document.createElement('div');
-        tictext.textContent = business.data.industry;
+        tictext.textContent = business.industry;
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
 
         const imgTag = document.createElement('img');
-        imgTag.src = business.data.Images && business.data.Images.length > 0
-          ? business.data.Images[0]
+        imgTag.src = business.Images && business.Images.length > 0
+          ? business.Images[0]
           : 'img/mPagesDesigns.png';
         imgTag.alt = 'Image';
         arrangepic.appendChild(imgTag);
         imgTag.classList.add('imgs');
 
         const titleTag = document.createElement('h5');
-        titleTag.textContent = business.data.businessName;
+        titleTag.textContent = business.businessName;
         arrangetext.appendChild(titleTag);
 
         if (signedupAlready) {
           const addressTag = document.createElement('span');
-          addressTag.textContent = business.data.businessAddress;
+          addressTag.textContent = business.businessAddress;
           arrangetext.appendChild(addressTag);
         }
 
         const subtitleTag = document.createElement('p');
-        subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
+        subtitleTag.textContent = `${business.openingtime} - ${business.data.closingtime}`;
         arrangetext.appendChild(subtitleTag);
 
         const openingTimeTag = document.createElement('div');
@@ -826,13 +826,13 @@ function getFiltered(industry, location) {
         appendDiv.appendChild(arrangeitems);
 
         arrangeitems.addEventListener('click', () => {
-          localStorage.removeItem('selectedUserId');
-          localStorage.setItem('selectedUserData', JSON.stringify(business.data));
-          localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-          localStorage.setItem('selectedUserId', business.id);
-          localStorage.setItem('listingId', business.data.listingId);
-          localStorage.setItem('owner', business.data.userid);
-          navigateToUserProfile(business.data.userid, business.data.listingId);
+          // localStorage.removeItem('selectedUserId');
+          // localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+          // localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+          // localStorage.setItem('selectedUserId', business.id);
+          // localStorage.setItem('listingId', business.data.listingId);
+          // localStorage.setItem('owner', business.data.userid);
+          // navigateToUserProfile(business.data.userid, business.data.listingId);
         });
       });
     })

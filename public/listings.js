@@ -813,11 +813,11 @@ function getFiltered(industry, location) {
         }
 
         const subtitleTag = document.createElement('p');
-        subtitleTag.textContent = `${business.openingtime} - ${business.data.closingtime}`;
+        subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
         arrangetext.appendChild(subtitleTag);
 
         const openingTimeTag = document.createElement('div');
-        openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
+        openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
         openingTimeTag.classList.add('open');
         arrangetext.appendChild(openingTimeTag);
 

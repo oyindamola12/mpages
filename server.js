@@ -1621,23 +1621,22 @@ app.post('/businessSearch2', async (req, res) => {
 
 app.post('/api/businessSearch3', async (req, res) => {
   const selectedIndustry = req.body.industry;
-  const keywords = req.body.location.toLowerCase().split(' ').join(" ").replace(/\,/g,"");
-  try {
+  const keywords = req.body.location.toLowerCase().split(' ').join(' ').replace(/\,/g, '').split(' ');
 
-       const snapshot = await db.collection('BusinessLists')
-            .where('industry', '==', selectedIndustry)
-            .get();
+  try {
+    const snapshot = await db.collection('BusinessLists')
+      .where('industry', '==', selectedIndustry)
+      .get();
     const businesses = [];
 
     snapshot.forEach(doc => {
       const data = doc.data();
       const address = data.businessAddress.toLowerCase();
 
-
-      // Check if any keyword is included in the name or description
+      // Check if any keyword is included in the address
       const matches = keywords.some(keyword => address.includes(keyword));
       if (matches) {
-      businesses.push(data);
+        businesses.push(data);
       }
     });
 
@@ -1647,6 +1646,7 @@ app.post('/api/businessSearch3', async (req, res) => {
     res.status(500).send('Error searching items');
   }
 });
+
 
 app.post('/addDonations',async (req, res)=> {
 const amount = req.body.amount;

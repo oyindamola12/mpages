@@ -632,10 +632,10 @@ async function initMap() {
   map.fitBounds(bounds);
   // autocomplete = new google.maps.places.Autocomplete(input, options);
 
-  autocomplete.addListener('place_changed', function() {
-    const place = autocomplete.getPlace();
-    console.log(place);
-  });
+  // autocomplete.addListener('place_changed', function() {
+  //   const place = autocomplete.getPlace();
+  //   console.log(place);
+  // });
 
   const infowindow = new google.maps.InfoWindow();
   const infowindowContent = document.getElementById("infowindow-content");

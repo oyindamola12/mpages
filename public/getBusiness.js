@@ -363,7 +363,7 @@ yesNo.style.display = 'none';
 
  var nav =document.getElementById('navigateSearch');
 
-  async function fetchDatas() {
+  async function fetchData() {
  var industry= document.getElementById('searchIndustryInput').textContent;
  var location = document.getElementById('inputSuburb').value;
 

@@ -709,24 +709,96 @@ return false;
 // formData.append('postid', postid);
 // formData.append('userUid', userUid);
 
-      var handler = PaystackPop.setup({
-      key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
-       //key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
-      email:email,
-      amount: 3000 * 100,
-      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-      metadata: {
-         custom_fields: [
-            {
-                display_name: contactPerson,
-                variable_name: "mobile_number",
-                value: phoneNo
-            }
-         ]
-      },
-      callback: function  (response){
+//       var handler = PaystackPop.setup({
+//       key: 'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772',
+//        //key:'pk_test_733942352847369db55d32dc2b83d44db6b47fb1',
+//       email:email,
+//       amount: 3000 * 100,
+//       ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+//       metadata: {
+//          custom_fields: [
+//             {
+//                 display_name: contactPerson,
+//                 variable_name: "mobile_number",
+//                 value: phoneNo
+//             }
+//          ]
+//       },
+//       callback: function  (response){
 
- if (response.status){
+//  if (response.status){
+
+// var geocoder = new google.maps.Geocoder();
+//  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
+//                 if (status == google.maps.GeocoderStatus.OK) {
+//                   const latitude = results[0].geometry.location.lat();
+//                     const longitude = results[0].geometry.location.lng();
+
+
+//   fetch('https://www.mpageshub.com/addBusiness2', {
+//             method: 'POST',
+//             headers: {
+//               'Content-Type': 'application/json'
+//             },
+//  body:JSON.stringify({
+// businessName: businessName,
+//  contactPerson:contactPerson,
+//  businessAddress: businessAddress,
+//  industry:industry,
+//  openingtime: openingtime,
+//  closingtime:closingtime,
+//  phoneNo:phoneNo,
+//  about: about,
+//  email: email,
+//  addedListing:true,
+//  latitude:latitude,
+//  longitude:longitude,
+// userId:userUid,
+// wantDonation:donate,
+// userids: postid,
+
+//   })
+//            })
+//         .then(response =>  response.json())
+//         .then( async data => {
+//             console.log('Server response:', data);
+
+//             // You can handle the server response as needed
+//             localStorage.setItem('userId',data.userId);
+//             localStorage.setItem('userData', JSON.stringify(data.businesses));
+//             localStorage.setItem('signedup', 'true');
+//             localStorage.setItem('addedListings', 'true');
+//             window.location.reload();
+//             window.location.href ='my-listings.html';
+//         })
+//         .catch(error => {
+//             console.error('Error sending data to server:', error);
+//         });
+
+//   // fetch('/addImages2', {
+//   //               method: 'POST',
+//   //               body: formData
+//   //           })
+//   //           .then(response => response.json())
+//   //           .then(data => {
+//   //               console.log('Uploaded images:', data);
+//   //           })
+//   //           .catch(error => {
+//   //               console.error('Error uploading images:', error);
+//   //           });
+
+//   } else {
+//  alert("Request failed.")
+//                 }
+//             });
+
+// }
+//    },
+//       onClose: function(){
+//           alert('window closed');
+//       }
+//     });
+//     handler.openIframe();
 
 var geocoder = new google.maps.Geocoder();
  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
@@ -791,14 +863,6 @@ userids: postid,
  alert("Request failed.")
                 }
             });
-
-}
-   },
-      onClose: function(){
-          alert('window closed');
-      }
-    });
-    handler.openIframe();
   }
 
 

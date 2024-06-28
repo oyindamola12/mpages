@@ -1252,6 +1252,7 @@ async function aboutButtontoUpdate(){
   saveButtonAbout.style.display = 'inline-block';
 }
 
+
 async function aboutButtontoSave(){
 
   const newValue = editInputAbout.value;
@@ -1295,6 +1296,7 @@ location.reload();
 
             toggleOptionsbank();
   }
+  
 async function loans() {
       const email = document.getElementById('transfrEmail').value;
 
@@ -1321,6 +1323,15 @@ return false;
  } else {
         alert(`${data.error}`);
       }
+}
+
+
+  function closeIt() {
+  document.getElementById("overlaylisting").style.display = "none";
+}
+
+  function openIt() {
+  document.getElementById("overlaylisting").style.display = "block";
 }
    function selectCodeOption(value) {
 var bankCode = document.getElementById('bankCode')

@@ -298,7 +298,7 @@ timestamp: admin.firestore.FieldValue.serverTimestamp(),
 // images:uploadedUrls,
 latitude:lat,
 longitude:lng,
- listingId:uniqueId,
+ listingId:uniqueId2,
 donation:donation,
 
 });
@@ -320,7 +320,7 @@ timestamp: admin.firestore.FieldValue.serverTimestamp(),
   latitude:lat,
  longitude:lng,
 donation:donation,
-  listingId:uniqueId,
+  listingId:uniqueId2,
 
 });
 

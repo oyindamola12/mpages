@@ -82,12 +82,11 @@ return false;
       localStorage.setItem('userBusiness',JSON.stringify(data.businesses));
       localStorage.setItem('signedup', 'true');
 
-
-if (!window.location.search) {
+if (data.length !== 0) {
     window.location.href = '/my-listings.html';
 } else {
     // Parameters found in the URL
-   window.location.href = `/single-listing.html?id=${businessOwnerIds}&listingid=${listingsId}`;
+   window.location.href = `/no-listings.html`;
 }
 
 

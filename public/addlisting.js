@@ -563,7 +563,7 @@ const password =document.getElementById('password').value
 // const fileInputed = document.getElementById('fileImage').files;
 
 const signupStatus= true;
-var userids =uuidv4()
+var userids  = Math.floor(Math.random() * 1e10).toString();
 
 if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
  alert("Please fill in all mandatory fields");
@@ -812,7 +812,7 @@ var geocoder = new google.maps.Geocoder();
             headers: {
               'Content-Type': 'application/json'
             },
-            
+
  body:JSON.stringify({
 businessName: businessName,
  contactPerson:contactPerson,

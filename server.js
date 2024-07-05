@@ -39,7 +39,7 @@ function generateUniqueId() {
 }
 
 // Example usage:
-const uniqueId = Math.floor(Math.random() * 1e10).toString();
+const uniqueId =null;
 console.log(uniqueId); // Output: '3c40e28b-03b6-4695-b04d-2e0c59aa4c70'
 const PAYSTACK_SECRET_KEY= process.env.PAYSTACK_SECRET_KEY;//'pk_live_8db47ccef2cfc6bc1148849f867225a5de373772'
 const bucketName =  "gs://mpages-6ed7a.appspot.com";
@@ -106,6 +106,7 @@ app.post('/addBusiness',async (req, res, )=> {
     const userids=req.body.userids;
     const donation=req.body.wantDonation
 
+uniqueId = generateUniqueId();
 
     const user={
     email:req.body.email,
@@ -277,6 +278,9 @@ app.post('/addBusiness2',async (req, res)=> {
      const donation=req.body.wantDonation
     // const files = req.files
 // const userId=req.body.userId
+
+
+uniqueId = generateUniqueId();
 
   try {
 

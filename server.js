@@ -603,7 +603,7 @@ try {
       businesses.push({
       id: doc.id,
       data: doc.data(),
-      coordinates:{latitude:doc.data().latitude,longitude:doc.data().longitude},
+
 
 });;
     })
@@ -620,12 +620,13 @@ try {
   }
 });
 
+let lastDoc= null;
 app.get('/getBusinesses', async (req, res) => {
   try {
-    // Fetch all documents to get the count
-    const snapshot = await db.collection('BusinessLists').get();
-    const totalDocuments = snapshot.size;
 
+    // Fetch all documents to get the count
+    const snapshot = await db.collection('BusinessLists').startAfter(lastDoc||0).limit(12).get();
+    const totalDocuments = snapshot.size;
     // Generate 12 unique random indices
     const randomIndices = new Set();
     while (randomIndices.size < 12) {
@@ -642,10 +643,11 @@ app.get('/getBusinesses', async (req, res) => {
         businesses.push({
           id: doc.id,
           data: doc.data(),
-          coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
+         // coordinates: { latitude: doc.data().latitude, longitude: doc.data().longitude }
         });
       }
       index++;
+lastDoc = snapshot.docs[snapshot.docs.length-1]
     }
 
     res.json(businesses);
@@ -937,13 +939,14 @@ businessName:updateData,
 
 
 });
+
 app.post('/businessSearch', async (req, res) => {
   const selectedIndustry = req.body.industry;
   const keywords = req.body.location.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
 
   try {
     const snapshot = await db.collection('BusinessLists')
-      .where('industry', '==', selectedIndustry)
+      .where('industry', '==', selectedIndustry )
       .get();
 
     const businesses = [];
@@ -966,8 +969,6 @@ app.post('/businessSearch', async (req, res) => {
     res.status(500).send('Error searching items');
   }
 });
-
-
 
 
 // app.post('/searchBusinesses', async (req, res) => {
@@ -1472,6 +1473,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   const distance = R * c;
   return distance;
 }
+
 // Function to convert degrees to radians
 function deg2rad(deg) {
   return deg * (Math.PI / 180);
@@ -1818,6 +1820,7 @@ timestamp: admin.firestore.FieldValue.serverTimestamp(),
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 app.post('/mostSearched',async (req, res)=> {
 const amount = req.body.OtherAmount;
 const email = req.body.email;

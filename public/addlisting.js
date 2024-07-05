@@ -657,7 +657,7 @@ var geocoder = new google.maps.Geocoder();
 
 }
 
- async function pay2(){
+async function pay2(){
 const businessName = document.getElementById('businessName').value;
 const contactPerson = document.getElementById('contactPerson').value;
 const industry =  document.querySelector('.select-styled').textContent;
@@ -812,6 +812,7 @@ var geocoder = new google.maps.Geocoder();
             headers: {
               'Content-Type': 'application/json'
             },
+            
  body:JSON.stringify({
 businessName: businessName,
  contactPerson:contactPerson,

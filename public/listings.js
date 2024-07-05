@@ -552,6 +552,8 @@ if (!window.location.search) {
   toggleData();
 }
 
+
+
  function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
             .then(response => {

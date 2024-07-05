@@ -51,11 +51,7 @@ var businessOwnerIds = getUrlParameter('id');
       // Fit the map to the bounds
       map.fitBounds(bounds);
     }
- if (signedupAlready === 'true' && addedListings === 'true') {
-myListings.href = "my-listings.html"
-   } else {
-myListings.href = "no-listings.html"
-    }
+
 
 async function login() {
       const email = document.getElementById('loginEmail').value;

@@ -299,6 +299,8 @@ arrangeitems.href =`business-profile.html?businessName=${business.data.businessN
 
 
 //       toggleData2()
+
+
 function navigateToUserProfile2(businessId, businesslistingId) {
         // Redirect to the user profile page with the user ID as a query parameter
         window.location.href = `/business-profile.html?id=${businessId}&listingid=${ businesslistingId}`;

@@ -625,7 +625,7 @@ app.get('/getBusinesses', async (req, res) => {
   try {
 
     // Fetch all documents to get the count
-    const snapshot = await db.collection('BusinessLists').startAfter(lastDoc||0).limit(12).get();
+    const snapshot = await db.collection('BusinessLists').get();
     const totalDocuments = snapshot.size;
     // Generate 12 unique random indices
     const randomIndices = new Set();
@@ -647,7 +647,7 @@ app.get('/getBusinesses', async (req, res) => {
         });
       }
       index++;
-lastDoc = snapshot.docs[snapshot.docs.length-1]
+
     }
 
     res.json(businesses);

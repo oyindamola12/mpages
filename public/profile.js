@@ -57,9 +57,12 @@ var shareEdit = document.getElementById('shareEdit');
 var accountNumber = document.getElementById('accountNumber')
 var rollingindicator2=document.getElementById('rolling-indicator2')
 
+ const imgCont2 = document.getElementById('imagePreview2');
+ console.log(imgCont2)
 // var bankName=document.getElementById('bank')
 // Set the image URL
 let listingId=selectedBusinessData.listingId
+
 // console.log(selectedBusinessId )
 
 //  fetch('https://www.mpageshub.com/getMyListings', {
@@ -144,6 +147,7 @@ let listingId=selectedBusinessData.listingId
 //       console.log('Error fetching items:', error);
 //     });
 var signedupAlready=  localStorage.getItem('signedup');
+
  function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -510,9 +514,15 @@ async function fetchDonate2() {
 
 fetchDonate2()
 
+
+
+
 function previewImages(event) {
+  let selectedFiles = [];
+
     var imgCont = document.getElementById('imagePreview2');
     for (let i = 0; i < event.target.files.length; i++) {
+        selectedFiles.push(event.target.files[i]);
         var divElm = document.createElement('div');
         divElm.id = "rowdiv" + i;
 
@@ -532,9 +542,11 @@ function previewImages(event) {
         deleteImg.style.lineHeight = "20px";
         deleteImg.style.color = "black";
         deleteImg.style.marginBottom = "10px";
-          deleteImg.style.marginLeft = "80%";
+        deleteImg.style.marginLeft = "80%";
         deleteImg.onclick = function() {this.parentNode.remove()}; // Delete button click event
-
+        //deleteImg.onclick = function() {
+          //  removeImage(index);
+        //};
         var image = document.createElement('img');
         image.src = URL.createObjectURL(event.target.files[i]);
         image.id = "output" + i;
@@ -671,7 +683,7 @@ var editIcon7 = document.querySelector(".my-selector7")
   var shareEdit = document.getElementById('shareEdit');
   // var openImage=document.getElementById('fileImage')
   // openImage.click();
-    shareEdit.style.display='none'
+  shareEdit.style.display='none'
   shareSave.style.display='block'
   editIcon1.style.display='block'
   editIcon2.style.display='block'
@@ -1296,7 +1308,7 @@ location.reload();
 
             toggleOptionsbank();
   }
-  
+
 async function loans() {
       const email = document.getElementById('transfrEmail').value;
 

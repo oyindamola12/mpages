@@ -455,6 +455,10 @@ noloading.style.display = 'block';
 }
 loading.style.display = 'none';
 
+if(loading.style.display === 'block'){
+   nextbtn.style.display = 'none';
+}
+
  // Populate the list in the HTML with specified tags
 //    var industry = document.querySelector('.select-styled2').textContent;
     for (let i = 0; i < items.length; i++) {

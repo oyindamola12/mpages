@@ -3720,7 +3720,7 @@ contact-section .contact-add img {
 
 
 @media only screen and (max-width: 800px) {
-	.contact-add2 {
+	/* .contact-add2 {
 		background-color: #ffd200;
 		width: 700px;
 		height: 440px;
@@ -3733,7 +3733,7 @@ contact-section .contact-add img {
 
 
 
-	}
+	} */
 .inputandEmailMove{
 	margin-top: 110px;
 }
@@ -3756,6 +3756,26 @@ contact-section .contact-add img {
 }
 
 }
+@media only screen and (min-width: 551px) and (max-width: 800px) {
+
+	.contact-add2 {
+		background-color: #ffd200;
+		width: 400px;
+		height: 800px;
+		border-radius: 20px;
+		position: absolute;
+		top: 20%;
+		left: 50%;
+		margin-top: -100px;
+		margin-left: -210px;
+
+		/* background-repeat: no-repeat;
+		/* background-size: 100% 100%; */
+
+
+	}
+}
+
 
 @media only screen and (min-width: 421px) and (max-width: 800px) {
 #overlaylisting{
@@ -3796,31 +3816,6 @@ align-self: center;
 
 	}
 
-	.contact-add2 {
-
-		background-color: #ffd200;
-		width: 400px;
-		height: 800px;
-		border-radius: 20px;
-
-		position: absolute;
-		top: 20%;
-		left: 50%;
-		margin-top: -100px;
-		margin-left: -210px;
-
-
-
-
-
-
-
-
-		/* background-repeat: no-repeat;
-		/* background-size: 100% 100%; */
-
-
-	}
 
 	.contact-addSpace{
 
@@ -4698,18 +4693,38 @@ margin-bottom: 15px;
 
 
 	} */
-	.contact-add2 {
+	/* .contact-add2 {
 
 		background-color: #ffd200;
 		width: 80%;
-		height:800px;
+		height:700px;
 		border-radius: 20px;
-/* padding: 20px; */
-		position:sticky;
-	margin-left: 10%;
-	margin-right: 20%;
-	  top: 20%;
+padding: 20px;
 
+position: absolute;
+	margin-left: 1%;
+
+	  top: 20%;
+	  left: 10%;
+	  margin-top: -2px;
+	  margin-left: -4px;
+
+
+	} */
+
+	.contact-add2 {
+		background-color: #ffd200;
+		width: 80%;
+		height: 700px;
+		border-radius: 20px;
+		position: absolute;
+		top: 20%;
+		left: 10%;
+		margin-top: -2px;
+		margin-left: -4px;
+
+		/* background-repeat: no-repeat;
+		/* background-size: 100% 100%; */
 
 
 	}

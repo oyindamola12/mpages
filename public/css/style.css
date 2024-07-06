@@ -166,7 +166,19 @@ img {
 	height: auto;
 }
 
+#transfrTexttitle{
+	color: #4744c4;
+	font-weight: 200;
+}
 
+#transfrTextp{
+	color: #4744c4;
+}
+#transfrTextp2{
+	color: #4744c4;
+	font-size: 19px;
+	line-height: 25px;
+}
 .select-styled4 {
 	display: inline-block;
 	padding: 16px 34px;
@@ -1862,12 +1874,13 @@ margin-bottom: 15px;
 
 .app-section .app-text ul li {
 	list-style: none;
-	background: #ffc946;
+	background: #fff;
 	margin-bottom: 19px;
-	padding: 11px 0 14px 30px;
+	padding: 10px 20px;
 	color: #000;
 	font-size: 15px;
-	border-radius: 5px;
+	border-radius: 50px;
+	border: 1px solid #4744c4;
 }
 
 .app-section .app-text ul li i,
@@ -4379,7 +4392,7 @@ align-self: center;
 		right: 0;
 	}
 	.app-section .app-text ul li {
-		padding: 10px 20px;
+		/* padding: 10px 20px; */
 	}
 	.footer-section .newslatter-form button {
 		max-width: 292px;

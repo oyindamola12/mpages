@@ -1902,4 +1902,18 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
     }
 });
 
+app.get('/datalist', async (req, res) => {
+  try {
+    const snapshot = await db.collection('BusinessLists').get();
+    const users = [];
+    snapshot.forEach(doc => {
+      users.push({ id: doc.id, ...doc.data() });
+    });
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).send('Error fetching users');
+  }
+});
+
 app.listen(PORT, ()=> console.log('App is listening on url http://localhost:' + PORT))

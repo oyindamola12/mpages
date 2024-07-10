@@ -229,6 +229,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
 }
 
  async function searchbyLocationParams (){
+    appendDiv.innerHTML = '';
   const keywords = locations.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
     const ref =db.collection('BusinessLists').where('industry', '==', industrySearch ).orderBy('createdAt').startAfter(lastDocument2||0).limit(12);
 const data = await ref.get();
@@ -238,6 +239,8 @@ const data = await ref.get();
 }
   const keywordArray = keywords.split(' ');
 let template ='';
+nextbtn2.style.display = data && data.length >= 12 ? 'block' : 'none';
+        noloading.style.display = data.length === 0 ? 'block' : 'none';
 data.docs.forEach(doc =>{
 
   const businesses = doc.data();
@@ -250,8 +253,7 @@ data.docs.forEach(doc =>{
 
 
     //const address = businesses.businessAddress.toLowerCase();
-nextbtn2.style.display = businesses && businesses.length >= 12 ? 'block' : 'none';
-        noloading.style.display = businesses.length === 0 ? 'block' : 'none';
+
 
       // Check if any keyword is included in the address
       const matches = keywordArray.some(keyword => address.includes(keyword));
@@ -300,13 +302,17 @@ nextbtn2.removeEventListener('click', handleLoadMore2 )
 }
 
  async function searchbyLocationParams2 (){
+    appendDiv.innerHTML = '';
  const ref =db.collection('BusinessLists').where('industry', '==', industryInputview ).orderBy('createdAt').startAfter(lastDocument3||0).limit(12);
 const data = await ref.get();
-let template ='';
  loading.style.display = data ? 'none' : 'block';
  if(loading.style.display === 'block'){
    nextbtn3.style.display = 'none';
 }
+nextbtn3.style.display = data && data.length >= 12 ? 'block' : 'none';
+noloading.style.display = data.length === 0 ? 'block' : 'none';
+let template ='';
+
 data.docs.forEach(doc =>{
   const businesses = doc.data();
     if(businesses){
@@ -316,8 +322,6 @@ data.docs.forEach(doc =>{
 
 }
 
-nextbtn3.style.display = businesses && businesses.length >= 12 ? 'block' : 'none';
-noloading.style.display = businesses.length === 0 ? 'block' : 'none';
 
   template += `
   <a class ="arrange-items">
@@ -699,6 +703,14 @@ async function noparams2(){
 const ref =db.collection('BusinessLists').orderBy('createdAt').startAfter(lastDocument||0).limit(12);
 const data = await ref.get();
  loading.style.display = data ? 'none' : 'block';
+   if(data&&data.length >=12){
+nextbtn.style.display = 'block';
+}else{
+  nextbtn.style.display = 'none';
+}
+if(data.length === 0){
+noloading.style.display = 'block';
+}
 if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
 }
@@ -711,14 +723,7 @@ if(businesses){
   nextbtn4.style.display='none';
 
 }
-  if(businesses&&businesses.length >=12){
-nextbtn.style.display = 'block';
-}else{
-  nextbtn.style.display = 'none';
-}
-if(businesses.length === 0){
-noloading.style.display = 'block';
-}
+
 // loading.style.display = 'none';
 
 
@@ -786,6 +791,10 @@ const data = await ref.get();
      if(loading.style.display === 'block'){
    nextbtn4.style.display = 'none';
 }
+  //const address = businesses.businessAddress.toLowerCase();
+nextbtn4.style.display = data && data.length >= 12 ? 'block' : 'none';
+        noloading.style.display = data.length === 0 ? 'block' : 'none';
+
   const keywordArray = keywords.split(' ');
 let template ='';
 data.docs.forEach(doc =>{
@@ -799,9 +808,6 @@ data.docs.forEach(doc =>{
 }
 
 
-    //const address = businesses.businessAddress.toLowerCase();
-nextbtn4.style.display = businesses && businesses.length >= 12 ? 'block' : 'none';
-        noloading.style.display = businesses.length === 0 ? 'block' : 'none';
 
       // Check if any keyword is included in the address
       const matches = keywordArray.some(keyword => address.includes(keyword));

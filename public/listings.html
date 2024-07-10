@@ -658,7 +658,11 @@
                <div class="pagination-num" id="rowId">
                <p id="loading" style="font-size: 20px ;" >Loading...</p>
                 <p id="noloading" style="font-size: 20px ; display: none;" >No listings available</p>
-                <button id="next-btn" onclick="handlePagination('next')" style="margin-top: -20px,">Load More</button>
+                <!-- <button id="next-btn" onclick="handlePagination('next')" style="margin-top: -20px,">Load More</button> -->
+                <button id="next-btn"  style="margin-top: -20px,">Load More</button>
+                <button id="next-btn2"  style="margin-top: -20px,">Load More</button>
+                <button id="next-btn3"  style="margin-top: -20px,">Load More</button>
+                <button id="next-btn4"  style="margin-top: -20px,">Load More</button>
 
 
     </div>
@@ -678,23 +682,23 @@
                 <div class="col-lg-6 offset-lg-1">
                     <div class="app-text">
                         <div class="section-title">
-                            <h2>App Coming Soon!</h2>
-                            <p>Search. Engage the Ummah. Connect.</p>
+                            <h2 id="transfrTexttitle">Get Zero Interest<br> Business Loans!</h2>
+                            <p id="transfrTextp"> Transfr your all-in-one financial freedom app!</p>
                         </div>
-                        <p>M.Pages App, the Muslim Yellow Pages
-                            in the palm of your hand, is coming soon!
-                            It is built to empower listed businesses
-                            with unparalleled access to over 40 million
-                            Muslim customers. M.Pages offers enhanced visibility
-                            and exposure within the Muslim community, fostering
-                            growth and success.
+                        <p id="transfrTextp2">
+                            Say goodbye to interests on loans with our
+                            zero-interest lending. Effortlessly manage
+                            bills, transfer funds, and send money
+                            phone-screen to phone-screen, all within
+                            a seamless experience.
                         </p>
                         <ul>
-                            <li><i class="fa fa-check"></i> Reach over 40 million Muslim consumers effortlessly.</li>
-                            <li><i class="fa fa-check"></i>Showcase halal products and services to targeted demographics.</li>
-                            <li><i class="fa fa-check"></i> Boost visibility and connect with eager Muslim clientele seamlessly.</li>
+
+                            <li  id="transfrTextp"> Send money, receive money instantly. No bank transfer  <span style="font-style: italic; ">wahala</span>.</li>
+                            <li  id="transfrTextp">Buy phone credits. Buy data. Pay all your bills. All in one button. </li>
+                            <li  id="transfrTextp"> Get instant <span style="font-style: italic; ">zero </span> interest business loans.</li>
                         </ul>
-                        <a href="#"><img src="img/apple-store.jpg" alt=""></a>
+
                         <a href="#"><img src="img/google-store.jpg" alt=""></a>
                     </div>
                 </div>
@@ -802,12 +806,28 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
 
+     <script>
+     const firebaseConfig = {
+     apiKey: "AIzaSyDCeY-Tx9d2NKkPy_Vv1Qs3OwMWudqY8Ag",
+          authDomain: "mpages-f2ff6.firebaseapp.com",
+       //databaseURL: "https://mpages-6ed7a-default-rtdb.firebaseio.com",
+          projectId: "mpages-f2ff6",
+          storageBucket: "mpages-f2ff6.appspot.com",
+          messagingSenderId: "838976424438",
+          appId: "1:838976424438:web:1c7ac4525119b361de9fd7"
+};
+
+      // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    </script>
     <script  src="./listings.js"></script>
 <!-- <script src="./index.js"></script> -->
-
-    <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOGikfQraj0VsJPnpJMqgm5IORGCRIcTo&libraries=places&loading=async&callback=initMap">
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOGikfQraj0VsJPnpJMqgm5IORGCRIcTo&libraries=places&loading=async&callback=initMap">
 </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

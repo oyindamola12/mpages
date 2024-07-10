@@ -59,6 +59,7 @@ const upload = multer({
 const firebaseConfig = {
      apiKey: "AIzaSyDCeY-Tx9d2NKkPy_Vv1Qs3OwMWudqY8Ag",
           authDomain: "mpages-f2ff6.firebaseapp.com",
+       //databaseURL: "https://mpages-6ed7a-default-rtdb.firebaseio.com",
           projectId: "mpages-f2ff6",
           storageBucket: "mpages-f2ff6.appspot.com",
           messagingSenderId: "838976424438",
@@ -105,6 +106,8 @@ app.post('/addBusiness',async (req, res, )=> {
     const signupStatus=req.body.signupStatus;
     const userids=req.body.userids;
     const donation=req.body.wantDonation
+    const country= req.body.country;
+    const city = req.body.city
 
 
     const user={
@@ -182,6 +185,8 @@ await  userListings.set({
  longitude:lng,
  listingId:userids,
  donation:donation,
+ country:country,
+ city:city
 
 });
 
@@ -203,6 +208,8 @@ await businessDb.set({
   longitude:lng,
   listingId:userids,
   donation:donation,
+  country:country,
+ city:city
 
 
 });
@@ -274,7 +281,9 @@ app.post('/addBusiness2',async (req, res)=> {
     const userids = req.body.userids;
     const lat = req.body.latitude;
     const lng = req.body.longitude
-     const donation=req.body.wantDonation
+    const donation=req.body.wantDonation
+    const country= req.body.country;
+    const city = req.body.city
     // const files = req.files
 // const userId=req.body.userId
 const uniqueId2 = Math.floor(Math.random() * 1e10).toString();
@@ -300,6 +309,8 @@ latitude:lat,
 longitude:lng,
  listingId:uniqueId2,
 donation:donation,
+ country:country,
+ city:city
 
 });
 
@@ -321,6 +332,8 @@ timestamp: admin.firestore.FieldValue.serverTimestamp(),
  longitude:lng,
 donation:donation,
   listingId:uniqueId2,
+   country:country,
+ city:city
 
 });
 
@@ -1555,21 +1568,16 @@ app.post('/businessSearch2', async (req, res) => {
 
     const selectedIndustry = req.body.industry;
    // Convert longitude to float
-
     // Query Firestore collection based on selected industry
     const querySnapshot = await db.collection('BusinessLists')
       .where('industry', '==', selectedIndustry)
       .get();
-
     // Initialize an array to store filtered data
     const businesses = [];
-
     // Iterate through query snapshot
-
   querySnapshot.forEach(doc => {
       // const userData = doc.data();
       // let imageUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficonduck.com%2Ficons%2F251659%2Fprofile&psig=AOvVaw3ku22wSMS48htbmTL7nJO6&ust=1710111591417000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjDzaak6IQDFQAAAAAdAAAAABAE';
-
       // if (userData.images && userData.images.length > 0) {
       //   imageUrl = userData.images[0];
       // }
@@ -1577,7 +1585,7 @@ app.post('/businessSearch2', async (req, res) => {
       businesses.push({
       id: doc.id,
       data: doc.data(),
-      // imageUrl :imageUrl
+
 });
 
  })

@@ -1,7 +1,12 @@
 let map;
 let map2;
 let appendDiv = document.getElementById('col-lg-5');
+let lastDocument = null
+let lastDocument2 = null
+let lastDocument3 = null
+let lastDocument4 = null
 
+//var loadMore = document.getElementById('next-btn');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
 let inputIndustry =localStorage.getItem('industry');
@@ -18,7 +23,7 @@ var userDataId =localStorage.getItem('userDataId');
 var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 // console.log(storedUserData.image1)
 var userUid =localStorage.getItem('userId');
- let currentPage = 1;
+let currentPage = 1;
 const itemsPerPage = 12;
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
@@ -26,17 +31,18 @@ const itemsPerPage = 12;
 //  loading.style.display = 'block';
 var getBusinessesData = true;
 var searchwithin=false
-
 var nextbtn= document.getElementById('next-btn');
-// console.log(userUid)
+var nextbtn2= document.getElementById('next-btn2');
+var nextbtn3= document.getElementById('next-btn3');
+var nextbtn4= document.getElementById('next-btn4');
 
+// console.log(userUid)
  function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             var results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
+ };
 
 var industrySearch = getUrlParameter('industryInput');
 var locations = getUrlParameter('location');
@@ -49,15 +55,14 @@ function getUrlParameter2(name) {
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             var results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
+};
 
 function getUrlParameter3(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             var results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
+};
 
 var industryInputview = getUrlParameter3('industryInputview');
 
@@ -223,7 +228,153 @@ function navigateToUserProfile(businessId, businesslistingId) {
   }
 }
 
+ async function searchbyLocationParams (){
+  const keywords = locations.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
+    const ref =db.collection('BusinessLists').where('industry', '==', industrySearch ).orderBy('createdAt').startAfter(lastDocument2||0).limit(12);
+const data = await ref.get();
+     loading.style.display = data ? 'none' : 'block';
+     if(loading.style.display === 'block'){
+   nextbtn2.style.display = 'none';
+}
+  const keywordArray = keywords.split(' ');
+let template ='';
+data.docs.forEach(doc =>{
 
+  const businesses = doc.data();
+  if(businesses){
+  nextbtn.style.display='none';
+  nextbtn3.style.display='none';
+  nextbtn4.style.display='none';
+
+}
+
+
+    //const address = businesses.businessAddress.toLowerCase();
+nextbtn2.style.display = businesses && businesses.length >= 12 ? 'block' : 'none';
+        noloading.style.display = businesses.length === 0 ? 'block' : 'none';
+
+      // Check if any keyword is included in the address
+      const matches = keywordArray.some(keyword => address.includes(keyword));
+      if (matches) {
+          template += `
+  <a class ="arrange-items">
+  <div class="arrange-pic">
+  <div class="tic-text">${businesses.industry}</div>
+
+<img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
+  </div>
+
+
+<div class= "arrange-text">
+  <h5>
+${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
+  </h5>
+
+  <span>
+${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
+  </span>
+  <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
+
+  <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
+</div>
+
+  </a>`
+      }
+ arrangeitems.innerHTML += template;
+       arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(businesses));
+        localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
+        localStorage.setItem('selectedUserId', businesses.id);
+        localStorage.setItem('listingId', businesses.listingId);
+        localStorage.setItem('owner', businesses.userid);
+        navigateToUserProfile(businesses.userid,businesses.listingId);
+      });
+
+      lastDocument2 = data.docs[data.docs.length-1]
+
+      if(data.empty){
+nextbtn2.removeEventListener('click', handleLoadMore2 )
+      }
+})
+}
+
+ async function searchbyLocationParams2 (){
+ const ref =db.collection('BusinessLists').where('industry', '==', industryInputview ).orderBy('createdAt').startAfter(lastDocument3||0).limit(12);
+const data = await ref.get();
+let template ='';
+ loading.style.display = data ? 'none' : 'block';
+ if(loading.style.display === 'block'){
+   nextbtn3.style.display = 'none';
+}
+data.docs.forEach(doc =>{
+  const businesses = doc.data();
+    if(businesses){
+  nextbtn.style.display='none';
+  nextbtn2.style.display='none';
+  nextbtn4.style.display='none';
+
+}
+
+nextbtn3.style.display = businesses && businesses.length >= 12 ? 'block' : 'none';
+noloading.style.display = businesses.length === 0 ? 'block' : 'none';
+
+  template += `
+  <a class ="arrange-items">
+  <div class="arrange-pic">
+  <div class="tic-text">${businesses.industry}</div>
+
+<img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
+  </div>
+
+
+<div class= "arrange-text">
+  <h5>
+${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
+  </h5>
+
+  <span>
+${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
+  </span>
+  <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
+
+  <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
+</div>
+
+  </a>`
+
+
+
+})
+
+
+ arrangeitems.innerHTML += template;
+       arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(businesses));
+        localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
+        localStorage.setItem('selectedUserId', businesses.id);
+        localStorage.setItem('listingId', businesses.listingId);
+        localStorage.setItem('owner', businesses.userid);
+        navigateToUserProfile(businesses.userid,businesses.listingId);
+      });
+
+      lastDocument3 = data.docs[data.docs.length-1]
+
+      if(data.empty){
+nextbtn3.removeEventListener('click', handleLoadMore3 )
+      }
+}
+
+ async function toggleData2() {
+if (industrySearch && locations) {
+searchbyLocationParams()
+}
+
+if (industryInputview) {
+searchbyLocationParams2()
+  }
+}
 
 //   function toggleData2(){
 
@@ -437,10 +588,9 @@ function navigateToUserProfile(businessId, businesslistingId) {
 //   }
 
 //   }
+
 function noparams(){
-
-
-    fetch('https://www.mpageshub.com/getBusinesses')
+ fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
 
@@ -449,7 +599,6 @@ nextbtn.style.display = 'block';
 }else{
   nextbtn.style.display = 'none';
 }
-
 if(items.length === 0){
 noloading.style.display = 'block';
 }
@@ -465,17 +614,14 @@ if(loading.style.display === 'block'){
 
       const business = items[i];
 
-
 // console.log( business.data.Images[1])
 // const filteredArray = items.filter(obj => obj.data.industry=== 'baker');
 // console.log( filteredArray)
 
-const images = JSON.stringify(business.data.Images);
-
+    const images = JSON.stringify(business.data.Images);
 // Construct the URL with the serialized array as a query parameter
 
-   const arrangeitems= document.createElement('a');
-
+    const arrangeitems= document.createElement('a');
 
       arrangeitems.classList.add('arrange-items');
 
@@ -495,7 +641,6 @@ const images = JSON.stringify(business.data.Images);
         arrangepic.appendChild(tictext);
         tictext.classList.add('tic-text');
         const imgTag = document.createElement('img');
-
         imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png'
        // Assuming you have an 'imageUrl' property in your data
         imgTag.alt = 'Image'; // Provide alternative text for accessibility
@@ -511,9 +656,9 @@ const images = JSON.stringify(business.data.Images);
         // Create and append span tag for the address v
 
        if (signedupAlready) {
- const addressTag = document.createElement('span');
+        const addressTag = document.createElement('span');
         addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-       arrangetext.appendChild(addressTag);
+        arrangetext.appendChild(addressTag);
    }
 
 
@@ -542,6 +687,7 @@ const images = JSON.stringify(business.data.Images);
       });
 
   }
+
     })
     .catch(error => {
       console.log('Error fetching items:', error);
@@ -549,14 +695,206 @@ const images = JSON.stringify(business.data.Images);
 
 }
 
-if (!window.location.search) {
-     noparams()
-} else {
-    // Parameters found in the URL
-  toggleData();
+async function noparams2(){
+const ref =db.collection('BusinessLists').orderBy('createdAt').startAfter(lastDocument||0).limit(12);
+const data = await ref.get();
+ loading.style.display = data ? 'none' : 'block';
+if(loading.style.display === 'block'){
+   nextbtn.style.display = 'none';
+}
+let template ='';
+data.docs.forEach(doc =>{
+  const businesses = doc.data();
+if(businesses){
+  nextbtn2.style.display='none';
+  nextbtn3.style.display='none';
+  nextbtn4.style.display='none';
+
+}
+  if(businesses&&businesses.length >=12){
+nextbtn.style.display = 'block';
+}else{
+  nextbtn.style.display = 'none';
+}
+if(businesses.length === 0){
+noloading.style.display = 'block';
+}
+// loading.style.display = 'none';
+
+
+
+  template += `
+  <a class ="arrange-items">
+  <div class="arrange-pic">
+  <div class="tic-text">${businesses.industry}</div>
+
+<img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
+  </div>
+
+
+<div class= "arrange-text">
+  <h5>
+${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
+  </h5>
+
+  <span>
+${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
+  </span>
+  <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
+
+  <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
+</div>
+
+  </a>`
+
+
+
+})
+
+  arrangeitems.innerHTML += template;
+       arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(businesses));
+        localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
+        localStorage.setItem('selectedUserId', businesses.id);
+        localStorage.setItem('listingId', businesses.listingId);
+        localStorage.setItem('owner', businesses.userid);
+        navigateToUserProfile(businesses.userid,businesses.listingId);
+      });
+
+      lastDocument = data.docs[data.docs.length-1]
+
+      if(data.empty){
+nextbtn.removeEventListener('click', handleLoadMore )
+      }
+}
+
+ async function fetchDatas2() {
+ var industry= document.getElementById('searchIndustryInput').textContent;
+ var location = document.getElementById('inputSuburb').value;
+  const keywords = location.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
+if( industry === "Choose Industry" || location === null){
+return alert('Choose Industry and enter a location')
+}else{
+  appendDiv.innerHTML = '';
+
+  loading.style.display = 'block';
+
+    const ref =db.collection('BusinessLists').where('industry', '==', industry ).orderBy('createdAt').startAfter(lastDocument4||0).limit(12);
+const data = await ref.get();
+     loading.style.display = data ? 'none' : 'block';
+     if(loading.style.display === 'block'){
+   nextbtn4.style.display = 'none';
+}
+  const keywordArray = keywords.split(' ');
+let template ='';
+data.docs.forEach(doc =>{
+
+  const businesses = doc.data();
+  if(businesses){
+  nextbtn.style.display='none';
+  nextbtn2.style.display='none';
+  nextbtn3.style.display='none';
+
 }
 
 
+    //const address = businesses.businessAddress.toLowerCase();
+nextbtn4.style.display = businesses && businesses.length >= 12 ? 'block' : 'none';
+        noloading.style.display = businesses.length === 0 ? 'block' : 'none';
+
+      // Check if any keyword is included in the address
+      const matches = keywordArray.some(keyword => address.includes(keyword));
+      if (matches) {
+          template += `
+  <a class ="arrange-items">
+  <div class="arrange-pic">
+  <div class="tic-text">${businesses.industry}</div>
+
+<img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
+  </div>
+
+
+<div class= "arrange-text">
+  <h5>
+${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
+  </h5>
+
+  <span>
+${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
+  </span>
+  <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
+
+  <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
+</div>
+
+  </a>`
+      }
+// loading.style.display = 'none';
+
+
+
+})
+
+  arrangeitems.innerHTML += template;
+      mostSearch(industry)
+       arrangeitems.addEventListener('click', () => {
+        localStorage.removeItem('selectedUserId')
+        localStorage.setItem('selectedUserData', JSON.stringify(businesses));
+        localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
+        localStorage.setItem('selectedUserId', businesses.id);
+        localStorage.setItem('listingId', businesses.listingId);
+        localStorage.setItem('owner', businesses.userid);
+        navigateToUserProfile(businesses.userid,businesses.listingId);
+
+
+      });
+
+      lastDocument4 = data.docs[data.docs.length-1]
+
+      if(data.empty){
+nextbtn4.removeEventListener('click', handleLoadMore4 )
+      }
+
+
+}
+
+
+}
+
+//const loadMore = document.getElementById('loadMore');
+
+const handleLoadMore =()=>{
+noparams2()
+}
+
+const handleLoadMore2 =()=>{
+searchbyLocationParams()
+}
+
+const handleLoadMore3 =()=>{
+searchbyLocationParams2()
+}
+
+const handleLoadMore4 =()=>{
+fetchDatas2()
+}
+
+
+
+
+nextbtn.addEventListener('click', handleLoadMore)
+nextbtn2.addEventListener('click', handleLoadMore2)
+nextbtn3.addEventListener('click', handleLoadMore3)
+nextbtn4.addEventListener('click', handleLoadMore4)
+
+
+if (!window.location.search) {
+     noparams2()
+} else {
+    // Parameters found in the URL
+  toggleData2();
+}
 
  function fetchCoordinates() {
         fetch('https://www.mpageshub.com/getBusinesses')
@@ -684,11 +1022,9 @@ async function initMap() {
 
 window.initMap = initMap;
 
-
-  window.onload = function() {
+window.onload = function() {
             initAutocomplete();
         };
-
 
 
   //  async function initMap() {
@@ -747,9 +1083,6 @@ alert('Choose Industry and enter a location')
 
 
 }
-
-
-
 
 
 async function mostSearch(industry) {

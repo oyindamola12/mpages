@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
-    const searchInput = document.getElementById('search');
+    const searchInput = document.getElementById('searchIndustryInput');
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/datalist');
+            const response = await fetch('https://www.mpageshub.com/datalist');
             const users = await response.json();
 
             users.forEach(user => {

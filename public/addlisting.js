@@ -1,4 +1,3 @@
-
 function uuidv41() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(5)
@@ -13,14 +12,14 @@ let myListings = document.getElementById('myListings');
 const selectedBusinessId = localStorage.getItem('selectedBusinessId');
 const selectedBusinessData = JSON.parse(localStorage.getItem('selectedBusinessData'));
 var params = new URLSearchParams(window.location.search);
-    var storedUserId =localStorage.getItem('selectedUserId');
-    var userDataId =localStorage.getItem('userDataId');
-    var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
+var storedUserId =localStorage.getItem('selectedUserId');
+var userDataId =localStorage.getItem('userDataId');
+var storedUserData = JSON.parse(localStorage.getItem('selectedUserData'));
 var inputIndustry = localStorage.getItem('industry');
- var userUid =localStorage.getItem('userId');
- var paramslogin = new URLSearchParams(window.location.search);
+var userUid =localStorage.getItem('userId');
+var paramslogin = new URLSearchParams(window.location.search);
 var hidepass =   document.getElementById('password')
- let currentPage = 1;
+let currentPage = 1;
 const itemsPerPage = 12;
 //console.log(inputIndustry)
  const loading = document.getElementById('loading');
@@ -74,6 +73,7 @@ myListings.href = "no-listings.html"
   //  } else {
 
   //   }
+
 
   var params2 = new URLSearchParams(window.location.search);
    // var storedUserId2 =localStorage.getItem('selectedUserId');
@@ -614,6 +614,8 @@ var geocoder = new google.maps.Geocoder();
  wantDonation:donate,
  addedListing:true,
  userids:userids,
+ country:country,
+city:city,
 
  })
 })
@@ -667,15 +669,16 @@ const openingtime= document.getElementById('openingtime').value;
 const closingtime = document.getElementById('closingtime').value;
 const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
+const city = document.getElementById('city').value;
+const country = document.getElementById('country').value
 const about = document.getElementById('about').value;
 // const fileInput = document.getElementById('fileImage');
-
 // // var storedUserIdlogin =localStorage.getItem('userId');
 // const fileInputed = document.getElementById('fileImage').files;
 
 let postid = uuidv41()
 
-  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''|| country === ''|| city === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
@@ -829,6 +832,9 @@ businessName: businessName,
 userId:userUid,
 wantDonation:donate,
 userids: postid,
+country:country,
+city:city,
+
 
   })
            })

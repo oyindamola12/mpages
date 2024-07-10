@@ -1656,6 +1656,18 @@ margin-bottom: 15px;
 	border-radius: 6px;
 }
 
+.categories-item .categories-text2 {
+	width: 100%;
+	max-width: 333px;
+	padding: 30px 15px 29px 48px;
+	display: inline-block;
+	position: relative;
+	/* background: #ffc946; */
+	z-index:1999;
+	border-radius: 6px;
+	/* margin-top:  0%; */
+}
+
 .categories-item .categories-text h4 {
 	color: #000;
 	font-size: 22px;

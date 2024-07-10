@@ -243,7 +243,7 @@ const data = await ref.get();
 }
   const keywordArray = keywords.split(' ');
 let template ='';
-nextbtn2.style.display = data && data.length >= 12 ? 'block' : 'none';
+nextbtn2.style.display = data.length >= 12 ? 'block' : 'none';
   noloading.style.display = data.length === 0 ? 'block' : 'none';
   nextbtn.style.display='none';
   nextbtn3.style.display='none';
@@ -315,7 +315,7 @@ const data = await ref.get();
   nextbtn2.style.display='none';
   nextbtn4.style.display='none';
 }
-nextbtn3.style.display = data && data.length >= 12 ? 'block' : 'none';
+nextbtn3.style.display =  data.length >= 12 ? 'block' : 'none';
 noloading.style.display = data.length === 0 ? 'block' : 'none';
 let template ='';
   nextbtn.style.display='none';
@@ -704,6 +704,9 @@ if(loading.style.display === 'block'){
 
 async function noparams2(){
  arrangeitems.innerHTML = '';
+  nextbtn2.style.display='none';
+  nextbtn3.style.display='none';
+  nextbtn4.style.display='none';
 const ref =db.collection('BusinessLists').orderBy('createdAt').startAfter(lastDocument||0).limit(12);
 const data = await ref.get();
  loading.style.display = data ? 'none' : 'block';
@@ -714,6 +717,10 @@ nextbtn.style.display = 'block';
 }
 if(data.length === 0){
 noloading.style.display = 'block';
+   nextbtn.style.display = 'none';
+   nextbtn2.style.display='none';
+  nextbtn3.style.display='none';
+  nextbtn4.style.display='none';
 }
 if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
@@ -722,9 +729,7 @@ if(loading.style.display === 'block'){
   nextbtn4.style.display='none';
 
 }
-  nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+
 let template ='';
 data.docs.forEach(doc =>{
   const businesses = doc.data();
@@ -794,6 +799,9 @@ return alert('Choose Industry and enter a location')
     const ref =db.collection('BusinessLists').where('industry', '==', industry ).orderBy('createdAt').startAfter(lastDocument4||0).limit(12);
 const data = await ref.get();
      loading.style.display = data ? 'none' : 'block';
+      nextbtn.style.display='none';
+  nextbtn2.style.display='none';
+  nextbtn3.style.display='none';
      if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
      nextbtn2.style.display='none';
@@ -801,11 +809,9 @@ const data = await ref.get();
   nextbtn4.style.display='none';
 }
   //const address = businesses.businessAddress.toLowerCase();
-nextbtn4.style.display = data && data.length >= 12 ? 'block' : 'none';
+nextbtn4.style.display =  data.length >= 12 ? 'block' : 'none';
         noloading.style.display = data.length === 0 ? 'block' : 'none';
- nextbtn.style.display='none';
-  nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
+
   const keywordArray = keywords.split(' ');
 let template ='';
 data.docs.forEach(doc =>{

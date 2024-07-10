@@ -822,7 +822,11 @@
 
       // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    //const db = firebase.firestore();
+    const db = initializeFirestore(firebaseApp, {
+  experimentalForceLongPolling: true, // this line
+  useFetchStreams: false, // and this line
+})
 
     </script>
     <script  src="./listings.js"></script>

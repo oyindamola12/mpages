@@ -241,13 +241,10 @@ const data = await ref.get();
 let template ='';
 nextbtn2.style.display = data && data.length >= 12 ? 'block' : 'none';
         noloading.style.display = data.length === 0 ? 'block' : 'none';
-
-          if(data){
   nextbtn.style.display='none';
   nextbtn3.style.display='none';
   nextbtn4.style.display='none';
 
-}
 data.docs.forEach(doc =>{
 
   const businesses = doc.data();
@@ -314,12 +311,9 @@ const data = await ref.get();
 nextbtn3.style.display = data && data.length >= 12 ? 'block' : 'none';
 noloading.style.display = data.length === 0 ? 'block' : 'none';
 let template ='';
- if(data){
   nextbtn.style.display='none';
   nextbtn2.style.display='none';
   nextbtn4.style.display='none';
-
-}
 data.docs.forEach(doc =>{
   const businesses = doc.data();
 
@@ -717,12 +711,9 @@ noloading.style.display = 'block';
 if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
 }
-if(data){
   nextbtn2.style.display='none';
   nextbtn3.style.display='none';
   nextbtn4.style.display='none';
-
-}
 let template ='';
 data.docs.forEach(doc =>{
   const businesses = doc.data();
@@ -798,18 +789,14 @@ const data = await ref.get();
   //const address = businesses.businessAddress.toLowerCase();
 nextbtn4.style.display = data && data.length >= 12 ? 'block' : 'none';
         noloading.style.display = data.length === 0 ? 'block' : 'none';
-
+ nextbtn.style.display='none';
+  nextbtn2.style.display='none';
+  nextbtn3.style.display='none';
   const keywordArray = keywords.split(' ');
 let template ='';
 data.docs.forEach(doc =>{
 
   const businesses = doc.data();
-  if(businesses){
-  nextbtn.style.display='none';
-  nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
-
-}
 
 
 

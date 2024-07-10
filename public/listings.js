@@ -1623,3 +1623,5 @@ window.onpopstate = function(event) {
     // Reload the page when the user navigates back
     location.reload();
   };
+
+  window.addEventListener('DOMContentLoaded', () => noparams2())

@@ -241,15 +241,17 @@ const data = await ref.get();
 let template ='';
 nextbtn2.style.display = data && data.length >= 12 ? 'block' : 'none';
         noloading.style.display = data.length === 0 ? 'block' : 'none';
-data.docs.forEach(doc =>{
 
-  const businesses = doc.data();
-  if(businesses){
+          if(data){
   nextbtn.style.display='none';
   nextbtn3.style.display='none';
   nextbtn4.style.display='none';
 
 }
+data.docs.forEach(doc =>{
+
+  const businesses = doc.data();
+
 
 
     //const address = businesses.businessAddress.toLowerCase();
@@ -312,15 +314,15 @@ const data = await ref.get();
 nextbtn3.style.display = data && data.length >= 12 ? 'block' : 'none';
 noloading.style.display = data.length === 0 ? 'block' : 'none';
 let template ='';
-
-data.docs.forEach(doc =>{
-  const businesses = doc.data();
-    if(businesses){
+ if(data){
   nextbtn.style.display='none';
   nextbtn2.style.display='none';
   nextbtn4.style.display='none';
 
 }
+data.docs.forEach(doc =>{
+  const businesses = doc.data();
+
 
 
   template += `
@@ -700,6 +702,7 @@ if(loading.style.display === 'block'){
 }
 
 async function noparams2(){
+appendDiv.innerHTML = '';
 const ref =db.collection('BusinessLists').orderBy('createdAt').startAfter(lastDocument||0).limit(12);
 const data = await ref.get();
  loading.style.display = data ? 'none' : 'block';
@@ -714,15 +717,16 @@ noloading.style.display = 'block';
 if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
 }
-let template ='';
-data.docs.forEach(doc =>{
-  const businesses = doc.data();
-if(businesses){
+if(data){
   nextbtn2.style.display='none';
   nextbtn3.style.display='none';
   nextbtn4.style.display='none';
 
 }
+let template ='';
+data.docs.forEach(doc =>{
+  const businesses = doc.data();
+
 
 // loading.style.display = 'none';
 

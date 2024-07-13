@@ -907,10 +907,10 @@ nextbtn4.addEventListener('click', handleLoadMore4)
 
 
 if (!window.location.search) {
-     noparams()
+     noparams2()
 } else {
     // Parameters found in the URL
-  toggleData();
+  toggleData2();
 }
 
  function fetchCoordinates() {

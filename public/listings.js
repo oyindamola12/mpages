@@ -901,9 +901,9 @@ fetchDatas2()
 
 
 nextbtn.addEventListener('click', handleLoadMore)
-nextbtn2.addEventListener('click', handleLoadMore2)
-nextbtn3.addEventListener('click', handleLoadMore3)
-nextbtn4.addEventListener('click', handleLoadMore4)
+// nextbtn2.addEventListener('click', handleLoadMore2)
+// nextbtn3.addEventListener('click', handleLoadMore3)
+// nextbtn4.addEventListener('click', handleLoadMore4)
 
 
 if (!window.location.search) {

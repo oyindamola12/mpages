@@ -703,7 +703,7 @@ if(loading.style.display === 'block'){
 }
 
 async function noparams2(){
- arrangeitems.innerHTML = '';
+ nextbtn.style.display = 'none'
   nextbtn2.style.display='none';
   nextbtn3.style.display='none';
   nextbtn4.style.display='none';

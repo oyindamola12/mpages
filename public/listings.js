@@ -5,7 +5,7 @@ let lastDocument = null
 let lastDocument2 = null
 let lastDocument3 = null
 let lastDocument4 = null
-
+let appendDiv = document.getElementById('col-lg-5');
 //var loadMore = document.getElementById('next-btn');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
@@ -32,9 +32,9 @@ const itemsPerPage = 12;
 var getBusinessesData = true;
 var searchwithin=false
 var nextbtn= document.getElementById('next-btn');
-var nextbtn2= document.getElementById('next-btn2');
-var nextbtn3= document.getElementById('next-btn3');
-var nextbtn4= document.getElementById('next-btn4');
+// var nextbtn2= document.getElementById('next-btn2');
+// var nextbtn3= document.getElementById('next-btn3');
+// var nextbtn4= document.getElementById('next-btn4');
 
 // console.log(userUid)
  function getUrlParameter(name) {
@@ -228,160 +228,160 @@ function navigateToUserProfile(businessId, businesslistingId) {
   }
 }
 
- async function searchbyLocationParams (){
-  arrangeitems.innerHTML = '';
-  const keywords = locations.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
-    const ref =db.collection('BusinessLists').where('industry', '==', industrySearch ).orderBy('createdAt').startAfter(lastDocument2||0).limit(12);
-const data = await ref.get();
-     loading.style.display = data ? 'none' : 'block';
-     if(loading.style.display === 'block'){
-   nextbtn2.style.display = 'none';
-     nextbtn.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+//  async function searchbyLocationParams (){
+//   arrangeitems.innerHTML = '';
+//   const keywords = locations.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
+//     const ref =db.collection('BusinessLists').where('industry', '==', industrySearch ).orderBy('createdAt').startAfter(lastDocument2||0).limit(12);
+// const data = await ref.get();
+//      loading.style.display = data ? 'none' : 'block';
+//      if(loading.style.display === 'block'){
+//   // nextbtn2 .style.display = 'none';
+//      nextbtn.style.display='none';
+//   // nextbtn3.style.display='none';
+//   // nextbtn4.style.display='none';
 
-}
-  const keywordArray = keywords.split(' ');
-let template ='';
-nextbtn2.style.display = data.length >= 12 ? 'block' : 'none';
-  noloading.style.display = data.length === 0 ? 'block' : 'none';
-  nextbtn.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+// }
+//   const keywordArray = keywords.split(' ');
+// let template ='';
+// //nextbtn2.style.display = data.length >= 12 ? 'block' : 'none';
+//   noloading.style.display = data.length === 0 ? 'block' : 'none';
+//   nextbtn.style.display='none';
+//   // nextbtn3.style.display='none';
+//   // nextbtn4.style.display='none';
 
-data.docs.forEach(doc =>{
+// data.docs.forEach(doc =>{
 
-  const businesses = doc.data();
-
-
-
-    //const address = businesses.businessAddress.toLowerCase();
-
-
-      // Check if any keyword is included in the address
-      const matches = keywordArray.some(keyword => address.includes(keyword));
-      if (matches) {
-          template += `
-  <a class ="arrange-items">
-  <div class="arrange-pic">
-  <div class="tic-text">${businesses.industry}</div>
-
-<img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
-  </div>
-
-
-<div class= "arrange-text">
-  <h5>
-${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
-  </h5>
-
-  <span>
-${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
-  </span>
-  <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
-
-  <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
-</div>
-
-  </a>`
-      }
- arrangeitems.innerHTML += template;
-    arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(businesses));
-        localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
-        localStorage.setItem('selectedUserId', businesses.id);
-        localStorage.setItem('listingId', businesses.listingId);
-        localStorage.setItem('owner', businesses.userid);
-        navigateToUserProfile(businesses.userid,businesses.listingId);
-      });
-
-      lastDocument2 = data.docs[data.docs.length-1]
-
-      if(data.empty){
-nextbtn2.removeEventListener('click', handleLoadMore2 )
-      }
-})
-}
-
- async function searchbyLocationParams2 (){
- arrangeitems.innerHTML = '';
- const ref =db.collection('BusinessLists').where('industry', '==', industryInputview ).orderBy('createdAt').startAfter(lastDocument3||0).limit(12);
-const data = await ref.get();
- loading.style.display = data ? 'none' : 'block';
- if(loading.style.display === 'block'){
-   nextbtn3.style.display = 'none';
-     nextbtn.style.display='none';
-  nextbtn2.style.display='none';
-  nextbtn4.style.display='none';
-}
-nextbtn3.style.display =  data.length >= 12 ? 'block' : 'none';
-noloading.style.display = data.length === 0 ? 'block' : 'none';
-let template ='';
-  nextbtn.style.display='none';
-  nextbtn2.style.display='none';
-  nextbtn4.style.display='none';
-data.docs.forEach(doc =>{
-  const businesses = doc.data();
+//   const businesses = doc.data();
 
 
 
-  template += `
-  <a class ="arrange-items">
-  <div class="arrange-pic">
-  <div class="tic-text">${businesses.industry}</div>
-
-<img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
-  </div>
+//     //const address = businesses.businessAddress.toLowerCase();
 
 
-<div class= "arrange-text">
-  <h5>
-${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
-  </h5>
+//       // Check if any keyword is included in the address
+//       const matches = keywordArray.some(keyword => address.includes(keyword));
+//       if (matches) {
+//           template += `
+//   <a class ="arrange-items">
+//   <div class="arrange-pic">
+//   <div class="tic-text">${businesses.industry}</div>
 
-  <span>
-${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
-  </span>
-  <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
-
-  <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
-</div>
-
-  </a>`
+// <img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
+//   </div>
 
 
+// <div class= "arrange-text">
+//   <h5>
+// ${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
+//   </h5>
 
-})
+//   <span>
+// ${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
+//   </span>
+//   <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
+
+//   <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
+// </div>
+
+//   </a>`
+//       }
+//  arrangeitems.innerHTML += template;
+//     arrangeitems.addEventListener('click', () => {
+//         localStorage.removeItem('selectedUserId')
+//         localStorage.setItem('selectedUserData', JSON.stringify(businesses));
+//         localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
+//         localStorage.setItem('selectedUserId', businesses.id);
+//         localStorage.setItem('listingId', businesses.listingId);
+//         localStorage.setItem('owner', businesses.userid);
+//         navigateToUserProfile(businesses.userid,businesses.listingId);
+//       });
+
+//       lastDocument2 = data.docs[data.docs.length-1]
+
+//       if(data.empty){
+// nextbtn2.removeEventListener('click', handleLoadMore2 )
+//       }
+// })
+// }
+
+//  async function searchbyLocationParams2 (){
+//  arrangeitems.innerHTML = '';
+//  const ref =db.collection('BusinessLists').where('industry', '==', industryInputview ).orderBy('createdAt').startAfter(lastDocument3||0).limit(12);
+// const data = await ref.get();
+//  loading.style.display = data ? 'none' : 'block';
+//  if(loading.style.display === 'block'){
+//    nextbtn3.style.display = 'none';
+//      nextbtn.style.display='none';
+//   nextbtn2.style.display='none';
+//   nextbtn4.style.display='none';
+// }
+// nextbtn3.style.display =  data.length >= 12 ? 'block' : 'none';
+// noloading.style.display = data.length === 0 ? 'block' : 'none';
+// let template ='';
+//   nextbtn.style.display='none';
+//   nextbtn2.style.display='none';
+//   nextbtn4.style.display='none';
+// data.docs.forEach(doc =>{
+//   const businesses = doc.data();
 
 
- arrangeitems.innerHTML += template;
-       arrangeitems.addEventListener('click', () => {
-        localStorage.removeItem('selectedUserId')
-        localStorage.setItem('selectedUserData', JSON.stringify(businesses));
-        localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
-        localStorage.setItem('selectedUserId', businesses.id);
-        localStorage.setItem('listingId', businesses.listingId);
-        localStorage.setItem('owner', businesses.userid);
-        navigateToUserProfile(businesses.userid,businesses.listingId);
-      });
 
-      lastDocument3 = data.docs[data.docs.length-1]
+//   template += `
+//   <a class ="arrange-items">
+//   <div class="arrange-pic">
+//   <div class="tic-text">${businesses.industry}</div>
 
-      if(data.empty){
-nextbtn3.removeEventListener('click', handleLoadMore3 )
-      }
-}
+// <img src="${businesses.Images && businesses.Images.length > 0 ?businesses.Images[0]:'img/mPagesDesigns.png'}" class="imgs">
+//   </div>
 
- async function toggleData2() {
-if (industrySearch && locations) {
-searchbyLocationParams()
-}
 
-if (industryInputview) {
-searchbyLocationParams2()
-  }
-}
+// <div class= "arrange-text">
+//   <h5>
+// ${businesses.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase())}
+//   </h5>
+
+//   <span>
+// ${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()):null}
+//   </span>
+//   <p>${businesses.openingtime+ " - " + businesses.closingtime}</p>
+
+//   <div class="open">${'Opens tomorrow at ' + businesses.openingtime}</div>
+// </div>
+
+//   </a>`
+
+
+
+// })
+
+
+//  arrangeitems.innerHTML += template;
+//        arrangeitems.addEventListener('click', () => {
+//         localStorage.removeItem('selectedUserId')
+//         localStorage.setItem('selectedUserData', JSON.stringify(businesses));
+//         localStorage.setItem('userDataId', JSON.stringify(businesses.userid));
+//         localStorage.setItem('selectedUserId', businesses.id);
+//         localStorage.setItem('listingId', businesses.listingId);
+//         localStorage.setItem('owner', businesses.userid);
+//         navigateToUserProfile(businesses.userid,businesses.listingId);
+//       });
+
+//       lastDocument3 = data.docs[data.docs.length-1]
+
+//       if(data.empty){
+// nextbtn3.removeEventListener('click', handleLoadMore3 )
+//       }
+// }
+
+//  async function toggleData2() {
+// if (industrySearch && locations) {
+// searchbyLocationParams()
+// }
+
+// if (industryInputview) {
+// searchbyLocationParams2()
+//   }
+// }
 
 //   function toggleData2(){
 
@@ -704,9 +704,9 @@ if(loading.style.display === 'block'){
 
 async function noparams2(){
  nextbtn.style.display = 'none'
-  nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+  // nextbtn2.style.display='none';
+  // nextbtn3.style.display='none';
+  // nextbtn4.style.display='none';
 const ref =db.collection('BusinessLists').orderBy('createdAt').startAfter(lastDocument||0).limit(12);
 const data = await ref.get();
  loading.style.display = data ? 'none' : 'block';
@@ -718,15 +718,15 @@ nextbtn.style.display = 'block';
 if(data.length === 0){
 noloading.style.display = 'block';
    nextbtn.style.display = 'none';
-   nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+  //  nextbtn2.style.display='none';
+  // nextbtn3.style.display='none';
+  // nextbtn4.style.display='none';
 }
 if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
-   nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+  //  nextbtn2.style.display='none';
+  // nextbtn3.style.display='none';
+  // nextbtn4.style.display='none';
 
 }
 
@@ -800,16 +800,16 @@ return alert('Choose Industry and enter a location')
 const data = await ref.get();
      loading.style.display = data ? 'none' : 'block';
       nextbtn.style.display='none';
-  nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
+  //nextbtn2.style.display='none';
+  //nextbtn3.style.display='none';
      if(loading.style.display === 'block'){
    nextbtn.style.display = 'none';
-     nextbtn2.style.display='none';
-  nextbtn3.style.display='none';
-  nextbtn4.style.display='none';
+  //    nextbtn2.style.display='none';
+  // nextbtn3.style.display='none';
+  // nextbtn4.style.display='none';
 }
   //const address = businesses.businessAddress.toLowerCase();
-nextbtn4.style.display =  data.length >= 12 ? 'block' : 'none';
+//nextbtn4.style.display =  data.length >= 12 ? 'block' : 'none';
         noloading.style.display = data.length === 0 ? 'block' : 'none';
 
   const keywordArray = keywords.split(' ');
@@ -870,7 +870,7 @@ ${signedupAlready? businesses.businessAddress.toLowerCase().replace(/\b\w/g, s =
       lastDocument4 = data.docs[data.docs.length-1]
 
       if(data.empty){
-nextbtn4.removeEventListener('click', handleLoadMore4 )
+//nextbtn4.removeEventListener('click', handleLoadMore4 )
       }
 
 
@@ -885,32 +885,32 @@ const handleLoadMore =()=>{
 noparams2()
 }
 
-const handleLoadMore2 =()=>{
-searchbyLocationParams()
-}
+// const handleLoadMore2 =()=>{
+// searchbyLocationParams()
+// }
 
-const handleLoadMore3 =()=>{
-searchbyLocationParams2()
-}
+// const handleLoadMore3 =()=>{
+// searchbyLocationParams2()
+// }
 
-const handleLoadMore4 =()=>{
-fetchDatas2()
-}
-
-
+// const handleLoadMore4 =()=>{
+// fetchDatas2()
+// }
 
 
-nextbtn.addEventListener('click', handleLoadMore)
+
+
+//nextbtn.addEventListener('click', handleLoadMore)
 // nextbtn2.addEventListener('click', handleLoadMore2)
 // nextbtn3.addEventListener('click', handleLoadMore3)
 // nextbtn4.addEventListener('click', handleLoadMore4)
 
 
 if (!window.location.search) {
-     noparams2()
+     noparams()
 } else {
     // Parameters found in the URL
-  toggleData2();
+  toggleData();
 }
 
  function fetchCoordinates() {
@@ -1117,85 +1117,85 @@ async function mostSearch(industry) {
 
 }
 
-// function getFiltered(industry, location) {
-//   arrangeitems.innerHTML = '';
-//   loading.style.display = 'block';
+function getFiltered(industry, location) {
+  arrangeitems.innerHTML = '';
+  loading.style.display = 'block';
 
-//   fetch('/api/businessSearch3', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ industry: industry, location: location }),
-//   })
-//     .then((response) => response.json())
-//     .then((items) => {
-//       nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
-//       noloading.style.display = items.length === 0 ? 'block' : 'none';
-//       loading.style.display = 'none';
+  fetch('/api/businessSearch3', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ industry: industry, location: location }),
+  })
+    .then((response) => response.json())
+    .then((items) => {
+      nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
+      noloading.style.display = items.length === 0 ? 'block' : 'none';
+      loading.style.display = 'none';
 
-//       items.forEach((business) => {
-//         console.log(business)
-//         const arrangeitems = document.createElement('a');
-//         arrangeitems.classList.add('arrange-items');
+      items.forEach((business) => {
+        console.log(business)
+        const arrangeitems = document.createElement('a');
+        arrangeitems.classList.add('arrange-items');
 
-//         const arrangepic = document.createElement('div');
-//         arrangepic.classList.add('arrange-pic');
+        const arrangepic = document.createElement('div');
+        arrangepic.classList.add('arrange-pic');
 
-//         const arrangetext = document.createElement('div');
-//         arrangetext.classList.add('arrange-text');
+        const arrangetext = document.createElement('div');
+        arrangetext.classList.add('arrange-text');
 
-//         const tictext = document.createElement('div');
-//         tictext.textContent = business.industry;
-//         arrangepic.appendChild(tictext);
-//         tictext.classList.add('tic-text');
+        const tictext = document.createElement('div');
+        tictext.textContent = business.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
 
-//         const imgTag = document.createElement('img');
-//         imgTag.src = business.Images && business.Images.length > 0
-//           ? business.Images[0]
-//           : 'img/mPagesDesigns.png';
-//         imgTag.alt = 'Image';
-//         arrangepic.appendChild(imgTag);
-//         imgTag.classList.add('imgs');
+        const imgTag = document.createElement('img');
+        imgTag.src = business.Images && business.Images.length > 0
+          ? business.Images[0]
+          : 'img/mPagesDesigns.png';
+        imgTag.alt = 'Image';
+        arrangepic.appendChild(imgTag);
+        imgTag.classList.add('imgs');
 
-//         const titleTag = document.createElement('h5');
-//         titleTag.textContent = business.businessName;
-//         arrangetext.appendChild(titleTag);
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.businessName;
+        arrangetext.appendChild(titleTag);
 
-//         if (signedupAlready) {
-//           const addressTag = document.createElement('span');
-//           addressTag.textContent = business.businessAddress;
-//           arrangetext.appendChild(addressTag);
-//         }
+        if (signedupAlready) {
+          const addressTag = document.createElement('span');
+          addressTag.textContent = business.businessAddress;
+          arrangetext.appendChild(addressTag);
+        }
 
-//         const subtitleTag = document.createElement('p');
-//         subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
-//         arrangetext.appendChild(subtitleTag);
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
+        arrangetext.appendChild(subtitleTag);
 
-//         const openingTimeTag = document.createElement('div');
-//         openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
-//         openingTimeTag.classList.add('open');
-//         arrangetext.appendChild(openingTimeTag);
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
 
-//         arrangeitems.appendChild(arrangepic);
-//         arrangeitems.appendChild(arrangetext);
-//         appendDiv.appendChild(arrangeitems);
+        arrangeitems.appendChild(arrangepic);
+        arrangeitems.appendChild(arrangetext);
+        appendDiv.appendChild(arrangeitems);
 
-//         arrangeitems.addEventListener('click', () => {
-//           localStorage.removeItem('selectedUserId');
-//           localStorage.setItem('selectedUserData', JSON.stringify(business));
-//           localStorage.setItem('userDataId', JSON.stringify(business.userid));
-//           localStorage.setItem('selectedUserId', business.id);
-//           localStorage.setItem('listingId', business.listingId);
-//           localStorage.setItem('owner', business.userid);
-//           navigateToUserProfile(business.userid, business.listingId);
-//         });
-//       });
-//     })
-//     .catch((error) => {
-//       console.error('Error updating value:', error);
-//     });
-// }
+        arrangeitems.addEventListener('click', () => {
+          localStorage.removeItem('selectedUserId');
+          localStorage.setItem('selectedUserData', JSON.stringify(business));
+          localStorage.setItem('userDataId', JSON.stringify(business.userid));
+          localStorage.setItem('selectedUserId', business.id);
+          localStorage.setItem('listingId', business.listingId);
+          localStorage.setItem('owner', business.userid);
+          navigateToUserProfile(business.userid, business.listingId);
+        });
+      });
+    })
+    .catch((error) => {
+      console.error('Error updating value:', error);
+    });
+}
 
 
 function on() {

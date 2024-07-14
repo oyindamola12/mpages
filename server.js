@@ -954,35 +954,35 @@ businessName:updateData,
 
 });
 
-app.post('/businessSearch', async (req, res) => {
-  const selectedIndustry = req.body.industry;
-  const keywords = req.body.location.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
+// app.post('/businessSearch', async (req, res) => {
+//   const selectedIndustry = req.body.industry;
+//   const keywords = req.body.location.toLowerCase().split(' ').join(' ').replace(/\,/g, '');
 
-  try {
-    const snapshot = await db.collection('BusinessLists')
-      .where('industry', '==', selectedIndustry )
-      .get();
+//   try {
+//     const snapshot = await db.collection('BusinessLists')
+//       .where('industry', '==', selectedIndustry )
+//       .get();
 
-    const businesses = [];
-    const keywordArray = keywords.split(' ');
+//     const businesses = [];
+//     const keywordArray = keywords.split(' ');
 
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const address = data.businessAddress.toLowerCase();
+//     snapshot.forEach(doc => {
+//       const data = doc.data();
+//       const address = data.businessAddress.toLowerCase();
 
-      // Check if any keyword is included in the address
-      const matches = keywordArray.some(keyword => address.includes(keyword));
-      if (matches) {
-        businesses.push(data);
-      }
-    });
+//       // Check if any keyword is included in the address
+//       const matches = keywordArray.some(keyword => address.includes(keyword));
+//       if (matches) {
+//         businesses.push(data);
+//       }
+//     });
 
-    res.status(200).json(businesses);
-  } catch (error) {
-    console.error('Error searching items', error);
-    res.status(500).send('Error searching items');
-  }
-});
+//     res.status(200).json(businesses);
+//   } catch (error) {
+//     console.error('Error searching items', error);
+//     res.status(500).send('Error searching items');
+//   }
+// });
 
 // app.post('/searchBusinesses', async (req, res) => {
 //     const { industry, lat, lng } = req.query;
@@ -1010,6 +1010,41 @@ app.post('/businessSearch', async (req, res) => {
 //         res.status(500).send('Error getting documents');
 //     }
 // });
+
+
+app.post('/businessSearch', async (req, res) => {
+  const selectedIndustry = req.body.industry;
+  const keywords = req.body.location.toLowerCase().replace(/,/g, '').split(' ');
+
+  try {
+    const snapshot = await db.collection('BusinessLists')
+      .where('industry', '==', selectedIndustry)
+      .get();
+
+    const businesses = [];
+
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const address = data.businessAddress ? data.businessAddress.toLowerCase() : '';
+      const state = data.state ? data.state.toLowerCase() : '';
+      const country = data.country ? data.country.toLowerCase() : '';
+
+      // Check if any keyword is included in the address, state, or country
+      const matchesAddress = keywords.some(keyword => address.includes(keyword));
+      const matchesState = keywords.some(keyword => state.includes(keyword));
+      const matchesCountry = keywords.some(keyword => country.includes(keyword));
+
+      if (matchesAddress || matchesState || matchesCountry) {
+        businesses.push(data);
+      }
+    });
+
+    res.status(200).json(businesses);
+  } catch (error) {
+    console.error('Error searching items', error);
+    res.status(500).send('Error searching items');
+  }
+});
 
 app.post('/updateopen', async (req, res) => {
 const userid = req.body.userUid;
@@ -1645,23 +1680,59 @@ app.post('/businessSearch2', async (req, res) => {
 //   }
 // });
 
+// app.post('/api/businessSearch3', async (req, res) => {
+//   const selectedIndustry = req.body.industry;
+
+// const keywords = req.body.location.toLowerCase().split(' ').join(' ').replace(/\,/g, '').split(' ');
+
+//   try {
+//     const snapshot = await db.collection('BusinessLists')
+//       .where('industry', '==', selectedIndustry)
+//       .get();
+//     const businesses = [];
+
+//     snapshot.forEach(doc => {
+//       const data = doc.data();
+//       const address = data.businessAddress.toLowerCase();
+
+//       // Check if any keyword is included in the address
+//       const matches = keywords.some(keyword => address.includes(keyword));
+//       if (matches) {
+//         businesses.push(data);
+//       }
+//     });
+
+//     res.status(200).json(businesses);
+//   } catch (error) {
+//     console.error('Error searching items', error);
+//     res.status(500).send('Error searching items');
+//   }
+// });
+
+
 app.post('/api/businessSearch3', async (req, res) => {
   const selectedIndustry = req.body.industry;
-  const keywords = req.body.location.toLowerCase().split(' ').join(' ').replace(/\,/g, '').split(' ');
+  const keywords = req.body.location.toLowerCase().replace(/,/g, '').split(' ');
 
   try {
     const snapshot = await db.collection('BusinessLists')
       .where('industry', '==', selectedIndustry)
       .get();
+
     const businesses = [];
 
     snapshot.forEach(doc => {
       const data = doc.data();
-      const address = data.businessAddress.toLowerCase();
+      const address = data.businessAddress ? data.businessAddress.toLowerCase() : '';
+      const state = data.state ? data.state.toLowerCase() : '';
+      const country = data.country ? data.country.toLowerCase() : '';
 
-      // Check if any keyword is included in the address
-      const matches = keywords.some(keyword => address.includes(keyword));
-      if (matches) {
+      // Check if any keyword is included in the address, state, or country
+      const matchesAddress = keywords.some(keyword => address.includes(keyword));
+      const matchesState = keywords.some(keyword => state.includes(keyword));
+      const matchesCountry = keywords.some(keyword => country.includes(keyword));
+
+      if (matchesAddress || matchesState || matchesCountry) {
         businesses.push(data);
       }
     });

@@ -134,7 +134,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
           arrangeitems.appendChild(arrangetext);
           appendDiv.appendChild(arrangeitems);
 
-          arrangeitems.addEventListener('click', () => {
+          appendDiv.addEventListener('click', () => {
             localStorage.removeItem('selectedUserId');
             localStorage.setItem('selectedUserData', JSON.stringify(business));
             localStorage.setItem('userDataId', JSON.stringify(business.userid));
@@ -211,7 +211,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
           arrangeitems.appendChild(arrangetext);
           appendDiv.appendChild(arrangeitems);
 
-          arrangeitems.addEventListener('click', () => {
+          appendDiv.addEventListener('click', () => {
             localStorage.removeItem('selectedUserId');
             localStorage.setItem('selectedUserData', JSON.stringify(business.data));
             localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
@@ -682,7 +682,7 @@ if(loading.style.display === 'block'){
         arrangeitems.appendChild(arrangepic)
         arrangeitems.appendChild(arrangetext)
         appendDiv.appendChild(arrangeitems)
-        arrangeitems.addEventListener('click', () => {
+        appendDiv.addEventListener('click', () => {
         localStorage.removeItem('selectedUserId')
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
@@ -1118,7 +1118,7 @@ async function mostSearch(industry) {
 }
 
 function getFiltered(industry, location) {
-  arrangeitems.innerHTML = '';
+  appendDiv.innerHTML = '';
   loading.style.display = 'block';
 
   fetch('/api/businessSearch3', {
@@ -1644,4 +1644,4 @@ window.onpopstate = function(event) {
     location.reload();
   };
 
-  window.addEventListener('DOMContentLoaded', () => noparams2())
+  //window.addEventListener('DOMContentLoaded', () => noparams2())

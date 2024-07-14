@@ -2501,9 +2501,9 @@ margin-bottom: 15px;
 
 .pagination-num {
 	margin-top: 15px;
-	position: absolute;
+	/* position: absolute;
 	right: 0;
-	bottom: 0;
+	bottom: 0; */
 
 }
 

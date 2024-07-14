@@ -984,7 +984,6 @@ app.post('/businessSearch', async (req, res) => {
   }
 });
 
-
 // app.post('/searchBusinesses', async (req, res) => {
 //     const { industry, lat, lng } = req.query;
 
@@ -1673,7 +1672,6 @@ app.post('/api/businessSearch3', async (req, res) => {
     res.status(500).send('Error searching items');
   }
 });
-
 
 app.post('/addDonations',async (req, res)=> {
 const amount = req.body.amount;

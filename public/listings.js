@@ -6,7 +6,7 @@ let lastDocument2 = null
 let lastDocument3 = null
 let lastDocument4 = null
 let appendDiv = document.getElementById('col-lg-5');
-var loadMore = document.getElementById('next-btn');
+//var loadMore = document.getElementById('next-btn');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
 let inputIndustry =localStorage.getItem('industry');
@@ -1596,7 +1596,7 @@ arrangeitems.href =`single-listing.html?businessName=${business.data.businessNam
         arrangeitems.appendChild(arrangetext)
         appendDiv.appendChild(arrangeitems)
 
-        arrangeitems.addEventListener('click', () => {
+        appendDiv.addEventListener('click', () => {
         localStorage.setItem('selectedUserId', business.id);
         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));

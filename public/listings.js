@@ -6,7 +6,7 @@ let lastDocument2 = null
 let lastDocument3 = null
 let lastDocument4 = null
 let appendDiv = document.getElementById('col-lg-5');
-//var loadMore = document.getElementById('next-btn');
+var loadMore = document.getElementById('next-btn');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
 let inputIndustry =localStorage.getItem('industry');
@@ -881,9 +881,9 @@ if(loading.style.display === 'block'){
 
 //const loadMore = document.getElementById('loadMore');
 
-const handleLoadMore =()=>{
-noparams2()
-}
+// const handleLoadMore =()=>{
+// noparams2()
+// }
 
 // const handleLoadMore2 =()=>{
 // searchbyLocationParams()

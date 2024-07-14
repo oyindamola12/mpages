@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.insertCell(0).textContent = user.businessName;
                 row.insertCell(1).textContent = user.industry;
                 row.insertCell(2).textContent = user.email;
-                row.insertCell(3).textContent = user.phoneNumber;
+                row.insertCell(3).textContent = user.phoneNo;
                 row.insertCell(4).textContent = user.businessAddress;
             });
         } catch (error) {

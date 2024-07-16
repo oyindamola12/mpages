@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
     const searchInput = document.getElementById('searchIndustryInput');
     const location = document.getElementById("inputSuburb");
     const userlength = document.getElementById("userlength");
 
-    const fetchData = async () => {
+
+
+document.addEventListener('DOMContentLoaded', () => {
+ const fetchData = async () => {
         try {
             const response = await fetch('https://www.mpageshub.com/datalist');
             const users = await response.json();
@@ -23,8 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    searchInput.addEventListener('keyup', () => {
-        const filter = searchInput.textContent.toLowerCase();
+
+
+    fetchData();
+});
+
+
+const filterData =()=>{
+    const filter = searchInput.textContent.toLowerCase();
         const rows = userTable.getElementsByTagName('tr');
         const getloc= location.value.toLowerCase().replace(/,/g, '').split(' ');
         Array.from(rows).forEach(row => {
@@ -36,7 +44,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.style.display = 'none';
             }
         });
-    });
-
-    fetchData();
-});
+}

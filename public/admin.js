@@ -11,7 +11,7 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                     userlength.textContent = users.length;
 
                     users.forEach(user => {
-                        refinedData.push(Object.values(item))
+                       
                         const row = userTable.insertRow();
                         row.insertCell(0).textContent = user.businessName;
                         row.insertCell(1).textContent = user.industry;

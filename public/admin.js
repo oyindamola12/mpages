@@ -53,7 +53,7 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                 try {
                     const response = await fetch('https://www.mpageshub.com/datalist');
                     const users = await response.json();
-                    allUsers = users;
+                    allUsers.push(users);
                     userlength.textContent = users.length;
                     displayUsers(users);
                 } catch (error) {
@@ -64,6 +64,7 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
             fetchData();
         });
 
+        console.log(allUsers)
         const displayUsers = (users) => {
             userTable.innerHTML = '';
             users.forEach(user => {

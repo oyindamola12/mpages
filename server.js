@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const admin = require('firebase-admin');
 const path =require('path')
 const bodyParser = require('body-parser');
+const createCsvWriter = require('csv-writer').createObjectCsvStringifier;
 const axios = require('axios');
 const { Storage } = require('@google-cloud/storage');
 const fs = require('fs');
@@ -634,7 +635,7 @@ try {
   }
 });
 
-let lastDoc= null;
+
 app.get('/getBusinesses', async (req, res) => {
   try {
 
@@ -1990,6 +1991,35 @@ app.get('/datalist', async (req, res) => {
   } catch (error) {
     console.error('Error fetching users:', error);
     res.status(500).send('Error fetching users');
+  }
+});
+
+app.get('/download', async (req, res) => {
+  try {
+    const usersSnapshot = await db.collection('users').get();
+    const users = usersSnapshot.docs.map(doc => doc.data());
+
+    // Set up the CSV writer
+    const csvWriter = createCsvWriter({
+      header: [
+        {id: 'businessName', title: 'Business Name'},
+        {id: 'industry', title: 'Industry'},
+        {id: 'email', title: 'Email'},
+        {id: 'phoneNo', title: 'Phone Number'},
+        {id: 'businessAddress', title: 'Business Address'}
+      ]
+    });
+
+    // Convert JSON to CSV
+    const csv = csvWriter.stringifyRecords(users);
+
+    // Set headers to indicate file download
+    res.setHeader('Content-Disposition', 'attachment; filename=users.csv');
+    res.setHeader('Content-Type', 'text/csv');
+    res.status(200).send(csv);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).send('Error fetching data');
   }
 });
 

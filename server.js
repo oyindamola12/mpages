@@ -1994,15 +1994,15 @@ app.get('/datalist', async (req, res) => {
   }
 });
 
-app.get('/download', async (req, res) => {
+app.get('/downloadAll', async (req, res) => {
   try {
-    const usersSnapshot = await db.collection('users').get();
+    const usersSnapshot = await db.collection('BusinessLists').get();
     const users = usersSnapshot.docs.map(doc => doc.data());
 
     // Set up the CSV writer
     const csvWriter = createCsvWriter({
       header: [
-        {id: 'businessName', title: 'Business Name'},
+        {id: 'fullName', title: 'Name'},
         {id: 'industry', title: 'Industry'},
         {id: 'email', title: 'Email'},
         {id: 'phoneNo', title: 'Phone Number'},
@@ -2023,4 +2023,62 @@ app.get('/download', async (req, res) => {
   }
 });
 
+
+app.get('/downloadPhone', async (req, res) => {
+  try {
+    const usersSnapshot = await db.collection('BusinessLists').get();
+    const users = usersSnapshot.docs.map(doc => ({
+      fullName: doc.data().fullName,
+      phoneNumber: doc.data().phoneNo
+    }));
+
+    // Set up the CSV writer
+    const csvWriter = createCsvWriter({
+      header: [
+        {id: 'fullName', title: 'Full Name'},
+        {id: 'phoneNumber', title: 'Phone Number'}
+      ]
+    });
+
+    // Convert JSON to CSV
+    const csv = csvWriter.stringifyRecords(users);
+
+    // Set headers to indicate file download
+    res.setHeader('Content-Disposition', 'attachment; filename=users.csv');
+    res.setHeader('Content-Type', 'text/csv');
+    res.status(200).send(csv);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).send('Error fetching data');
+  }
+});
+
+app.get('/downloadEmail', async (req, res) => {
+  try {
+    const usersSnapshot = await db.collection('BusinessLists').get();
+    const users = usersSnapshot.docs.map(doc => ({
+      fullName: doc.data().fullName,
+      email: doc.data().email
+    }));
+
+    // Set up the CSV writer
+    const csvWriter = createCsvWriter({
+      header: [
+        {id: 'fullName', title: 'Full Name'},
+        {id: 'email', title: 'Email'}
+      ]
+    });
+
+    // Convert JSON to CSV
+    const csv = csvWriter.stringifyRecords(users);
+
+    // Set headers to indicate file download
+    res.setHeader('Content-Disposition', 'attachment; filename=users.csv');
+    res.setHeader('Content-Type', 'text/csv');
+    res.status(200).send(csv);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).send('Error fetching data');
+  }
+});
 app.listen(PORT, ()=> console.log('App is listening on url http://localhost:' + PORT))

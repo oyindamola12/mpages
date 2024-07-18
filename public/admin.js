@@ -11,7 +11,7 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                     userlength.textContent = users.length;
 
                     users.forEach(user => {
-                       
+
                         const row = userTable.insertRow();
                         row.insertCell(0).textContent = user.businessName;
                         row.insertCell(1).textContent = user.industry;
@@ -44,3 +44,59 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                 }
             });
         }
+
+
+
+           document.getElementById('downloadAll').addEventListener('click', async () => {
+            try {
+                const response = await fetch('https://www.mpageshub.com/downloadAll');
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'users.csv';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Error downloading the file:', error);
+            }
+        });
+
+
+
+           document.getElementById('downloadPhone').addEventListener('click', async () => {
+            try {
+                const response = await fetch('https://www.mpageshub.com/downloadPhone');
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'users.csv';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Error downloading the file:', error);
+            }
+        });
+
+
+           document.getElementById('downloadEmail').addEventListener('click', async () => {
+            try {
+                const response = await fetch('https://www.mpageshub.com/downloadEmail');
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'users.csv';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Error downloading the file:', error);
+            }
+        });

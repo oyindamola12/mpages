@@ -37,6 +37,7 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
             Array.from(rows).forEach(row => {
                 const industry = row.cells[1].textContent.toLowerCase();
                 const businessAddress = row.cells[4].textContent.toLowerCase();
+
                 if (industry.includes(filter) && businessAddress.includes(location)) {
                     row.style.display = '';
                 } else {
@@ -44,8 +45,6 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                 }
             });
         }
-
-
 
            document.getElementById('downloadAll').addEventListener('click', async () => {
             try {

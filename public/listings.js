@@ -1357,7 +1357,7 @@ function getFiltered(industry, location) {
                for (let i = 0; i < items.length; i++) {
       const business = items[i];
 
-const images = JSON.stringify(business.data.Images);
+//const images = JSON.stringify(business.data.Images);
       const arrangeitems= document.createElement('a');
 
 

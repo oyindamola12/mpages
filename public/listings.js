@@ -86,8 +86,8 @@ function navigateToUserProfile(businessId, businesslistingId) {
         nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
         noloading.style.display = items.length === 0 ? 'block' : 'none';
         loading.style.display = 'none';
-
-        items.forEach((business) => {
+     items.forEach((business) => {
+        (function(business) {
           const arrangeitems = document.createElement('a');
           arrangeitems.classList.add('arrange-items');
 
@@ -98,35 +98,31 @@ function navigateToUserProfile(businessId, businesslistingId) {
           arrangetext.classList.add('arrange-text');
 
           const tictext = document.createElement('div');
-          tictext.textContent = business.industry;
+          tictext.textContent = business.data.industry;
           arrangepic.appendChild(tictext);
           tictext.classList.add('tic-text');
 
           const imgTag = document.createElement('img');
-          imgTag.src =
-            business.Images && business.Images.length > 0
-              ? business.Images[0]
-              : 'img/mPagesDesigns.png';
+          imgTag.src = business.data.Images && business.data.Images.length > 0
+            ? business.data.Images[0]
+            : 'img/mPagesDesigns.png';
           imgTag.alt = 'Image';
           arrangepic.appendChild(imgTag);
-          imgTag.classList.add('imgs');
 
           const titleTag = document.createElement('h5');
-          titleTag.textContent = business.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+          titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
           arrangetext.appendChild(titleTag);
 
-          if (signedupAlready) {
-            const addressTag = document.createElement('span');
-            addressTag.textContent = business.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-            arrangetext.appendChild(addressTag);
-          }
+          const addressTag = document.createElement('span');
+          addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+          arrangetext.appendChild(addressTag);
 
           const subtitleTag = document.createElement('p');
-          subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
+          subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
           arrangetext.appendChild(subtitleTag);
 
           const openingTimeTag = document.createElement('div');
-          openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
+          openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
           openingTimeTag.classList.add('open');
           arrangetext.appendChild(openingTimeTag);
 
@@ -134,16 +130,72 @@ function navigateToUserProfile(businessId, businesslistingId) {
           arrangeitems.appendChild(arrangetext);
           appendDiv.appendChild(arrangeitems);
 
-          appendDiv.addEventListener('click', () => {
-            localStorage.removeItem('selectedUserId');
-            localStorage.setItem('selectedUserData', JSON.stringify(business));
-            localStorage.setItem('userDataId', JSON.stringify(business.userid));
-            localStorage.setItem('selectedUserId', business.id);
-            localStorage.setItem('listingId', business.listingId);
-            localStorage.setItem('owner', business.userid);
-            navigateToUserProfile(business.userid, business.listingId);
+          arrangeitems.addEventListener('click', () => {
+            localStorage.setItem('selectedListingId', business.id);
+            localStorage.setItem('selectedListingData', JSON.stringify(business.data));
+            localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+            navigateToUserProfile(business.data.userid, business.data.listingId);
           });
-        });
+
+        })(business); // Immediately invoke the function with the current business
+      });
+        // items.forEach((business) => {
+        //   const arrangeitems = document.createElement('a');
+        //   arrangeitems.classList.add('arrange-items');
+
+        //   const arrangepic = document.createElement('div');
+        //   arrangepic.classList.add('arrange-pic');
+
+        //   const arrangetext = document.createElement('div');
+        //   arrangetext.classList.add('arrange-text');
+
+        //   const tictext = document.createElement('div');
+        //   tictext.textContent = business.industry;
+        //   arrangepic.appendChild(tictext);
+        //   tictext.classList.add('tic-text');
+
+        //   const imgTag = document.createElement('img');
+        //   imgTag.src =
+        //     business.Images && business.Images.length > 0
+        //       ? business.Images[0]
+        //       : 'img/mPagesDesigns.png';
+        //   imgTag.alt = 'Image';
+        //   arrangepic.appendChild(imgTag);
+        //   imgTag.classList.add('imgs');
+
+        //   const titleTag = document.createElement('h5');
+        //   titleTag.textContent = business.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+        //   arrangetext.appendChild(titleTag);
+
+        //   if (signedupAlready) {
+        //     const addressTag = document.createElement('span');
+        //     addressTag.textContent = business.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+        //     arrangetext.appendChild(addressTag);
+        //   }
+
+        //   const subtitleTag = document.createElement('p');
+        //   subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
+        //   arrangetext.appendChild(subtitleTag);
+
+        //   const openingTimeTag = document.createElement('div');
+        //   openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
+        //   openingTimeTag.classList.add('open');
+        //   arrangetext.appendChild(openingTimeTag);
+
+        //   arrangeitems.appendChild(arrangepic);
+        //   arrangeitems.appendChild(arrangetext);
+        //   appendDiv.appendChild(arrangeitems);
+
+        //   appendDiv.addEventListener('click', () => {
+        //     localStorage.removeItem('selectedUserId');
+        //     localStorage.setItem('selectedUserData', JSON.stringify(business));
+        //     localStorage.setItem('userDataId', JSON.stringify(business.userid));
+        //     localStorage.setItem('selectedUserId', business.id);
+        //     localStorage.setItem('listingId', business.listingId);
+        //     localStorage.setItem('owner', business.userid);
+        //     navigateToUserProfile(business.userid, business.listingId);
+        //   });
+        // });
 
 //                  for (let i = 0; i < items.length; i++) {
 //       const business = items[i];

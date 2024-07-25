@@ -13,11 +13,11 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                     users.forEach(user => {
 
                         const row = userTable.insertRow();
-                        row.insertCell(0).textContent = user.businessName;
+                        row.insertCell(0).textContent = user.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
                         row.insertCell(1).textContent = user.industry;
                         row.insertCell(2).textContent = user.email;
                         row.insertCell(3).textContent = user.phoneNo;
-                        row.insertCell(4).textContent = user.businessAddress;
+                        row.insertCell(4).textContent = user.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
                     });
 
 
@@ -36,8 +36,7 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
             const rows = userTable.getElementsByTagName('tr');
             Array.from(rows).forEach(row => {
                 const industry = row.cells[1].textContent.toLowerCase();
-                const businessAddress = row.cells[4].textContent.toLowerCase();
-
+                const businessAddress = row.cells[4].textContent.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
                 if (industry.includes(filter) && businessAddress.includes(location)) {
                     row.style.display = '';
                 } else {

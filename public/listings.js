@@ -1049,11 +1049,12 @@ async function mostSearch(industry) {
 
 
 function getFiltered(industry, location) {
-  const appendDiv = document.getElementById('appendDiv'); // Assuming you have a div with id 'appendDiv'
-  const loading = document.getElementById('loading'); // Assuming you have a loading element
-  const nextbtn = document.getElementById('nextbtn'); // Assuming you have a next button
-  const noloading = document.getElementById('noloading'); // Assuming you have a no results element
-  const signedupAlready = /* some condition to determine if user is signed up */
+    const appendDiv= document.getElementById('col-lg-5');
+  const appendDiv2 = document.getElementById('col-lg-6'); // Assuming you have a div with id 'appendDiv'
+  // const loading = document.getElementById('loading'); // Assuming you have a loading element
+  // const nextbtn = document.getElementById('nextbtn'); // Assuming you have a next button
+  // const noloading = document.getElementById('noloading'); // Assuming you have a no results element
+  // const signedupAlready = /* some condition to determine if user is signed up */
 
   appendDiv.innerHTML = '';
   loading.style.display = 'block';
@@ -1115,7 +1116,7 @@ function getFiltered(industry, location) {
 
         arrangeitems.appendChild(arrangepic);
         arrangeitems.appendChild(arrangetext);
-        appendDiv.appendChild(arrangeitems);
+        appendDiv2.appendChild(arrangeitems);
 
         (function(currentBusiness) { // IIFE to capture business
           arrangeitems.addEventListener('click', () => {

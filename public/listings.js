@@ -1652,7 +1652,7 @@ function getFiltered(industry, location) {
             localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
             navigateToUserProfile(business.data.userid, business.data.listingId);
           };
-        })(business));
+        })(business));//good
       });
       })
       .catch((error) => {

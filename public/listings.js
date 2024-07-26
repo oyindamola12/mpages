@@ -1385,7 +1385,7 @@ function getFiltered(industry, location) {
           arrangetext.classList.add('arrange-text');
 
           const tictext = document.createElement('div');
-          tictext.textContent = business.data.industry;
+          // tictext.textContent = business.data.industry;
           arrangepic.appendChild(tictext);
           tictext.classList.add('tic-text');
 

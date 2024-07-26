@@ -1279,7 +1279,6 @@ async function mostSearch(industry) {
 //       console.error('Error updating value:', error);
 //     });
 // }
-
 function getFiltered(industry, location) {
   appendDiv.innerHTML = '';
   loading.style.display = 'block';
@@ -1300,62 +1299,70 @@ function getFiltered(industry, location) {
 
       for (let i = 0; i < items.length; i++) {
         const business = items[i];
-        (function(business) {
-          const arrangeitems = document.createElement('a');
-          arrangeitems.classList.add('arrange-items');
+        console.log('Processing business:', business); // Log each business item
 
-          const arrangepic = document.createElement('div');
-          arrangepic.classList.add('arrange-pic');
+        if (!business.data) {
+          console.warn('Business data is undefined:', business); // Log a warning if data is undefined
+          continue;
+        }
 
-          const arrangetext = document.createElement('div');
-          arrangetext.classList.add('arrange-text');
+        const arrangeitems = document.createElement('a');
+        arrangeitems.classList.add('arrange-items');
 
-          const tictext = document.createElement('div');
-          tictext.textContent = business.data.industry;
-          arrangepic.appendChild(tictext);
-          tictext.classList.add('tic-text');
+        const arrangepic = document.createElement('div');
+        arrangepic.classList.add('arrange-pic');
 
-          const imgTag = document.createElement('img');
-          imgTag.src = business.data.Images && business.data.Images.length > 0
-            ? business.data.Images[0]
-            : 'img/mPagesDesigns.png';
-          imgTag.alt = 'Image';
-          arrangepic.appendChild(imgTag);
+        const arrangetext = document.createElement('div');
+        arrangetext.classList.add('arrange-text');
 
-          const titleTag = document.createElement('h5');
-          titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-          arrangetext.appendChild(titleTag);
+        const tictext = document.createElement('div');
+        tictext.textContent = business.data.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
 
-          const addressTag = document.createElement('span');
-          addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-          arrangetext.appendChild(addressTag);
+        const imgTag = document.createElement('img');
+        imgTag.src = business.data.Images && business.data.Images.length > 0
+          ? business.data.Images[0]
+          : 'img/mPagesDesigns.png';
+        imgTag.alt = 'Image';
+        arrangepic.appendChild(imgTag);
 
-          const subtitleTag = document.createElement('p');
-          subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
-          arrangetext.appendChild(subtitleTag);
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+        arrangetext.appendChild(titleTag);
 
-          const openingTimeTag = document.createElement('div');
-          openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
-          openingTimeTag.classList.add('open');
-          arrangetext.appendChild(openingTimeTag);
+        const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+        arrangetext.appendChild(addressTag);
 
-          arrangeitems.appendChild(arrangepic);
-          arrangeitems.appendChild(arrangetext);
-          appendDiv.appendChild(arrangeitems);
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
+        arrangetext.appendChild(subtitleTag);
 
-          arrangeitems.addEventListener('click', () => {
-            localStorage.setItem('selectedListingId', business.id);
-            localStorage.setItem('selectedListingData', JSON.stringify(business.data));
-            localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-            navigateToUserProfile(business.data.userid, business.data.listingId);
-          });
-        })(business); // Immediately invoke the function with the current business
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
+
+        arrangeitems.appendChild(arrangepic);
+        arrangeitems.appendChild(arrangetext);
+        appendDiv.appendChild(arrangeitems);
+
+        console.log('Appended arrangeitems to appendDiv'); // Log after appending each item
+
+        arrangeitems.addEventListener('click', () => {
+          localStorage.setItem('selectedListingId', business.id);
+          localStorage.setItem('selectedListingData', JSON.stringify(business.data));
+          localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+          navigateToUserProfile(business.data.userid, business.data.listingId);
+        });
       }
     })
     .catch((error) => {
       console.error('Error updating value:', error);
     });
 }
+
 
 
  function toggleData() {
@@ -1372,58 +1379,65 @@ function getFiltered(industry, location) {
         nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
         noloading.style.display = items.length === 0 ? 'block' : 'none';
         loading.style.display = 'none';
-     for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i < items.length; i++) {
         const business = items[i];
-        (function(business) {
-          const arrangeitems = document.createElement('a');
-          arrangeitems.classList.add('arrange-items');
+        console.log('Processing business:', business); // Log each business item
 
-          const arrangepic = document.createElement('div');
-          arrangepic.classList.add('arrange-pic');
+        if (!business.data) {
+          console.warn('Business data is undefined:', business); // Log a warning if data is undefined
+          continue;
+        }
 
-          const arrangetext = document.createElement('div');
-          arrangetext.classList.add('arrange-text');
+        const arrangeitems = document.createElement('a');
+        arrangeitems.classList.add('arrange-items');
 
-          const tictext = document.createElement('div');
-          // tictext.textContent = business.data.industry;
-          arrangepic.appendChild(tictext);
-          tictext.classList.add('tic-text');
+        const arrangepic = document.createElement('div');
+        arrangepic.classList.add('arrange-pic');
 
-          const imgTag = document.createElement('img');
-          imgTag.src = business.data.Images && business.data.Images.length > 0
-            ? business.data.Images[0]
-            : 'img/mPagesDesigns.png';
-          imgTag.alt = 'Image';
-          arrangepic.appendChild(imgTag);
+        const arrangetext = document.createElement('div');
+        arrangetext.classList.add('arrange-text');
 
-          const titleTag = document.createElement('h5');
-          titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-          arrangetext.appendChild(titleTag);
+        const tictext = document.createElement('div');
+        tictext.textContent = business.data.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
 
-          const addressTag = document.createElement('span');
-          addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-          arrangetext.appendChild(addressTag);
+        const imgTag = document.createElement('img');
+        imgTag.src = business.data.Images && business.data.Images.length > 0
+          ? business.data.Images[0]
+          : 'img/mPagesDesigns.png';
+        imgTag.alt = 'Image';
+        arrangepic.appendChild(imgTag);
 
-          const subtitleTag = document.createElement('p');
-          subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
-          arrangetext.appendChild(subtitleTag);
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+        arrangetext.appendChild(titleTag);
 
-          const openingTimeTag = document.createElement('div');
-          openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
-          openingTimeTag.classList.add('open');
-          arrangetext.appendChild(openingTimeTag);
+        const addressTag = document.createElement('span');
+        addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+        arrangetext.appendChild(addressTag);
 
-          arrangeitems.appendChild(arrangepic);
-          arrangeitems.appendChild(arrangetext);
-          appendDiv.appendChild(arrangeitems);
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent = `${business.data.openingtime} - ${business.data.closingtime}`;
+        arrangetext.appendChild(subtitleTag);
 
-          arrangeitems.addEventListener('click', () => {
-            localStorage.setItem('selectedListingId', business.id);
-            localStorage.setItem('selectedListingData', JSON.stringify(business.data));
-            localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
-            navigateToUserProfile(business.data.userid, business.data.listingId);
-          });
-        })(business); // Immediately invoke the function with the current business
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = `Opens tomorrow at ${business.data.openingtime}`;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
+
+        arrangeitems.appendChild(arrangepic);
+        arrangeitems.appendChild(arrangetext);
+        appendDiv.appendChild(arrangeitems);
+
+        console.log('Appended arrangeitems to appendDiv'); // Log after appending each item
+
+        arrangeitems.addEventListener('click', () => {
+          localStorage.setItem('selectedListingId', business.id);
+          localStorage.setItem('selectedListingData', JSON.stringify(business.data));
+          localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+          navigateToUserProfile(business.data.userid, business.data.listingId);
+        });
       }
         // items.forEach((business) => {
         //   const arrangeitems = document.createElement('a');

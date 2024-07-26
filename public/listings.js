@@ -1380,87 +1380,99 @@ function getFiltered(industry, location) {
 //     });
 // }
 
+function getFiltered2() {
+let appendDiv = document.getElementById('col-lg-5');
+
+  // const loading = document.getElementById('loading');
+  // const nextbtn = document.getElementById('nextbtn');
+  // const noloading = document.getElementById('noloading');
+  // const signedupAlready = /* some condition to determine if user is signed up */
+
+
+  loading.style.display = 'block';
+
+  fetch('https://www.mpageshub.com/businessSearch', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ industry: industrySearch, location: locations }),
+  })
+    .then((response) => response.json())
+    .then((items) => {
+      nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
+      noloading.style.display = items.length === 0 ? 'block' : 'none';
+      loading.style.display = 'none';
+    items.forEach((business) => {
+        const arrangeitems = document.createElement('a');
+        arrangeitems.classList.add('arrange-items');
+
+        const arrangepic = document.createElement('div');
+        arrangepic.classList.add('arrange-pic');
+
+        const arrangetext = document.createElement('div');
+        arrangetext.classList.add('arrange-text');
+
+        const tictext = document.createElement('div');
+        tictext.textContent = business.industry;
+        arrangepic.appendChild(tictext);
+        tictext.classList.add('tic-text');
+
+        const imgTag = document.createElement('img');
+        imgTag.src = business.Images && business.Images.length > 0
+          ? business.Images[0]
+          : 'img/mPagesDesigns.png';
+        imgTag.alt = 'Image';
+        arrangepic.appendChild(imgTag);
+        imgTag.classList.add('imgs');
+
+        const titleTag = document.createElement('h5');
+        titleTag.textContent = business.businessName;
+        arrangetext.appendChild(titleTag);
+
+        if (signedupAlready) {
+          const addressTag = document.createElement('span');
+          addressTag.textContent = business.businessAddress;
+          arrangetext.appendChild(addressTag);
+        }
+
+        const subtitleTag = document.createElement('p');
+        subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
+        arrangetext.appendChild(subtitleTag);
+
+        const openingTimeTag = document.createElement('div');
+        openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
+        openingTimeTag.classList.add('open');
+        arrangetext.appendChild(openingTimeTag);
+
+        arrangeitems.appendChild(arrangepic);
+        arrangeitems.appendChild(arrangetext);
+        appendDiv.appendChild(arrangeitems);
+
+        (function(currentBusiness) { // IIFE to capture business
+          arrangeitems.addEventListener('click', () => {
+            localStorage.removeItem('selectedUserId');
+            localStorage.setItem('selectedUserData', JSON.stringify(currentBusiness));
+            localStorage.setItem('userDataId', JSON.stringify(currentBusiness.userid));
+            localStorage.setItem('selectedUserId', currentBusiness.id);
+            localStorage.setItem('listingId', business.listingId);
+            localStorage.setItem('owner', business.userid);
+            navigateToUserProfile(currentBusiness.userid, currentBusiness.listingId);
+          });
+        })(business); // Pass business to IIFE
+      });
+
+    })
+    .catch((error) => {
+      console.error('Error updating value:', error);
+    });
+}
+
 
 
  function toggleData() {
   if (industrySearch && locations) {
-    fetch('https://www.mpageshub.com/businessSearch', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ industry: industrySearch, location: locations }),
-    })
-      .then((response) => response.json())
-      .then((items) => {
-        nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
-        noloading.style.display = items.length === 0 ? 'block' : 'none';
-        loading.style.display = 'none';
 
-        items.forEach((business) => {
-          const arrangeitems = document.createElement('a');
-          arrangeitems.classList.add('arrange-items');
-
-          const arrangepic = document.createElement('div');
-          arrangepic.classList.add('arrange-pic');
-
-          const arrangetext = document.createElement('div');
-          arrangetext.classList.add('arrange-text');
-
-          const tictext = document.createElement('div');
-          tictext.textContent = business.industry;
-          arrangepic.appendChild(tictext);
-          tictext.classList.add('tic-text');
-
-          const imgTag = document.createElement('img');
-          imgTag.src =
-            business.Images && business.Images.length > 0
-              ? business.Images[0]
-              : 'img/mPagesDesigns.png';
-          imgTag.alt = 'Image';
-          arrangepic.appendChild(imgTag);
-          imgTag.classList.add('imgs');
-
-          const titleTag = document.createElement('h5');
-          titleTag.textContent = business.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-          arrangetext.appendChild(titleTag);
-
-          if (signedupAlready) {
-            const addressTag = document.createElement('span');
-            addressTag.textContent = business.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-            arrangetext.appendChild(addressTag);
-          }
-
-          const subtitleTag = document.createElement('p');
-          subtitleTag.textContent = `${business.openingtime} - ${business.closingtime}`;
-          arrangetext.appendChild(subtitleTag);
-
-          const openingTimeTag = document.createElement('div');
-          openingTimeTag.textContent = `Opens tomorrow at ${business.openingtime}`;
-          openingTimeTag.classList.add('open');
-          arrangetext.appendChild(openingTimeTag);
-
-          arrangeitems.appendChild(arrangepic);
-          arrangeitems.appendChild(arrangetext);
-          appendDiv.appendChild(arrangeitems);
-
-          arrangeitems.addEventListener('click', () => {
-            localStorage.removeItem('selectedUserId');
-            localStorage.setItem('selectedUserData', JSON.stringify(business));
-            localStorage.setItem('userDataId', JSON.stringify(business.userid));
-            localStorage.setItem('selectedUserId', business.id);
-            localStorage.setItem('listingId', business.listingId);
-            localStorage.setItem('owner', business.userid);
-            navigateToUserProfile(business.userid, business.listingId);
-          });
-        });
-
-
-
-      })
-      .catch((error) => {
-        console.error('Error updating value:', error);
-      });
   }
 
   if (industryInputview) {

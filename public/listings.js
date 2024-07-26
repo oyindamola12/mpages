@@ -1372,7 +1372,8 @@ function getFiltered(industry, location) {
         nextbtn.style.display = items && items.length >= 12 ? 'block' : 'none';
         noloading.style.display = items.length === 0 ? 'block' : 'none';
         loading.style.display = 'none';
-     items.forEach((business) => {
+     for (let i = 0; i < items.length; i++) {
+        const business = items[i];
         (function(business) {
           const arrangeitems = document.createElement('a');
           arrangeitems.classList.add('arrange-items');
@@ -1422,9 +1423,8 @@ function getFiltered(industry, location) {
             localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
             navigateToUserProfile(business.data.userid, business.data.listingId);
           });
-
         })(business); // Immediately invoke the function with the current business
-      });
+      }
         // items.forEach((business) => {
         //   const arrangeitems = document.createElement('a');
         //   arrangeitems.classList.add('arrange-items');

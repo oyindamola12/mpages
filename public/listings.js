@@ -6,6 +6,7 @@ let lastDocument2 = null
 let lastDocument3 = null
 let lastDocument4 = null
 let appendDiv = document.getElementById('col-lg-5');
+let appendDiv2 = document.getElementById('col-lg-6');
 //var loadMore = document.getElementById('next-btn');
 let container = document.getElementById("about-video");
 let myListings = document.getElementById('myListings');
@@ -443,6 +444,7 @@ function navigateToUserProfile(businessId, businesslistingId) {
 //   }
 
 function noparams(){
+  appendDiv2.innerHTML = '';
  fetch('https://www.mpageshub.com/getBusinesses')
     .then(response => response.json())
     .then(items=> {
@@ -865,6 +867,7 @@ if (!window.location.search) {
             });
         });
     }
+
 async function getUsers() {
       const response = await fetch('/getCoordinates');
       const users = await response.json();
@@ -1346,7 +1349,7 @@ function getFiltered(industry, location) {
 
         arrangeitems.appendChild(arrangepic);
         arrangeitems.appendChild(arrangetext);
-        appendDiv.appendChild(arrangeitems);
+        appendDiv2.appendChild(arrangeitems);
 
         console.log('Appended arrangeitems to appendDiv'); // Log after appending each item
 

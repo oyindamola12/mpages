@@ -1472,7 +1472,7 @@ let appendDiv = document.getElementById('col-lg-5');
 
  function toggleData() {
   if (industrySearch && locations) {
-
+getFiltered2()
   }
 
   if (industryInputview) {

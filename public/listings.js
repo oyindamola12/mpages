@@ -2118,7 +2118,7 @@ function fetchPage(page) {
                 arrangeitems.appendChild(arrangetext);
                 appendDiv.appendChild(arrangeitems);
 
-                appendDiv.addEventListener('click', () => {
+                arrangeitems.addEventListener('click', () => {
                     localStorage.setItem('selectedUserId', business.id);
                     localStorage.setItem('selectedUserData', JSON.stringify(business.data));
                     localStorage.setItem('userDataId', JSON.stringify(business.data.userid));

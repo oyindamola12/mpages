@@ -241,6 +241,7 @@ app.post('/addBusiness2', async (req, res) => {
 
 
 const uniqueId2 = Math.floor(Math.random() * 1e10).toString();
+
   try {
     const businessData = {
       businessName,
@@ -1911,7 +1912,7 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
 
 app.get('/datalist', async (req, res) => {
   try {
-    const snapshot = await db.collection('BusinessLists').get();
+    const snapshot = await db.collection('BusinessLists').orderBy('industry','asc').get();
     const users = [];
     snapshot.forEach(doc => {
       users.push({ id: doc.id, ...doc.data() });

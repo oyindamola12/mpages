@@ -1912,7 +1912,7 @@ app.post('/addImages3', upload.array('images'), async (req, res) => {
 
 app.get('/datalist', async (req, res) => {
   try {
-    const snapshot = await db.collection('BusinessLists').orderBy('businessName','asc').get();
+    const snapshot = await db.collection('BusinessLists').orderBy('industry','asc').get();
     const users = [];
     snapshot.forEach(doc => {
       users.push({ id: doc.id, ...doc.data() });

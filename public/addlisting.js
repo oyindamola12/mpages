@@ -654,7 +654,7 @@ async function pay2() {
 
   try {
     // Show loading indicator (optional)
-    showLoadingIndicator();
+
 
     const geocoder = new google.maps.Geocoder();
     const response = await new Promise((resolve, reject) => {
@@ -707,7 +707,7 @@ async function pay2() {
     window.location.href = 'my-listings.html';
 
     // Hide loading indicator (optional)
-    hideLoadingIndicator();
+   
 
   } catch (error) {
     console.error('Error:', error);

@@ -1953,7 +1953,107 @@ function fetchPage(page) {
     .then(items=> {
   loading.style.display = 'none';
 
- items.forEach((business) => {
+//     for (let i = 0; i < items.length; i++) {
+//       const business = items[i];
+
+// console.log(business.data.email)
+// const myJSON = JSON.stringify(business)
+//       const arrangeitems= document.createElement('a');
+
+// //  if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
+// //  arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+// //     }
+
+// //  if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
+// // arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+// //     }
+// //  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
+// //  arrangeitems.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+// //     }
+
+
+//     // if(business.hasOwnProperty('Images')){
+
+//     // }
+//       arrangeitems.classList.add('arrange-items');
+
+//       const arrangepic= document.createElement('div');
+//       arrangepic.classList.add('arrange-pic');
+
+//         const arrangetext= document.createElement('div');
+//        arrangetext.classList.add('arrange-text');
+
+//       //  const rating= document.createElement('div');
+//       //  rating.textContent = business.data.rating;
+//       //   arrangepic.appendChild(rating);
+//       //   rating.classList.add('rating');
+
+//        const tictext= document.createElement('div');
+//        tictext.textContent = business.data.industry;
+//         arrangepic.appendChild(tictext);
+//         tictext.classList.add('tic-text');
+
+
+//          const imgTag = document.createElement('img');
+
+//         imgTag.src =business.data.Images && business.data.Images.length > 0 ?business.data.Images[0]:'img/mPagesDesigns.png'
+//         // Assuming you have an 'imageUrl' property in your data
+//         imgTag.alt = 'Image'; // Provide alternative text for accessibility
+//         arrangepic.appendChild(imgTag);
+//         imgTag.classList.add('imgs');
+
+
+//         // Create and append h5 tag for the title
+//         const titleTag = document.createElement('h5');
+//         titleTag.textContent = business.data.businessName.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+//         arrangetext.appendChild(titleTag);
+
+//         // Create and append span tag for the address
+
+//        if (signedupAlready) {
+//  const addressTag = document.createElement('span');
+//         addressTag.textContent = business.data.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+//        arrangetext.appendChild(addressTag);
+//    }
+
+
+//         // Create and append p tag for the subtitle
+//         const subtitleTag = document.createElement('p');
+//         subtitleTag.textContent =business.data.openingtime+ " - " + business.data.closingtime;
+//         arrangetext.appendChild(subtitleTag);
+
+//         // Create and append button tag for the opening time
+//         const openingTimeTag = document.createElement('div');
+//         openingTimeTag.textContent = 'Opens tomorrow at ' + business.data.openingtime;
+//         openingTimeTag.classList.add('open');
+//         arrangetext.appendChild(openingTimeTag);
+//         arrangeitems.appendChild(arrangepic)
+//         arrangeitems.appendChild(arrangetext)
+//         appendDiv.appendChild(arrangeitems)
+
+//         appendDiv.addEventListener('click', () => {
+//         localStorage.setItem('selectedUserId', business.id);
+//         localStorage.setItem('selectedUserData', JSON.stringify(business.data));
+//         localStorage.setItem('userDataId', JSON.stringify(business.data.userid));
+//         localStorage.setItem('listingId', business.data.listingId);
+//         localStorage.setItem('owner', business.data.userid);
+
+//      if (business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
+//   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+//     }
+
+//  if (!business.hasOwnProperty('donation') && business.hasOwnProperty('Images')){
+//   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&images=${encodeURIComponent(images)}&listingId=${business.data.listingId}`
+//     }
+//  if (business.hasOwnProperty('donation') && !business.hasOwnProperty('Images')){
+//   window.location.href =`single-listing.html?businessName=${business.data.businessName}&businessAddress=${ business.data.businessAddress}&industry=${business.data.industry} &openingtime=${business.data.openingtime} &closingtime=${business.data.closingtime}&email=${business.data.email} &about=${business.data.about}&phoneNo=${business.data.phoneNo}&latitude=${business.data.latitude} &longitude=${business.data.longitude}&userid=${business.data.userid}&listingId=${business.data.listingId}&donation=${business.data.donation}`
+//     }
+//    navigateToUserProfile(business.data.userid,business.data.listingId);
+//  });
+
+//   }
+
+    items.forEach((business) => {
         const arrangeitems = document.createElement('a');
         arrangeitems.classList.add('arrange-items');
 
@@ -1999,7 +2099,7 @@ function fetchPage(page) {
         arrangeitems.appendChild(arrangetext);
         appendDiv.appendChild(arrangeitems);
 
-        (function(currentBusiness) { // IIFE to capture business
+         (function(currentBusiness) { // IIFE to capture business
           arrangeitems.addEventListener('click', () => {
             localStorage.removeItem('selectedUserId');
             localStorage.setItem('selectedUserData', JSON.stringify(currentBusiness));
@@ -2011,6 +2111,7 @@ function fetchPage(page) {
           });
         })(business); // Pass business to IIFE
       });
+
     })
     .catch(error => {
       console.log('Error fetching items:', error);

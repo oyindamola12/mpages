@@ -616,11 +616,11 @@ async function pay() {
 
     console.log('Server response:', data);
     localStorage.setItem('userId', data.userId);
-    alert('userId', data.userId)
+
     localStorage.setItem('userData', JSON.stringify(data.businesses));
     localStorage.setItem('signedup', 'true');
     localStorage.setItem('addedListings', 'true');
-    //window.location.href = 'my-listings.html';
+    window.location.href = 'my-listings.html';
 
   } catch (error) {
     console.error('Error:', error);
@@ -640,14 +640,14 @@ async function pay2() {
   const email = document.getElementById('email').value;
   const phoneNo = document.getElementById('phoneNo').value;
   const about = document.getElementById('about').value;
-  const password = document.getElementById('password').value;
+  //const password = document.getElementById('password').value;
   const city = document.getElementById('city').value;
   const country = document.getElementById('country').value;
   const signupStatus = true;
   const userids = Math.floor(Math.random() * 1e10).toString();
 
   // Validation
-  if (businessName === '' || password === "" || contactPerson === '' || industry === '' || industry === 'Choose Category' || businessAddress === '' || phoneNo === '' || about === '' || email === '' || country === '' || city === '') {
+  if (businessName === ''  || contactPerson === '' || industry === '' || industry === 'Choose Category' || businessAddress === '' || phoneNo === '' || about === '' || email === '' || country === '' || city === '') {
     alert("Please fill in all mandatory fields");
     return false;
   }
@@ -671,7 +671,7 @@ async function pay2() {
 
     const { latitude, longitude } = response;
 
-    const data = await fetch('https://www.mpageshub.com/addBusiness', {
+    const data = await fetch('https://www.mpageshub.com/addBusiness2', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -686,7 +686,7 @@ async function pay2() {
         phoneNo,
         about,
         email,
-        password,
+
         latitude,
         longitude,
         signupStatus,

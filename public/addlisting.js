@@ -554,9 +554,9 @@ async function pay() {
   const industry = document.querySelector('.select-styled').textContent;
   const businessAddress = document.getElementById('businessAddress').value;
   const openingtime = document.getElementById('openingtime').value;
-  const closingtime = documentgetElementById('closingTime').value;
+  const closingtime = document.getElementById('closingtime').value;
   const email = document.getElementById('email').value;
-  const phoneNo = documentgetElementById('phoneNo').value;
+  const phoneNo = document.getElementById('phoneNo').value;
   const about = document.getElementById('about').value;
   const password = document.getElementById('password').value;
   const city = document.getElementById('city').value;
@@ -636,7 +636,7 @@ async function pay2() {
   const industry = document.querySelector('.select-styled').textContent;
   const businessAddress = document.getElementById('businessAddress').value;
   const openingtime = document.getElementById('openingtime').value;
-  const closingtime = document.getElementById('closingTime').value;
+  const closingtime = document.getElementById('closingtime').value;
   const email = document.getElementById('email').value;
   const phoneNo = document.getElementById('phoneNo').value;
   const about = document.getElementById('about').value;

@@ -166,6 +166,9 @@ app.post('/addBusiness', async (req, res) => {
 
       const businessDoc = userDoc.collection('BusinessLists').doc(userResponse.uid);
       await businessDoc.set(businessData);
+      const businessDoc2 =db.collection('BusinessLists').doc(userResponse.uid);
+      await businessDoc2.set(businessData);
+
 
       return res.status(200).json({ userId: userResponse.uid, userResponse });
     } else {
@@ -436,6 +439,7 @@ phoneNo: phoneNo,
 email:email,
 password: password,
 userid:userResponse.uid,
+created: admin.firestore.FieldValue.serverTimestamp(),
 
 });
  return res.status(200).json({userId:userResponse.uid,userResponse});

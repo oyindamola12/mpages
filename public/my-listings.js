@@ -16,7 +16,9 @@ var signedupAlready=  localStorage.getItem('signedup');
  let currentPage = 1;
 const itemsPerPage = 12;
 var userUid =localStorage.getItem('userId');
+
 console.log(userUid)
+
 // async function  getMyListing(){
 // if(userUid){
 //  fetch('https://www.mpageshub.com/getMyListings', {

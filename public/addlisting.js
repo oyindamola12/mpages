@@ -615,12 +615,12 @@ async function pay() {
       .then(response => response.json());
 
     console.log('Server response:', data);
-
     localStorage.setItem('userId', data.userId);
+    alert('userId', data.userId)
     localStorage.setItem('userData', JSON.stringify(data.businesses));
     localStorage.setItem('signedup', 'true');
     localStorage.setItem('addedListings', 'true');
-    window.location.href = 'my-listings.html';
+    //window.location.href = 'my-listings.html';
 
   } catch (error) {
     console.error('Error:', error);

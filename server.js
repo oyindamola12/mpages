@@ -105,7 +105,7 @@ app.post('/addBusiness',async (req, res, )=> {
     const lat =req.body.latitude;
     const lng =req.body.longitude;
     const signupStatus=req.body.signupStatus;
-    const userids=req.body.userids;
+    const userids= Math.floor(Math.random() * 1e10).toString();
     const donation=req.body.wantDonation
     const country= req.body.country;
     const city = req.body.city
@@ -152,7 +152,6 @@ const userResponse = await admin.auth().createUser({
 email:user.email,
 password:user.password,
 })
-
 
 const addUsers =  db.collection('Users').doc(userids);
 

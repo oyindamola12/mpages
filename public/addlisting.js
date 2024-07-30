@@ -561,15 +561,16 @@ const about = document.getElementById('about').value;
 const password =document.getElementById('password').value
 // const fileInput = document.getElementById('fileImage');
 // const fileInputed = document.getElementById('fileImage').files;
-
+const city = document.getElementById('city').value;
+const country = document.getElementById('country').value;
 const signupStatus= true;
-var userids  = Math.floor(Math.random() * 1e10).toString();
+// var userids  = Math.floor(Math.random() * 1e10).toString();
 
-if(businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''){
+ if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''|| country === ''|| city === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
- }
+    }
 //  if ( fileInputed.length >5  ) {
 //         alert("You can only select a maxium of 5 images.");
 //         return;
@@ -613,9 +614,9 @@ var geocoder = new google.maps.Geocoder();
  signupStatus:signupStatus,
  wantDonation:donate,
  addedListing:true,
- userids:userids,
+//  userids:userids,
  country:country,
-city:city,
+ city:city,
 
  })
 })
@@ -627,7 +628,6 @@ city:city,
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
             localStorage.setItem('addedListings', 'true');
-            window.location.reload();
              window.location.href ='my-listings.html';
 
 
@@ -649,8 +649,6 @@ city:city,
           //       console.error('Error uploading images:', error);
           //   });
 
-
-
              } else {
                     alert("Request failed.")
                 }
@@ -670,7 +668,7 @@ const closingtime = document.getElementById('closingtime').value;
 const email = document.getElementById('email').value;
 const phoneNo = document.getElementById('phoneNo').value;
 const city = document.getElementById('city').value;
-const country = document.getElementById('country').value
+const country = document.getElementById('country').value;
 const about = document.getElementById('about').value;
 // const fileInput = document.getElementById('fileImage');
 // // var storedUserIdlogin =localStorage.getItem('userId');
@@ -678,7 +676,7 @@ const about = document.getElementById('about').value;
 
 let postid = uuidv41()
 
-  if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''|| country === ''|| city === ''){
+if (businessName === ''|| password==="" ||contactPerson === ''||industry === ''||industry === 'Choose Category'||businessAddress === ''||phoneNo === ''||about === ''|| email  === ''|| country === ''|| city === ''){
  alert("Please fill in all mandatory fields");
 return false;
 
@@ -817,7 +815,7 @@ var geocoder = new google.maps.Geocoder();
             },
 
  body:JSON.stringify({
-businessName: businessName,
+ businessName: businessName,
  contactPerson:contactPerson,
  businessAddress: businessAddress,
  industry:industry,
@@ -829,11 +827,11 @@ businessName: businessName,
  addedListing:true,
  latitude:latitude,
  longitude:longitude,
-userId:userUid,
-wantDonation:donate,
-userids: postid,
-country:country,
-city:city,
+ userId:userUid,
+ wantDonation:donate,
+ userids: postid,
+ country:country,
+ city:city,
 
 
   })
@@ -847,7 +845,7 @@ city:city,
             localStorage.setItem('userData', JSON.stringify(data.businesses));
             localStorage.setItem('signedup', 'true');
             localStorage.setItem('addedListings', 'true');
-            window.location.reload();
+
             window.location.href ='my-listings.html';
         })
         .catch(error => {

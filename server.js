@@ -167,7 +167,7 @@ addListing:true,
 
 });
 
-const userListings =  db.collection('Users').doc(userids).collection('BusinessLists').doc(userids);
+const userListings =  db.collection('Users').doc(userResponse.uid).collection('BusinessLists').doc(userids);
 await  userListings.set({
  businessName:businessName,
  fullName: contactPerson,
@@ -183,14 +183,14 @@ await  userListings.set({
  timestamp: admin.firestore.FieldValue.serverTimestamp(),
 //   latitude:lat,
 //  longitude:lng,
- listingId:userids,
+ listingId:userResponse.uid,
  donation:donation,
  country:country,
  city:city
 
 });
 
-const businessDb = db.collection('BusinessLists').doc(userids);
+const businessDb = db.collection('BusinessLists').doc(userResponse);
 await businessDb.set({
  businessName:businessName,
  fullName: contactPerson,
@@ -204,16 +204,16 @@ await businessDb.set({
  userid:userids,
  timestamp: admin.firestore.FieldValue.serverTimestamp(),
   // images: uploadedUrls,
-  latitude:lat,
-  longitude:lng,
-  listingId:userids,
+  // latitude:lat,
+  // longitude:lng,
+  listingId:userResponse.uid,
   donation:donation,
   country:country,
  city:city
 
 
 });
- return res.status(200).json({ userId:userids,userResponse});
+ return res.status(200).json({ userId:userResponse.uid,userResponse});
  }
  else{
   return res.status(401).json({ error: 'User Exist, Login' });

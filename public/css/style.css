@@ -1053,6 +1053,14 @@ margin-bottom: 15px;
     100% { transform: rotate(360deg); }
 }
 
+@keyframes rolls {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes rollings {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 .rolling-indicator {
     width: 20px;
     height: 20px;
@@ -1063,10 +1071,7 @@ margin-bottom: 15px;
     animation: roll 1s linear infinite;
 }
 
-@keyframes rollings {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+
 
 .rolling-indicator2 {
     width: 20px;
@@ -1078,6 +1083,19 @@ margin-bottom: 15px;
     animation: rollings 1s linear infinite;
 
 }
+
+
+.rolling-indicator3 {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-top-color: #000;
+    margin-left: 3px;
+    border-radius: 50%;
+    animation: rolls 1s linear infinite;
+}
+
+
   /* @keyframes loading {
 	from {
 	  transform: rotate(0turn);
@@ -2785,6 +2803,14 @@ display: flex; flex-direction: row;margin-top: 20px;
 
 }
 #proceed{
+	margin-bottom: 15px;
+	background: #000;
+	color:#fff;
+	padding:10px 30px;
+	border-radius: 5px;
+}
+
+#proceed2{
 	margin-bottom: 15px;
 	background: #000;
 	color:#fff;

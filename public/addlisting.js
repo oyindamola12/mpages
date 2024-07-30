@@ -559,10 +559,15 @@ async function pay() {
   const phoneNo = document.getElementById('phoneNo').value;
   const about = document.getElementById('about').value;
   const password = document.getElementById('password').value;
+  const indicator = document.getElementById('proceed');
+   const indicator2 = document.getElementById('proceed2');
   const city = document.getElementById('city').value;
   const country = document.getElementById('country').value;
   const signupStatus = true;
   const userids = Math.floor(Math.random() * 1e10).toString();
+
+
+
 
   // Validation
   if (businessName === '' || password === "" || contactPerson === '' || industry === '' || industry === 'Choose Category' || businessAddress === '' || phoneNo === '' || about === '' || email === '' || country === '' || city === '') {
@@ -570,6 +575,8 @@ async function pay() {
     return false;
   }
 
+indicator.style.display='none';
+indicator2.style.display='block';
   try {
     const geocoder = new google.maps.Geocoder();
     const response = await new Promise((resolve, reject) => {
@@ -620,11 +627,12 @@ async function pay() {
     localStorage.setItem('userData', JSON.stringify(data.businesses));
     localStorage.setItem('signedup', 'true');
     localStorage.setItem('addedListings', 'true');
+
     window.location.href = 'my-listings.html';
 
   } catch (error) {
     console.error('Error:', error);
-    alert('An error occurred. Please try again.'); // Consider a more specific message
+    alert('An error occurred while adding your business. Please try again.'); // Consider a more specific message
   }
 }
 
@@ -640,7 +648,8 @@ async function pay2() {
   const email = document.getElementById('email').value;
   const phoneNo = document.getElementById('phoneNo').value;
   const about = document.getElementById('about').value;
-  //const password = document.getElementById('password').value;
+  const indicator = document.getElementById('proceed');
+   const indicator2 = document.getElementById('proceed2');
   const city = document.getElementById('city').value;
   const country = document.getElementById('country').value;
   const signupStatus = true;
@@ -649,8 +658,13 @@ async function pay2() {
   // Validation
   if (businessName === ''  || contactPerson === '' || industry === '' || industry === 'Choose Category' || businessAddress === '' || phoneNo === '' || about === '' || email === '' || country === '' || city === '') {
     alert("Please fill in all mandatory fields");
+
     return false;
   }
+
+indicator.style.display='none';
+indicator2.style.display='block';
+
 
   try {
     // Show loading indicator (optional)
@@ -698,12 +712,13 @@ async function pay2() {
     })
       .then(response => response.json());
 
-    console.log('Server response:', data);
+
 
     localStorage.setItem('userId', data.userId);
     localStorage.setItem('userData', JSON.stringify(data.businesses));
     localStorage.setItem('signedup', 'true');
     localStorage.setItem('addedListings', 'true');
+
     window.location.href = 'my-listings.html';
 
     // Hide loading indicator (optional)

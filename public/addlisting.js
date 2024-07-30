@@ -571,8 +571,28 @@ const userids  = Math.floor(Math.random() * 1e10).toString();
 return false;
 
     }
+//  if ( fileInputed.length >5  ) {
+//         alert("You can only select a maxium of 5 images.");
+//         return;
 
-            fetch('https://www.mpageshub.com/addBusiness', {
+//     }
+
+  //  const files = fileInput.files;
+
+//             const formData = new FormData();
+
+//  for (let i = 0; i < files.length; i++) {
+//                 formData.append('images', files[i]);
+//             }
+// formData.append('userids', userids);
+
+var geocoder = new google.maps.Geocoder();
+ geocoder.geocode({ 'address':businessAddress },async function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  const latitude = results[0].geometry.location.lat();
+                    const longitude = results[0].geometry.location.lng();
+
+        fetch('https://www.mpageshub.com/addBusiness', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -589,12 +609,12 @@ return false;
  about: about,
  email: email,
  password:password,
-//  latitude:latitude,
-//  longitude:longitude,
+ latitude:latitude,
+ longitude:longitude,
  signupStatus:signupStatus,
  wantDonation:donate,
  addedListing:true,
- userids:userids,
+//  userids:userids,
  country:country,
  city:city,
 
@@ -616,45 +636,23 @@ return false;
         .catch(error => {
             console.error('Error sending data to server:', error);
         });
-//  if ( fileInputed.length >5  ) {
-//         alert("You can only select a maxium of 5 images.");
-//         return;
 
-//     }
+          //  fetch('/addImages', {
+          //       method: 'POST',
+          //       body: formData
+          //   })
+          //   .then(response => response.json())
+          //   .then(data => {
+          //       console.log('Uploaded images:', data);
+          //   })
+          //   .catch(error => {
+          //       console.error('Error uploading images:', error);
+          //   });
 
-  //  const files = fileInput.files;
-
-//             const formData = new FormData();
-
-//  for (let i = 0; i < files.length; i++) {
-//                 formData.append('images', files[i]);
-//             }
-// formData.append('userids', userids);
-
-// var geocoder = new google.maps.Geocoder();
-//  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
-//                 if (status == google.maps.GeocoderStatus.OK) {
-//                   const latitude = results[0].geometry.location.lat();
-//                     const longitude = results[0].geometry.location.lng();
-
-
-
-//           //  fetch('/addImages', {
-//           //       method: 'POST',
-//           //       body: formData
-//           //   })
-//           //   .then(response => response.json())
-//           //   .then(data => {
-//           //       console.log('Uploaded images:', data);
-//           //   })
-//           //   .catch(error => {
-//           //       console.error('Error uploading images:', error);
-//           //   });
-
-//              } else {
-//                     alert("Request failed.")
-//                 }
-//             });
+             } else {
+                    alert("Request failed.")
+                }
+            });
 
 
 }
@@ -803,31 +801,12 @@ return false;
 //     });
 //     handler.openIframe();
 
-// var geocoder = new google.maps.Geocoder();
-//  geocoder.geocode({ 'address':businessAddress },async function (results, status) {
-//                 if (status == google.maps.GeocoderStatus.OK) {
-//                   const latitude = results[0].geometry.location.lat();
-//                     const longitude = results[0].geometry.location.lng();
+var geocoder = new google.maps.Geocoder();
+ geocoder.geocode({ 'address':businessAddress },async function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  const latitude = results[0].geometry.location.lat();
+                    const longitude = results[0].geometry.location.lng();
 
-
-
-
-//   // fetch('/addImages2', {
-//   //               method: 'POST',
-//   //               body: formData
-//   //           })
-//   //           .then(response => response.json())
-//   //           .then(data => {
-//   //               console.log('Uploaded images:', data);
-//   //           })
-//   //           .catch(error => {
-//   //               console.error('Error uploading images:', error);
-//   //           });
-
-//   } else {
-//  alert("Request failed.")
-//                 }
-//             });
 
   fetch('https://www.mpageshub.com/addBusiness2', {
             method: 'POST',
@@ -846,8 +825,8 @@ return false;
  about: about,
  email: email,
  addedListing:true,
-//  latitude:latitude,
-//  longitude:longitude,
+ latitude:latitude,
+ longitude:longitude,
  userId:userUid,
  wantDonation:donate,
  userids: postid,
@@ -872,6 +851,23 @@ return false;
         .catch(error => {
             console.error('Error sending data to server:', error);
         });
+
+  // fetch('/addImages2', {
+  //               method: 'POST',
+  //               body: formData
+  //           })
+  //           .then(response => response.json())
+  //           .then(data => {
+  //               console.log('Uploaded images:', data);
+  //           })
+  //           .catch(error => {
+  //               console.error('Error uploading images:', error);
+  //           });
+
+  } else {
+ alert("Request failed.")
+                }
+            });
   }
 
 

@@ -102,8 +102,8 @@ app.post('/addBusiness',async (req, res, )=> {
     const about = req.body.about;
     const email = req.body.email;
     const password = req.body.password;
-    // const lat =req.body.latitude;
-    // const lng =req.body.longitude;
+    const lat =req.body.latitude;
+    const lng =req.body.longitude;
     const signupStatus=req.body.signupStatus;
     const userids=req.body.userids;
     const donation=req.body.wantDonation
@@ -181,8 +181,8 @@ await  userListings.set({
  userid:userids,
   // images: uploadedUrls,
  timestamp: admin.firestore.FieldValue.serverTimestamp(),
-//   latitude:lat,
-//  longitude:lng,
+  latitude:lat,
+ longitude:lng,
  listingId:userResponse.uid,
  donation:donation,
  country:country,
@@ -204,8 +204,8 @@ await businessDb.set({
  userid:userids,
  timestamp: admin.firestore.FieldValue.serverTimestamp(),
   // images: uploadedUrls,
-  // latitude:lat,
-  // longitude:lng,
+  latitude:lat,
+  longitude:lng,
   listingId:userResponse.uid,
   donation:donation,
   country:country,
@@ -279,8 +279,8 @@ app.post('/addBusiness2',async (req, res)=> {
     const email = req.body.email;
     const userId = req.body.userId;
     const userids = req.body.userids;
-    // const lat = req.body.latitude;
-    // const lng = req.body.longitude
+    const lat = req.body.latitude;
+    const lng = req.body.longitude
     const donation=req.body.wantDonation
     const country= req.body.country;
     const city = req.body.city
@@ -305,8 +305,8 @@ await businessDb.set({
  userid:userId,
 timestamp: admin.firestore.FieldValue.serverTimestamp(),
 // images:uploadedUrls,
-// latitude:lat,
-// longitude:lng,
+latitude:lat,
+longitude:lng,
  listingId:uniqueId2,
 donation:donation,
  country:country,

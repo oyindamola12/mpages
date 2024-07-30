@@ -1383,12 +1383,6 @@ function getFiltered(industry, location) {
 function getFiltered2() {
 let appendDiv = document.getElementById('col-lg-5');
 
-  // const loading = document.getElementById('loading');
-  // const nextbtn = document.getElementById('nextbtn');
-  // const noloading = document.getElementById('noloading');
-  // const signedupAlready = /* some condition to determine if user is signed up */
-
-
   loading.style.display = 'block';
 
   fetch('https://www.mpageshub.com/businessSearch', {

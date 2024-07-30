@@ -17,7 +17,8 @@ const userTable = document.getElementById('userTable').getElementsByTagName('tbo
                         row.insertCell(1).textContent = user.industry;
                         row.insertCell(2).textContent = user.email;
                         row.insertCell(3).textContent = user.phoneNo;
-                        row.insertCell(4).textContent = user.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+                        //row.insertCell(4).textContent = user.businessAddress.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+                        row.insertCell(4).textContent = user.userid;
                     });
 
 

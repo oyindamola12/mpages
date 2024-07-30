@@ -686,7 +686,7 @@ async function pay2() {
         phoneNo,
         about,
         email,
-
+        userUid,
         latitude,
         longitude,
         signupStatus,
@@ -707,7 +707,7 @@ async function pay2() {
     window.location.href = 'my-listings.html';
 
     // Hide loading indicator (optional)
-   
+
 
   } catch (error) {
     console.error('Error:', error);

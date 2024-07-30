@@ -232,16 +232,15 @@ app.post('/addBusiness2', async (req, res) => {
   const phoneNo = req.body.phoneNo;
   const about = req.body.about;
   const email = req.body.email;
-  //const userId = req.body.userId;
+  const userId = req.body.userUid;
   const lat = req.body.latitude;
   const lng = req.body.longitude;
   const donation = req.body.wantDonation;
   const country = req.body.country;
   const city = req.body.city;
 
-  // const files = req.files // Commented out (if not used)
-   const userId = Math.floor(Math.random() * 1e10).toString(); // Not needed
 
+const uniqueId2 = Math.floor(Math.random() * 1e10).toString();
   try {
     const businessData = {
       businessName,
@@ -256,6 +255,7 @@ app.post('/addBusiness2', async (req, res) => {
       userid: userId,
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
       // images: uploadedUrls, // Implement image upload logic if needed
+      listingId: uniqueId2,
       latitude: lat,
       longitude: lng,
       donation,
@@ -263,11 +263,11 @@ app.post('/addBusiness2', async (req, res) => {
       city,
     };
 
-    const businessRef = db.collection('BusinessLists').doc(); // Use auto-generated ID
+    const businessRef = db.collection('BusinessLists').doc(uniqueId2); // Use auto-generated ID
     await businessRef.set(businessData);
 
-    const userListingsRef = db.collection('Users').doc(userId).collection('BusinessLists').doc(businessRef.id);
-    await userListingsRef.set({ ...businessData, listingId: businessRef.id }); // Include listingId for reference
+    const userListingsRef = db.collection('Users').doc(userId).collection('BusinessLists').doc(uniqueId2);
+    await userListingsRef.set(businessData); // Include listingId for reference
 
     const snapshot = await db.collection('Users').doc(userId).collection('BusinessLists').get();
     const businesses = [];

@@ -91,140 +91,92 @@ app.use(cors(corsOptions));
 
 //Upload image
 
-app.post('/addBusiness',async (req, res, )=> {
-    const businessName = req.body.businessName;
-    const contactPerson = req.body.contactPerson;
-    const businessAddress = req.body.businessAddress;
-    const industry = req.body.industry;
-    const openingtime = req.body.openingtime;
-    const closingtime = req.body.closingtime;
-    const phoneNo = req.body.phoneNo;
-    const about = req.body.about;
-    const email = req.body.email;
-    const password = req.body.password;
-    const lat =req.body.latitude;
-    const lng =req.body.longitude;
-    const signupStatus=req.body.signupStatus;
-    const userids=req.body.userids;
-    const donation=req.body.wantDonation
-    const country= req.body.country;
-    const city = req.body.city
+app.post('/addBusiness', async (req, res) => {
+  const businessName = req.body.businessName;
+  const contactPerson = req.body.contactPerson;
+  const businessAddress = req.body.businessAddress;
+  const industry = req.body.industry;
+  const openingtime = req.body.openingtime;
+  const closingtime = req.body.closingtime;
+  const phoneNo = req.body.phoneNo;
+  const about = req.body.about;
+  const email = req.body.email;
+  const password = req.body.password;
+  const lat = req.body.latitude;
+  const lng = req.body.longitude;
+  const signupStatus = req.body.signupStatus;
+  const userids = req.body.userids;
+  const donation = req.body.wantDonation;
+  const country = req.body.country;
+  const city = req.body.city;
 
-
-    const user={
-    email:req.body.email,
-    password:req.body.password,
-   }
+  const user = {
+    email,
+    password,
+  };
 
   try {
-
-     const userSnapshot = await
-     db.collection('Users') // Replace 'users' with your collection name
+    const userSnapshot = await db.collection('Users')
       .where('email', '==', email)
       .where('password', '==', password)
       .limit(1)
       .get();
 
+    // Image upload logic (uncomment if needed)
+    // const imageUrls = [];
+    // // ... (image upload logic)
 
-    //   const imageUrls = [];
+    if (userSnapshot.empty) {
+      const userResponse = await admin.auth().createUser(user);
 
-    // // Loop through each image
-    // for (let i = 0; i < images.length; i++) {
-    //   const image = images[i];
+      const userData = {
+        fullName: contactPerson,
+        phoneNo,
+        email,
+        password,
+        userid: userResponse.uid,
+        signupStatus,
+        created: admin.firestore.FieldValue.serverTimestamp(),
+        addListing: true,
+      };
 
-    //   // Define the path where the image will be stored in the bucket
-    //   const imagePath = `Images/${image}`;
+      const userDoc = db.collection('Users').doc(userResponse.uid);
+      await userDoc.set(userData);
 
-    //   // Upload the image to GCS
-    //   await storage.bucket(bucketName).upload(image, {
-    //     destination: imagePath,
-    //     metadata: {
-    //       contentType: 'image/jpeg', // Change this to the appropriate content type if needed
-    //     },
-    //   });
+      const businessData = {
+        businessName,
+        fullName: contactPerson,
+        businessAddress,
+        industry,
+        openingtime,
+        closingtime,
+        phoneNo,
+        about,
+        email,
+        userid: userResponse.uid,
+        // images: uploadedUrls, // uncomment if using image upload
+        timestamp: admin.firestore.FieldValue.serverTimestamp(),
+        latitude: lat,
+        longitude: lng,
+        listingId: userResponse.uid,
+        donation,
+        country,
+        city,
+      };
 
-    //   // Get the URL of the uploaded image
-    //   const imageUrl = `https://storage.googleapis.com/${bucketName}/${imagePath}`;
-    //   imageUrls.push(imageUrl);
-    // }
-if (userSnapshot.empty) {
-const userResponse = await admin.auth().createUser({
-email:user.email,
-password:user.password,
-})
+      const businessDoc = userDoc.collection('BusinessLists').doc(userResponse.uid);
+      await businessDoc.set(businessData);
 
-const addUsers =  db.collection('Users').doc(userids);
-
-await addUsers.set({
-fullName:contactPerson,
-phoneNo: phoneNo,
-email:email,
-password: password,
-userid:userids,
-signupStatus:signupStatus,
-created:admin.firestore.FieldValue.serverTimestamp(),
-addListing:true,
-
-});
-
-const userListings =  db.collection('Users').doc(userResponse.uid).collection('BusinessLists').doc(userids);
-await  userListings.set({
- businessName:businessName,
- fullName: contactPerson,
- businessAddress: businessAddress,
- industry: industry,
- openingtime: openingtime,
- closingtime: closingtime,
- phoneNo: phoneNo,
- about: about,
- email: email,
- userid:userids,
-  // images: uploadedUrls,
- timestamp: admin.firestore.FieldValue.serverTimestamp(),
-  latitude:lat,
- longitude:lng,
- listingId:userResponse.uid,
- donation:donation,
- country:country,
- city:city
-
-});
-
-const businessDb = db.collection('BusinessLists').doc(userResponse);
-await businessDb.set({
- businessName:businessName,
- fullName: contactPerson,
- businessAddress: businessAddress,
- industry: industry,
- openingtime: openingtime,
- closingtime: closingtime,
- phoneNo: phoneNo,
- about: about,
- email: email,
- userid:userids,
- timestamp: admin.firestore.FieldValue.serverTimestamp(),
-  // images: uploadedUrls,
-  latitude:lat,
-  longitude:lng,
-  listingId:userResponse.uid,
-  donation:donation,
-  country:country,
- city:city
-
-
-});
- return res.status(200).json({ userId:userResponse.uid,userResponse});
- }
- else{
-  return res.status(401).json({ error: 'User Exist, Login' });
+      return res.status(200).json({ userId: userResponse.uid, userResponse });
+    } else {
+      return res.status(401).json({ error: 'User Exist, Login' });
     }
-
-} catch (error) {
+  } catch (error) {
     console.error('Error:', error.message);
     return res.status(500).json({ error: 'Internal server error' });
   }
-
 });
+
 
 // app.post('/addImages', upload.array('images'), async (req, res) => {
 //     try {
@@ -266,97 +218,71 @@ await businessDb.set({
 // });
 
 
-app.post('/addBusiness2',async (req, res)=> {
+app.post('/addBusiness2', async (req, res) => {
 
-    const businessName = req.body.businessName;
-    const contactPerson = req.body.contactPerson;
-    const businessAddress = req.body.businessAddress;
-    const industry = req.body.industry;
-    const openingtime = req.body.openingtime;
-    const closingtime = req.body.closingtime;
-    const phoneNo = req.body.phoneNo;
-    const about = req.body.about;
-    const email = req.body.email;
-    const userId = req.body.userId;
-    const userids = req.body.userids;
-    const lat = req.body.latitude;
-    const lng = req.body.longitude
-    const donation=req.body.wantDonation
-    const country= req.body.country;
-    const city = req.body.city
-    // const files = req.files
-// const userId=req.body.userId
-const uniqueId2 = Math.floor(Math.random() * 1e10).toString();
+  const businessName = req.body.businessName;
+  const contactPerson = req.body.contactPerson;
+  const businessAddress = req.body.businessAddress;
+  const industry = req.body.industry;
+  const openingtime = req.body.openingtime;
+  const closingtime = req.body.closingtime;
+  const phoneNo = req.body.phoneNo;
+  const about = req.body.about;
+  const email = req.body.email;
+  //const userId = req.body.userId;
+  const lat = req.body.latitude;
+  const lng = req.body.longitude;
+  const donation = req.body.wantDonation;
+  const country = req.body.country;
+  const city = req.body.city;
+
+  // const files = req.files // Commented out (if not used)
+   const userId = Math.floor(Math.random() * 1e10).toString(); // Not needed
 
   try {
+    const businessData = {
+      businessName,
+      fullName: contactPerson,
+      businessAddress,
+      industry,
+      openingtime,
+      closingtime,
+      phoneNo,
+      about,
+      email,
+      userid: userId,
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      // images: uploadedUrls, // Implement image upload logic if needed
+      latitude: lat,
+      longitude: lng,
+      donation,
+      country,
+      city,
+    };
 
+    const businessRef = db.collection('BusinessLists').doc(); // Use auto-generated ID
+    await businessRef.set(businessData);
 
-const businessDb =  db.collection('BusinessLists').doc(uniqueId2);
-await businessDb.set({
- businessName:businessName,
- fullName: contactPerson,
- businessAddress: businessAddress,
- industry: industry,
- openingtime: openingtime,
- closingtime: closingtime,
- phoneNo: phoneNo,
- about: about,
- email: email,
- userid:userId,
-timestamp: admin.firestore.FieldValue.serverTimestamp(),
-// images:uploadedUrls,
-latitude:lat,
-longitude:lng,
- listingId:uniqueId2,
-donation:donation,
- country:country,
- city:city
+    const userListingsRef = db.collection('Users').doc(userId).collection('BusinessLists').doc(businessRef.id);
+    await userListingsRef.set({ ...businessData, listingId: businessRef.id }); // Include listingId for reference
 
-});
-
-const userListings =  db.collection('Users').doc(userId).collection('BusinessLists').doc(uniqueId2 );
-await  userListings.set({
- businessName:businessName,
- fullName: contactPerson,
- businessAddress: businessAddress,
- industry: industry,
- openingtime: openingtime,
- closingtime: closingtime,
- phoneNo: phoneNo,
- about: about,
- email: email,
- userid:userId,
-//  images:uploadedUrls,
-timestamp: admin.firestore.FieldValue.serverTimestamp(),
-  latitude:lat,
- longitude:lng,
-donation:donation,
-  listingId:uniqueId2,
-   country:country,
- city:city
-
-});
-
-const snapshot = await  db.collection('Users').doc(userId).collection('BusinessLists').get();
-    // Extract data from the snapshot
+    const snapshot = await db.collection('Users').doc(userId).collection('BusinessLists').get();
     const businesses = [];
     snapshot.forEach(doc => {
       businesses.push({
-      id: doc.id,
-      data: doc.data()
-});;
-
-
+        id: doc.id,
+        data: doc.data(),
+      });
     });
-// console.log(imageUrls)
-  return res.status(200).json({ userId:userId,businesses,});
 
-} catch (error) {
+    return res.status(200).json({ userId, businesses });
+
+  } catch (error) {
     console.error('Error:', error.message);
     return res.status(500).json({ error: 'Internal server error' });
   }
-
 });
+
 
 // app.post('/addImages2', upload.array('images'), async (req, res) => {
 //     const postid = req.body.postid;
